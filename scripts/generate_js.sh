@@ -11,5 +11,5 @@ npx @openapitools/openapi-generator-cli version-manager set 5.1.1
 npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
     ".openapi/$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
     --package-name="${PACKAGE_NAME}" \
-    --additional-properties="ngVersion=6.1.7,npmName=${PACKAGE_NAME},supportsES6=true,npmVersion=6.9.0,withInterfaces=true" \
+    --additional-properties="ngVersion=6.1.7,npmName=${PACKAGE_NAME},supportsES6=true,withInterfaces=true" \
     --ignore-file-override=.openapi-generator-ignore
