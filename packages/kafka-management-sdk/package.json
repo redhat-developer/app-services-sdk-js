@@ -1,16 +1,16 @@
 {
-  "name": "@rhoas/kafka-manager-api",
+  "name": "@rhoas/kafka-management-sdk",
   "version": "1.0.1",
-  "description": "OpenAPI client for @rhoas/kafka-manager-api",
-  "author": "OpenAPI-Generator Contributors",
+  "description": "RHOAS Kafka Management SDK",
+  "author": "Red Hat Developers",
   "keywords": [
     "axios",
     "typescript",
     "openapi-client",
     "openapi-generator",
-    "@rhoas/kafka-manager-api"
+    "@rhoas/kafka-management-sdk"
   ],
-  "license": "Unlicense",
+  "license": "Apache 2.0",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
