@@ -1,6 +1,7 @@
-**/go.mod
-**/go.sum
-**/git_push.sh
+**/package.json
+**/tsconfig.json
+**/.npmignore
+**/.gitignore
 **/.travis.yml
 **/api
 **/.openapi-generator-ignore

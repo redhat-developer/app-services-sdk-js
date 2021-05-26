@@ -1,7 +1,17 @@
 {
-  "kas-fleet-manager.yaml": {
-    "packageName": "@rhoas/kafka-manager-api",
-    "folder": "kafka-manager-api"
-
+  "kafka-mgmt/v1": {
+    "packageName": "@rhoas/kafka-management-sdk",
+    "folder": "kafka-management-sdk/src/generated",
+    "stability": "beta"
+  },
+  "kafka-admin/v1": {
+    "packageName": "@rhoas/kafka-admin-sdk",
+    "folder": "kafka-admin-sdk/src/generated",
+    "stability": "alpha"
+  },
+  "srs-mgmt/v1": {
+    "packageName": "@rhoas/service-registry-management-sdk",
+    "folder": "service-registry-management-sdk/src/generated",
+    "stability": "alpha"
   }
 }
