@@ -38,7 +38,7 @@ Contributions are welcome. See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 [kafkagit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/kafka-management-sdk 
 [kafkanpm]: https://www.npmjs.com/package/@rhoas/kafka-management-sdk
-[registrygit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/kafka-management-sdk 
-[registrynpm]: https://www.npmjs.com/package/@rhoas/kafka-management-sdk
+[registrygit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/registry-management-sdk 
+[registrynpm]: https://www.npmjs.com/package/@rhoas/registry-management-sdk
 [kafkashield]: https://img.shields.io/npm/v/@rhoas/kafka-management-sdk
 [registryshield]: https://img.shields.io/npm/v/@rhoas/registry-management-sdk
