@@ -13,6 +13,20 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ObjectReference } from './object-reference';
+
+/**
+ * 
+ * @export
+ * @interface VersionMetadataAllOf
+ */
+export interface VersionMetadataAllOf {
+    /**
+     * 
+     * @type {Array<ObjectReference>}
+     * @memberof VersionMetadataAllOf
+     */
+    collections?: Array<ObjectReference>;
+}
+
+

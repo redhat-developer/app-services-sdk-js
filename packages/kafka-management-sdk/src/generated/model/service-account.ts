@@ -13,6 +13,15 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ObjectReference } from './object-reference';
+import { ServiceAccountAllOf } from './service-account-all-of';
+
+/**
+ * @type ServiceAccount
+ * Service Account created in MAS-SSO for the Kafka Cluster for authentication
+ * @export
+ */
+export type ServiceAccount = ObjectReference & ServiceAccountAllOf;
+
+
+

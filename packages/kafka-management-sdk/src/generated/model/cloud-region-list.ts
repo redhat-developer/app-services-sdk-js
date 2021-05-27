@@ -13,6 +13,15 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { CloudRegion } from './cloud-region';
+import { CloudRegionListAllOf } from './cloud-region-list-all-of';
+import { List } from './list';
+
+/**
+ * @type CloudRegionList
+ * @export
+ */
+export type CloudRegionList = CloudRegionListAllOf & List;
+
+
+

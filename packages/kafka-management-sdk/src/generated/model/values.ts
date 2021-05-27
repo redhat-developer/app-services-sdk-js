@@ -13,6 +13,25 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @interface Values
+ */
+export interface Values {
+    /**
+     * 
+     * @type {number}
+     * @memberof Values
+     */
+    Timestamp?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Values
+     */
+    Value: number;
+}
+
+

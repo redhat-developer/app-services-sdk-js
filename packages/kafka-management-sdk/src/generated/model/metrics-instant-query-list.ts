@@ -13,6 +13,14 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { InstantQuery } from './instant-query';
+import { MetricsInstantQueryListAllOf } from './metrics-instant-query-list-all-of';
+
+/**
+ * @type MetricsInstantQueryList
+ * @export
+ */
+export type MetricsInstantQueryList = MetricsInstantQueryListAllOf;
+
+
+

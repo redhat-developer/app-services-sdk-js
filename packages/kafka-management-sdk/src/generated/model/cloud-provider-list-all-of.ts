@@ -13,6 +13,20 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { CloudProvider } from './cloud-provider';
+
+/**
+ * 
+ * @export
+ * @interface CloudProviderListAllOf
+ */
+export interface CloudProviderListAllOf {
+    /**
+     * 
+     * @type {Array<CloudProvider>}
+     * @memberof CloudProviderListAllOf
+     */
+    items?: Array<CloudProvider>;
+}
+
+

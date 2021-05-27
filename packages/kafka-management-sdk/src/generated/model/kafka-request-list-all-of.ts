@@ -13,6 +13,20 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { KafkaRequest } from './kafka-request';
+
+/**
+ * 
+ * @export
+ * @interface KafkaRequestListAllOf
+ */
+export interface KafkaRequestListAllOf {
+    /**
+     * 
+     * @type {Array<KafkaRequest>}
+     * @memberof KafkaRequestListAllOf
+     */
+    items?: Array<KafkaRequest>;
+}
+
+

@@ -13,6 +13,31 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @interface ErrorAllOf
+ */
+export interface ErrorAllOf {
+    /**
+     * 
+     * @type {string}
+     * @memberof ErrorAllOf
+     */
+    code?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ErrorAllOf
+     */
+    reason?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ErrorAllOf
+     */
+    operation_id?: string;
+}
+
+

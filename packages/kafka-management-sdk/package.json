@@ -1,27 +1,32 @@
 {
   "name": "@rhoas/kafka-management-sdk",
-  "version": "1.0.1",
+  "version": "0.0.1",
   "description": "RHOAS Kafka Management SDK",
   "author": "Red Hat Developers",
   "keywords": [
-    "axios",
-    "typescript",
-    "openapi-client",
-    "openapi-generator",
+    "rhoas",
+    "redhat",
     "@rhoas/kafka-management-sdk"
   ],
-  "license": "Apache 2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aerogear/graphback.git"
+  },
+  "license": "Apache-2.0",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc --outDir dist/",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "0.21.1"
   },
   "devDependencies": {
     "@types/node": "^12.11.5",
-    "typescript": "^3.6.4"
+    "typescript": "3.6.4"
   }
 }

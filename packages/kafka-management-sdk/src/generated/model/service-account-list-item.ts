@@ -13,6 +13,14 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ObjectReference } from './object-reference';
+import { ServiceAccountListItemAllOf } from './service-account-list-item-all-of';
+
+/**
+ * @type ServiceAccountListItem
+ * @export
+ */
+export type ServiceAccountListItem = ObjectReference & ServiceAccountListItemAllOf;
+
+
+

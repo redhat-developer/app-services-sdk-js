@@ -13,6 +13,14 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { KafkaRequestAllOf } from './kafka-request-all-of';
+import { ObjectReference } from './object-reference';
+
+/**
+ * @type KafkaRequest
+ * @export
+ */
+export type KafkaRequest = KafkaRequestAllOf & ObjectReference;
+
+
+
