@@ -1,45 +1,64 @@
 ## @rhoas/kafka-manager-api@1.0.1
 
-This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
+RHOAS Kafka Management TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios).
+The generated Node module can be used in the following environments:
 
 Environment
-* Node.js
-* Webpack
-* Browserify
+
+- Node.js
+- Webpack
+- Browserify
 
 Language level
-* ES5 - you must have a Promises/A+ library installed
-* ES6
+
+- ES5 - you must have a Promises/A+ library installed
+- ES6
 
 Module system
-* CommonJS
-* ES6 module system
+
+- CommonJS
+- ES6 module system
 
 It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
 
-### Building
+### Getting Started
 
-To build and compile the typescript sources to javascript use:
-```
-npm install
-npm run build
-```
+Navigate to the folder of your consuming project and run one of the following commands.
 
-### Publishing
-
-First build the package then run ```npm publish```
-
-### Consuming
-
-navigate to the folder of your consuming project and run one of the following commands.
-
-_published:_
+#### Install Package
 
 ```
-npm install @rhoas/kafka-manager-api@1.0.1 --save
+npm install @rhoas/kafka-management-sdk --save
 ```
 
-_unPublished (not recommended):_
+#### Usage
 
+```ts
+import { Configuration, DefaultApi } from "@rhoas/kafka-management-sdk";
+
+const accessToken = process.env.CLOUD_API_TOKEN;
+const basePath = "https://api.openshift.com";
+
+const apiConfig = new Configuration({
+  accessToken,
+  basePath,
+});
+
+const kafkaApi = new DefaultApi(apiConfig);
+
+kafkaApi
+  .listKafkas()
+  .then((data) => {
+    console.log(data?.data.items);
+  })
+  .catch((err) => {
+    console.error(err.message);
+  });
 ```
-npm install PATH_TO_GENERATED_PACKAGE --save
+
+See `./example` for full example
+
+#### Security
+
+API is using https://sso.redhat.com for OAuth Authentication.
+Provided token needs to be AccessToken returned from library like keycloak.js
