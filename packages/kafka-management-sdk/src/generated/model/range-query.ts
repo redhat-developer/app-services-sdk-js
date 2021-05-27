@@ -13,6 +13,26 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { Values } from './values';
+
+/**
+ * 
+ * @export
+ * @interface RangeQuery
+ */
+export interface RangeQuery {
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof RangeQuery
+     */
+    metric?: { [key: string]: string; };
+    /**
+     * 
+     * @type {Array<Values>}
+     * @memberof RangeQuery
+     */
+    values?: Array<Values>;
+}
+
+

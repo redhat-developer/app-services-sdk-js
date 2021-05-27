@@ -13,6 +13,20 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ServiceStatusKafkas } from './service-status-kafkas';
+
+/**
+ * Schema for the service status response body
+ * @export
+ * @interface ServiceStatus
+ */
+export interface ServiceStatus {
+    /**
+     * 
+     * @type {ServiceStatusKafkas}
+     * @memberof ServiceStatus
+     */
+    kafkas?: ServiceStatusKafkas;
+}
+
+

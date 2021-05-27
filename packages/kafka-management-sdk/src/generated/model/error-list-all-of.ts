@@ -13,6 +13,19 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @interface ErrorListAllOf
+ */
+export interface ErrorListAllOf {
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof ErrorListAllOf
+     */
+    items?: Array<Error>;
+}
+
+

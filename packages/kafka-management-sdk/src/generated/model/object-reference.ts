@@ -13,6 +13,31 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @interface ObjectReference
+ */
+export interface ObjectReference {
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectReference
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectReference
+     */
+    kind?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectReference
+     */
+    href?: string;
+}
+
+

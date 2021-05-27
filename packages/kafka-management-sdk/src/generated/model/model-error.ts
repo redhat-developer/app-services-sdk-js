@@ -13,6 +13,14 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ErrorAllOf } from './error-all-of';
+import { ObjectReference } from './object-reference';
+
+/**
+ * @type ModelError
+ * @export
+ */
+export type ModelError = ErrorAllOf & ObjectReference;
+
+
+

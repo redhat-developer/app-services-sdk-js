@@ -13,6 +13,14 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { MetricsRangeQueryListAllOf } from './metrics-range-query-list-all-of';
+import { RangeQuery } from './range-query';
+
+/**
+ * @type MetricsRangeQueryList
+ * @export
+ */
+export type MetricsRangeQueryList = MetricsRangeQueryListAllOf;
+
+
+

@@ -13,6 +13,14 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ObjectReference } from './object-reference';
+import { VersionMetadataAllOf } from './version-metadata-all-of';
+
+/**
+ * @type VersionMetadata
+ * @export
+ */
+export type VersionMetadata = ObjectReference & VersionMetadataAllOf;
+
+
+

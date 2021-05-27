@@ -13,6 +13,19 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * The kafka resource api status
+ * @export
+ * @interface ServiceStatusKafkas
+ */
+export interface ServiceStatusKafkas {
+    /**
+     * Indicates whether we have reached kafka maximum capacity
+     * @type {boolean}
+     * @memberof ServiceStatusKafkas
+     */
+    max_capacity_reached: boolean;
+}
+
+

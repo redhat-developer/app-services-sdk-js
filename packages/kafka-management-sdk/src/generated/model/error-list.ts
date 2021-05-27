@@ -13,6 +13,14 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ErrorListAllOf } from './error-list-all-of';
+import { List } from './list';
+
+/**
+ * @type ErrorList
+ * @export
+ */
+export type ErrorList = ErrorListAllOf & List;
+
+
+

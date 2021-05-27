@@ -13,6 +13,15 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { CloudProvider } from './cloud-provider';
+import { CloudProviderListAllOf } from './cloud-provider-list-all-of';
+import { List } from './list';
+
+/**
+ * @type CloudProviderList
+ * @export
+ */
+export type CloudProviderList = CloudProviderListAllOf & List;
+
+
+

@@ -13,6 +13,14 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ServiceAccountListAllOf } from './service-account-list-all-of';
+import { ServiceAccountListItem } from './service-account-list-item';
+
+/**
+ * @type ServiceAccountList
+ * @export
+ */
+export type ServiceAccountList = ServiceAccountListAllOf;
+
+
+
