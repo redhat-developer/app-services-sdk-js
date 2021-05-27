@@ -50,7 +50,7 @@
             "$ref": "#/components/responses/ServerError"
           }
         },
-        "operationId": "getRegistries",
+        "operationId": "listRegistries",
         "summary": "Get the list of all registries.",
         "description": "",
         "security": [
