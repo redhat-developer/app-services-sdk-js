@@ -1,4 +1,4 @@
-## @rhoas/kafka-manager-sdk
+## @rhoas/kafka-management-sdk
 
 RHOAS Kafka Management TypeScript/JavaScript SDk that utilizes [axios](https://github.com/axios/axios).
 The Node module can be used in the following environments:
