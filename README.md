@@ -8,12 +8,17 @@ Typescript and JavaScript packages and API clients for RHOAS services
 
 - [NodeJS 14.x lts](https://nodejs.org/en/about/releases/) or above
 
-## Supported APIs
+## SDK's
+
+RHOAS TypeScript SDK's are delivered as set of the individual packages.
 
 | Package name                     | Status   |   Version         | NPM                 | Docs               |
 |----------------------------------|----------|-------------------|---------------------|--------------------|
 | **@rhoas/kafka-management-sdk**    | beta   | ![kafkashield]    | [npm][kafkanpm]     | [doc][kafkagit]    |
 | **@rhoas/registry-management-sdk** | alpha  | ![registryshield] | [npm][registrynpm]  | [doc][registrygit] |
+
+
+You can also view all packages directly in [npm](https://www.npmjs.com/search?q=keywords:rhoas)
 
 ## API stability
 

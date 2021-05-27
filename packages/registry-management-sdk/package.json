@@ -1,6 +1,6 @@
 {
   "name": "@rhoas/registry-management-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "RHOAS Service Registry Management SDK",
   "author": "Red Hat Developers",
   "keywords": [
@@ -21,8 +21,7 @@
   },
   "scripts": {
     "build": "tsc --outDir dist/",
-    "prepublishOnly": "npm run build",
-    "publish": "npm publish"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "axios": "0.21.1"

@@ -1,6 +1,6 @@
-## @rhoas/kafka-manager-api@1.0.1
+## Service Registry Management
 
-RHOAS Kafka Management TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios).
+RHOAS Service Registry Management TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios).
 The generated Node module can be used in the following environments:
 
 Environment
@@ -28,13 +28,13 @@ Navigate to the folder of your consuming project and run one of the following co
 #### Install Package
 
 ```
-npm install @rhoas/kafka-management-sdk --save
+npm install @rhoas/registry-management-sdk --save
 ```
 
 #### Usage
 
 ```ts
-import { Configuration, DefaultApi } from "@rhoas/kafka-management-sdk";
+import { Configuration, DefaultApi } from "@rhoas/registry-management-sdk";
 
 const accessToken = process.env.CLOUD_API_TOKEN;
 const basePath = "https://api.openshift.com";
