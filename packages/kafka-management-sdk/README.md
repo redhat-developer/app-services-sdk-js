@@ -1,7 +1,7 @@
-## @rhoas/kafka-manager-api@1.0.1
+## @rhoas/kafka-manager-sdk
 
-RHOAS Kafka Management TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios).
-The generated Node module can be used in the following environments:
+RHOAS Kafka Management TypeScript/JavaScript SDk that utilizes [axios](https://github.com/axios/axios).
+The Node module can be used in the following environments:
 
 Environment
 
