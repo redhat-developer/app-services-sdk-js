@@ -1,12 +1,12 @@
 {
   "name": "app-services-sdk-js-monorepo",
   "private": true,
-  "devDependencies": {
-    "lerna": "^4.0.0"
+  "devDependencies": {},
+  "scripts": {
+    "generate": "./scripts/generate.sh",
+    "wrun": "yarn workspaces run"
   },
-  "scripts":{
-    "generate": "./scripts/generate_all.sh",
-    "bootstrap": "lerna bootstrap",
-    "build": "lerna run build"
-  }
+  "workspaces": [
+    "packages/*"
+  ]
 }
