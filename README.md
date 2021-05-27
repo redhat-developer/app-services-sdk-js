@@ -20,6 +20,11 @@ RHOAS TypeScript SDK's are delivered as set of the individual packages.
 
 You can also view all packages directly in [npm](https://www.npmjs.com/search?q=keywords:rhoas)
 
+## Examples
+
+[./examples](https://github.com/redhat-developer/app-services-sdk-js/tree/main/examples) 
+
+
 ## API stability
 
 **Alpha**: the API is still being developed and may have backwards-incompatible changes. It is not recommended for production use.
@@ -28,9 +33,6 @@ You can also view all packages directly in [npm](https://www.npmjs.com/search?q=
 
 **Stable**: the API is ready for production use.
 
-## Examples
-
-[./examples](https://github.com/redhat-developer/app-services-sdk-js/tree/main/examples) 
 
 ## Contributing
 
