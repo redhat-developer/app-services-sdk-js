@@ -4,7 +4,9 @@
   "devDependencies": {},
   "scripts": {
     "generate": "./scripts/generate.sh",
-    "wrun": "yarn workspaces run"
+    "wrun": "yarn workspaces run",
+    "build":"yarn workspaces run build",
+    "release":"yarn workspaces run publish"
   },
   "workspaces": [
     "packages/*"
