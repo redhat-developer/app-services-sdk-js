@@ -10,10 +10,10 @@ Typescript and JavaScript packages and API clients for RHOAS services
 
 ## Supported APIs
 
-| Package name                    | Status | Version                             | NPM                                           | Docs                                               |
-|---------------------------------|--------|-------------------------------------|-----------------------------------------------|----------------------------------------------------|
-| @rhoas/kafka-management-sdk     | beta   | ![kafkashield]([kafkashield])       | [link]([npmroot]/@rhoas/kafka-management-sdk) | [Doc]([gitroot]/kafka-management-sdk)              |
-| @rhoas/registry-management-sdk  | alpha  | ![registryshield]([registryshield]) | [link]([npmroot]/@rhoas/kafka-management-sdk) | [Doc]([gitroot]/registry-management-sdk)           |
+| Package name                     | Status   |   Version         | NPM                 | Docs               |
+|----------------------------------|----------|-------------------|---------------------|--------------------|
+| **@rhoas/kafka-management-sdk**    | beta   | ![kafkashield]    | [npm][kafkanpm]     | [doc][kafkagit]    |
+| **@rhoas/registry-management-sdk** | alpha  | ![registryshield] | [npm][registrynpm]  | [doc][registrygit] |
 
 ## API stability
 
@@ -31,7 +31,9 @@ Typescript and JavaScript packages and API clients for RHOAS services
 
 Contributions are welcome. See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-[gitroot]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages
-[npmroot]: https://www.npmjs.com/package/
+[kafkagit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/kafka-management-sdk 
+[kafkanpm]: https://www.npmjs.com/package/@rhoas/kafka-management-sdk
+[registrygit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/kafka-management-sdk 
+[registrynpm]: https://www.npmjs.com/package/@rhoas/kafka-management-sdk
 [kafkashield]: https://img.shields.io/npm/v/@rhoas/kafka-management-sdk
 [registryshield]: https://img.shields.io/npm/v/@rhoas/registry-management-sdk
