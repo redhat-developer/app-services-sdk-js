@@ -5,9 +5,10 @@
   "scripts": {
     "generate": "./scripts/generate.sh",
     "wrun": "yarn workspaces run",
-    "build":"yarn workspaces run build"
+    "build": "yarn workspaces run build"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "version": "0.0.0"
 }
