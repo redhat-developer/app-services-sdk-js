@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+const args = process.argv.slice(2);
+
+const semverRegexp =
+  /^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$/;
+
+if (args.length != 1) {
+  throw new Error("Invalid number of arguments" + args);
+}
+
+const tag = args[0];
+
+// Version in format: kafka-v0.0.1
+const versionParts = tag.split("@");
+if (versionParts.length == 2) {
+  return console.log("yarn workspace @rhoas/" + versionParts[0] + "-sdk");
+}
+
+if (tag.substring(1).match(semverRegexp)) {
+  // Full release of SDKs
+  return console.log(`yarn release:all`);
+}
+
+throw new Error("Invalid tag");
