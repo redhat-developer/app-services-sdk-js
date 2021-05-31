@@ -38,11 +38,11 @@ You can view all SDK packages directly in [npm](https://www.npmjs.com/search?q=k
 
 ## Docs
 
-[./docs](https://github.com/redhat-developer/app-services-sdk-js/tree/main/docs) 
+[Documentation](./docs) 
 
 ## Examples
 
-[./examples](https://github.com/redhat-developer/app-services-sdk-js/tree/main/examples) 
+[Examples](./examples) 
 
 
 ## Contributing
