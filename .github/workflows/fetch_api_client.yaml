@@ -1,4 +1,4 @@
-name: Generate API client
+name: Fetch API client for new changes
 on:
   repository_dispatch:
     types: [openapi-spec-change]
