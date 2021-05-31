@@ -37,3 +37,10 @@ kafkaApi
 
 See [./examples](https://github.com/redhat-developer/app-services-sdk-js/tree/main/examples) for full example
 
+### Service Accounts SDK
+
+SDK will help you to create Service Account to Access Kafka and other services
+
+> NOTE: This SDK is currently included into Kafka SDK as Alpha feature. It will be moved out of the SDK in near future.
+
+See [./examples](https://github.com/redhat-developer/app-services-sdk-js/tree/main/examples/src/serviceAccount.ts) for full example
