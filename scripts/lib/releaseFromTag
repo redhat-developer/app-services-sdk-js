@@ -12,14 +12,15 @@ if (args.length != 1) {
 const tag = args[0];
 
 // Version in format: kafka-v0.0.1
+// TODO validate version
 const versionParts = tag.split("@");
 if (versionParts.length == 2) {
-  return console.log("yarn workspace @rhoas/" + versionParts[0] + "-sdk");
+  return console.log("yarn workspace @rhoas/" + versionParts[0] + "-sdk exec npm publish");
 }
 
 if (tag.substring(1).match(semverRegexp)) {
   // Full release of SDKs
-  return console.log(`yarn release:all`);
+  return console.log(`yarn workspace exec npm publish`);
 }
 
 throw new Error("Invalid tag");
