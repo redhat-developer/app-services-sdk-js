@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 # get the download URL of the OpenAPI spec file
-OPENAPI_FILE_URL=$(node $(dirname $0)/get-raw-openapi-url.js "$GITHUB_REPO" "$BRANCH" "$OPENAPI_DIRECTORY" "$OPENAPI_FILENAME")
+OPENAPI_FILE_URL=`echo $CLIENT_PAYLOAD | jq .download`
 
 # download the OpenAPI file
-curl -H "Authorization: token $BF2_TOKEN" "$OPENAPI_FILE_URL" -o "$OPENAPI_FILENAME"
+curl -H "Authorization: token $BF2_TOKEN" "$OPENAPI_FILE_URL"
 if [ $? != 0 ]; then
   exit $?
 fi
+
+
