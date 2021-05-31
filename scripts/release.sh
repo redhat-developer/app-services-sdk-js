@@ -7,5 +7,4 @@ SCRIPT_DIR=`dirname $0`
 ## Pick right release based on tag structure
 EXEC=`$SCRIPT_DIR/lib/releaseFromTag $GITHUB_REF_SLUG`
 
-$EXEC 
- 
+$EXEC

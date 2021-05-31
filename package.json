@@ -1,5 +1,6 @@
 {
   "name": "app-services-sdk-js-monorepo",
+  "version": "0.1.0",
   "private": true,
   "devDependencies": {},
   "scripts": {
@@ -9,6 +10,5 @@
   },
   "workspaces": [
     "packages/*"
-  ],
-  "version": "0.4.0"
+  ]
 }
