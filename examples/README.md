@@ -1,9 +1,5 @@
 ## RHOAS SDK Examples
 
-### Examples
-
--
-
 ### Running Examples
 
 1. Obtain Access Token from sso.redhat.com and set `CLOUD_API_TOKEN` env variable 

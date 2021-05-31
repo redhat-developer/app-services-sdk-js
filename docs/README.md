@@ -7,7 +7,7 @@
 - [Service Registry Management](https://github.com/redhat-developer/app-services-sdk-js/blob/main/packages/service-registry-management-sdk/README.md)
 - [Service Accounts Management](https://github.com/redhat-developer/app-services-sdk-js/blob/main/packages/service-registry-management-sdk/README.md)
 
-## Service SDK's
+###  Service SDK's
 
 - [Kafka Instance Admin](https://github.com/redhat-developer/app-services-sdk-js/blob/main/packages/kafka-admin-sdk/README.md)
 - **In progress** Service Registry Instance
