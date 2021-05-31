@@ -1,6 +1,6 @@
 {
   "name": "@rhoas/kafka-instance-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "RHOAS Kafka Instance Adminstration SDK",
   "author": "Red Hat Developers",
   "keywords": [
@@ -24,6 +24,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "@changesets/cli": "^2.16.0",
     "axios": "0.21.1"
   },
   "devDependencies": {

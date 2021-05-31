@@ -5,9 +5,12 @@
   "scripts": {
     "generate": "./scripts/generate.sh",
     "wrun": "yarn workspaces run",
-    "build":"yarn workspaces run build"
+    "build": "yarn workspaces run build"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@changesets/cli": "^2.16.0"
+  }
 }
