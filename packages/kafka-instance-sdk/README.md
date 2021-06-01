@@ -10,13 +10,13 @@ Provides SDK for interacting with Kafka instances
 #### Install Package
 
 ```
-npm install @rhoas/kafka-management-sdk --save
+npm install @rhoas/kafka-instance-sdk --save
 ```
 
 #### Usage
 
 ```ts
-import { Configuration, DefaultApi } from "@rhoas/kafka-management-sdk";
+import { Configuration, DefaultApi } from "@rhoas/kafka-instance-sdk";
 
 const accessToken = process.env.CLOUD_API_TOKEN;
 const basePath = "https://api.openshift.com";
@@ -26,16 +26,13 @@ const apiConfig = new Configuration({
   basePath,
 });
 
-const kafkaApi = new DefaultApi(apiConfig);
+const kafkaInstance = new DefaultApi(apiConfig)
 
-kafkaApi
-  .listKafkas()
-  .then((data) => {
-    console.log(data?.data.items);
-  })
-  .catch((err) => {
-    console.error(err.message);
-  });
+kafkaInstance.getTopics().then((data) => {
+    console.log(data?.data)
+}).catch((err) => {
+    console.error(err.message)
+})
 ```
 
 See [./examples](https://github.com/redhat-developer/app-services-sdk-js/tree/main/examples) for full example

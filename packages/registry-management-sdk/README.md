@@ -25,7 +25,7 @@ const apiConfig = new Configuration({
 
 const registryApi = new DefaultApi(apiConfig)
 
-registryApi.listRegistries().then((data) => {
+registryApi.getRegistries().then((data) => {
     console.log(data?.data)
 }).catch((err) => {
     console.error(err.message)

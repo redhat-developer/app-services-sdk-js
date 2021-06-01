@@ -26,7 +26,7 @@ const apiConfig = new Configuration({
 const kafkaApi = new DefaultApi(apiConfig);
 
 kafkaApi
-  .listKafkas()
+  .getKafkas()
   .then((data) => {
     console.log(data?.data.items);
   })

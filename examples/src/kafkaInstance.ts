@@ -9,9 +9,9 @@ const apiConfig = new Configuration({
     basePath
 })
 
-const registryApi = new DefaultApi(apiConfig)
+const kafkaInstance = new DefaultApi(apiConfig)
 
-registryApi.getTopicsList().then((data) => {
+kafkaInstance.getTopics().then((data) => {
     console.log(data?.data)
 }).catch((err) => {
     console.error(err.message)
