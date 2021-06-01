@@ -30,7 +30,7 @@ paths:
             type: string
           in: query
         - name: offset
-          description: The page offset when returning  the limit of requested topics.
+          description: The page offset when returning the limit of requested topics.
           schema:
             format: int32
             type: integer
@@ -68,7 +68,7 @@ paths:
           description: Unable to connect to the Kafka cluster.
       # security:
         # - Bearer: []
-      operationId: getTopicsList
+      operationId: getTopics
       summary: List of topics
       description: >-
         Returns a list of all of the available topics, or the list of topics that meet the users URL
@@ -357,7 +357,12 @@ paths:
             type: integer
           in: query
         - name: topic
-          description: Filter to apply when returning the list of consumer groups
+          description: Return consumer groups for this topic
+          schema:
+            type: string
+          in: query
+        - name: group-id-filter
+          description: Return the consumer groups where the ID begins with this value
           schema:
             type: string
           in: query
@@ -424,7 +429,7 @@ paths:
           description: Unable to connect to the Kafka cluster.
       # security:
         # - Bearer: []
-      operationId: getConsumerGroupList
+      operationId: getConsumerGroups
       summary: List of consumer groups in the Kafka instance.
       description: Returns a list of all consumer groups for a particular Kafka instance.
   /: {}
