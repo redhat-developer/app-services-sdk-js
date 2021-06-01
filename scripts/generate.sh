@@ -33,8 +33,8 @@ npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
     --ignore-file-override=.openapi-generator-ignore
 
 OPENAPI_FILENAME=".openapi/kafka-admin.yml"
-PACKAGE_NAME="@rhoas/kafka-admin-sdk"
-OUTPUT_PATH="packages/kafka-admin-sdk/src/generated"
+PACKAGE_NAME="@rhoas/kafka-instance-sdk"
+OUTPUT_PATH="packages/kafka-instance-sdk/src/generated"
 
 rm -Rf $OUTPUT_PATH/model $OUTPUT_PATH/api
 
