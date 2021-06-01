@@ -9,7 +9,7 @@
 
 ###  Service SDK's
 
-- [Kafka Instance Admin](https://github.com/redhat-developer/app-services-sdk-js/blob/main/packages/kafka-admin-sdk/README.md)
+- [Kafka Instance Admin](https://github.com/redhat-developer/app-services-sdk-js/blob/main/packages/kafka-instance-sdk/README.md)
 - **In progress** Service Registry Instance
 
 ### Additional topics
