@@ -10,7 +10,7 @@ const apiConfig = new Configuration({
 
 const kafkaApi = new DefaultApi(apiConfig)
 
-kafkaApi.listKafkas().then((data) => {
+kafkaApi.getKafkas().then((data) => {
     console.log(data?.data.items)
 }).catch((err) => {
     console.error(err.message)

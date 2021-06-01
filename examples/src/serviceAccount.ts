@@ -10,7 +10,7 @@ const apiConfig = new Configuration({
 
 const kafkaApi = new SecurityApi(apiConfig)
 
-kafkaApi.listServiceAccounts().then((data) => {
+kafkaApi.getServiceAccounts().then((data) => {
     console.log(data?.data.items)
 }).catch((err) => {
     console.error(err.message)
