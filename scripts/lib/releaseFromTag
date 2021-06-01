@@ -11,7 +11,7 @@ if (args.length != 1) {
 
 const tag = args[0];
 
-// Version in format: kafka-v0.0.1
+// Version in format: kafka@v0.0.1
 
 const versionParts = tag.split("@");
 if (versionParts.length == 2) {
