@@ -111,17 +111,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Gets the details of a single instance of a `Registry`.
-         * @summary Get a Registry
-         * @param {number} registryId A unique identifier for a &#x60;Registry&#x60;.
+         * 
+         * @summary Get the list of all registries.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRegistry: async (registryId: number, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'registryId' is not null or undefined
-            assertParamExists('getRegistry', 'registryId', registryId)
-            const localVarPath = `/api/serviceregistry_mgmt/v1/registries/{registryId}`
-                .replace(`{${"registryId"}}`, encodeURIComponent(String(registryId)));
+        getRegistries: async (options: any = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/serviceregistry_mgmt/v1/registries`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -149,13 +145,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
-         * @summary Get the list of all registries.
+         * Gets the details of a single instance of a `Registry`.
+         * @summary Get a Registry
+         * @param {number} registryId A unique identifier for a &#x60;Registry&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listRegistries: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/serviceregistry_mgmt/v1/registries`;
+        getRegistry: async (registryId: number, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'registryId' is not null or undefined
+            assertParamExists('getRegistry', 'registryId', registryId)
+            const localVarPath = `/api/serviceregistry_mgmt/v1/registries/{registryId}`
+                .replace(`{${"registryId"}}`, encodeURIComponent(String(registryId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -215,6 +215,16 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * 
+         * @summary Get the list of all registries.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getRegistries(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Registry>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRegistries(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Gets the details of a single instance of a `Registry`.
          * @summary Get a Registry
          * @param {number} registryId A unique identifier for a &#x60;Registry&#x60;.
@@ -223,16 +233,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          */
         async getRegistry(registryId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Registry>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRegistry(registryId, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Get the list of all registries.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async listRegistries(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Registry>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listRegistries(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -266,6 +266,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.deleteRegistry(registryId, options).then((request) => request(axios, basePath));
         },
         /**
+         * 
+         * @summary Get the list of all registries.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getRegistries(options?: any): AxiosPromise<Array<Registry>> {
+            return localVarFp.getRegistries(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Gets the details of a single instance of a `Registry`.
          * @summary Get a Registry
          * @param {number} registryId A unique identifier for a &#x60;Registry&#x60;.
@@ -274,15 +283,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getRegistry(registryId: number, options?: any): AxiosPromise<Registry> {
             return localVarFp.getRegistry(registryId, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Get the list of all registries.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        listRegistries(options?: any): AxiosPromise<Array<Registry>> {
-            return localVarFp.listRegistries(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -314,6 +314,15 @@ export interface DefaultApiInterface {
     deleteRegistry(registryId: number, options?: any): AxiosPromise<void>;
 
     /**
+     * 
+     * @summary Get the list of all registries.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    getRegistries(options?: any): AxiosPromise<Array<Registry>>;
+
+    /**
      * Gets the details of a single instance of a `Registry`.
      * @summary Get a Registry
      * @param {number} registryId A unique identifier for a &#x60;Registry&#x60;.
@@ -322,15 +331,6 @@ export interface DefaultApiInterface {
      * @memberof DefaultApiInterface
      */
     getRegistry(registryId: number, options?: any): AxiosPromise<Registry>;
-
-    /**
-     * 
-     * @summary Get the list of all registries.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApiInterface
-     */
-    listRegistries(options?: any): AxiosPromise<Array<Registry>>;
 
 }
 
@@ -366,6 +366,17 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
     }
 
     /**
+     * 
+     * @summary Get the list of all registries.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getRegistries(options?: any) {
+        return DefaultApiFp(this.configuration).getRegistries(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Gets the details of a single instance of a `Registry`.
      * @summary Get a Registry
      * @param {number} registryId A unique identifier for a &#x60;Registry&#x60;.
@@ -375,16 +386,5 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      */
     public getRegistry(registryId: number, options?: any) {
         return DefaultApiFp(this.configuration).getRegistry(registryId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Get the list of all registries.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public listRegistries(options?: any) {
-        return DefaultApiFp(this.configuration).listRegistries(options).then((request) => request(this.axios, this.basePath));
     }
 }
