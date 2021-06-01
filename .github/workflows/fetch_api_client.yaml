@@ -15,6 +15,7 @@ jobs:
       - uses: actions/setup-node@v2
       - uses: actions/checkout@v2
       - run: ./scripts/fetch_api.sh
+      - run: ./scripts/generate.sh
       - uses: peter-evans/create-pull-request@v3
         with:
           title: "Update API client"
