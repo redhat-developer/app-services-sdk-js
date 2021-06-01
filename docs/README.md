@@ -4,8 +4,8 @@
 ### SDK's documentation
 
 - [Kafka Management](https://github.com/redhat-developer/app-services-sdk-js/blob/main/packages/kafka-management-sdk/README.md)
-- [Service Registry Management](https://github.com/redhat-developer/app-services-sdk-js/blob/main/packages/service-registry-management-sdk/README.md)
-- [Service Accounts Management](https://github.com/redhat-developer/app-services-sdk-js/blob/main/packages/service-registry-management-sdk/README.md)
+- [Service Registry Management](https://github.com/redhat-developer/app-services-sdk-js/blob/main/packages/registry-management-sdk/README.md)
+- [Service Accounts Management](https://github.com/redhat-developer/app-services-sdk-js/blob/main/packages/kafka-management-sdk/README.md)
 
 ###  Service SDK's
 
