@@ -14,8 +14,12 @@ jobs:
     steps:
       - uses: actions/setup-node@v2
       - uses: actions/checkout@v2
-      - run: ./scripts/fetch_api.sh
-      - run: ./scripts/generate.sh
+      - name: Install jq
+        run: sudo apt-get install jq
+      - name: Fetch OpenAPI doc
+        run: ./scripts/fetch_api.sh
+      - name: Generate SDKs
+        run: ./scripts/generate.sh
       - uses: peter-evans/create-pull-request@v3
         with:
           title: "Update API client"
