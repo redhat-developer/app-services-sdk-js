@@ -186,11 +186,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary List of consumer groups in the Kafka instance.
          * @param {number} [limit] Maximum number of consumer groups to returnd
          * @param {number} [offset] The page offset when returning the list of consumer groups
-         * @param {string} [topic] Filter to apply when returning the list of consumer groups
+         * @param {string} [topic] Return consumer groups for this topic
+         * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConsumerGroupList: async (limit?: number, offset?: number, topic?: string, options: any = {}): Promise<RequestArgs> => {
+        getConsumerGroups: async (limit?: number, offset?: number, topic?: string, groupIdFilter?: string, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/consumer-groups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -213,6 +214,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (topic !== undefined) {
                 localVarQueryParameter['topic'] = topic;
+            }
+
+            if (groupIdFilter !== undefined) {
+                localVarQueryParameter['group-id-filter'] = groupIdFilter;
             }
 
 
@@ -265,12 +270,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary List of topics
          * @param {number} [limit] Maximum number of topics to return
          * @param {string} [filter] Filter to apply when returning the list of topics
-         * @param {number} [offset] The page offset when returning  the limit of requested topics.
+         * @param {number} [offset] The page offset when returning the limit of requested topics.
          * @param {string} [order] Order of the items sorting. If \&quot;asc\&quot; is set as a value, ascending order is used, descending otherwise.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTopicsList: async (limit?: number, filter?: string, offset?: number, order?: string, options: any = {}): Promise<RequestArgs> => {
+        getTopics: async (limit?: number, filter?: string, offset?: number, order?: string, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/topics`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -410,12 +415,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary List of consumer groups in the Kafka instance.
          * @param {number} [limit] Maximum number of consumer groups to returnd
          * @param {number} [offset] The page offset when returning the list of consumer groups
-         * @param {string} [topic] Filter to apply when returning the list of consumer groups
+         * @param {string} [topic] Return consumer groups for this topic
+         * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getConsumerGroupList(limit?: number, offset?: number, topic?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroupList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getConsumerGroupList(limit, offset, topic, options);
+        async getConsumerGroups(limit?: number, offset?: number, topic?: string, groupIdFilter?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroupList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getConsumerGroups(limit, offset, topic, groupIdFilter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -434,13 +440,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary List of topics
          * @param {number} [limit] Maximum number of topics to return
          * @param {string} [filter] Filter to apply when returning the list of topics
-         * @param {number} [offset] The page offset when returning  the limit of requested topics.
+         * @param {number} [offset] The page offset when returning the limit of requested topics.
          * @param {string} [order] Order of the items sorting. If \&quot;asc\&quot; is set as a value, ascending order is used, descending otherwise.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTopicsList(limit?: number, filter?: string, offset?: number, order?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TopicsList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopicsList(limit, filter, offset, order, options);
+        async getTopics(limit?: number, filter?: string, offset?: number, order?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TopicsList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopics(limit, filter, offset, order, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -511,12 +517,13 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @summary List of consumer groups in the Kafka instance.
          * @param {number} [limit] Maximum number of consumer groups to returnd
          * @param {number} [offset] The page offset when returning the list of consumer groups
-         * @param {string} [topic] Filter to apply when returning the list of consumer groups
+         * @param {string} [topic] Return consumer groups for this topic
+         * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConsumerGroupList(limit?: number, offset?: number, topic?: string, options?: any): AxiosPromise<ConsumerGroupList> {
-            return localVarFp.getConsumerGroupList(limit, offset, topic, options).then((request) => request(axios, basePath));
+        getConsumerGroups(limit?: number, offset?: number, topic?: string, groupIdFilter?: string, options?: any): AxiosPromise<ConsumerGroupList> {
+            return localVarFp.getConsumerGroups(limit, offset, topic, groupIdFilter, options).then((request) => request(axios, basePath));
         },
         /**
          * Topic
@@ -533,13 +540,13 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @summary List of topics
          * @param {number} [limit] Maximum number of topics to return
          * @param {string} [filter] Filter to apply when returning the list of topics
-         * @param {number} [offset] The page offset when returning  the limit of requested topics.
+         * @param {number} [offset] The page offset when returning the limit of requested topics.
          * @param {string} [order] Order of the items sorting. If \&quot;asc\&quot; is set as a value, ascending order is used, descending otherwise.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTopicsList(limit?: number, filter?: string, offset?: number, order?: string, options?: any): AxiosPromise<TopicsList> {
-            return localVarFp.getTopicsList(limit, filter, offset, order, options).then((request) => request(axios, basePath));
+        getTopics(limit?: number, filter?: string, offset?: number, order?: string, options?: any): AxiosPromise<TopicsList> {
+            return localVarFp.getTopics(limit, filter, offset, order, options).then((request) => request(axios, basePath));
         },
         /**
          * updates the topic with the new data.
@@ -607,12 +614,13 @@ export interface DefaultApiInterface {
      * @summary List of consumer groups in the Kafka instance.
      * @param {number} [limit] Maximum number of consumer groups to returnd
      * @param {number} [offset] The page offset when returning the list of consumer groups
-     * @param {string} [topic] Filter to apply when returning the list of consumer groups
+     * @param {string} [topic] Return consumer groups for this topic
+     * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getConsumerGroupList(limit?: number, offset?: number, topic?: string, options?: any): AxiosPromise<ConsumerGroupList>;
+    getConsumerGroups(limit?: number, offset?: number, topic?: string, groupIdFilter?: string, options?: any): AxiosPromise<ConsumerGroupList>;
 
     /**
      * Topic
@@ -629,13 +637,13 @@ export interface DefaultApiInterface {
      * @summary List of topics
      * @param {number} [limit] Maximum number of topics to return
      * @param {string} [filter] Filter to apply when returning the list of topics
-     * @param {number} [offset] The page offset when returning  the limit of requested topics.
+     * @param {number} [offset] The page offset when returning the limit of requested topics.
      * @param {string} [order] Order of the items sorting. If \&quot;asc\&quot; is set as a value, ascending order is used, descending otherwise.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getTopicsList(limit?: number, filter?: string, offset?: number, order?: string, options?: any): AxiosPromise<TopicsList>;
+    getTopics(limit?: number, filter?: string, offset?: number, order?: string, options?: any): AxiosPromise<TopicsList>;
 
     /**
      * updates the topic with the new data.
@@ -711,13 +719,14 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @summary List of consumer groups in the Kafka instance.
      * @param {number} [limit] Maximum number of consumer groups to returnd
      * @param {number} [offset] The page offset when returning the list of consumer groups
-     * @param {string} [topic] Filter to apply when returning the list of consumer groups
+     * @param {string} [topic] Return consumer groups for this topic
+     * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getConsumerGroupList(limit?: number, offset?: number, topic?: string, options?: any) {
-        return DefaultApiFp(this.configuration).getConsumerGroupList(limit, offset, topic, options).then((request) => request(this.axios, this.basePath));
+    public getConsumerGroups(limit?: number, offset?: number, topic?: string, groupIdFilter?: string, options?: any) {
+        return DefaultApiFp(this.configuration).getConsumerGroups(limit, offset, topic, groupIdFilter, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -737,14 +746,14 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @summary List of topics
      * @param {number} [limit] Maximum number of topics to return
      * @param {string} [filter] Filter to apply when returning the list of topics
-     * @param {number} [offset] The page offset when returning  the limit of requested topics.
+     * @param {number} [offset] The page offset when returning the limit of requested topics.
      * @param {string} [order] Order of the items sorting. If \&quot;asc\&quot; is set as a value, ascending order is used, descending otherwise.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getTopicsList(limit?: number, filter?: string, offset?: number, order?: string, options?: any) {
-        return DefaultApiFp(this.configuration).getTopicsList(limit, filter, offset, order, options).then((request) => request(this.axios, this.basePath));
+    public getTopics(limit?: number, filter?: string, offset?: number, order?: string, options?: any) {
+        return DefaultApiFp(this.configuration).getTopics(limit, filter, offset, order, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
