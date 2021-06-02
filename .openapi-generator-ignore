@@ -4,7 +4,6 @@
 **/.gitignore
 **/README.md
 **/.travis.yml
-**/api
 **/.openapi-generator-ignore
 **/.openapi-generator
 **/git_push.sh
