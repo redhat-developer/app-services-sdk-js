@@ -49,6 +49,21 @@ You can view all SDK packages directly in [npm](https://www.npmjs.com/search?q=k
 
 Contributions are welcome. See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
+### Using API Mock
+
+Every SDK provided by RHOAS provides API mock that is available as docker container
+or npm command line.
+
+CLI:
+```
+npx @rhoas/api-mock
+```
+
+Docker:
+```
+docker run quay.io/wtrocki/api-mock
+```
+
 [kafkagit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/kafka-management-sdk 
 [kafkanpm]: https://www.npmjs.com/package/@rhoas/kafka-management-sdk
 [kafkashield]: https://img.shields.io/npm/v/@rhoas/kafka-management-sdk
