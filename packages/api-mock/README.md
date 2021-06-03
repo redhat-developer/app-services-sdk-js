@@ -13,7 +13,9 @@ npx @rhoas/api-mock
 
 ## Using as Docker
 
-docker build -t quay.io/wtrocki/api-mock
+```
+docker run quay.io/wtrocki/api-mock
+```
 
 ## Local development
 
