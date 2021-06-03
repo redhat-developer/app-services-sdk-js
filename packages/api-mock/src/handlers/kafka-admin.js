@@ -16,10 +16,11 @@ module.exports = {
 
     if (
       consumerGroups &&
-      req?.query?.topic &&
-      req?.query?.topic?.trim() !== ''
+      req.query &&
+      req.query.topic &&
+      req.query.topic.trim() !== ''
     ) {
-      consumerGroupList = filterConsumerGroups(req?.query?.topic);
+      consumerGroupList = filterConsumerGroups(req.query.topic);
       count = consumerGroupList.length;
     }
 

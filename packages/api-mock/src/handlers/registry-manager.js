@@ -54,8 +54,8 @@ module.exports = {
   },
 
   getRegistry: async (c, req, res) => {
-    if (!c.request.params.id || !registries[c.request.params.id]) {
-      return req.body.res.status(400).json({
+    if (!c.request.params.registryId || !registries[c.request.params.registryId]) {
+      return res.status(400).json({
         reason: "Missing or invalid id field",
         ...commonError,
       });
@@ -65,8 +65,8 @@ module.exports = {
   },
 
   deleteRegistry: async (c, req, res) => {
-    if (!c.request.params.id || !registries[c.request.params.id]) {
-      return req.body.res.status(400).json({
+    if (!c.request.params.registryId || !registries[c.request.params.registryId]) {
+      return res.status(400).json({
         reason: "Missing or invalid id field",
         ...commonError,
       });
