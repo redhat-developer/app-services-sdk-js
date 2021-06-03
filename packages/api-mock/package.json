@@ -3,11 +3,18 @@
   "version": "0.1.0",
   "description": "",
   "author": "Red Hat Developers",
-  "license": "MIT",
   "keywords": [],
   "bin": {
     "asapi": "./bin/asapi.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redhat-developer/app-services-sdk-js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "Apache-2.0",
   "scripts": {
     "start": "node ./src/index.js",
     "prepare": "cp ../../.openapi/** ./openapi && json2yaml ./openapi/srs-fleet-manager.json > ./openapi/srs-fleet-manager.yaml",
