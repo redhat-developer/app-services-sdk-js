@@ -1,4 +1,4 @@
-import { nanoid } from "nanoid";
+const nanoid = require("nanoid").nanoid;
 
 const commonKafkaFields = {
   kind: "kafka",
@@ -6,7 +6,7 @@ const commonKafkaFields = {
   cloud_provider: "aws",
   multi_az: false,
   region: "us-east-1",
-  bootstrapServerHost: "localhost:8080/data/kafka",
+  bootstrapServerHost: process.env.HOSTNAME || "localhost:8080/data/kafka",
   created_at: "2020-10-05T12:51:24.053142Z",
   updated_at: "2020-10-05T12:56:36.362208Z",
 };
@@ -20,8 +20,8 @@ const commonError = {
 };
 
 const kafkas = {
-  "1iSY6RQ3JKI8Q0OTmjQFd3ocFRg": {
-    id: "1iSY6RQ3JKI8Q0OTmjQFd3ocFRg",
+  uFYJpM76DaIqVqqgZjtrz: {
+    id: "uFYJpM76DaIqVqqgZjtrz",
     kind: "kafka",
     href: "/api/kafkas_mgmt/v1/kafkas/1iSY6RQ3JKI8Q0OTmjQFd3ocFRg",
     owner: "api_kafka_user",
@@ -43,7 +43,7 @@ module.exports = {
   },
   createKafka: async (c, req, res) => {
     if (!req.body.name) {
-      return req.body.res.status(400).json({
+      return res.status(400).json({
         reason: "Missing name field",
         ...commonError,
       });
@@ -55,33 +55,34 @@ module.exports = {
       ...req.body,
       ...commonKafkaFields,
     };
-    kafkas.push({ [newId]: kafka });
+    kafkas[newId] = kafka;
     console.log(JSON.stringify(kafkas, undefined, 2));
-    req.body.res.status(202).json(kafka);
+    res.status(202).json(kafka);
   },
 
   deleteKafkaById: async (c, req, res) => {
-    if (!req.body.id || !kafkas[req.body.id]) {
-      return req.body.res.status(400).json({
+    // console.log(c.request.params.id, kafkas[c.request.params.id]);
+    if (!c.request.params.id || !kafkas[c.request.params.id]) {
+      return res.status(400).json({
         reason: "Missing or invalid id field",
         ...commonError,
       });
     }
 
-    const kafka = kafkas[req.body.id];
-    delete kafkas[req.body.id];
+    const kafka = Object.assign({}, kafkas[c.request.params.id]);
+    delete kafkas[c.request.params.id];
     res.status(204).json(kafka);
   },
 
   getKafkaById: async (c, req, res) => {
-    if (!req.body.id || !kafkas[req.body.id]) {
+    if (!c.request.params.id || !kafkas[c.request.params.id]) {
       return req.body.res.status(400).json({
         reason: "Missing or invalid id field",
         ...commonError,
       });
     }
 
-    res.status(200).json(kafkas[req.body.id]);
+    res.status(200).json(kafkas[c.request.params.id]);
   },
 
   listKafkas: async (c, req, res) => {

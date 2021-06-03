@@ -13,17 +13,17 @@ api.use(cors());
 
 // define api
 const kafkaAPI = new OpenAPIBackend({
-  definition: path.join(__dirname, "./openapi/kas-fleet-manager.yaml"),
+  definition: path.join(__dirname, "../openapi/kas-fleet-manager.yaml"),
 });
 const srsControlApi = new OpenAPIBackend({
-  definition: path.join(__dirname, "./openapi/srs-fleet-manager.yaml"),
+  definition: path.join(__dirname, "../openapi/srs-fleet-manager.yaml"),
 });
 const topicAPI = new OpenAPIBackend({
-  definition: path.join(__dirname, "./openapi/kafka-admin-rest.yaml"),
+  definition: path.join(__dirname, "../openapi/kafka-admin-rest.yml"),
 });
 
 const srsDataApi = new OpenAPIBackend({
-  definition: path.join(__dirname, "./openapi/registry-instance-rest.yaml"),
+  definition: path.join(__dirname, "../openapi/registry-instance-rest.yaml"),
 });
 
 // register handlers
@@ -45,6 +45,8 @@ srsControlApi.registerSecurityHandler("Bearer", (c, req, res) => {
 // validation fails on this schema definition
 // even though it is valid through other validation forms like Swagger.io
 topicAPI.validateDefinition = () => {};
+srsDataApi.validateDefinition = () => {};
+srsControlApi.validateDefinition = () => {};
 
 kafkaAPI.init();
 topicAPI.init();

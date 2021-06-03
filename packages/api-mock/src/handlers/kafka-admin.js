@@ -1,5 +1,5 @@
-var topics = require('../_data_/topics.json');
-var consumerGroups = require('../_data_/consumer-groups.json');
+var topics = require('../../_data_/topics.json');
+var consumerGroups = require('../../_data_/consumer-groups.json');
 
 module.exports = {
   getConsumerGroupList: async (c, req, res) => {

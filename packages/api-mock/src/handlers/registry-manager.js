@@ -1,46 +1,82 @@
+const nanoid = require("nanoid").nanoid;
+
+const commonFields = {
+  kind: "serviceregistry",
+  status: {
+    value: "READY",
+    lastUpdated: "2021-05-04T12:34:56Z",
+  },
+  registryDeploymentId: 1,
+  registryUrl: process.env.HOSTNAME || "http://localhost:8000/data/registry",
+  owner: "api_registry_user",
+};
+
+const commonError = {
+  id: "103",
+  kind: "Error",
+  href: "/api/serviceregistry_mgmt/v1/errors/103",
+  code: "registries-MGMT-103",
+  operation_id: "1iWIimqGcrDuL61aUxIZqBTqNRa",
+};
+
+const registries = {
+  "llmNteR4P7waRp5nJIReG": {
+    id: "llmNteR4P7waRp5nJIReG",
+    kind: "serviceregistry",
+    href: "/api/serviceregistry_mgmt/v1/registries/llmNteR4P7waRp5nJIReG",
+    name: "sample-registry",
+    ...commonFields,
+  },
+};
+
 module.exports = {
   getRegistries: async (c, req, res) => {
-    res.status(200).json([
-      {
-        "id": 42,
-        "name": "test",
-        "registryUrl": "https://registry.apps.example.com/t/5213600b-afc9-487e-8cc3-339f4248d706",
-        "status": {
-          "value": "AVAILABLE",
-          "lastUpdated": "2021-05-04T12:34:56Z"
-        },
-        "registryDeploymentId": 1
-      }
-    ]);
+    res.status(200).json(Object.values(registries));
   },
+
   createRegistry: async (c, req, res) => {
-    res.status(200).json({
-      "id": 42,
-      "name": "test",
-      "registryUrl": "https://registry.apps.example.com/t/5213600b-afc9-487e-8cc3-339f4248d706",
-      "status": {
-        "value": "PROVISIONING",
-        "lastUpdated": "2021-05-04T12:34:56Z"
-      },
-      "registryDeploymentId": 1
-    });
+    if (!req.body.name) {
+      return res.status(400).json({
+        reason: "Missing name field",
+        ...commonError,
+      });
+    }
+    const newId = nanoid();
+    const registry = {
+      id: newId,
+      href: "/api/registries_mgmt/v1/serviceregistry/" + newId,
+      ...req.body,
+      ...commonFields,
+    };
+    registries[newId] = registry;
+    console.log(JSON.stringify(registries, undefined, 2));
+    res.status(200).json(registries);
   },
+
   getRegistry: async (c, req, res) => {
-    res.status(200).json({
-      "id": 42,
-      "name": "test",
-      "registryUrl": "https://registry.apps.example.com/t/5213600b-afc9-487e-8cc3-339f4248d706",
-      "status": {
-        "value": "AVAILABLE",
-        "lastUpdated": "2021-05-04T12:34:56Z"
-      },
-      "registryDeploymentId": 1
-    });
+    if (!c.request.params.id || !registries[c.request.params.id]) {
+      return req.body.res.status(400).json({
+        reason: "Missing or invalid id field",
+        ...commonError,
+      });
+    }
+
+    res.status(200).json(registries[c.request.params.id]);
   },
+
   deleteRegistry: async (c, req, res) => {
-    res.status(204).json();
+    if (!c.request.params.id || !registries[c.request.params.id]) {
+      return req.body.res.status(400).json({
+        reason: "Missing or invalid id field",
+        ...commonError,
+      });
+    }
+
+    const registry = registries[c.request.params.id];
+    delete registries[c.request.params.id];
+    res.status(204).json(registry);
   },
-  
+
   // Handling auth
   notFound: async (c, req, res) => res.status(404).json({ err: "not found" }),
   unauthorizedHandler: async (c, req, res) =>
