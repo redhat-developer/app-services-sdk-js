@@ -8,7 +8,6 @@ jobs:
     env:
       APP_SERVICES_TOKEN: ${{ secrets.APP_SERVICES_TOKEN }}
       BF2_TOKEN: ${{ secrets.BF2_TOKEN }}
-      CLIENT_PAYLOAD: "${{ toJSON(github.event.client_payload) }}"
 
     runs-on: ubuntu-latest
     steps:
@@ -17,7 +16,7 @@ jobs:
       - name: Install jq
         run: sudo apt-get install jq
       - name: Fetch OpenAPI doc
-        run: ./scripts/fetch_api.sh
+        run: ./scripts/fetch_api.sh ${{ github.event.client_payload.download_url }}
       - name: Generate SDKs
         run: ./scripts/generate.sh
       - uses: peter-evans/create-pull-request@v3
