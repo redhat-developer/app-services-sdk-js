@@ -25,7 +25,7 @@ jobs:
           title: "Update API client"
           token: "${{ env.APP_SERVICES_TOKEN }}"
           commit-message: "chore: generate API client"
-          author: app-services-ci <app-services-ci@users.noreply.github.com>
+          author: "app-services-ci <app-services-ci@users.noreply.github.com>"
           delete-branch: true
           reviewers: craicoverflow, wtrocki
           body: |
