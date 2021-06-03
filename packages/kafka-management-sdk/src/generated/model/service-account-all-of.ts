@@ -42,6 +42,7 @@ export interface ServiceAccountAllOf {
      * 
      * @type {string}
      * @memberof ServiceAccountAllOf
+     * @deprecated
      */
     clientID?: string;
     /**
@@ -49,7 +50,20 @@ export interface ServiceAccountAllOf {
      * @type {string}
      * @memberof ServiceAccountAllOf
      */
+    client_id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ServiceAccountAllOf
+     * @deprecated
+     */
     clientSecret?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ServiceAccountAllOf
+     */
+    client_secret?: string;
     /**
      * 
      * @type {string}

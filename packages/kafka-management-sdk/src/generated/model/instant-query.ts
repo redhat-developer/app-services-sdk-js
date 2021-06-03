@@ -30,6 +30,7 @@ export interface InstantQuery {
      * 
      * @type {number}
      * @memberof InstantQuery
+     * @deprecated
      */
     Timestamp?: number;
     /**
@@ -37,7 +38,20 @@ export interface InstantQuery {
      * @type {number}
      * @memberof InstantQuery
      */
-    Value: number;
+    timestamp?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof InstantQuery
+     * @deprecated
+     */
+    Value?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof InstantQuery
+     */
+    value: number;
 }
 
 
