@@ -60,8 +60,15 @@ export interface KafkaRequestAllOf {
      * 
      * @type {string}
      * @memberof KafkaRequestAllOf
+     * @deprecated
      */
     bootstrapServerHost?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof KafkaRequestAllOf
+     */
+    bootstrap_server_host?: string;
     /**
      * 
      * @type {string}

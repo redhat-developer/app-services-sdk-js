@@ -24,6 +24,7 @@ export interface Values {
      * 
      * @type {number}
      * @memberof Values
+     * @deprecated
      */
     Timestamp?: number;
     /**
@@ -31,7 +32,20 @@ export interface Values {
      * @type {number}
      * @memberof Values
      */
-    Value: number;
+    timestamp?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Values
+     * @deprecated
+     */
+    Value?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Values
+     */
+    value: number;
 }
 
 

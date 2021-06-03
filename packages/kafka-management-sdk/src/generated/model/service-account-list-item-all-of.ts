@@ -30,8 +30,15 @@ export interface ServiceAccountListItemAllOf {
      * client id of the service account
      * @type {string}
      * @memberof ServiceAccountListItemAllOf
+     * @deprecated
      */
     clientID?: string;
+    /**
+     * client id of the service account
+     * @type {string}
+     * @memberof ServiceAccountListItemAllOf
+     */
+    client_id?: string;
     /**
      * name of the service account
      * @type {string}
