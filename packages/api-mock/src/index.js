@@ -58,7 +58,7 @@ api.use((req, res) => {
     return kafkaAPI.handleRequest(req, req, res);
   }
 
-  if (req.url.startsWith("/api/serviceregistry_mgmt/v1/registries")) {
+  if (req.url.startsWith("/api/serviceregistry_mgmt/v1")) {
     console.debug("Calling serviceregistry manager");
     return srsControlApi.handleRequest(req, req, res);
   }

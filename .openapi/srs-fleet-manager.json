@@ -170,7 +170,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer"
+            "type": "string"
           },
           "status": {
             "$ref": "#/components/schemas/RegistryStatus",

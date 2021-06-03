@@ -7,7 +7,7 @@ const commonFields = {
     lastUpdated: "2021-05-04T12:34:56Z",
   },
   registryDeploymentId: 1,
-  registryUrl: process.env.HOSTNAME || "http://localhost:8000/data/registry",
+  registryUrl: process.env.HOSTNAME || "http://localhost:8000/data/service-registry",
   owner: "api_registry_user",
 };
 
