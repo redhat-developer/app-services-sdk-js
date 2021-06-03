@@ -1,0 +1,31 @@
+{
+  "name": "@rhoas/api-mock",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Red Hat Developers",
+  "license": "MIT",
+  "keywords": [],
+  "bin": {
+    "asapi": "./bin/asapi.js"
+  },
+  "scripts": {
+    "start": "node ./src/index.js",
+    "prepare": "cp ../../.openapi/** ./openapi && json2yaml ./openapi/srs-fleet-manager.json > ./openapi/srs-fleet-manager.yaml",
+    "api:kafka-management": "openapi-editor --file openapi/kas-fleet-manager.yaml --port 10000",
+    "api:kafka-instance": "openapi-editor --file openapi/kafka-admin-rest.yml --port 10001",
+    "api:registry-management": "openapi-editor --file openapi/srs-fleet-manager.yaml --port 10003",
+    "api:registry-instance": "openapi-editor --file openapi/registry-instance-rest.yml --port 10004"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "nanoid": "^3.1.23",
+    "openapi-backend": "3.9.2"
+  },
+  "devDependencies": {
+    "axios": "0.21.1",
+    "json2yaml": "1.1.0",
+    "openapi-editor": "0.3.0",
+    "wait-on": "3.2.0"
+  }
+}
