@@ -22,7 +22,8 @@
     "api:kafka-management": "openapi-editor --file openapi/kas-fleet-manager.yaml --port 10000",
     "api:kafka-instance": "openapi-editor --file openapi/kafka-admin-rest.yml --port 10001",
     "api:registry-management": "openapi-editor --file openapi/srs-fleet-manager.yaml --port 10003",
-    "api:registry-instance": "openapi-editor --file openapi/registry-instance-rest.yml --port 10004"
+    "api:registry-instance": "openapi-editor --file openapi/registry-instance-rest.yml --port 10004",
+    "packageRelease": "npm publish"
   },
   "dependencies": {
     "cors": "2.8.5",
