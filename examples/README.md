@@ -26,3 +26,19 @@ CLOUD_API_TOKEN=token npx ts-node ./src/kafka.ts
   }
 ]
 ```
+
+## How to obtain Access Token
+
+With [RHOAS CLI](https://github.com/redhat-developer/app-services-cli)
+```
+## Refresh token
+rhoas kafka list 
+## Fetch token
+cat ~/.rhoascli.json | jq .access_token
+```
+
+In the cloud.redhat.com UI:
+```
+window.insights.chrome.auth.getToken()
+```
+
