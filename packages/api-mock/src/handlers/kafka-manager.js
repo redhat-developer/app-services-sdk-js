@@ -1,6 +1,7 @@
 const nanoid = require("nanoid").nanoid;
 const path = require("path");
 const { getFullHostname } = require("../utls/host");
+var saList = require('../../_data_/serviceaccounts.json');
 
 const commonKafkaFields = {
   kind: "kafka",
@@ -147,24 +148,7 @@ module.exports = {
   },
 
   getServiceAccounts: async (c, req, res) => {
-    res.status(200).json({
-      kind: "ServiceAccountList",
-      items: [
-        {
-          value: {
-            id: "1",
-            kind: "ServiceAccountListItem",
-            href: "/api/managed-services-api/v1/serviceaccounts/1",
-            name: "my-app-sa",
-            description: "service account for my app",
-            clientID: "SA-121212",
-            owner: "test-user",
-            created_at: "2021-04-07T16:24:01+05:30",
-          },
-          $$ref: "/oas/spec#/components/examples/ServiceAccountListItemExample",
-        },
-      ],
-    });
+    res.status(200).json(saList);
   },
 
   getServiceAccountById: async (c, req, res) => {
