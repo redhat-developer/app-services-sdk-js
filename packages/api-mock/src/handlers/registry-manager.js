@@ -1,13 +1,14 @@
 const nanoid = require("nanoid").nanoid;
 const { getFullHostname } = require("../utls/host");
-const path = require("path")
+const path = require("path");
 
 const commonFields = {
   kind: "serviceregistry",
   status: {
-    value: "READY",
+    status: "ready",
     lastUpdated: "2021-05-04T12:34:56Z",
   },
+  owner: process.env.RESOURCE_OWNER,
   registryDeploymentId: 1,
   registryUrl: path.join(getFullHostname(), "/data/service-registry"),
   owner: "api_registry_user",

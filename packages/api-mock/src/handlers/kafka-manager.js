@@ -4,9 +4,10 @@ const { getFullHostname } = require("../utls/host");
 
 const commonKafkaFields = {
   kind: "kafka",
-  status: "complete",
+  status: "ready",
   cloud_provider: "aws",
   multi_az: false,
+  owner: process.env.RESOURCE_OWNER,
   region: "us-east-1",
   bootstrapServerHost: path.join(getFullHostname(), "/data/kafka"),
   created_at: "2020-10-05T12:51:24.053142Z",
@@ -48,12 +49,10 @@ module.exports = {
       ...commonKafkaFields,
     };
     kafkas[newId] = kafka;
-    console.log(JSON.stringify(kafkas, undefined, 2));
     res.status(202).json(kafka);
   },
 
   deleteKafkaById: async (c, req, res) => {
-    // console.log(c.request.params.id, kafkas[c.request.params.id]);
     if (!c.request.params.id || !kafkas[c.request.params.id]) {
       return res.status(400).json({
         reason: "Missing or invalid id field",
@@ -191,6 +190,12 @@ module.exports = {
       clientID: "SA-121212",
       owner: "test-user",
       created_at: "2021-04-07T16:24:01+05:30",
+    });
+  },
+
+  getServiceStatus: async (c, req, res) => {
+    res.status(200).json({
+       
     });
   },
 

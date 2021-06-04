@@ -80,6 +80,14 @@ api.use((req, res) => {
   res.status(405).status({ err: "Method not allowed" });
 });
 
+if (!process.env.CUSTOM_OWNER) {
+  process.env.CUSTOM_OWNER = "Missing RESOURCE_OWNER";
+}
+
+console.log(
+  `All resources will be created as ${process.env.CUSTOM_OWNER} user`
+);
+
 api.listen(getPort(), () =>
   console.info(`RHOAS Mock Service API listening at ${getFullHostname()}`)
 );
