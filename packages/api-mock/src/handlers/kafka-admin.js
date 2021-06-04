@@ -2,7 +2,7 @@ var topics = require('../../_data_/topics.json');
 var consumerGroups = require('../../_data_/consumer-groups.json');
 
 module.exports = {
-  getConsumerGroupList: async (c, req, res) => {
+  getConsumerGroups: async (c, req, res) => {
     let consumerGroupList = consumerGroups;
     let count = consumerGroups !== undefined ? consumerGroups.length : 0;
 
@@ -98,7 +98,7 @@ module.exports = {
     return res.status(200).json(topic);
   },
 
-  getTopicsList: async (c, req, res) => {
+  getTopics: async (c, req, res) => {
     let count = topics ? topics.length : 0,
       topicList = topics;
 
