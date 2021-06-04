@@ -51,15 +51,20 @@ Contributions are welcome. See [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Using API Mock
 
-Every SDK provided by RHOAS provides API mock that is available as docker container
-or npm command line.
+![](https://img.shields.io/npm/v/@rhoas/api-mock)
 
-CLI:
+Every SDK provided by RHOAS has available API mock.
+Mock provides simulation of  **in memory** implementation of APIs that 
+can be used for development and testing.
+
+
+1. Using as CLI
 ```
 npx @rhoas/api-mock
 ```
 
-Docker:
+2. Using as container image
+
 ```
 docker run quay.io/wtrocki/api-mock
 ```
