@@ -58,15 +58,23 @@ Mock provides simulation of  **in memory** implementation of APIs that
 can be used for development and testing.
 
 
-1. Using as CLI
+1. Inline install and usage
 ```
 npx @rhoas/api-mock
 ```
 
-2. Using as container image
+2. Container image
 
 ```
-docker run quay.io/wtrocki/api-mock
+docker run  -p 8080:8000 quay.io/wtrocki/api-mock
+```
+
+3. Using as CLI
+
+```
+npm install -g @rhoas/api-mock
+## Run CLI
+asapi
 ```
 
 [kafkagit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/kafka-management-sdk 
