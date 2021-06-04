@@ -1,11 +1,14 @@
-openapi: 3.0.0
+openapi: 3.0.2
 info:
-  description: An API to provide REST endpoints for query Kafka for admin operations
+  contact:
+    email: apicurio@lists.jboss.org
+    name: Apicurio
+    url: https://github.com/apicurio/apicurio-registry
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
-  title: Kafka Admin REST API
-  version: 0.1.0
+  title: Apicurio Registry API [v2]
+  version: 2.0.1-SNAPSHOT
 servers:
 - description: Main (production) server
   url: https://api.openshift.com
@@ -13,776 +16,1305 @@ servers:
   url: https://api.stage.openshift.com
 - description: localhost
   url: http://localhost:8000
+- description: current domain
+  url: /
+tags:
+- description: "The primary way to interact with the Apicurio Registry API is to add,\
+    \ update, \nor delete artifacts. This section includes all of these primary operations."
+  name: Artifacts
 paths:
-  /topics:
+  /api/service-registry/v2/ids/contentIds/{contentId}:
     get:
-      description: Returns a list of all of the available topics, or the list of topics
-        that meet the users URL Query Parameters.
-      operationId: getTopicsList
+      description: |
+        Gets the content for an artifact version in the registry using the unique content
+        identifier for that content.  This content ID may be shared by multiple artifact
+        versions in the case where the artifact versions are identical.
+
+        This operation may fail for one of the following reasons:
+
+        * No content with this `contentId` exists (HTTP error `404`)
+        * A server error occurred (HTTP error `500`)
+      operationId: getContentById
       parameters:
-      - description: Maximum number of topics to return
+      - description: Global identifier for a single artifact content.
+        explode: false
+        in: path
+        name: contentId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            '*/*':
+              examples:
+                OpenAPI:
+                  value:
+                    openapi: 3.0.2
+                    info:
+                      title: Empty API
+                      version: 1.0.0
+                      description: An example API design using OpenAPI.
+              schema:
+                $ref: '#/components/schemas/FileContent'
+          description: The content of one version of one artifact.
+        "500":
+          content:
+            application/json:
+              examples:
+                ErrorExample:
+                  value:
+                    error_code: 500
+                    message: Lost connection to the database.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can fail with an unexpected
+            server error.
+        "404":
+          content:
+            application/json:
+              examples:
+                NotFoundExample:
+                  value:
+                    error_code: 404
+                    message: No artifact with id 'Topic-1/Inbound' could be found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can return a `404`
+            error.
+      summary: Get artifact content by ID
+      tags:
+      - Artifacts
+    summary: Access artifact content utilizing the unique content identifier for that
+      content.
+  /api/service-registry/v2/groups/{groupId}/artifacts:
+    delete:
+      description: Deletes all of the artifacts that exist in a given group.
+      operationId: deleteArtifactsInGroup
+      parameters:
+      - description: Unique ID of an artifact group.
+        explode: false
+        in: path
+        name: groupId
+        required: true
+        schema:
+          $ref: '#/components/schemas/GroupId'
+        style: simple
+      responses:
+        "204":
+          description: When the delete operation is successful, a simple 204 is returned.
+        "500":
+          content:
+            application/json:
+              examples:
+                ErrorExample:
+                  value:
+                    error_code: 500
+                    message: Lost connection to the database.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can fail with an unexpected
+            server error.
+      summary: Deletes all artifacts in a group
+      tags:
+      - Artifacts
+    get:
+      description: Returns a list of all artifacts in the group.  This list is paged.
+      operationId: listArtifactsInGroup
+      parameters:
+      - description: Unique ID of an artifact group.
+        explode: false
+        in: path
+        name: groupId
+        required: true
+        schema:
+          $ref: '#/components/schemas/GroupId'
+        style: simple
+      - description: The number of artifacts to return.  Defaults to 20.
         explode: true
         in: query
         name: limit
         required: false
         schema:
-          format: int32
           type: integer
         style: form
-      - description: Filter to apply when returning the list of topics
-        explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          type: string
-        style: form
-      - description: The page offset when returning  the limit of requested topics.
+      - description: The number of artifacts to skip before starting the result set.  Defaults
+          to 0.
         explode: true
         in: query
         name: offset
         required: false
         schema:
-          format: int32
           type: integer
         style: form
-      - description: Order of the items sorting. If "asc" is set as a value, ascending
-          order is used, descending otherwise.
+      - description: Sort order, ascending (`asc`) or descending (`desc`).
         explode: true
         in: query
         name: order
         required: false
         schema:
-          type: string
+          $ref: '#/components/schemas/SortOrder'
         style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TopicsList'
-          description: List of topics matching the users query paramters.
-        "400":
-          content:
-            application/json: {}
-          description: Unable to retreive topics.
-        "401":
-          content:
-            application/json: {}
-          description: Unauthorized, unable to retrive topics.
-        "500":
-          content:
-            application/json: {}
-          description: Internal server error.
-        "503":
-          content:
-            application/json: {}
-          description: Unable to connect to the Kafka cluster.
-      summary: List of topics
-    post:
-      description: Creates a new topic for Kafka.
-      operationId: createTopic
-      requestBody:
-        content:
-          application/json:
-            examples:
-              NewTopicInput:
-                value:
-                  name: my-topic
-                  settings:
-                    numPartitions: 3
-                    replicationFactor: 4
-                    config:
-                    - key: min.insync.replicas
-                      value: "1"
-                    - key: max.message.bytes
-                      value: "1050000"
-            schema:
-              $ref: '#/components/schemas/NewTopicInput'
-        description: Topic to create.
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Topic'
-          description: Topic created successfully.
-        "400":
-          description: Unable to create topic.
-        "401":
-          description: Unauthorized, Unable to create topic.
-        "409":
-          description: Entry already exisits
-        "500":
-          description: Internal server error.
-        "503":
-          description: Unable to connect to the Kafka cluster.
-      summary: Creates a new topic
-  /topics/{topicName}:
-    delete:
-      description: Deletes the topic with the specified name.
-      operationId: deleteTopic
-      parameters:
-      - description: The topic name to delete.
-        explode: false
-        in: path
-        name: topicName
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          description: Topic deleted successfully.
-        "401":
-          description: Unathorized, unable to delete topic.
-        "404":
-          description: Topic not found.
-        "500":
-          description: Internal server error.
-        "503":
-          description: Unable to connect to the Kafka cluster.
-      summary: Deletes a  topic
-    get:
-      description: Topic
-      operationId: getTopic
-      parameters:
-      - description: The topic name to retrieve.
-        explode: false
-        in: path
-        name: topicName
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Topic'
-          description: Kakfa topic details.
-        "401":
-          content:
-            application/json: {}
-          description: Unauthorized, unable to retrieve topics.
-        "404":
-          content:
-            application/json: {}
-          description: Topic not found.
-        "500":
-          content:
-            application/json: {}
-          description: Internal server error.
-        "503":
-          content:
-            application/json: {}
-          description: Unable to connect to the Kafka cluster.
-      summary: Retrieves the topic with the specified name.
-    patch:
-      description: updates the topic with the new data.
-      operationId: updateTopic
-      parameters:
-      - description: The topic name which is its unique id.
-        explode: false
-        in: path
-        name: topicName
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateTopicInput'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Topic'
-          description: Topic updated successfully.
-        "400":
-          description: Unable to update topic.
-        "401":
-          description: Unauthroized, unable to update topic.
-        "404":
-          description: Topic not found.
-        "500":
-          description: Internal server error.
-        "503":
-          description: Unable to connect to the Kafka cluster.
-      summary: Updates the topic with the specified name.
-  /metrics:
-    get:
-      operationId: metrics
-      responses:
-        "200":
-          description: Metrics
-      summary: Admin server metrics
-  /api:
-    get:
-      operationId: openApi
-      responses:
-        "200":
-          content:
-            application/json: {}
-          description: OpenAPI spec
-  /consumer-groups/{consumerGroupId}:
-    delete:
-      description: Delete a consumer group, along with its consumers.
-      operationId: deleteConsumerGroupById
-      parameters:
-      - description: The unique ID of the cobsumer group.
-        explode: false
-        in: path
-        name: consumerGroupId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: The consumer group was deleted successfully.
-        "401":
-          content:
-            application/json: {}
-          description: Unauthorized, request has not been applied because it lacks
-            valid authentication credentials.
-        "403":
-          content:
-            application/json: {}
-          description: Forbidden to delete this consumer group.
-        "404":
-          content:
-            application/json: {}
-          description: The consumer group does not exist.
-        "423":
-          content:
-            application/json: {}
-          description: User cannot delete consumer group with active members.
-        "500":
-          content:
-            application/json: {}
-          description: Internal Server Error.
-        "503":
-          content:
-            application/json: {}
-          description: Unable to connect to the Kafka cluster.
-      summary: Delete a consumer group.
-    get:
-      operationId: getConsumerGroupById
-      parameters:
-      - description: The unique ID of the consumer group
-        explode: false
-        in: path
-        name: consumerGroupId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: Filter consumer groups for a specific topic
-        examples:
-          Consumer group:
-            value:
-              groupId: consumer_group_1
-              consumers:
-              - groupId: consumer_group_1
-                topic: topic-1
-                partition: 0
-                memberId: consumer_group_member1
-                offset: 5
-                lag: 0
-                logEndOffset: 5
-              - groupId: consumer_group_1
-                topic: topic-1
-                partition: 1
-                memberId: consumer_group_member2
-                offset: 3
-                lag: 0
-                logEndOffset: 3
-              - groupId: consumer_group_1
-                topic: topic-1
-                partition: 2
-                memberId: consumer_group_member3
-                offset: 6
-                lag: 1
-                logEndOffset: 5
+      - description: |
+          The field to sort by.  Can be one of:
+
+          * `name`
+          * `createdOn`
         explode: true
         in: query
-        name: topic
+        name: orderby
         required: false
         schema:
-          type: string
+          $ref: '#/components/schemas/SortBy'
         style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ConsumerGroup'
-          description: Consumer group details.
-        "401":
-          content:
-            application/json: {}
-          description: Unauthorized, request has not been applied because it lacks
-            valid authentication credentials.
-        "403":
-          content:
-            application/json: {}
-          description: User is forbidden this view this consumer group.
-        "404":
-          content:
-            application/json: {}
-          description: Consumer group not found.
+                $ref: '#/components/schemas/ArtifactSearchResults'
+          description: On a successful response, returns a bounded set of artifacts.
         "500":
-          content:
-            application/json: {}
-          description: Internal server error.
-        "503":
-          content:
-            application/json: {}
-          description: Unable to connect to the Kafka cluster.
-      summary: Get a single consumer group by its unique ID.
-  /consumer-groups:
-    get:
-      description: Returns a list of all consumer groups for a particular Kafka instance.
-      operationId: getConsumerGroupList
-      parameters:
-      - description: Maximum number of consumer groups to returnd
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          type: integer
-        style: form
-      - description: The page offset when returning the list of consumer groups
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          type: integer
-        style: form
-      - description: Filter to apply when returning the list of consumer groups
-        explode: true
-        in: query
-        name: topic
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
           content:
             application/json:
               examples:
-                List of consumer groups:
+                ErrorExample:
                   value:
-                    count: 1
-                    limit: 10
-                    offset: 0
-                    items:
-                    - groupId: consumer_group_1
-                      consumers:
-                      - groupId: consumer_group_1
-                        topic: topic-1
-                        partition: 0
-                        memberId: consumer_group_member1
-                        offset: 5
-                        lag: 0
-                        logEndOffset: 5
-                      - groupId: consumer_group_1
-                        topic: topic-1
-                        partition: 1
-                        memberId: consumer_group_member2
-                        offset: 3
-                        lag: 0
-                        logEndOffset: 3
-                      - groupId: consumer_group_1
-                        topic: topic-1
-                        partition: 2
-                        memberId: consumer_group_member3
-                        offset: 6
-                        lag: 1
-                        logEndOffset: 5
+                    error_code: 500
+                    message: Lost connection to the database.
               schema:
-                $ref: '#/components/schemas/ConsumerGroupList'
-          description: List of consumer groups matching the request parameters.
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can fail with an unexpected
+            server error.
+      summary: List artifacts in group
+      tags:
+      - Artifacts
+    post:
+      description: "Creates a new artifact by posting the artifact content.  The body\
+        \ of the request should\nbe the raw content of the artifact.  This is typically\
+        \ in JSON format for *most* of the \nsupported types, but may be in another\
+        \ format for a few (for example, `PROTOBUF`).\n\nThe registry attempts to\
+        \ figure out what kind of artifact is being added from the\nfollowing supported\
+        \ list:\n\n* Avro (`AVRO`)\n* Protobuf (`PROTOBUF`)\n* JSON Schema (`JSON`)\n\
+        * Kafka Connect (`KCONNECT`)\n* OpenAPI (`OPENAPI`)\n* AsyncAPI (`ASYNCAPI`)\n\
+        * GraphQL (`GRAPHQL`)\n* Web Services Description Language (`WSDL`)\n* XML\
+        \ Schema (`XSD`)\n\nAlternatively, you can specify the artifact type using\
+        \ the `X-Registry-ArtifactType` \nHTTP request header, or include a hint in\
+        \ the request's `Content-Type`.  For example:\n\n```\nContent-Type: application/json;\
+        \ artifactType=AVRO\n```\n\nAn artifact is created using the content provided\
+        \ in the body of the request.  This\ncontent is created under a unique artifact\
+        \ ID that can be provided in the request\nusing the `X-Registry-ArtifactId`\
+        \ request header.  If not provided in the request,\nthe server generates a\
+        \ unique ID for the artifact.  It is typically recommended\nthat callers provide\
+        \ the ID, because this is typically a meaningful identifier, \nand for most\
+        \ use cases should be supplied by the caller.\n\nIf an artifact with the provided\
+        \ artifact ID already exists, the default behavior\nis for the server to reject\
+        \ the content with a 409 error.  However, the caller can\nsupply the `ifExists`\
+        \ query parameter to alter this default behavior. The `ifExists`\nquery parameter\
+        \ can have one of the following values:\n\n* `FAIL` (*default*) - server rejects\
+        \ the content with a 409 error\n* `UPDATE` - server updates the existing artifact\
+        \ and returns the new metadata\n* `RETURN` - server does not create or add\
+        \ content to the server, but instead \nreturns the metadata for the existing\
+        \ artifact\n* `RETURN_OR_UPDATE` - server returns an existing **version**\
+        \ that matches the \nprovided content if such a version exists, otherwise\
+        \ a new version is created\n\nThis operation may fail for one of the following\
+        \ reasons:\n\n* An invalid `ArtifactType` was indicated (HTTP error `400`)\n\
+        * No `ArtifactType` was indicated and the server could not determine one from\
+        \ the content (HTTP error `400`)\n* Provided content (request body) was empty\
+        \ (HTTP error `400`)\n* An artifact with the provided ID already exists (HTTP\
+        \ error `409`)\n* The content violates one of the configured global rules\
+        \ (HTTP error `409`)\n* A server error occurred (HTTP error `500`)\n"
+      operationId: createArtifact
+      parameters:
+      - description: Unique ID of an artifact group.
+        explode: false
+        in: path
+        name: groupId
+        required: true
+        schema:
+          $ref: '#/components/schemas/GroupId'
+        style: simple
+      - description: |-
+          Specifies the type of the artifact being added. Possible values include:
+
+          * Avro (`AVRO`)
+          * Protobuf (`PROTOBUF`)
+          * JSON Schema (`JSON`)
+          * Kafka Connect (`KCONNECT`)
+          * OpenAPI (`OPENAPI`)
+          * AsyncAPI (`ASYNCAPI`)
+          * GraphQL (`GRAPHQL`)
+          * Web Services Description Language (`WSDL`)
+          * XML Schema (`XSD`)
+        explode: false
+        in: header
+        name: X-Registry-ArtifactType
+        required: false
+        schema:
+          $ref: '#/components/schemas/ArtifactType'
+        style: simple
+      - description: A client-provided, globally unique identifier for the new artifact.
+        explode: false
+        in: header
+        name: X-Registry-ArtifactId
+        required: false
+        schema:
+          type: string
+        style: simple
+      - description: |-
+          Specifies the version number of this initial version of the artifact content.  This would typically
+          be a simple integer or a SemVer value.  If not provided, the server will assign a version number
+          automatically (starting with version `1`).
+        explode: false
+        in: header
+        name: X-Registry-Version
+        required: false
+        schema:
+          $ref: '#/components/schemas/Version'
+        style: simple
+      - description: Set this option to instruct the server on what to do if the artifact
+          already exists.
+        explode: true
+        in: query
+        name: ifExists
+        required: false
+        schema:
+          $ref: '#/components/schemas/IfExists'
+        style: form
+      - description: Used only when the `ifExists` query parameter is set to `RETURN_OR_UPDATE`,
+          this parameter can be set to `true` to indicate that the server should "canonicalize"
+          the content when searching for a matching version.  The canonicalization
+          algorithm is unique to each artifact type, but typically involves removing
+          extra whitespace and formatting the content in a consistent manner.
+        explode: true
+        in: query
+        name: canonical
+        required: false
+        schema:
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          '*/*':
+            examples:
+              OpenAPI Example:
+                value:
+                  openapi: 3.0.2
+                  info:
+                    title: Empty API
+                    version: 1.0.7
+                    description: An example API design using OpenAPI.
+                  paths:
+                    /widgets:
+                      get:
+                        responses:
+                          "200":
+                            content:
+                              application/json:
+                                schema:
+                                  type: array
+                                  items:
+                                    type: string
+                            description: All widgets
+                        summary: Get widgets
+                  components:
+                    schemas:
+                      Widget:
+                        title: Root Type for Widget
+                        description: A sample data type.
+                        type: object
+                        properties:
+                          property-1:
+                            type: string
+                          property-2:
+                            type: boolean
+                        example:
+                          property-1: value1
+                          property-2: true
+            schema:
+              $ref: '#/components/schemas/FileContent'
+        description: |
+          The content of the artifact being created. This is often, but not always, JSON data
+          representing one of the supported artifact types:
+
+          * Avro (`AVRO`)
+          * Protobuf (`PROTOBUF`)
+          * JSON Schema (`JSON`)
+          * Kafka Connect (`KCONNECT`)
+          * OpenAPI (`OPENAPI`)
+          * AsyncAPI (`ASYNCAPI`)
+          * GraphQL (`GRAPHQL`)
+          * Web Services Description Language (`WSDL`)
+          * XML Schema (`XSD`)
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtifactMetaData'
+          description: Artifact was successfully created.
         "400":
           content:
-            application/json: {}
-          description: The server cannot or will not process the request due to something
-            that is perceived to be a client error such as malformed request syntax.
-        "401":
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can return a `400`
+            error.
+        "409":
           content:
-            application/json: {}
-          description: Unauthorized, request has not been applied because it lacks
-            valid authentication credentials.
-        "403":
-          content:
-            application/json: {}
-          description: User is forbidden to retrieve the list of consumer groups.
+            application/json:
+              examples:
+                RuleViolationConflictExample:
+                  value:
+                    error_code: 409
+                    message: The artifact content was invalid
+                    causes:
+                    - description: API is missing a title
+                      context: /info[title]
+                    - description: Operation IDs must be unique
+                      context: /paths[/invoices]/put[operationId]
+              schema:
+                $ref: '#/components/schemas/RuleViolationError'
+          description: Common response used when an input conflicts with existing
+            data.
         "500":
           content:
-            application/json: {}
-          description: An internal server error occurred.
-        "503":
+            application/json:
+              examples:
+                ErrorExample:
+                  value:
+                    error_code: 500
+                    message: Lost connection to the database.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can fail with an unexpected
+            server error.
+      summary: Create artifact
+      tags:
+      - Artifacts
+      x-codegen-async: true
+    summary: Manage the collection of artifacts within a single group in the registry.
+  /api/service-registry/v2/groups/{groupId}/artifacts/{artifactId}:
+    delete:
+      description: |-
+        Deletes an artifact completely, resulting in all versions of the artifact also being
+        deleted.  This may fail for one of the following reasons:
+
+        * No artifact with the `artifactId` exists (HTTP error `404`)
+        * A server error occurred (HTTP error `500`)
+      operationId: deleteArtifact
+      parameters:
+      - description: The artifact group ID.  Must be a string provided by the client,
+          representing the name of the grouping of artifacts.
+        explode: false
+        in: path
+        name: groupId
+        required: true
+        schema:
+          $ref: '#/components/schemas/GroupId'
+        style: simple
+      - description: The artifact ID.  Can be a string (client-provided) or UUID (server-generated),
+          representing the unique artifact identifier.
+        explode: false
+        in: path
+        name: artifactId
+        required: true
+        schema:
+          $ref: '#/components/schemas/ArtifactId'
+        style: simple
+      responses:
+        "204":
+          description: Returned when the artifact was successfully deleted.
+        "404":
           content:
-            application/json: {}
-          description: Unable to connect to the Kafka cluster.
-      summary: List of consumer groups in the Kafka instance.
-    summary: API endpoints for consumer groups under a Kafka topic
-  /: {}
+            application/json:
+              examples:
+                NotFoundExample:
+                  value:
+                    error_code: 404
+                    message: No artifact with id 'Topic-1/Inbound' could be found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can return a `404`
+            error.
+        "500":
+          content:
+            application/json:
+              examples:
+                ErrorExample:
+                  value:
+                    error_code: 500
+                    message: Lost connection to the database.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can fail with an unexpected
+            server error.
+      summary: Delete artifact
+      tags:
+      - Artifacts
+    get:
+      description: "Returns the latest version of the artifact in its raw form.  The\
+        \ `Content-Type` of the\nresponse depends on the artifact type.  In most cases,\
+        \ this is `application/json`, but \nfor some types it may be different (for\
+        \ example, `PROTOBUF`).\n\nThis operation may fail for one of the following\
+        \ reasons:\n\n* No artifact with this `artifactId` exists (HTTP error `404`)\n\
+        * A server error occurred (HTTP error `500`)\n"
+      operationId: getLatestArtifact
+      parameters:
+      - description: The artifact group ID.  Must be a string provided by the client,
+          representing the name of the grouping of artifacts.
+        explode: false
+        in: path
+        name: groupId
+        required: true
+        schema:
+          $ref: '#/components/schemas/GroupId'
+        style: simple
+      - description: The artifact ID.  Can be a string (client-provided) or UUID (server-generated),
+          representing the unique artifact identifier.
+        explode: false
+        in: path
+        name: artifactId
+        required: true
+        schema:
+          $ref: '#/components/schemas/ArtifactId'
+        style: simple
+      responses:
+        "404":
+          content:
+            application/json:
+              examples:
+                NotFoundExample:
+                  value:
+                    error_code: 404
+                    message: No artifact with id 'Topic-1/Inbound' could be found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can return a `404`
+            error.
+        "500":
+          content:
+            application/json:
+              examples:
+                ErrorExample:
+                  value:
+                    error_code: 500
+                    message: Lost connection to the database.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can fail with an unexpected
+            server error.
+        "200":
+          content:
+            '*/*':
+              examples:
+                OpenAPI:
+                  value:
+                    openapi: 3.0.2
+                    info:
+                      title: Empty API
+                      version: 1.0.0
+                      description: An example API design using OpenAPI.
+              schema:
+                $ref: '#/components/schemas/FileContent'
+          description: The content of one version of one artifact.
+      summary: Get latest artifact
+      tags:
+      - Artifacts
+    put:
+      description: |-
+        Updates an artifact by uploading new content.  The body of the request should
+        be the raw content of the artifact.  This is typically in JSON format for *most*
+        of the supported types, but may be in another format for a few (for example, `PROTOBUF`).
+        The type of the content should be compatible with the artifact's type (it would be
+        an error to update an `AVRO` artifact with new `OPENAPI` content, for example).
+
+        The update could fail for a number of reasons including:
+
+        * Provided content (request body) was empty (HTTP error `400`)
+        * No artifact with the `artifactId` exists (HTTP error `404`)
+        * The new content violates one of the rules configured for the artifact (HTTP error `409`)
+        * A server error occurred (HTTP error `500`)
+
+        When successful, this creates a new version of the artifact, making it the most recent
+        (and therefore official) version of the artifact.
+      operationId: updateArtifact
+      parameters:
+      - description: The artifact group ID.  Must be a string provided by the client,
+          representing the name of the grouping of artifacts.
+        explode: false
+        in: path
+        name: groupId
+        required: true
+        schema:
+          $ref: '#/components/schemas/GroupId'
+        style: simple
+      - description: The artifact ID.  Can be a string (client-provided) or UUID (server-generated),
+          representing the unique artifact identifier.
+        explode: false
+        in: path
+        name: artifactId
+        required: true
+        schema:
+          $ref: '#/components/schemas/ArtifactId'
+        style: simple
+      - description: |-
+          Specifies the version number of this new version of the artifact content.  This would typically
+          be a simple integer or a SemVer value.  If not provided, the server will assign a version number
+          automatically.
+        explode: false
+        in: header
+        name: X-Registry-Version
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          '*/*':
+            examples:
+              OpenAPI Example:
+                value:
+                  openapi: 3.0.2
+                  info:
+                    title: Empty API
+                    version: 1.0.7
+                    description: An example API design using OpenAPI.
+                  paths:
+                    /widgets:
+                      get:
+                        responses:
+                          "200":
+                            content:
+                              application/json:
+                                schema:
+                                  type: array
+                                  items:
+                                    type: string
+                            description: All widgets
+                        summary: Get widgets
+                  components:
+                    schemas:
+                      Widget:
+                        title: Root Type for Widget
+                        description: A sample data type.
+                        type: object
+                        properties:
+                          property-1:
+                            type: string
+                          property-2:
+                            type: boolean
+                        example:
+                          property-1: value1
+                          property-2: true
+            schema:
+              $ref: '#/components/schemas/FileContent'
+        description: |
+          The new content of the artifact being updated. This is often, but not always, JSON data
+          representing one of the supported artifact types:
+
+          * Avro (`AVRO`)
+          * Protobuf (`PROTOBUF`)
+          * JSON Schema (`JSON`)
+          * Kafka Connect (`KCONNECT`)
+          * OpenAPI (`OPENAPI`)
+          * AsyncAPI (`ASYNCAPI`)
+          * GraphQL (`GRAPHQL`)
+          * Web Services Description Language (`WSDL`)
+          * XML Schema (`XSD`)
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArtifactMetaData'
+          description: When successful, returns the updated artifact metadata.
+        "404":
+          content:
+            application/json:
+              examples:
+                NotFoundExample:
+                  value:
+                    error_code: 404
+                    message: No artifact with id 'Topic-1/Inbound' could be found.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can return a `404`
+            error.
+        "409":
+          content:
+            application/json:
+              examples:
+                ConflictExample:
+                  value:
+                    error_code: 409
+                    message: The artifact content was invalid.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response used when an input conflicts with existing
+            data.
+        "500":
+          content:
+            application/json:
+              examples:
+                ErrorExample:
+                  value:
+                    error_code: 500
+                    message: Lost connection to the database.
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Common response for all operations that can fail with an unexpected
+            server error.
+      summary: Update artifact
+      tags:
+      - Artifacts
+      x-codegen-async: true
+    summary: Manage a single artifact.
 components:
+  responses:
+    NotFound:
+      content:
+        application/json:
+          examples:
+            NotFoundExample:
+              value:
+                error_code: 404
+                message: No artifact with id 'Topic-1/Inbound' could be found.
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Common response for all operations that can return a `404` error.
+    ServerError:
+      content:
+        application/json:
+          examples:
+            ErrorExample:
+              value:
+                error_code: 500
+                message: Lost connection to the database.
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Common response for all operations that can fail with an unexpected
+        server error.
+    BadRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Common response for all operations that can return a `400` error.
+    Conflict:
+      content:
+        application/json:
+          examples:
+            ConflictExample:
+              value:
+                error_code: 409
+                message: The artifact content was invalid.
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Common response used when an input conflicts with existing data.
+    RuleViolationConflict:
+      content:
+        application/json:
+          examples:
+            RuleViolationConflictExample:
+              value:
+                error_code: 409
+                message: The artifact content was invalid
+                causes:
+                - description: API is missing a title
+                  context: /info[title]
+                - description: Operation IDs must be unique
+                  context: /paths[/invoices]/put[operationId]
+          schema:
+            $ref: '#/components/schemas/RuleViolationError'
+      description: Common response used when an input conflicts with existing data.
+    ArtifactContent:
+      content:
+        '*/*':
+          examples:
+            OpenAPI:
+              value:
+                openapi: 3.0.2
+                info:
+                  title: Empty API
+                  version: 1.0.0
+                  description: An example API design using OpenAPI.
+          schema:
+            $ref: '#/components/schemas/FileContent'
+      description: The content of one version of one artifact.
   schemas:
-    Topic:
-      description: Kafka Topic (A feed where records are stored and published)
+    EditableMetaData:
       example:
-        name: my-topic
-        config:
-        - key: min.insync.replicas
-          value: "1"
-        - key: max.message.bytes
-          value: "1050000"
-        partitions:
-        - id: 0
-          replicas:
-          - id: 0
-          - id: 1
-          isr:
-          - id: 0
-          - id: 1
-          leader:
-            id: 0
-        - id: 1
-          replicas:
-          - id: 0
-          - id: 1
-          isr:
-          - id: 0
-          - id: 1
-          leader:
-            id: 1
+        name: Artifact Name
+        description: The description of the artifact.
+        labels:
+        - regional
+        - global
+        properties:
+          custom-1: foo
+          custom-2: bar
       properties:
         name:
-          description: The name of the topic.
           type: string
-        config:
-          description: Topic configuration entry.
+        description:
+          type: string
+        labels:
           items:
-            $ref: '#/components/schemas/ConfigEntry'
+            type: string
           type: array
-        partitions:
-          description: Partitions for this topic.
-          items:
-            $ref: '#/components/schemas/Partition'
-          type: array
-      title: Root Type for NewTopicInput
+        properties:
+          additionalProperties:
+            type: string
+          description: User-defined name-value pairs. Name and value must be strings.
+          type: object
+          x-codegen-inline: true
+          x-codegen-type: StringMap
+      title: Root Type for EditableArtifactMetaData
       type: object
-    Partition:
-      description: Kafka topic partition
+    VersionMetaData:
       example:
-        id: 0
-        replicas:
-        - id: 0
-        - id: 1
-        isr:
-        - id: 0
-        - id: 1
-        leader:
-          id: 1
+        groupId: My-Group
+        id: my-artifact-id
+        version: 1221432
+        type: PROTOBUF
+        name: Artifact Name
+        description: The description of the artifact
+        createdBy: user1
+        createdOn: 2019-05-17T12:00:00Z
+        globalId: 183282932983
+        contentId: 12347
+        labels:
+        - label-1
+        - label-2
+        properties:
+          custom-1: foo
+          custom-2: bar
+      properties:
+        version:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        createdBy:
+          type: string
+        createdOn:
+          format: date-time
+          type: string
+        type:
+          $ref: '#/components/schemas/ArtifactType'
+        globalId:
+          format: int64
+          type: integer
+        state:
+          $ref: '#/components/schemas/ArtifactState'
+        id:
+          description: The ID of a single artifact.
+          example: example-artifact
+          type: string
+        labels:
+          items:
+            type: string
+          type: array
+        properties:
+          additionalProperties:
+            type: string
+          description: User-defined name-value pairs. Name and value must be strings.
+          type: object
+          x-codegen-inline: true
+          x-codegen-type: StringMap
+        groupId:
+          description: An ID of a single artifact group.
+          example: my-group
+          type: string
+        contentId:
+          format: int64
+          type: integer
+      required:
+      - contentId
+      - createdBy
+      - createdOn
+      - globalId
+      - id
+      - type
+      - version
+      title: Root Type for ArtifactVersionMetaData
+      type: object
+    Rule:
+      example:
+        type: VALIDITY
+        config: FULL
+      properties:
+        config:
+          type: string
+        type:
+          $ref: '#/components/schemas/RuleType'
+      required:
+      - config
+      title: Root Type for Rule
+      type: object
+    Error:
+      description: |-
+        All error responses, whether `4xx` or `5xx` will include one of these as the response
+        body.
+      example:
+        error_code: 500
+        message: An error occurred somewhere.
+      properties:
+        message:
+          description: The short error message.
+          type: string
+        error_code:
+          description: The server-side error code.
+          format: int32
+          type: integer
+        detail:
+          description: Full details about the error.  This might contain a server
+            stack trace, for example.
+          type: string
+        name:
+          description: The error name - typically the classname of the exception thrown
+            by the server.
+          type: string
+      title: Root Type for Error
+      type: object
+    RuleType:
+      enum:
+      - VALIDITY
+      - COMPATIBILITY
+      example: VALIDITY
+      type: string
+      x-codegen-package: io.apicurio.registry.types
+    ArtifactType:
+      enum:
+      - AVRO
+      - PROTOBUF
+      - JSON
+      - OPENAPI
+      - ASYNCAPI
+      - GRAPHQL
+      - KCONNECT
+      - WSDL
+      - XSD
+      - XML
+      example: AVRO
+      type: string
+      x-codegen-package: io.apicurio.registry.types
+    UpdateState:
+      example:
+        state: DISABLED
+      properties:
+        state:
+          $ref: '#/components/schemas/ArtifactState'
+      required:
+      - state
+      title: Root Type for UpdateState
+      type: object
+    ArtifactState:
+      description: |
+        Describes the state of an artifact or artifact version.  The following states
+        are possible:
+
+        * ENABLED
+        * DISABLED
+        * DEPRECATED
+      enum:
+      - ENABLED
+      - DISABLED
+      - DEPRECATED
+      type: string
+      x-codegen-package: io.apicurio.registry.types
+    ArtifactSearchResults:
+      description: Describes the response received when searching for artifacts.
+      example:
+        count: 0
+        artifacts:
+        - groupId: My-Group
+          id: Procurement-Invoice
+          name: Artifact Name
+          description: Description of the artifact
+          labels:
+          - current
+          - internal
+          type: AVRO
+          state: ENABLED
+          createdBy: user1
+          createdOn: 2019-03-22T12:51:19Z
+        - groupId: My-Group
+          id: Procurement-Invoice
+          name: Artifact Name
+          description: Description of the artifact
+          labels:
+          - current
+          - internal
+          type: AVRO
+          state: ENABLED
+          createdBy: user1
+          createdOn: 2019-03-22T12:51:19Z
+      properties:
+        artifacts:
+          description: The artifacts returned in the result set.
+          items:
+            $ref: '#/components/schemas/SearchedArtifact'
+          type: array
+        count:
+          description: "The total number of artifacts that matched the query that\
+            \ produced the result set (may be \nmore than the number of artifacts\
+            \ in the result set)."
+          type: integer
+      required:
+      - artifacts
+      - count
+      type: object
+    SortOrder:
+      enum:
+      - asc
+      - desc
+      type: string
+    VersionSearchResults:
+      description: Describes the response received when searching for artifacts.
+      properties:
+        count:
+          description: |-
+            The total number of versions that matched the query (may be more than the number of versions
+            returned in the result set).
+          type: integer
+        versions:
+          description: The collection of artifact versions returned in the result
+            set.
+          items:
+            $ref: '#/components/schemas/SearchedVersion'
+          type: array
+      required:
+      - count
+      - versions
+      type: object
+    SearchedVersion:
+      description: Models a single artifact from the result set returned when searching
+        for artifacts.
+      example:
+        name: Artifact Version Name
+        description: Description of the artifact version
+        labels:
+        - current
+        - internal
+        type: AVRO
+        state: ENABLED
+        createdOn: 2018-02-10T09:30Z
+        createdBy: some text
+        globalId: 37
+        version: 85
+        properties: {}
+        contentId: 62
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        createdOn:
+          format: date-time
+          type: string
+        createdBy:
+          type: string
+        type:
+          $ref: '#/components/schemas/ArtifactType'
+        labels:
+          items:
+            type: string
+          type: array
+        state:
+          $ref: '#/components/schemas/ArtifactState'
+        globalId:
+          format: int64
+          type: integer
+        version:
+          type: string
+        properties:
+          additionalProperties:
+            type: string
+          description: User-defined name-value pairs. Name and value must be strings.
+          type: object
+          x-codegen-inline: true
+          x-codegen-type: StringMap
+        contentId:
+          format: int64
+          type: integer
+      required:
+      - contentId
+      - createdBy
+      - createdOn
+      - globalId
+      - state
+      - type
+      - version
+      type: object
+    RuleViolationError:
+      allOf:
+      - $ref: '#/components/schemas/RuleViolationError_allOf'
+      - $ref: '#/components/schemas/Error'
+      description: |-
+        All error responses, whether `4xx` or `5xx` will include one of these as the response
+        body.
+      example:
+        error_code: 409
+        message: Artifact failed validation
+        causes:
+        - description: API is missing a title
+          context: /info[title]
+        - description: Operation IDs must be unique
+          context: /paths[/invoices]/put[operationId]
+      title: Root Type for Error
+      type: object
+    RuleViolationCause:
+      example:
+        description: External documentation URL is not valid (it must be formatted
+          as a URL).
+        context: /info/externalDocs[url]
+      properties:
+        description:
+          type: string
+        context:
+          type: string
+      title: Root Type for RuleViolationCause
+      type: object
+    GroupId:
+      description: An ID of a single artifact group.
+      example: my-group
+      type: string
+    ArtifactId:
+      description: The ID of a single artifact.
+      example: example-artifact
+      type: string
+    Version:
+      description: |-
+        A single version of an artifact.  Can be provided by the client when creating a new version,
+        or it can be server-generated.  The value can be any string unique to the artifact, but it is
+        recommended to use a simple integer or a semver value.
+      example: 3.1.6
+      type: string
+    SearchedArtifact:
+      description: Models a single artifact from the result set returned when searching
+        for artifacts.
+      example:
+        groupId: My-Group
+        id: Procurement-Invoice
+        name: Artifact Name
+        description: Description of the artifact
+        labels:
+        - current
+        - internal
+        type: AVRO
+        state: ENABLED
+        createdBy: user1
+        createdOn: 2019-03-22T12:51:19Z
       properties:
         id:
-          description: Uniquie id for the partition
-          type: integer
-        replicas:
-          description: List of replicas for the partition
+          description: The ID of a single artifact.
+          example: example-artifact
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        createdOn:
+          format: date-time
+          type: string
+        createdBy:
+          type: string
+        type:
+          $ref: '#/components/schemas/ArtifactType'
+        labels:
           items:
-            $ref: '#/components/schemas/Node'
+            type: string
           type: array
-        isr:
-          description: List isync-replicas for this partition.
-          items:
-            $ref: '#/components/schemas/Node'
-          type: array
-        leader:
-          description: Kafka server / broker.
-          type: object
+        state:
+          $ref: '#/components/schemas/ArtifactState'
+        modifiedOn:
+          format: date-time
+          type: string
+        modifiedBy:
+          type: string
+        groupId:
+          description: An ID of a single artifact group.
+          example: my-group
+          type: string
       required:
+      - createdBy
+      - createdOn
+      - group
       - id
+      - state
+      - type
       type: object
-    ConfigEntry:
-      description: Key value pair indicating possible configuration options for a
-        topic.
+    ArtifactMetaData:
       example:
-        key: min.insync.replicas
-        value: "1"
-      properties:
-        key:
-          description: The key indicating what configuration entry you would like
-            to set for the topic.
-          type: string
-        value:
-          description: Value to indicate the setting on the topic configuration entry.
-          type: string
-      type: object
-    TopicsList:
-      description: A list of topics.
-      example:
-        items:
-        - name: my-topic
-          config:
-          - key: min.insync.replicas
-            value: "1"
-          - key: max.message.bytes
-            value: "1050000"
-          partitions:
-          - id: 0
-            replicas:
-            - id: 0
-            - id: 1
-            isr:
-            - id: 0
-            - id: 1
-            leader:
-              id: 0
-          - id: 1
-            replicas:
-            - id: 0
-            - id: 1
-            isr:
-            - id: 0
-            - id: 1
-            leader:
-              id: 1
-        offset: 25
-        limit: 90
-        count: 94
-      properties:
-        offset:
-          description: The page offset
-          type: integer
-        limit:
-          description: number of entries per page
-          type: integer
-        count:
-          description: Total number of topics
-          type: integer
-        items:
-          description: List of topics
-          items:
-            $ref: '#/components/schemas/Topic'
-          type: array
-      required:
-      - count
-      - items
-      - limit
-      - offset
-      type: object
-    TopicSettings:
-      description: Kafka Topic (A feed where records are stored and published)
-      example:
-        numPartitions: 2
-        config:
-        - key: min.insync.replicas
-          value: "1"
-        - key: max.message.bytes
-          value: "1050000"
-      properties:
-        numPartitions:
-          description: Number of partitions for this topic.
-          type: integer
-        config:
-          description: Topic configuration entry.
-          items:
-            $ref: '#/components/schemas/ConfigEntry'
-          type: array
-      required:
-      - numPartitions
-      title: Root Type for NewTopicInput
-      type: object
-    Node:
-      description: Kafka server / broker.
-      type: object
-    NewTopicInput:
-      description: Input object to create a new topic.
-      example:
-        name: my-topic
-        settings:
-          numPartitions: 3
-          config:
-          - key: min.insync.replicas
-            value: "1"
-          - key: max.message.bytes
-            value: "1050000"
+        groupId: My-Group
+        id: Procurement-Invoice
+        name: Artifact Name
+        description: Description of the artifact
+        type: AVRO
+        version: 18
+        createdBy: user1
+        createdOn: 2019-03-22T12:51:19Z
+        modifiedBy: user2
+        modifiedOn: 2019-07-19T15:09:00Z
+        globalId: 12984719247
+        contentId: 82736
+        labels:
+        - label-1
+        - label-2
+        properties:
+          custom-1: foo
+          custom-2: bar
       properties:
         name:
-          description: The topic name, this value must be unique.
           type: string
-        settings:
-          $ref: '#/components/schemas/TopicSettings'
+        description:
+          type: string
+        createdBy:
+          type: string
+        createdOn:
+          format: date-time
+          type: string
+        modifiedBy:
+          type: string
+        modifiedOn:
+          format: date-time
+          type: string
+        id:
+          description: The ID of a single artifact.
+          example: example-artifact
+          type: string
+        version:
+          type: string
+        type:
+          $ref: '#/components/schemas/ArtifactType'
+        globalId:
+          format: int64
+          type: integer
+        state:
+          $ref: '#/components/schemas/ArtifactState'
+        labels:
+          items:
+            type: string
+          type: array
+        properties:
+          additionalProperties:
+            type: string
+          description: User-defined name-value pairs. Name and value must be strings.
+          type: object
+          x-codegen-inline: true
+          x-codegen-type: StringMap
+        groupId:
+          description: An ID of a single artifact group.
+          example: my-group
+          type: string
+        contentId:
+          format: int64
+          type: integer
+      required:
+      - contentId
+      - createdBy
+      - createdOn
+      - globalId
+      - group
+      - id
+      - modifiedBy
+      - modifiedOn
+      - state
+      - type
+      - version
+      title: Root Type for ArtifactMetaData
+      type: object
+    LogConfiguration:
+      properties:
+        level:
+          $ref: '#/components/schemas/LogLevel'
+      required:
+      - level
+      type: object
+    NamedLogConfiguration:
+      allOf:
+      - $ref: '#/components/schemas/NamedLogConfiguration_allOf'
+      - $ref: '#/components/schemas/LogConfiguration'
+      type: object
+    Properties:
+      additionalProperties:
+        type: string
+      description: User-defined name-value pairs. Name and value must be strings.
+      type: object
+      x-codegen-inline: true
+      x-codegen-type: StringMap
+    IfExists:
+      enum:
+      - FAIL
+      - UPDATE
+      - RETURN
+      - RETURN_OR_UPDATE
+      type: string
+    SortBy:
+      enum:
+      - name
+      - createdOn
+      type: string
+    LogLevel:
+      enum:
+      - DEBUG
+      - TRACE
+      - WARN
+      - ERROR
+      - SEVERE
+      - WARNING
+      - INFO
+      - CONFIG
+      - FINE
+      - FINER
+      - FINEST
+      type: string
+      x-codegen-package: io.apicurio.registry.types
+    SystemInfo:
+      example:
+        name: Apicurio Registry (SQL)
+        description: The Apicurio Registry application.
+        version: 2.0.0.Final
+        builtOn: 2021-03-19T12:55:00Z
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        version:
+          type: string
+        builtOn:
+          format: date-time
+          type: string
+      title: Root Type for SystemInfo
+      type: object
+    FileContent:
+      format: binary
+      type: string
+      x-codegen-inline: true
+    RuleViolationError_allOf:
+      properties:
+        causes:
+          description: List of rule violation causes.
+          items:
+            $ref: '#/components/schemas/RuleViolationCause'
+          type: array
+      required:
+      - causes
+      type: object
+    NamedLogConfiguration_allOf:
+      properties:
+        name:
+          type: string
       required:
       - name
-      - settings
       type: object
-    ConsumerGroup:
-      description: A group of Kafka consumers
-      example:
-        id: consumer_group_1
-        consumers:
-        - groupId: consumer_group_1
-          topic: topic-1
-          partition: 0
-          memberId: consumer_group_member1
-          offset: 5
-          lag: 0
-          logEndOffset: 5
-        - groupId: consumer_group_1
-          topic: topic-1
-          partition: 1
-          memberId: consumer_group_member2
-          offset: 3
-          lag: 0
-          logEndOffset: 3
-        - groupId: consumer_group_1
-          topic: topic-1
-          partition: 2
-          memberId: consumer_group_member3
-          offset: 6
-          lag: 1
-          logEndOffset: 5
-      properties:
-        groupId:
-          description: Unique identifier for the consumer group
-          type: string
-        consumers:
-          description: The list of consumers associated with this consumer group
-          items:
-            $ref: '#/components/schemas/Consumer'
-          type: array
-      required:
-      - consumers
-      - groupId
-      type: object
-    Consumer:
-      description: A Kafka consumer is responsible for reading records from one or
-        more topics and one or more partitions of a topic.
-      example:
-        groupId: consumer_group_1
-        topic: topic-1
-        partition: 0
-        memberId: consumer_group_1-0
-        offset: 5
-        lag: 0
-        logEndOffset: 5
-      properties:
-        groupId:
-          description: Unique identifier for the consumer group to which this consumer
-            belongs.
-          type: string
-        topic:
-          description: The unique topic name to which this consumer belongs
-          type: string
-        partition:
-          description: The partition number to which this consumer group is assigned
-            to.
-          type: integer
-        offset:
-          description: Offset denotes the position of the consumer in a partition.
-          type: number
-        logEndOffset:
-          description: The log end offset is the offset of the last message written
-            to a log.
-          type: number
-        lag:
-          description: Offset Lag is the delta between the last produced message and
-            the last consumer's committed offset.
-          type: integer
-        memberId:
-          description: The member ID is a unique identifier given to a consumer by
-            the coordinator upon initially joining the group.
-          type: string
-      required:
-      - groupId
-      - lag
-      - offset
-      - partition
-      - topic
-      type: object
-    ConsumerGroupList:
-      description: A list of consumer groups
-      example:
-        count: 1
-        limit: 10
-        offset: 0
-        items:
-        - groupId: consumer_group_1
-          consumers:
-          - groupId: consumer_group_1
-            topic: topic-1
-            partition: 0
-            memberId: consumer_group_member1
-            offset: 5
-            lag: 0
-            logEndOffset: 5
-          - groupId: consumer_group_1
-            topic: topic-1
-            partition: 1
-            memberId: consumer_group_member2
-            offset: 3
-            lag: 0
-            logEndOffset: 3
-          - groupId: consumer_group_1
-            topic: topic-1
-            partition: 2
-            memberId: consumer_group_member3
-            offset: 6
-            lag: 1
-            logEndOffset: 5
-      properties:
-        items:
-          description: Consumer group list items
-          items:
-            $ref: '#/components/schemas/ConsumerGroup'
-          type: array
-        count:
-          description: The total number of consumer groups.
-          type: number
-        limit:
-          description: The number of consumer groups per page.
-          type: number
-        offset:
-          description: The page offset
-          type: integer
-      required:
-      - count
-      - items
-      - limit
-      - offset
-      type: object
-    UpdateTopicInput:
-      description: Kafka Topic (A feed where records are stored and published)
-      example:
-        config:
-        - key: min.insync.replicas
-          value: "1"
-        - key: max.message.bytes
-          value: "1050000"
-      properties:
-        config:
-          description: Topic configuration entry.
-          items:
-            $ref: '#/components/schemas/ConfigEntry'
-          type: array
-      title: Root Type for UpdateTopicInput
-      type: object
-  securitySchemes:
-    Bearer:
-      description: Access token used with OAuth 2.0
-      flows: {}
-      type: oauth2
+x-codegen:
+  bean-annotations:
+  - io.quarkus.runtime.annotations.RegisterForReflection
