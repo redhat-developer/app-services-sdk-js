@@ -31,16 +31,6 @@ const kafkas = {
 };
 
 module.exports = {
-  createServiceAccount: async (c, req, res) => {
-    const clientId = Number.MAX_SAFE_INTEGER - new Date().getTime();
-    const clientSecret = Number.MAX_SAFE_INTEGER - new Date().getTime();
-    res.status(200).json({
-      name: req.body.name,
-      description: req.body.description,
-      clientID: clientId.toString(),
-      clientSecret: clientSecret.toString(),
-    });
-  },
   createKafka: async (c, req, res) => {
     if (!req.body.name) {
       return res.status(400).json({
@@ -134,6 +124,71 @@ module.exports = {
           enabled: true,
         },
       ],
+    });
+  },
+
+  getVersionMetadata: async (c, req, res) =>
+    res.status(200).json({
+      kind: "APIVersion",
+      id: "v1",
+      collections: [{ id: "kafkas", kind: "KafkaList" }],
+    }),
+
+  createServiceAccount: async (c, req, res) => {
+    const clientId = Number.MAX_SAFE_INTEGER - new Date().getTime();
+    const clientSecret = Number.MAX_SAFE_INTEGER - new Date().getTime();
+    res.status(200).json({
+      name: req.body.name,
+      description: req.body.description,
+      clientID: clientId.toString(),
+      clientSecret: clientSecret.toString(),
+    });
+  },
+
+  listServiceAccounts: async (c, req, res) => {
+    res.status(200).json({
+      kind: "ServiceAccountList",
+      items: [
+        {
+          value: {
+            id: "1",
+            kind: "ServiceAccountListItem",
+            href: "/api/managed-services-api/v1/serviceaccounts/1",
+            name: "my-app-sa",
+            description: "service account for my app",
+            clientID: "SA-121212",
+            owner: "test-user",
+            created_at: "2021-04-07T16:24:01+05:30",
+          },
+          $$ref: "/oas/spec#/components/examples/ServiceAccountListItemExample",
+        },
+      ],
+    });
+  },
+
+  getServiceAccountById: async (c, req, res) => {
+    res.status(200).json({
+      id: "1",
+      kind: "ServiceAccount",
+      href: "/api/managed-services-api/v1/serviceaccounts/1",
+      name: "my-app-sa",
+      description: "service account for my app",
+      clientID: "SA-121212",
+      owner: "test-user",
+      created_at: "2021-04-07T16:24:01+05:30",
+    });
+  },
+
+  deleteServiceAccount: async (c, req, res) => {
+    res.status(200).json({
+      id: "1",
+      kind: "ServiceAccount",
+      href: "/api/managed-services-api/v1/serviceaccounts/1",
+      name: "my-app-sa",
+      description: "service account for my app",
+      clientID: "SA-121212",
+      owner: "test-user",
+      created_at: "2021-04-07T16:24:01+05:30",
     });
   },
 
