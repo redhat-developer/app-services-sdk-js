@@ -1,5 +1,5 @@
 const nanoid = require("nanoid").nanoid;
-const path = require("path")
+const path = require("path");
 const { getFullHostname } = require("../utls/host");
 
 const commonKafkaFields = {
@@ -77,7 +77,7 @@ module.exports = {
     res.status(200).json(kafkas[c.request.params.id]);
   },
 
-  listKafkas: async (c, req, res) => {
+  getKafkas: async (c, req, res) => {
     return res.status(200).json({
       kind: "KafkaRequestList",
       page: 1,
@@ -87,7 +87,7 @@ module.exports = {
     });
   },
 
-  listCloudProviders: async (_c, _req, res) => {
+  getCloudProviders: async (_c, _req, res) => {
     return res.status(200).json({
       kind: "CloudProviderList",
       page: 1,
@@ -112,7 +112,7 @@ module.exports = {
     });
   },
 
-  listCloudProviderRegions: async (_c, _req, res) => {
+  getCloudProviderRegions: async (_c, _req, res) => {
     return res.status(200).json({
       kind: "CloudRegionList",
       page: 1,
@@ -147,7 +147,7 @@ module.exports = {
     });
   },
 
-  listServiceAccounts: async (c, req, res) => {
+  getServiceAccounts: async (c, req, res) => {
     res.status(200).json({
       kind: "ServiceAccountList",
       items: [
