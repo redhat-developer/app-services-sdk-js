@@ -153,7 +153,7 @@
           "name": "registryId",
           "description": "A unique identifier for a `Registry`.",
           "schema": {
-            "type": "integer"
+            "type": "string"
           },
           "in": "path",
           "required": true
@@ -170,7 +170,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer"
+            "type": "string"
           },
           "status": {
             "$ref": "#/components/schemas/RegistryStatus",
@@ -189,7 +189,7 @@
           }
         },
         "example": {
-          "id": 42,
+          "id": "dsadas",
           "name": "my-registry",
           "registryUrl": "https://registry.apps.example.com/t/5213600b-afc9-487e-8cc3-339f4248d706",
           "status": {
