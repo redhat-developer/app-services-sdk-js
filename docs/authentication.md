@@ -29,7 +29,7 @@ https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/top
 
 ## Authentication for Instance SDK's
 
-To authenticated to the 
+To authenticate to the Instance SDK's we need to create service account
 Service account can be created using [RHOAS CLI](https://github.com/redhat-developer/app-services-cli/blob/main/docs/commands/rhoas_serviceaccount_create.adoc) or
 by UI (https://cloud.redhat.com)
 
