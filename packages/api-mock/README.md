@@ -21,7 +21,7 @@ docker run quay.io/wtrocki/api-mock
 
 ```
 yarn
-yarn prepare
+yarn init-openapi
 yarn start # API running at http://localhost:9000
 ```
 
