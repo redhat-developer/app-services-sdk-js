@@ -3,11 +3,11 @@
 ### Running Examples
 
 1. Obtain Access Token from sso.redhat.com and set `CLOUD_API_TOKEN` env variable 
-
+2. Build examples and source code `yarn build`
 2. Execute example
 
 ```bash
-CLOUD_API_TOKEN=token npx ts-node ./src/kafka.ts
+CLOUD_API_TOKEN=token yarn kafka
 ```
 
 3. Example should print out JSON response from api
@@ -27,18 +27,20 @@ CLOUD_API_TOKEN=token npx ts-node ./src/kafka.ts
 ]
 ```
 
+## Examples
+
 ## How to obtain Access Token
 
 With [RHOAS CLI](https://github.com/redhat-developer/app-services-cli)
-```
+```bash
 ## Refresh token
 rhoas kafka list 
 ## Fetch token
-cat ~/.rhoascli.json | jq .access_token
+CLOUD_API_TOKEN=`cat ~/.rhoascli.json | jq .access_token`
 ```
 
 In the cloud.redhat.com UI:
-```
-window.insights.chrome.auth.getToken()
+```js
+window.insights.chrome.auth.getToken().then(console.log)
 ```
 

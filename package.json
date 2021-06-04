@@ -1,13 +1,13 @@
 {
   "name": "app-services-sdk-js-monorepo",
   "private": true,
-  "devDependencies": {},
   "scripts": {
     "generate": "./scripts/generate.sh",
     "wrun": "yarn workspaces run",
-    "build":"yarn workspaces run build"
+    "build": "yarn workspaces run build"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples"
   ]
 }

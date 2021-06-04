@@ -1,4 +1,4 @@
-import { Configuration, SecurityApi } from "../../packages/kafka-management-sdk/src";
+import { Configuration, SecurityApi } from "../../packages/kafka-management-sdk/dist";
 
 const accessToken = process.env.CLOUD_API_TOKEN;
 const basePath = "https://api.openshift.com";

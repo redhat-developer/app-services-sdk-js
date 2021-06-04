@@ -1,4 +1,5 @@
-import { Configuration, DefaultApi } from "../../packages/kafka-management-sdk/src";
+// For released version replace with "@rhoas/kafka-management-sdk"
+import { Configuration, DefaultApi } from "../../packages/kafka-management-sdk/dist";
 
 const accessToken = process.env.CLOUD_API_TOKEN;
 const basePath = "https://api.openshift.com";
