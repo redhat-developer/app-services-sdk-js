@@ -1,5 +1,7 @@
 name: Validate
-on: [pull_request]
+on:
+  push:
+    branches: [ main ]
 
 jobs:
   validate_comments:
