@@ -8,9 +8,9 @@ const apiConfig = new Configuration({
     basePath
 })
 
-const kafkaApi = new SecurityApi(apiConfig)
+const serviceAccountAPI = new SecurityApi(apiConfig)
 
-kafkaApi.getServiceAccounts().then((data) => {
+serviceAccountAPI.getServiceAccounts().then((data) => {
     console.log(data?.data.items)
 }).catch((err) => {
     console.error(err.message)
