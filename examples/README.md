@@ -3,8 +3,9 @@
 ### Running Examples
 
 1. Obtain Access Token from sso.redhat.com and set `CLOUD_API_TOKEN` env variable 
-2. Build examples and source code `yarn build`
-2. Execute example
+2. Build examples and source code in root of the repository
+`cd .. && yarn build` or `cd .. && npm run build`
+2. Execute one of the examples
 
 ```bash
 CLOUD_API_TOKEN=token yarn kafka
