@@ -4,6 +4,8 @@ const kafkaHandlers = require("./handlers/kafka-manager");
 const srsHandlers = require("./handlers/registry-manager");
 const srsDataHandlers = require("./handlers/registry-data");
 const topicHandlers = require("./handlers/kafka-admin");
+const { getFullHostname, getPort } = require("./utls/host");
+
 const path = require("path");
 var cors = require("cors");
 
@@ -55,31 +57,29 @@ srsDataApi.init();
 
 api.use((req, res) => {
   if (req.url.startsWith("/api/kafkas_mgmt/v1")) {
+    console.info("Calling kafkas manager");
     return kafkaAPI.handleRequest(req, req, res);
   }
 
-  if (req.url.startsWith("/api/serviceregistry_mgmt/v1")) {
-    console.debug("Calling serviceregistry manager");
+  if (req.url.startsWith("/api/serviceregistry_mgmt/v1/registries")) {
+    console.info("Calling serviceregistry manager");
     return srsControlApi.handleRequest(req, req, res);
   }
 
   if (req.url.startsWith("/data/service-registry")) {
-    console.debug("Calling serviceregistry service");
+    console.info("Calling serviceregistry service");
     req.url = req.url.replace("/data/service-registry", "");
     return srsDataApi.handleRequest(req, req, res);
   }
 
   if (req.url.startsWith("/data/kafka")) {
-    console.debug("Calling Kafka Instance Admin");
+    console.info("Calling Kafka Instance Admin");
     req.url = req.url.replace("/data/kafka", "");
     return topicAPI.handleRequest(req, req, res);
   }
   res.status(405).status({ err: "Method not allowed" });
 });
 
-const port = parseInt(process.env.PORT) || 8000;
-const host = process.env.HOSTNAME || "http://localhost";
-
-api.listen(port, () =>
-  console.info(`Kafka Service API listening at ${host}:${port}`)
+api.listen(getPort(), () =>
+  console.info(`RHOAS Mock Service API listening at ${getFullHostname()}`)
 );

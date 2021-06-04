@@ -1,4 +1,6 @@
 const nanoid = require("nanoid").nanoid;
+const path = require("path")
+const { getFullHostname } = require("../utls/host");
 
 const commonKafkaFields = {
   kind: "kafka",
@@ -6,7 +8,7 @@ const commonKafkaFields = {
   cloud_provider: "aws",
   multi_az: false,
   region: "us-east-1",
-  bootstrapServerHost: process.env.HOSTNAME || "localhost:8080/data/kafka",
+  bootstrapServerHost: path.join(getFullHostname(), "/data/kafka"),
   created_at: "2020-10-05T12:51:24.053142Z",
   updated_at: "2020-10-05T12:56:36.362208Z",
 };

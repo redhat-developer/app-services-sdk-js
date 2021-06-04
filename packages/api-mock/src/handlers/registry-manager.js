@@ -1,4 +1,6 @@
 const nanoid = require("nanoid").nanoid;
+const { getFullHostname } = require("../utls/host");
+const path = require("path")
 
 const commonFields = {
   kind: "serviceregistry",
@@ -7,7 +9,7 @@ const commonFields = {
     lastUpdated: "2021-05-04T12:34:56Z",
   },
   registryDeploymentId: 1,
-  registryUrl: process.env.HOSTNAME || "http://localhost:8000/data/service-registry",
+  registryUrl: path.join(getFullHostname(), "/data/service-registry"),
   owner: "api_registry_user",
 };
 
@@ -20,7 +22,7 @@ const commonError = {
 };
 
 const registries = {
-  "llmNteR4P7waRp5nJIReG": {
+  llmNteR4P7waRp5nJIReG: {
     id: "llmNteR4P7waRp5nJIReG",
     kind: "serviceregistry",
     href: "/api/serviceregistry_mgmt/v1/registries/llmNteR4P7waRp5nJIReG",
@@ -54,7 +56,10 @@ module.exports = {
   },
 
   getRegistry: async (c, req, res) => {
-    if (!c.request.params.registryId || !registries[c.request.params.registryId]) {
+    if (
+      !c.request.params.registryId ||
+      !registries[c.request.params.registryId]
+    ) {
       return res.status(400).json({
         reason: "Missing or invalid id field",
         ...commonError,
@@ -65,7 +70,10 @@ module.exports = {
   },
 
   deleteRegistry: async (c, req, res) => {
-    if (!c.request.params.registryId || !registries[c.request.params.registryId]) {
+    if (
+      !c.request.params.registryId ||
+      !registries[c.request.params.registryId]
+    ) {
       return res.status(400).json({
         reason: "Missing or invalid id field",
         ...commonError,

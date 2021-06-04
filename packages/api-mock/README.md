@@ -25,6 +25,11 @@ yarn prepare
 yarn start # API running at http://localhost:9000
 ```
 
+## Environment variables
+
+CUSTOM_PORT - custom port number used default is 8000
+CUSTOM_HOST - custom url used in returned data. default http://localhost
+
 ## Build container
 
 ```
