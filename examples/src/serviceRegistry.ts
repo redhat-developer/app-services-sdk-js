@@ -1,4 +1,4 @@
-import { Configuration, DefaultApi } from "../../packages/registry-management-sdk/src";
+import { Configuration, DefaultApi } from "../../packages/registry-management-sdk/dist";
 
 const accessToken = process.env.CLOUD_API_TOKEN;
 const basePath = "https://api.openshift.com";

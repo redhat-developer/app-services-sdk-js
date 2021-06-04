@@ -22,8 +22,7 @@ Valid redirect urls:
 
 `.openshift.com/*, https://prod.foo.redhat.com/*, https://prod.food.redhat.com:1337/*`
 
-For more information about how to use Keycloak.js please refer to official documentation:
-https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/javascript-adapter.adoc
+For more information about how to use Keycloak.js please refer to [official documentation](https://github.com/keycloak/keycloak-documentation/blob/master/securing_apps/topics/oidc/javascript-adapter.adoc)
 
 > NOTE: We are working on SDK for Authentication that will provide out of the box support for connections
 
