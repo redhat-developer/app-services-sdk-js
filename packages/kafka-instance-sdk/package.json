@@ -1,6 +1,6 @@
 {
   "name": "@rhoas/kafka-instance-sdk",
-  "version": "0.2.0",
+  "version": "0.0.0-dev",
   "description": "RHOAS Kafka Instance Adminstration SDK",
   "author": "Red Hat Developers",
   "keywords": [
