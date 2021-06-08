@@ -11,14 +11,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Publish if version has been updated
-      uses: wtrocki/npm-publish-action@1.4.1
+      uses: wtrocki/npm-publish-action-monorepo@master
       with: # All of theses inputs are optional
         tag_name: "v%s"
         tag_message: "v%s"
         create_tag: "true"
         commit_pattern: "^chore: Release (\\S+)"
         workspace: "./packages"
-        recursive: "true"
+        versionFrom: "./package.json"
         publish_args: "--non-interactive"
       env: # More info about the environment variables in the README
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
