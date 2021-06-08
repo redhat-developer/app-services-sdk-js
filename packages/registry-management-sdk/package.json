@@ -1,6 +1,6 @@
 {
   "name": "@rhoas/registry-management-sdk",
-  "version": "0.2.0",
+  "version": "0.0.0-dev",
   "description": "RHOAS Service Registry Management SDK",
   "author": "Red Hat Developers",
   "keywords": [
