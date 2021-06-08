@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Service Registry Service - Fleet Manager - v1
+ * Service Registry Service - Fleet Manager - v0
  * Main entry point for the system, responsible for all sorts of management operations for the whole service of managed service registry.
  *
  * The version of the OpenAPI document: 0.0.1
@@ -14,5 +14,6 @@
 
 
 
-export * from './api/default-api';
+export * from './api/info-api';
+export * from './api/registries-api';
 
