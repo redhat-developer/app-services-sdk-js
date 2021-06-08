@@ -3,19 +3,38 @@
 Provide mocking capabilities 
 APIs support in memory storage to give you abstraction of running service.
 
-## Using as NPM package
+### Using API Mock
 
-Will start API locally with all endpoints available
+![](https://img.shields.io/npm/v/@rhoas/api-mock)
 
+Every SDK provided by RHOAS has available API mock.
+Mock provides simulation of  **in memory** implementation of APIs that 
+can be used for development and testing.
+
+
+1. Inline install and usage
 ```
 npx @rhoas/api-mock
 ```
 
-## Using as Docker
+2. Container image
 
 ```
-docker run quay.io/wtrocki/api-mock
+docker run  -p 8080:8000 quay.io/wtrocki/api-mock
 ```
+
+3. Using as CLI
+
+```
+npm install -g @rhoas/api-mock
+## Run CLI
+asapi
+```
+
+### Instances API mapping pattern
+
+Mock provides instances (data) API mock as well as the control planes.
+Each instance API uses `/data/kafka` or `/data/registry` prefixes to not conflict with other apis.
 
 ## Local development
 
