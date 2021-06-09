@@ -5,6 +5,7 @@
   "scripts": {
     "generate": "./scripts/generate.sh",
     "wrun": "yarn workspaces run",
+    "setupRelease": "npm version --workspace=packages",
     "build": "yarn workspaces run build"
   },
   "workspaces": [
