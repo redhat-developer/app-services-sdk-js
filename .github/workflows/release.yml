@@ -24,6 +24,8 @@ jobs:
         run: yarn setupRelease $GITHUB_REF_SLUG
       - name: Publish packages
         run: npm publish --workspace=packages
+        env: 
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} #
       - name: Install git-chglog
         uses: craicoverflow/install-git-chglog@v1
       - name: Generate changelog
