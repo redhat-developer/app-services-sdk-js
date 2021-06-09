@@ -89,3 +89,5 @@ See [a working example here](https://github.com/bf2fc6cc711aee1a0c2a/kas-fleet-m
 
 1. Execute `yarn setupRelease $VERSION`
 2. Execute npm publish --workspace=packages --dry-run
+
+> NOTE: You should never change package versions in repository. 0.0.0-dev version is used as marker for unreleased changes
