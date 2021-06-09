@@ -1,6 +1,6 @@
 {
   "name": "app-services-sdk-js-monorepo",
-  "version": "0.2.0-dev1",
+  "version": "0.2.4",
   "private": true,
   "scripts": {
     "generate": "./scripts/generate.sh",
