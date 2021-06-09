@@ -2,9 +2,9 @@ name: SDK build
 
 on:
   push:
-    branches: [ main ]
+    branches: [ disable ]
   pull_request:
-    branches: [ main ]
+    branches: [ disable ]
 
 jobs:
   build:
