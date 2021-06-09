@@ -14,6 +14,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.3.0
+          registry-url: 'https://registry.npmjs.org'
       - run: yarn install
       - run: yarn build
       - name: Inject slug/short variables
@@ -25,7 +26,7 @@ jobs:
       - name: Publish packages
         run: npm publish --workspace=packages
         env: 
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} #
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} #
       - name: Install git-chglog
         uses: craicoverflow/install-git-chglog@v1
       - name: Generate changelog
