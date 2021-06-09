@@ -24,9 +24,15 @@ jobs:
         run: yarn setupRelease $GITHUB_REF_SLUG
       - name: Publish packages
         run: npm publish --workspace=packages --dry-run
+      - name: Install git-chglog
+        uses: craicoverflow/install-git-chglog@v1
+      - name: Generate changelog
+        run: | 
+          git-chglog -t .chglog/RELEASE.tpl.md $(git describe --tags $(git rev-parse HEAD)) -o RELEASE_NOTES.md
+          echo "CHANGELOG=`cat RELEASE_NOTES.md` >> $GITHUB_ENV
       - name: Update Release Notes
         uses: meeDamian/github-release@2.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          body: "## JavaScript SDK Release"
+          body: ${{ env.CHANGELOG }}
           allow_override: true
