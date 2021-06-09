@@ -2,7 +2,7 @@ name: npm-publish
 on:
   push:
     branches:
-      - main # Change this to your default branch
+      - release-simple # Change this to your default branch
 jobs:
   npm-publish:
     name: npm-publish
@@ -10,15 +10,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Publish if version has been updated
-      uses: wtrocki/npm-publish-action-monorepo@master
-      with: # All of theses inputs are optional
-        tag_name: "v%s"
-        tag_message: "v%s"
-        create_tag: "true"
-        commit_pattern: "^chore: Release (\\S+)"
-        workspace: "./packages"
-        publish_args: "--non-interactive --dry-run"
-      env: # More info about the environment variables in the README
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
+    - name: Use Node.js 16.3.0 
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.3.0
+    - name: Publish packages
+      run: npm publish --workspace=packages --dry-run
+   
