@@ -23,7 +23,7 @@ jobs:
       - name: Update versions of packages
         run: yarn setupRelease $GITHUB_REF_SLUG
       - name: Publish packages
-        run: npm publish --workspace=packages --dry-run
+        run: npm publish --workspace=packages
       - name: Install git-chglog
         uses: craicoverflow/install-git-chglog@v1
       - name: Generate changelog
