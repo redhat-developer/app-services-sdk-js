@@ -1,24 +1,31 @@
 name: npm-publish
 on:
   push:
-    branches:
-      - main # Change this to your default branch
+    tags:
+      - "*"
 jobs:
   npm-publish:
     name: npm-publish
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Publish if version has been updated
-      uses: wtrocki/npm-publish-action-monorepo@master
-      with: # All of theses inputs are optional
-        tag_name: "v%s"
-        tag_message: "v%s"
-        create_tag: "true"
-        commit_pattern: "^chore: Release (\\S+)"
-        workspace: "./packages"
-        publish_args: "--non-interactive --dry-run"
-      env: # More info about the environment variables in the README
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
-        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Use Node.js 16.3.0
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.3.0
+      - run: yarn install
+      - run: yarn build
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v3.x
+      - name: Validate Tag
+        run: yarn semver $GITHUB_REF_SLUG
+      - name: Update versions of packages
+        run: yarn setupRelease $GITHUB_REF_SLUG
+      - name: Publish packages
+        run: npm publish --workspace=packages --dry-run
+      - name: Update Release Notes
+        uses: meeDamian/github-release@2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: "## JavaScript SDK Release"

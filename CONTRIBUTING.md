@@ -77,3 +77,15 @@ See [a working example here](https://github.com/bf2fc6cc711aee1a0c2a/kas-fleet-m
     - Replace `<unique-service-id>` with a clear, unique identifer for your service. Previous examples include `kafka-mgmt` and `srs-mgmt`.
     - Replace `<v1alpha>` with the major API version of your service.
     - Replace `<openai_file_download_url>` with the direct URL to the raw OpenAPI document. Example: [https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/kas-fleet-manager/main/openapi/kas-fleet-manager.yaml](https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/kas-fleet-manager/main/openapi/kas-fleet-manager.yaml)
+
+## Release process
+
+### Automatic
+
+1. Got to releases and create new tag with semver format. For example `0.4.2-alpha1`
+2. CI/CD process will update and release npm packages for you
+
+### Manual
+
+1. Execute `yarn setupRelease $VERSION`
+2. Execute npm publish --workspace=packages --dry-run
