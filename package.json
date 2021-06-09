@@ -11,5 +11,8 @@
   "workspaces": [
     "packages/*",
     "examples"
-  ]
+  ],
+  "devDependencies": {
+    "semver": "7.3.5"
+  }
 }
