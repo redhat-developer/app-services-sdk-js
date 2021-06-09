@@ -29,3 +29,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: "## JavaScript SDK Release"
+          allow_override: true
