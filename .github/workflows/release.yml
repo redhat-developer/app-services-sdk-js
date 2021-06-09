@@ -28,7 +28,7 @@ jobs:
         uses: craicoverflow/install-git-chglog@v1
       - name: Generate changelog
         run: | 
-          git-chglog -t .chglog/RELEASE.tpl.md $(git describe --tags $(git rev-parse HEAD)) -o RELEASE_NOTES.md
+          git-chglog $(git describe --tags $(git rev-list --tags --max-count=1)) -o RELEASE_NOTES.md
           echo "CHANGELOG=`cat RELEASE_NOTES.md` >> $GITHUB_ENV
       - name: Update Release Notes
         uses: meeDamian/github-release@2.0
