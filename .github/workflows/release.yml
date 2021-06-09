@@ -19,7 +19,7 @@ jobs:
     - name: Inject slug/short variables
       uses: rlespinasse/github-slug-action@v3.x
     - name: Update versions of packages
-      run: yarn setupRelease $GITHUB_REF_SLUG
+      run: yarn setupRelease 0.2.0 # temp$GITHUB_REF_SLUG
     - name: Publish packages
       run: npm publish --workspace=packages --dry-run
    
