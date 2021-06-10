@@ -40,3 +40,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: ${{ env.CHANGELOG }}
           allow_override: true
+        env: 
+          CHANGELOG: ${{ env.CHANGELOG }}
