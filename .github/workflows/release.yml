@@ -24,7 +24,7 @@ jobs:
       - name: Update versions of packages
         run: yarn setupRelease $GITHUB_REF_SLUG
       - name: Publish packages
-        run: npm publish --workspace=packages
+        run: npm publish --workspace=packages --dry-run
         env: 
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} #
       - name: Install git-chglog
@@ -34,6 +34,9 @@ jobs:
           git-chglog $(git describe --tags $(git rev-list --tags --max-count=1)) \
             -o RELEASE_NOTES.md 2> /dev/null || echo "**Prerelease**" > RELEASE_NOTES.md
           echo "CHANGELOG=`cat RELEASE_NOTES.md`" >> $GITHUB_ENV
+          ## Debug
+          echo "CHANGELOG=`cat RELEASE_NOTES.md`"
+          echo $GITHUB_ENV
       - name: Update Release Notes
         uses: meeDamian/github-release@2.0
         with:
