@@ -32,7 +32,7 @@ jobs:
       - name: Generate changelog
         run: |
           git-chglog $(git describe --tags $(git rev-list --tags --max-count=1)) \
-            -o RELEASE_NOTES.md 2> /dev/null || echo "**Prerelease**" > RELEASE_NOTES.md
+            1> RELEASE_NOTES.md 2> /dev/null || echo "**Prerelease**" > RELEASE_NOTES.md
           echo "CHANGELOG=`cat RELEASE_NOTES.md`" >> $GITHUB_ENV
           ## Debug
           echo "CHANGELOG=`cat RELEASE_NOTES.md`"
