@@ -32,7 +32,7 @@ npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
     --additional-properties="ngVersion=6.1.7,npmName=${PACKAGE_NAME},supportsES6=true,withInterfaces=true,withSeparateModelsAndApi=true,modelPackage=model,apiPackage=api " \
     --ignore-file-override=.openapi-generator-ignore
 
-OPENAPI_FILENAME=".openapi/kafka-admin-rest.yml"
+OPENAPI_FILENAME=".openapi/kafka-admin-rest.yaml"
 PACKAGE_NAME="@rhoas/kafka-instance-sdk"
 OUTPUT_PATH="packages/kafka-instance-sdk/src/generated"
 
