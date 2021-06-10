@@ -21,7 +21,7 @@ const srsControlApi = new OpenAPIBackend({
   definition: path.join(__dirname, "../openapi/srs-fleet-manager.yaml"),
 });
 const topicAPI = new OpenAPIBackend({
-  definition: path.join(__dirname, "../openapi/kafka-admin-rest.yml"),
+  definition: path.join(__dirname, "../openapi/kafka-admin-rest.yaml"),
 });
 
 const srsDataApi = new OpenAPIBackend({
