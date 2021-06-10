@@ -40,7 +40,7 @@ Each instance API uses `/data/kafka` or `/data/registry` prefixes to not conflic
 
 ```
 yarn
-yarn init-openapi
+yarn build
 yarn start # API running at http://localhost:9000
 ```
 
