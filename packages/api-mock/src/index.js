@@ -4,6 +4,8 @@ const kafkaHandlers = require("./handlers/kafka-manager");
 const srsHandlers = require("./handlers/registry-manager");
 const srsDataHandlers = require("./handlers/registry-data");
 const topicHandlers = require("./handlers/kafka-admin");
+const ams = require("./handlers/ams");
+
 const { getFullHostname, getPort } = require("./utls/host");
 
 const path = require("path");
@@ -56,6 +58,8 @@ srsControlApi.init();
 srsDataApi.init();
 
 api.use((req, res) => {
+  console.log(req.url);
+
   if (req.url.startsWith("/api/kafkas_mgmt/v1")) {
     console.info("Calling kafkas manager");
     return kafkaAPI.handleRequest(req, req, res);
@@ -77,6 +81,12 @@ api.use((req, res) => {
     req.url = req.url.replace("/data/kafka", "");
     return topicAPI.handleRequest(req, req, res);
   }
+
+  if (req.url.startsWith("/api/authorizations/v1/self_terms_review")) {
+    console.info("Calling ams");
+    return ams.termsReview(req, req, res);
+  }
+
   res.status(405).status({ err: "Method not allowed" });
 });
 

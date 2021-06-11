@@ -55,27 +55,29 @@ module.exports = {
   },
 
   deleteKafkaById: async (c, req, res) => {
-    if (!c.request.params.id || !kafkas[c.request.params.id]) {
+    const id = c.request.params.id
+    if (!id|| !kafkas[id]) {
       return res.status(400).json({
         reason: "Missing or invalid id field",
         ...commonError,
       });
     }
 
-    const kafka = Object.assign({}, kafkas[c.request.params.id]);
-    delete kafkas[c.request.params.id];
+    const kafka = Object.assign({}, kafkas[id]);
+    delete kafkas[id];
     res.status(204).json(kafka);
   },
 
   getKafkaById: async (c, req, res) => {
-    if (!c.request.params.id || !kafkas[c.request.params.id]) {
+    const id = c.request.params.id
+    if (!id || !kafkas[id]) {
       return req.body.res.status(400).json({
         reason: "Missing or invalid id field",
         ...commonError,
       });
     }
 
-    res.status(200).json(kafkas[c.request.params.id]);
+    res.status(200).json(kafkas[id]);
   },
 
   getKafkas: async (c, req, res) => {
