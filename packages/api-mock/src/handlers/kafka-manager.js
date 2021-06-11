@@ -10,7 +10,7 @@ const commonKafkaFields = {
   multi_az: false,
   owner: process.env.RESOURCE_OWNER,
   region: "us-east-1",
-  bootstrap_server_host: path.join(getFullHostname(), "/data/kafka"),
+  bootstrap_server_host: getFullHostname(),
   created_at: "2020-10-05T12:51:24.053142Z",
   updated_at: "2020-10-05T12:56:36.362208Z",
 };

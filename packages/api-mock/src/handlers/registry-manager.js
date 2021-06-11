@@ -10,7 +10,7 @@ const commonFields = {
   },
   owner: process.env.RESOURCE_OWNER,
   registryDeploymentId: 1,
-  registryUrl: path.join(getFullHostname(), "/data/service-registry"),
+  registryUrl: getFullHostname(),
   owner: "api_registry_user",
 };
 
