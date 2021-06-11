@@ -44,6 +44,7 @@ module.exports = {
         ...commonError,
       });
     }
+    
     const newId = nanoid();
     const registry = {
       id: newId,
@@ -67,13 +68,14 @@ module.exports = {
       });
     }
 
-    res.status(200).json(registries[c.request.params.id]);
+    res.status(200).json(registries[c.request.params.registryId]);
   },
 
   deleteRegistry: async (c, req, res) => {
+    const id = c.request.params.registryId;
     if (
-      !c.request.params.registryId ||
-      !registries[c.request.params.registryId]
+      !id ||
+      !registries[id]
     ) {
       return res.status(400).json({
         reason: "Missing or invalid id field",
@@ -81,8 +83,8 @@ module.exports = {
       });
     }
 
-    const registry = registries[c.request.params.id];
-    delete registries[c.request.params.id];
+    const registry = registries[id];
+    delete registries[id];
     res.status(204).json(registry);
   },
 
