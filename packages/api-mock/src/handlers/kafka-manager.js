@@ -1,7 +1,7 @@
 const nanoid = require("nanoid").nanoid;
 const path = require("path");
 const { getFullHostname } = require("../utls/host");
-var saList = require('../../_data_/serviceaccounts.json');
+var saList = require("../../_data_/serviceaccounts.json");
 
 const commonKafkaFields = {
   kind: "kafka",
@@ -24,14 +24,15 @@ const commonError = {
 };
 
 const kafkas = {
-  uFYJpM76DaIqVqqgZjtrz: {
-    id: "uFYJpM76DaIqVqqgZjtrz",
-    kind: "kafka",
-    href: "/api/kafkas_mgmt/v1/kafkas/1iSY6RQ3JKI8Q0OTmjQFd3ocFRg",
-    owner: "api_kafka_user",
-    name: "sample-kafka",
-    ...commonKafkaFields,
-  },
+  // If you want initial data uncomment those fields
+  // uFYJpM76DaIqVqqgZjtrz: {
+  //   id: "uFYJpM76DaIqVqqgZjtrz",
+  //   kind: "kafka",
+  //   href: "/api/kafkas_mgmt/v1/kafkas/1iSY6RQ3JKI8Q0OTmjQFd3ocFRg",
+  //   owner: "api_kafka_user",
+  //   name: "sample-kafka",
+  //   ...commonKafkaFields,
+  // },
 };
 
 module.exports = {
@@ -178,9 +179,7 @@ module.exports = {
   },
 
   getServiceStatus: async (c, req, res) => {
-    res.status(200).json({
-       
-    });
+    res.status(200).json({});
   },
 
   // Handling auth

@@ -23,13 +23,14 @@ const commonError = {
 };
 
 const registries = {
-  llmNteR4P7waRp5nJIReG: {
-    id: "llmNteR4P7waRp5nJIReG",
-    kind: "serviceregistry",
-    href: "/api/serviceregistry_mgmt/v1/registries/llmNteR4P7waRp5nJIReG",
-    name: "sample-registry",
-    ...commonFields,
-  },
+  // If you want initial data uncomment those fields
+  // llmNteR4P7waRp5nJIReG: {
+  //   id: "llmNteR4P7waRp5nJIReG",
+  //   kind: "serviceregistry",
+  //   href: "/api/serviceregistry_mgmt/v1/registries/llmNteR4P7waRp5nJIReG",
+  //   name: "sample-registry",
+  //   ...commonFields,
+  // },
 };
 
 module.exports = {
