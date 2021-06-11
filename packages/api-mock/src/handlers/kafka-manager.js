@@ -145,8 +145,8 @@ module.exports = {
     res.status(200).json({
       name: req.body.name,
       description: req.body.description,
-      clientID: clientId.toString(),
-      clientSecret: clientSecret.toString(),
+      client_id: clientId.toString(),
+      client_secret: clientSecret.toString(),
     });
   },
 
