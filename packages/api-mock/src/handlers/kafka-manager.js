@@ -55,8 +55,8 @@ module.exports = {
   },
 
   deleteKafkaById: async (c, req, res) => {
-    const id = c.request.params.id
-    if (!id|| !kafkas[id]) {
+    const id = c.request.params.id;
+    if (!id || !kafkas[id]) {
       return res.status(400).json({
         reason: "Missing or invalid id field",
         ...commonError,
@@ -69,9 +69,9 @@ module.exports = {
   },
 
   getKafkaById: async (c, req, res) => {
-    const id = c.request.params.id
+    const id = c.request.params.id;
     if (!id || !kafkas[id]) {
-      return req.body.res.status(400).json({
+      return res.status(400).json({
         reason: "Missing or invalid id field",
         ...commonError,
       });

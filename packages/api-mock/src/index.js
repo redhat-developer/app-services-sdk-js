@@ -41,6 +41,10 @@ kafkaAPI.registerSecurityHandler("Bearer", (c, req, res) => {
   return true;
 });
 
+topicAPI.registerSecurityHandler("Bearer", (c, req, res) => {
+  return true;
+});
+
 srsControlApi.registerSecurityHandler("Bearer", (c, req, res) => {
   return true;
 });
@@ -58,8 +62,6 @@ srsControlApi.init();
 srsDataApi.init();
 
 api.use((req, res) => {
-  console.log(req.url);
-
   if (req.url.startsWith("/api/kafkas_mgmt/v1")) {
     console.info("Calling kafkas manager");
     return kafkaAPI.handleRequest(req, req, res);
@@ -85,6 +87,13 @@ api.use((req, res) => {
   if (req.url.startsWith("/api/authorizations/v1/self_terms_review")) {
     console.info("Calling ams");
     return ams.termsReview(req, req, res);
+  }
+
+  if (req.url.startsWith("/")) {
+    console.info("Front page");
+    return res.send(
+      "<h1>RHOAS API Mock</h1> <a href='https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/api-mock'>Documentation</a>"
+    );
   }
 
   res.status(405).status({ err: "Method not allowed" });

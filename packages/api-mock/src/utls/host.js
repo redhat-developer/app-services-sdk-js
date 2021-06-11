@@ -4,7 +4,7 @@ function getPort() {
 
 function getFullHostname() {
   const port = getPort();
-  const host = process.env.CUSTOM_HOST || "http://localhost";
+  const host = process.env.CUSTOM_HOST || "localhost";
 
   return `${host}:${port}`;
 }
