@@ -10,8 +10,7 @@ const commonFields = {
   },
   owner: process.env.RESOURCE_OWNER,
   registryDeploymentId: 1,
-  registryUrl: getFullHostname(),
-  owner: "api_registry_user",
+  registryUrl: getFullHostname()
 };
 
 const commonError = {
@@ -26,7 +25,6 @@ const registries = {
   // If you want initial data uncomment those fields
   // llmNteR4P7waRp5nJIReG: {
   //   id: "llmNteR4P7waRp5nJIReG",
-  //   kind: "serviceregistry",
   //   href: "/api/serviceregistry_mgmt/v1/registries/llmNteR4P7waRp5nJIReG",
   //   name: "sample-registry",
   //   ...commonFields,
