@@ -1,4 +1,4 @@
-import { Configuration, DefaultApi } from "../../packages/registry-management-sdk/dist";
+import { Configuration, RegistriesApi } from "../../packages/registry-management-sdk/dist";
 
 const accessToken = process.env.CLOUD_API_TOKEN;
 const basePath = "https://api.openshift.com";
@@ -8,7 +8,7 @@ const apiConfig = new Configuration({
     basePath
 })
 
-const registryApi = new DefaultApi(apiConfig)
+const registryApi = new RegistriesApi(apiConfig)
 
 registryApi.getRegistries().then((data) => {
     console.log(data?.data)
