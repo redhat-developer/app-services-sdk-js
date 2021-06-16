@@ -4,13 +4,12 @@ const path = require("path");
 
 const commonFields = {
   kind: "serviceregistry",
-  status: {
-    status: "ready",
-    lastUpdated: "2021-05-04T12:34:56Z",
-  },
+  status: "ready",
   owner: process.env.RESOURCE_OWNER,
   registryDeploymentId: 1,
-  registryUrl: getFullHostname()
+  registryUrl: getFullHostname(),
+  created_at: "2020-10-05T12:51:24.053142Z",
+  updated_at: "2020-10-05T12:56:36.362208Z"
 };
 
 const commonError = {
@@ -33,7 +32,13 @@ const registries = {
 
 module.exports = {
   getRegistries: async (c, req, res) => {
-    res.status(200).json(Object.values(registries));
+    res.status(200).json({
+      kind: "RegistryRestList",
+      page: 1,
+      size: 50,
+      total: registries.length,
+      items: Object.values(registries),
+    });
   },
 
   createRegistry: async (c, req, res) => {
@@ -52,7 +57,6 @@ module.exports = {
       ...commonFields,
     };
     registries[newId] = registry;
-    console.log(JSON.stringify(registries, undefined, 2));
     res.status(200).json(registries);
   },
 
