@@ -34,7 +34,7 @@ asapi
 ### Instances API mapping pattern
 
 Mock provides instances (data) API mock as well as the control planes.
-Each instance API uses `/data/kafka` or `/data/registry` prefixes to not conflict with other apis.
+Each instance API uses `/data/kafka` or `/data/service-registry` prefixes to not conflict with other apis.
 
 ## Local development
 
