@@ -13,15 +13,19 @@
  */
 
 
-import { ObjectReference } from './object-reference';
-import { RegistryStatusValue } from './registry-status-value';
-import { RootTypeForRegistry } from './root-type-for-registry';
 
 /**
- * @type Registry
+ * 
  * @export
+ * @interface ErrorListAllOf
  */
-export type Registry = ObjectReference & RootTypeForRegistry;
-
+export interface ErrorListAllOf {
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof ErrorListAllOf
+     */
+    items?: Array<Error>;
+}
 
 

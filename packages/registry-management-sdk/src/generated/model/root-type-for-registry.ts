@@ -13,15 +13,44 @@
  */
 
 
-import { ObjectReference } from './object-reference';
 import { RegistryStatusValue } from './registry-status-value';
-import { RootTypeForRegistry } from './root-type-for-registry';
 
 /**
- * @type Registry
+ * Service Registry instance within a multi-tenant deployment.
  * @export
+ * @interface RootTypeForRegistry
  */
-export type Registry = ObjectReference & RootTypeForRegistry;
-
+export interface RootTypeForRegistry {
+    /**
+     * 
+     * @type {number}
+     * @memberof RootTypeForRegistry
+     */
+    id: number;
+    /**
+     * 
+     * @type {RegistryStatusValue}
+     * @memberof RootTypeForRegistry
+     */
+    status: RegistryStatusValue;
+    /**
+     * 
+     * @type {string}
+     * @memberof RootTypeForRegistry
+     */
+    registryUrl: string;
+    /**
+     * User-defined Registry name. Does not have to be unique.
+     * @type {string}
+     * @memberof RootTypeForRegistry
+     */
+    name?: string;
+    /**
+     * Identifier of a multi-tenant deployment, where this Service Registry instance resides.
+     * @type {number}
+     * @memberof RootTypeForRegistry
+     */
+    registryDeploymentId?: number;
+}
 
 

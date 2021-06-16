@@ -13,15 +13,31 @@
  */
 
 
-import { ObjectReference } from './object-reference';
-import { RegistryStatusValue } from './registry-status-value';
-import { RootTypeForRegistry } from './root-type-for-registry';
 
 /**
- * @type Registry
+ * 
  * @export
+ * @interface ObjectReference
  */
-export type Registry = ObjectReference & RootTypeForRegistry;
-
+export interface ObjectReference {
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectReference
+     */
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectReference
+     */
+    kind?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectReference
+     */
+    href?: string;
+}
 
 
