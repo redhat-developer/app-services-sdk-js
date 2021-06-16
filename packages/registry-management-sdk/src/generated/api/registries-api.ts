@@ -75,11 +75,11 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
         /**
          * Deletes an existing `Registry`.
          * @summary Delete a Registry
-         * @param {number} id A unique identifier for a &#x60;Registry&#x60;.
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteRegistry: async (id: number, options: any = {}): Promise<RequestArgs> => {
+        deleteRegistry: async (id: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteRegistry', 'id', id)
             const localVarPath = `/api/serviceregistry_mgmt/v1/{id}`
@@ -167,11 +167,11 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
         /**
          * Gets the details of a single instance of a `Registry`.
          * @summary Get a Registry
-         * @param {number} id A unique identifier for a &#x60;Registry&#x60;.
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRegistry: async (id: number, options: any = {}): Promise<RequestArgs> => {
+        getRegistry: async (id: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getRegistry', 'id', id)
             const localVarPath = `/api/serviceregistry_mgmt/v1/{id}`
@@ -226,11 +226,11 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
         /**
          * Deletes an existing `Registry`.
          * @summary Delete a Registry
-         * @param {number} id A unique identifier for a &#x60;Registry&#x60;.
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteRegistry(id: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteRegistry(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteRegistry(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -251,11 +251,11 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
         /**
          * Gets the details of a single instance of a `Registry`.
          * @summary Get a Registry
-         * @param {number} id A unique identifier for a &#x60;Registry&#x60;.
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRegistry(id: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Registry>> {
+        async getRegistry(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Registry>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRegistry(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -282,11 +282,11 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
         /**
          * Deletes an existing `Registry`.
          * @summary Delete a Registry
-         * @param {number} id A unique identifier for a &#x60;Registry&#x60;.
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteRegistry(id: number, options?: any): AxiosPromise<void> {
+        deleteRegistry(id: string, options?: any): AxiosPromise<void> {
             return localVarFp.deleteRegistry(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -305,11 +305,11 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
         /**
          * Gets the details of a single instance of a `Registry`.
          * @summary Get a Registry
-         * @param {number} id A unique identifier for a &#x60;Registry&#x60;.
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRegistry(id: number, options?: any): AxiosPromise<Registry> {
+        getRegistry(id: string, options?: any): AxiosPromise<Registry> {
             return localVarFp.getRegistry(id, options).then((request) => request(axios, basePath));
         },
     };
@@ -334,12 +334,12 @@ export interface RegistriesApiInterface {
     /**
      * Deletes an existing `Registry`.
      * @summary Delete a Registry
-     * @param {number} id A unique identifier for a &#x60;Registry&#x60;.
+     * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
      */
-    deleteRegistry(id: number, options?: any): AxiosPromise<void>;
+    deleteRegistry(id: string, options?: any): AxiosPromise<void>;
 
     /**
      * 
@@ -357,12 +357,12 @@ export interface RegistriesApiInterface {
     /**
      * Gets the details of a single instance of a `Registry`.
      * @summary Get a Registry
-     * @param {number} id A unique identifier for a &#x60;Registry&#x60;.
+     * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
      */
-    getRegistry(id: number, options?: any): AxiosPromise<Registry>;
+    getRegistry(id: string, options?: any): AxiosPromise<Registry>;
 
 }
 
@@ -388,12 +388,12 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
     /**
      * Deletes an existing `Registry`.
      * @summary Delete a Registry
-     * @param {number} id A unique identifier for a &#x60;Registry&#x60;.
+     * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApi
      */
-    public deleteRegistry(id: number, options?: any) {
+    public deleteRegistry(id: string, options?: any) {
         return RegistriesApiFp(this.configuration).deleteRegistry(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -415,12 +415,12 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
     /**
      * Gets the details of a single instance of a `Registry`.
      * @summary Get a Registry
-     * @param {number} id A unique identifier for a &#x60;Registry&#x60;.
+     * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApi
      */
-    public getRegistry(id: number, options?: any) {
+    public getRegistry(id: string, options?: any) {
         return RegistriesApiFp(this.configuration).getRegistry(id, options).then((request) => request(this.axios, this.basePath));
     }
 }
