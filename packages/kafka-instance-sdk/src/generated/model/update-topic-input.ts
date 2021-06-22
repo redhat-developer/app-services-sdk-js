@@ -22,11 +22,17 @@ import { ConfigEntry } from './config-entry';
  */
 export interface UpdateTopicInput {
     /**
-     * Topic configuration entry.
+     * Topic configuration entries.
      * @type {Array<ConfigEntry>}
      * @memberof UpdateTopicInput
      */
     config?: Array<ConfigEntry>;
+    /**
+     * Number of partitions (only increasing supported)
+     * @type {number}
+     * @memberof UpdateTopicInput
+     */
+    partitions?: number;
 }
 
 

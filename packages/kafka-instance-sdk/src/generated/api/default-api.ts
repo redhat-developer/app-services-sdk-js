@@ -25,6 +25,8 @@ import { ConsumerGroup } from '../model';
 // @ts-ignore
 import { ConsumerGroupList } from '../model';
 // @ts-ignore
+import { ConsumerGroupResetOffsetParameters } from '../model';
+// @ts-ignore
 import { NewTopicInput } from '../model';
 // @ts-ignore
 import { Topic } from '../model';
@@ -200,14 +202,18 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Returns a list of all consumer groups for a particular Kafka instance.
          * @summary List of consumer groups in the Kafka instance.
-         * @param {number} [limit] Maximum number of consumer groups to returnd
-         * @param {number} [offset] The page offset when returning the list of consumer groups
+         * @param {number} [offset] The page offset
+         * @param {number} [limit] Maximum number of consumer groups to return
+         * @param {number} [size] Maximum number of consumer groups to return on single page
+         * @param {number} [page] The page when returning the list of consumer groups
          * @param {string} [topic] Return consumer groups for this topic
          * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
+         * @param {'asc' | 'desc'} [order] Order of the consumer groups sorting. Ascending order is used as default.
+         * @param {'name'} [orderKey] Order key to sort the items by. Only the value \&#39;name\&#39; is currently applicable.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConsumerGroups: async (limit?: number, offset?: number, topic?: string, groupIdFilter?: string, options: any = {}): Promise<RequestArgs> => {
+        getConsumerGroups: async (offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/consumer-groups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -224,12 +230,20 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "Bearer", [], configuration)
 
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
             }
 
-            if (offset !== undefined) {
-                localVarQueryParameter['offset'] = offset;
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (topic !== undefined) {
@@ -238,6 +252,14 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (groupIdFilter !== undefined) {
                 localVarQueryParameter['group-id-filter'] = groupIdFilter;
+            }
+
+            if (order !== undefined) {
+                localVarQueryParameter['order'] = order;
+            }
+
+            if (orderKey !== undefined) {
+                localVarQueryParameter['orderKey'] = orderKey;
             }
 
 
@@ -292,14 +314,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Returns a list of all of the available topics, or the list of topics that meet the users URL Query Parameters.
          * @summary List of topics
+         * @param {number} [offset] The page offset
          * @param {number} [limit] Maximum number of topics to return
+         * @param {number} [size] Maximum number of topics to return on single page
          * @param {string} [filter] Filter to apply when returning the list of topics
-         * @param {number} [offset] The page offset when returning the limit of requested topics.
-         * @param {string} [order] Order of the items sorting. If \&quot;asc\&quot; is set as a value, ascending order is used, descending otherwise.
+         * @param {number} [page] The page when returning the limit of requested topics.
+         * @param {'asc' | 'desc'} [order] Order of the items sorting. Ascending order is used as default.
+         * @param {'name' | 'partitions' | 'retention.ms' | 'retention.bytes'} [orderKey] Order key to sort the topics by.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTopics: async (limit?: number, filter?: string, offset?: number, order?: string, options: any = {}): Promise<RequestArgs> => {
+        getTopics: async (offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/topics`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -316,20 +341,32 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "Bearer", [], configuration)
 
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
             if (limit !== undefined) {
                 localVarQueryParameter['limit'] = limit;
+            }
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
             }
 
             if (filter !== undefined) {
                 localVarQueryParameter['filter'] = filter;
             }
 
-            if (offset !== undefined) {
-                localVarQueryParameter['offset'] = offset;
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
             }
 
             if (order !== undefined) {
                 localVarQueryParameter['order'] = order;
+            }
+
+            if (orderKey !== undefined) {
+                localVarQueryParameter['orderKey'] = orderKey;
             }
 
 
@@ -337,6 +374,50 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Reset the offset for a particular consumer group.
+         * @summary Reset the offset for a consumer group.
+         * @param {string} consumerGroupId The ID of the consumer group.
+         * @param {ConsumerGroupResetOffsetParameters} consumerGroupResetOffsetParameters 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        resetConsumerGroupOffset: async (consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'consumerGroupId' is not null or undefined
+            assertParamExists('resetConsumerGroupOffset', 'consumerGroupId', consumerGroupId)
+            // verify required parameter 'consumerGroupResetOffsetParameters' is not null or undefined
+            assertParamExists('resetConsumerGroupOffset', 'consumerGroupResetOffsetParameters', consumerGroupResetOffsetParameters)
+            const localVarPath = `/consumer-groups/{consumerGroupId}/reset-offset`
+                .replace(`{${"consumerGroupId"}}`, encodeURIComponent(String(consumerGroupId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "Bearer", [], configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(consumerGroupResetOffsetParameters, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -445,15 +526,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * Returns a list of all consumer groups for a particular Kafka instance.
          * @summary List of consumer groups in the Kafka instance.
-         * @param {number} [limit] Maximum number of consumer groups to returnd
-         * @param {number} [offset] The page offset when returning the list of consumer groups
+         * @param {number} [offset] The page offset
+         * @param {number} [limit] Maximum number of consumer groups to return
+         * @param {number} [size] Maximum number of consumer groups to return on single page
+         * @param {number} [page] The page when returning the list of consumer groups
          * @param {string} [topic] Return consumer groups for this topic
          * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
+         * @param {'asc' | 'desc'} [order] Order of the consumer groups sorting. Ascending order is used as default.
+         * @param {'name'} [orderKey] Order key to sort the items by. Only the value \&#39;name\&#39; is currently applicable.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getConsumerGroups(limit?: number, offset?: number, topic?: string, groupIdFilter?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroupList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getConsumerGroups(limit, offset, topic, groupIdFilter, options);
+        async getConsumerGroups(offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroupList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getConsumerGroups(offset, limit, size, page, topic, groupIdFilter, order, orderKey, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -470,15 +555,30 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * Returns a list of all of the available topics, or the list of topics that meet the users URL Query Parameters.
          * @summary List of topics
+         * @param {number} [offset] The page offset
          * @param {number} [limit] Maximum number of topics to return
+         * @param {number} [size] Maximum number of topics to return on single page
          * @param {string} [filter] Filter to apply when returning the list of topics
-         * @param {number} [offset] The page offset when returning the limit of requested topics.
-         * @param {string} [order] Order of the items sorting. If \&quot;asc\&quot; is set as a value, ascending order is used, descending otherwise.
+         * @param {number} [page] The page when returning the limit of requested topics.
+         * @param {'asc' | 'desc'} [order] Order of the items sorting. Ascending order is used as default.
+         * @param {'name' | 'partitions' | 'retention.ms' | 'retention.bytes'} [orderKey] Order key to sort the topics by.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTopics(limit?: number, filter?: string, offset?: number, order?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TopicsList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopics(limit, filter, offset, order, options);
+        async getTopics(offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TopicsList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTopics(offset, limit, size, filter, page, order, orderKey, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Reset the offset for a particular consumer group.
+         * @summary Reset the offset for a consumer group.
+         * @param {string} consumerGroupId The ID of the consumer group.
+         * @param {ConsumerGroupResetOffsetParameters} consumerGroupResetOffsetParameters 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Array<object>>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.resetConsumerGroupOffset(consumerGroupId, consumerGroupResetOffsetParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -547,15 +647,19 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * Returns a list of all consumer groups for a particular Kafka instance.
          * @summary List of consumer groups in the Kafka instance.
-         * @param {number} [limit] Maximum number of consumer groups to returnd
-         * @param {number} [offset] The page offset when returning the list of consumer groups
+         * @param {number} [offset] The page offset
+         * @param {number} [limit] Maximum number of consumer groups to return
+         * @param {number} [size] Maximum number of consumer groups to return on single page
+         * @param {number} [page] The page when returning the list of consumer groups
          * @param {string} [topic] Return consumer groups for this topic
          * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
+         * @param {'asc' | 'desc'} [order] Order of the consumer groups sorting. Ascending order is used as default.
+         * @param {'name'} [orderKey] Order key to sort the items by. Only the value \&#39;name\&#39; is currently applicable.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConsumerGroups(limit?: number, offset?: number, topic?: string, groupIdFilter?: string, options?: any): AxiosPromise<ConsumerGroupList> {
-            return localVarFp.getConsumerGroups(limit, offset, topic, groupIdFilter, options).then((request) => request(axios, basePath));
+        getConsumerGroups(offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options?: any): AxiosPromise<ConsumerGroupList> {
+            return localVarFp.getConsumerGroups(offset, limit, size, page, topic, groupIdFilter, order, orderKey, options).then((request) => request(axios, basePath));
         },
         /**
          * Topic
@@ -570,15 +674,29 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * Returns a list of all of the available topics, or the list of topics that meet the users URL Query Parameters.
          * @summary List of topics
+         * @param {number} [offset] The page offset
          * @param {number} [limit] Maximum number of topics to return
+         * @param {number} [size] Maximum number of topics to return on single page
          * @param {string} [filter] Filter to apply when returning the list of topics
-         * @param {number} [offset] The page offset when returning the limit of requested topics.
-         * @param {string} [order] Order of the items sorting. If \&quot;asc\&quot; is set as a value, ascending order is used, descending otherwise.
+         * @param {number} [page] The page when returning the limit of requested topics.
+         * @param {'asc' | 'desc'} [order] Order of the items sorting. Ascending order is used as default.
+         * @param {'name' | 'partitions' | 'retention.ms' | 'retention.bytes'} [orderKey] Order key to sort the topics by.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTopics(limit?: number, filter?: string, offset?: number, order?: string, options?: any): AxiosPromise<TopicsList> {
-            return localVarFp.getTopics(limit, filter, offset, order, options).then((request) => request(axios, basePath));
+        getTopics(offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options?: any): AxiosPromise<TopicsList> {
+            return localVarFp.getTopics(offset, limit, size, filter, page, order, orderKey, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Reset the offset for a particular consumer group.
+         * @summary Reset the offset for a consumer group.
+         * @param {string} consumerGroupId The ID of the consumer group.
+         * @param {ConsumerGroupResetOffsetParameters} consumerGroupResetOffsetParameters 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): AxiosPromise<Array<Array<object>>> {
+            return localVarFp.resetConsumerGroupOffset(consumerGroupId, consumerGroupResetOffsetParameters, options).then((request) => request(axios, basePath));
         },
         /**
          * updates the topic with the new data.
@@ -644,15 +762,19 @@ export interface DefaultApiInterface {
     /**
      * Returns a list of all consumer groups for a particular Kafka instance.
      * @summary List of consumer groups in the Kafka instance.
-     * @param {number} [limit] Maximum number of consumer groups to returnd
-     * @param {number} [offset] The page offset when returning the list of consumer groups
+     * @param {number} [offset] The page offset
+     * @param {number} [limit] Maximum number of consumer groups to return
+     * @param {number} [size] Maximum number of consumer groups to return on single page
+     * @param {number} [page] The page when returning the list of consumer groups
      * @param {string} [topic] Return consumer groups for this topic
      * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
+     * @param {'asc' | 'desc'} [order] Order of the consumer groups sorting. Ascending order is used as default.
+     * @param {'name'} [orderKey] Order key to sort the items by. Only the value \&#39;name\&#39; is currently applicable.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getConsumerGroups(limit?: number, offset?: number, topic?: string, groupIdFilter?: string, options?: any): AxiosPromise<ConsumerGroupList>;
+    getConsumerGroups(offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options?: any): AxiosPromise<ConsumerGroupList>;
 
     /**
      * Topic
@@ -667,15 +789,29 @@ export interface DefaultApiInterface {
     /**
      * Returns a list of all of the available topics, or the list of topics that meet the users URL Query Parameters.
      * @summary List of topics
+     * @param {number} [offset] The page offset
      * @param {number} [limit] Maximum number of topics to return
+     * @param {number} [size] Maximum number of topics to return on single page
      * @param {string} [filter] Filter to apply when returning the list of topics
-     * @param {number} [offset] The page offset when returning the limit of requested topics.
-     * @param {string} [order] Order of the items sorting. If \&quot;asc\&quot; is set as a value, ascending order is used, descending otherwise.
+     * @param {number} [page] The page when returning the limit of requested topics.
+     * @param {'asc' | 'desc'} [order] Order of the items sorting. Ascending order is used as default.
+     * @param {'name' | 'partitions' | 'retention.ms' | 'retention.bytes'} [orderKey] Order key to sort the topics by.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getTopics(limit?: number, filter?: string, offset?: number, order?: string, options?: any): AxiosPromise<TopicsList>;
+    getTopics(offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options?: any): AxiosPromise<TopicsList>;
+
+    /**
+     * Reset the offset for a particular consumer group.
+     * @summary Reset the offset for a consumer group.
+     * @param {string} consumerGroupId The ID of the consumer group.
+     * @param {ConsumerGroupResetOffsetParameters} consumerGroupResetOffsetParameters 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): AxiosPromise<Array<Array<object>>>;
 
     /**
      * updates the topic with the new data.
@@ -749,16 +885,20 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
     /**
      * Returns a list of all consumer groups for a particular Kafka instance.
      * @summary List of consumer groups in the Kafka instance.
-     * @param {number} [limit] Maximum number of consumer groups to returnd
-     * @param {number} [offset] The page offset when returning the list of consumer groups
+     * @param {number} [offset] The page offset
+     * @param {number} [limit] Maximum number of consumer groups to return
+     * @param {number} [size] Maximum number of consumer groups to return on single page
+     * @param {number} [page] The page when returning the list of consumer groups
      * @param {string} [topic] Return consumer groups for this topic
      * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
+     * @param {'asc' | 'desc'} [order] Order of the consumer groups sorting. Ascending order is used as default.
+     * @param {'name'} [orderKey] Order key to sort the items by. Only the value \&#39;name\&#39; is currently applicable.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getConsumerGroups(limit?: number, offset?: number, topic?: string, groupIdFilter?: string, options?: any) {
-        return DefaultApiFp(this.configuration).getConsumerGroups(limit, offset, topic, groupIdFilter, options).then((request) => request(this.axios, this.basePath));
+    public getConsumerGroups(offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options?: any) {
+        return DefaultApiFp(this.configuration).getConsumerGroups(offset, limit, size, page, topic, groupIdFilter, order, orderKey, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -776,16 +916,32 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
     /**
      * Returns a list of all of the available topics, or the list of topics that meet the users URL Query Parameters.
      * @summary List of topics
+     * @param {number} [offset] The page offset
      * @param {number} [limit] Maximum number of topics to return
+     * @param {number} [size] Maximum number of topics to return on single page
      * @param {string} [filter] Filter to apply when returning the list of topics
-     * @param {number} [offset] The page offset when returning the limit of requested topics.
-     * @param {string} [order] Order of the items sorting. If \&quot;asc\&quot; is set as a value, ascending order is used, descending otherwise.
+     * @param {number} [page] The page when returning the limit of requested topics.
+     * @param {'asc' | 'desc'} [order] Order of the items sorting. Ascending order is used as default.
+     * @param {'name' | 'partitions' | 'retention.ms' | 'retention.bytes'} [orderKey] Order key to sort the topics by.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getTopics(limit?: number, filter?: string, offset?: number, order?: string, options?: any) {
-        return DefaultApiFp(this.configuration).getTopics(limit, filter, offset, order, options).then((request) => request(this.axios, this.basePath));
+    public getTopics(offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options?: any) {
+        return DefaultApiFp(this.configuration).getTopics(offset, limit, size, filter, page, order, orderKey, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Reset the offset for a particular consumer group.
+     * @summary Reset the offset for a consumer group.
+     * @param {string} consumerGroupId The ID of the consumer group.
+     * @param {ConsumerGroupResetOffsetParameters} consumerGroupResetOffsetParameters 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any) {
+        return DefaultApiFp(this.configuration).resetConsumerGroupOffset(consumerGroupId, consumerGroupResetOffsetParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -22,29 +22,41 @@ import { Topic } from './topic';
  */
 export interface TopicsList {
     /**
-     * The page offset
+     * The page
      * @type {number}
      * @memberof TopicsList
      */
-    offset: number;
+    page?: number;
     /**
      * number of entries per page
      * @type {number}
      * @memberof TopicsList
      */
-    limit: number;
+    size?: number;
+    /**
+     * Deprecated offset of the topic list
+     * @type {number}
+     * @memberof TopicsList
+     */
+    offset?: number;
+    /**
+     * Deprecated maximum of returned topics
+     * @type {number}
+     * @memberof TopicsList
+     */
+    limit?: number;
     /**
      * Total number of topics
      * @type {number}
      * @memberof TopicsList
      */
-    count: number;
+    total?: number;
     /**
      * List of topics
      * @type {Array<Topic>}
      * @memberof TopicsList
      */
-    items: Array<Topic>;
+    items?: Array<Topic>;
 }
 
 
