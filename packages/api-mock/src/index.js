@@ -1,3 +1,8 @@
+// env setup
+if (!process.env.CUSTOM_OWNER) {
+  process.env.CUSTOM_OWNER = "Missing RESOURCE_OWNER";
+}
+
 const OpenAPIBackend = require("openapi-backend").default;
 const express = require("express");
 const kafkaHandlers = require("./handlers/kafka-manager");
@@ -99,9 +104,6 @@ api.use((req, res) => {
   res.status(405).status({ err: "Method not allowed" });
 });
 
-if (!process.env.CUSTOM_OWNER) {
-  process.env.CUSTOM_OWNER = "Missing RESOURCE_OWNER";
-}
 
 console.log(
   `All resources will be created as ${process.env.CUSTOM_OWNER} user`
