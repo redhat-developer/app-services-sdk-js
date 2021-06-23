@@ -23,10 +23,10 @@ import { RegistryStatusValue } from './registry-status-value';
 export interface RootTypeForRegistry {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof RootTypeForRegistry
      */
-    id: number;
+    id: string;
     /**
      * 
      * @type {RegistryStatusValue}

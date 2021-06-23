@@ -26,6 +26,7 @@ You can view all SDK packages directly in [npm](https://www.npmjs.com/search?q=k
 | Name             | Package name                       | Status | Version           | NPM                | Docs               |
 | ---------------- | :--------------------------------- | :----- | ----------------- | ------------------ | ------------------ |
 | kafka            | **@rhoas/kafka-management-sdk**    | beta   | ![kafkashield]    | [npm][kafkanpm]    | [doc][kafkagit]    |
+| connector            | **@rhoas/connector-management-sdk**    | alpha   | ![connectorshield]    | [npm][connectornpm]    | [doc][connectorgit]    |
 | service registry | **@rhoas/registry-management-sdk** | alpha  | ![registryshield] | [npm][registrynpm] | [doc][registrygit] |
 | service accounts | **@rhoas/kafka-management-sdk**    | alpha  | ![kafkashield]    | [npm][kafkanpm]    | [doc][kafkagit]    |
 
@@ -86,3 +87,6 @@ asapi
 [registrygit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/registry-management-sdk 
 [registrynpm]: https://www.npmjs.com/package/@rhoas/registry-management-sdk
 [registryshield]: https://img.shields.io/npm/v/@rhoas/registry-management-sdk
+[connectorgit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/connector-management-sdk 
+[connectornpm]: https://www.npmjs.com/package/@rhoas/connector-management-sdk
+[connectorshield]: https://img.shields.io/npm/v/@rhoas/connector-management-sdk
