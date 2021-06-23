@@ -1,11 +1,17 @@
+const yargs = require('yargs/yargs')
+const { hideBin } = require('yargs/helpers')
+const argv = yargs(hideBin(process.argv)).boolean('pre-seed').argv
+
 // env setup
 if (!process.env.CUSTOM_OWNER) {
   process.env.CUSTOM_OWNER = "Missing RESOURCE_OWNER";
 }
 
+const preSeed = argv.preSeed
+
 const OpenAPIBackend = require("openapi-backend").default;
 const express = require("express");
-const kafkaHandlers = require("./handlers/kafka-manager");
+const createKafkaHandlers = require("./handlers/kafka-manager");
 const srsHandlers = require("./handlers/registry-manager");
 const srsDataHandlers = require("./handlers/registry-data");
 const topicHandlers = require("./handlers/kafka-admin");
@@ -36,7 +42,7 @@ const srsDataApi = new OpenAPIBackend({
 });
 
 // register handlers
-kafkaAPI.register(kafkaHandlers);
+kafkaAPI.register(createKafkaHandlers(preSeed));
 topicAPI.register(topicHandlers);
 srsControlApi.register(srsHandlers);
 srsDataApi.register(srsDataHandlers);
