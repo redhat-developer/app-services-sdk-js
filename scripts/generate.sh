@@ -1,28 +1,6 @@
 #!/usr/bin/env bash
 ## OPENAPI_FILENAME=yourapi generate_js.sh 
 
-npx @openapitools/openapi-generator-cli version-manager set 5.1.1
-echo "Generating SDKs"
-additional_properties="ngVersion=6.1.7,npmName=${PACKAGE_NAME},supportsES6=true,withInterfaces=true,withSeparateModelsAndApi=true,modelPackage=model,apiPackage=api"
-
-OPENAPI_FILENAME=".openapi/kas-fleet-manager.yaml"
-PACKAGE_NAME="@rhoas/kafka-management-sdk"
-OUTPUT_PATH="packages/kafka-management-sdk/src/generated"
-
-generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
-
-OPENAPI_FILENAME=".openapi/srs-fleet-manager.json"
-PACKAGE_NAME="@rhoas/registry-management-sdk"
-OUTPUT_PATH="packages/registry-management-sdk/src/generated"
-
-generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
-
-OPENAPI_FILENAME=".openapi/kafka-admin-rest.yaml"
-PACKAGE_NAME="@rhoas/kafka-instance-sdk"
-OUTPUT_PATH="packages/kafka-instance-sdk/src/generated"
-
-generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
-
 # generate an API client for a service
 generate_sdk() {
     local file_name=$1
@@ -40,3 +18,31 @@ generate_sdk() {
     --additional-properties=$additional_properties \
     --ignore-file-override=.openapi-generator-ignore
 }
+
+npx @openapitools/openapi-generator-cli version-manager set 5.1.1
+echo "Generating SDKs"
+additional_properties="ngVersion=6.1.7,npmName=${PACKAGE_NAME},supportsES6=true,withInterfaces=true,withSeparateModelsAndApi=true,modelPackage=model,apiPackage=api"
+
+# OPENAPI_FILENAME=".openapi/kas-fleet-manager.yaml"
+# PACKAGE_NAME="@rhoas/kafka-management-sdk"
+# OUTPUT_PATH="packages/kafka-management-sdk/src/generated"
+
+# generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+
+# OPENAPI_FILENAME=".openapi/srs-fleet-manager.json"
+# PACKAGE_NAME="@rhoas/registry-management-sdk"
+# OUTPUT_PATH="packages/registry-management-sdk/src/generated"
+
+# generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+
+OPENAPI_FILENAME=".openapi/connector_mgmt.yaml"
+PACKAGE_NAME="@rhoas/connector-management-sdk"
+OUTPUT_PATH="packages/connector-management-sdk/src/generated"
+
+generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+
+# OPENAPI_FILENAME=".openapi/kafka-admin-rest.yaml"
+# PACKAGE_NAME="@rhoas/kafka-instance-sdk"
+# OUTPUT_PATH="packages/kafka-instance-sdk/src/generated"
+
+# generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
