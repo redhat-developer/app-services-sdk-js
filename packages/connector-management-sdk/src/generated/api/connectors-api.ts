@@ -88,7 +88,7 @@ export const ConnectorsApiAxiosParamCreator = function (configuration?: Configur
         deleteConnector: async (id: string, kafkaId?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteConnector', 'id', id)
-            const localVarPath = `/api/connector_mgmt/v1/kafkas_connectors/{id}`
+            const localVarPath = `/api/connector_mgmt/v1/kafka_connectors/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -131,7 +131,7 @@ export const ConnectorsApiAxiosParamCreator = function (configuration?: Configur
         getConnector: async (id: string, kafkaId?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getConnector', 'id', id)
-            const localVarPath = `/api/connector_mgmt/v1/kafkas_connectors/{id}`
+            const localVarPath = `/api/connector_mgmt/v1/kafka_connectors/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -226,7 +226,7 @@ export const ConnectorsApiAxiosParamCreator = function (configuration?: Configur
             assertParamExists('patchConnector', 'id', id)
             // verify required parameter 'body' is not null or undefined
             assertParamExists('patchConnector', 'body', body)
-            const localVarPath = `/api/connector_mgmt/v1/kafkas_connectors/{id}`
+            const localVarPath = `/api/connector_mgmt/v1/kafka_connectors/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
