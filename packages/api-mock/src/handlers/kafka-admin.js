@@ -52,17 +52,43 @@ module.exports = {
   },
   resetConsumerGroupOffset: async (c, req, res) => {
     const id = c.request.params.consumerGroupId;
+    const payload = c.request.body;
+
+    if (!payload || !payload.length && !payload.offset || !payload.value) {
+      return res.status(400).json({ error_message: 'missing request body' })
+    }
 
     const group = getConsumerGroup(id);
     if (!group) {
       return res.status(404).json({ error_message: 'not found' });
     }
+
+    let offset = 0, lag = 0;
+    switch (payload.offset) {
+      case 'earliest':
+        lag = 10;
+        break;
+      case 'latest':
+        offset = 10;
+        break;
+      case 'absolute':
+        offset = parseInt(payload.value)
+        lag = 10 - offset;
+        break;
+      case 'timestamp':
+        offset = 5;
+        lag = 5;
+        break;
+      default:
+        return res.status(400).json({ error_message: 'invalid offset value' })
+    }
+
     if (group.consumers && group.consumers.length) {
       for (let i = 0; i < group.consumers.length; i++) {
         group.consumers[i] = {
           ...group.consumers[i],
-          offset: 0,
-          lag: 0,
+          offset,
+          lag,
           logEndOffset: 0,
         };
       }
