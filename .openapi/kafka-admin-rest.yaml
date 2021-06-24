@@ -631,10 +631,12 @@ components:
           description: number of entries per page
           type: integer
         offset:
-          description: Deprecated offset of the topic list
+          description: Offset of the topic list
+          deprecated: true
           type: integer
         limit:
-          description: Deprecated maximum of returned topics
+          description: Maximum of returned topics
+          deprecated: true
           type: integer
         total:
           description: Total number of topics
@@ -826,10 +828,12 @@ components:
           description: The page
           type: integer
         offset:
-          description: Deprecated offset of the topic list
+          description: Offset of the topic list
+          deprecated: true
           type: integer
         limit:
-          description: Deprecated maximum of returned topics
+          description: Maximum of returned topics
+          deprecated: true
           type: integer
       example:
         count: 1
