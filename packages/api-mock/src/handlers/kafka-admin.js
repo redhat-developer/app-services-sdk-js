@@ -112,6 +112,27 @@ module.exports = {
       count = topicList.length;
     }
 
+    let order = req.query.order || 'asc';
+
+    let orderKey = req.query.orderKey;
+
+    switch (orderKey) {
+      case 'name':
+        order === 'asc' ? topics.sort(compareName) : topics.sort((a, b) => compareName(b, a));
+        break;
+      case 'partitions':
+        order === 'asc' ? topics.sort(comparePartitions) : topics.sort((a, b) => comparePartitions(b, a));
+        break;
+      case 'retention.ms':
+        order === 'asc' ? topics.sort(compareRetentionMS) : topics.sort((a, b) => compareRetentionMS(b, a));
+        break;
+      case 'retention.bytes':
+        order === 'asc' ? topics.sort(compareRetentionSize) : topics.sort((a, b) => compareRetentionSize(b, a));
+        break;
+      default:
+        break;
+    }
+
     return res.status(200).json({
       limit: parseInt(req.query.limit, 10) || 100,
       offset: 0,
@@ -193,6 +214,42 @@ function getTopic(name) {
 }
 function getConsumerGroup(id) {
   return consumerGroups.find((c) => c.groupId === id);
+}
+
+function getTopicRetentionTime(topic) {
+  const [retentionMs] = topic.config.filter((entry) => entry.key === 'retention.ms')
+
+  return Number(retentionMs.value);
+}
+
+function getTopicRetentionSize(topic) {
+  const [retentionSize] = topic.config.filter((entry) => entry.key === 'retention.bytes')
+
+  return Number(retentionSize.value);
+}
+
+function compareName(a, b) {
+  if (a.name < b.name) return -1;
+  if (a.name > b.name) return 1;
+  return 0;
+}
+
+function comparePartitions(a, b) {
+  if (a.partitions.length < b.partitions.length) return -1;
+  if (a.partitions.length > b.partitions.length) return 1;
+  return 0;
+}
+
+function compareRetentionMS(a, b) {
+  if (getTopicRetentionTime(a) < getTopicRetentionTime(b)) return -1;
+  if (getTopicRetentionTime(a) > getTopicRetentionTime(b)) return 1;
+  return 0;
+}
+
+function compareRetentionSize(a, b) {
+  if (getTopicRetentionSize(a) < getTopicRetentionSize(b)) return -1;
+  if (getTopicRetentionSize(a) > getTopicRetentionSize(b)) return 1;
+  return 0;
 }
 
 const createPartitions = (numberOfPartitions, numberOfReplicas) => {
