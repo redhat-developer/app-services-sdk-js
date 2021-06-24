@@ -12,7 +12,7 @@ const preSeed = argv.preSeed
 const OpenAPIBackend = require("openapi-backend").default;
 const express = require("express");
 const createKafkaHandlers = require("./handlers/kafka-manager");
-const srsHandlers = require("./handlers/registry-manager");
+const createRegistryHandlers = require("./handlers/registry-manager");
 const srsDataHandlers = require("./handlers/registry-data");
 const topicHandlers = require("./handlers/kafka-admin");
 const ams = require("./handlers/ams");
@@ -44,7 +44,7 @@ const srsDataApi = new OpenAPIBackend({
 // register handlers
 kafkaAPI.register(createKafkaHandlers(preSeed));
 topicAPI.register(topicHandlers);
-srsControlApi.register(srsHandlers);
+srsControlApi.register(createRegistryHandlers(preSeed));
 srsDataApi.register(srsDataHandlers);
 
 // register security handler
