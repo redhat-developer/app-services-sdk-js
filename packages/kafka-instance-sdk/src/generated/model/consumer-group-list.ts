@@ -46,15 +46,17 @@ export interface ConsumerGroupList {
      */
     page?: number;
     /**
-     * Deprecated offset of the topic list
+     * Offset of the topic list
      * @type {number}
      * @memberof ConsumerGroupList
+     * @deprecated
      */
     offset?: number;
     /**
-     * Deprecated maximum of returned topics
+     * Maximum of returned topics
      * @type {number}
      * @memberof ConsumerGroupList
+     * @deprecated
      */
     limit?: number;
 }
