@@ -20,4 +20,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn install
     - run: yarn build
+    - run: yarn generate
+    - name: Validate OpenAPI
+      run: |
+        for i in ${{ steps.filter.outputs.openapi_files }}
+        do
+          npx @openapitools/openapi-generator-cli validate -i $i
+        done
+    
   
