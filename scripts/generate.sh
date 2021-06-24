@@ -7,11 +7,14 @@ generate_sdk() {
     local output_path=$2
     local package_name=$3
 
-    echo "Generating based on ${file_name}"
+    echo "Validating OpenAPI ${file_name}"
+    npx @openapitools/openapi-generator-cli validate -i "$file_name"
+
+    echo "Generating source code based on ${file_name}"
 
     # remove old generated models
     rm -Rf $OUTPUT_PATH/model $OUTPUT_PATH/api
-
+    
     npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
     "$file_name" -o "$output_path" \
     --package-name="${package_name}" \
