@@ -31,6 +31,12 @@ npm install -g @rhoas/api-mock
 asapi
 ```
 
+Starting mock with sample data present:
+
+```shell
+asapi --pre-seed
+```
+
 ### Instances API mapping pattern
 
 Mock provides instances (data) API mock as well as the control planes.
