@@ -5,6 +5,15 @@ module.exports = {
   getConsumerGroups: async (c, req, res) => {
     let consumerGroupList = consumerGroups;
     let count = consumerGroups !== undefined ? consumerGroups.length : 0;
+    
+    const filteredConsumerGroups = () => {
+      let regexp = new RegExp(`${req.query.groupIdFilter.trim()}`,`i`);
+      return consumerGroups.filter((consumerGroup) => regexp.test(consumerGroup.groupId));
+    };
+    if (consumerGroups && req.query.groupIdFilter && req.query.groupIdFilter.trim() !== '') {
+      consumerGroupList = filteredConsumerGroups();
+      count = consumerGroupList.length;
+    }
 
     const filterConsumerGroups = (topicName) => {
       return consumerGroupList.filter((consumerGroup) => {
@@ -129,7 +138,7 @@ module.exports = {
       topicList = topics;
 
     const filterTopics = () => {
-      let regexp = new RegExp(`${req.query.filter.trim()}`);
+      let regexp = new RegExp(`${req.query.filter.trim()}`,`i`);
       return topics.filter((topic) => regexp.test(topic.name));
     };
 
