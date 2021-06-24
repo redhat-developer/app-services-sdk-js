@@ -885,7 +885,6 @@ components:
       description: ''
       required:
         - offset
-        - value
       type: object
       properties:
         value:
