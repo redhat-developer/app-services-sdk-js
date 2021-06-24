@@ -31,7 +31,7 @@ npm install -g @rhoas/api-mock
 asapi
 ```
 
-Optionally pre-seed with data:
+Starting mock with sample data present:
 
 ```shell
 asapi --pre-seed
