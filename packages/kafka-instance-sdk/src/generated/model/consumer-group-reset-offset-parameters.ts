@@ -26,7 +26,7 @@ export interface ConsumerGroupResetOffsetParameters {
      * @type {string}
      * @memberof ConsumerGroupResetOffsetParameters
      */
-    value: string;
+    value?: string;
     /**
      * 
      * @type {string}
