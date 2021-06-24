@@ -34,15 +34,17 @@ export interface TopicsList {
      */
     size?: number;
     /**
-     * Deprecated offset of the topic list
+     * Offset of the topic list
      * @type {number}
      * @memberof TopicsList
+     * @deprecated
      */
     offset?: number;
     /**
-     * Deprecated maximum of returned topics
+     * Maximum of returned topics
      * @type {number}
      * @memberof TopicsList
+     * @deprecated
      */
     limit?: number;
     /**
