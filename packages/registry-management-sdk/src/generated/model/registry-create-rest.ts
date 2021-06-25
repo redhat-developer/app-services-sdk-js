@@ -15,35 +15,17 @@
 
 
 /**
- * 
+ * Information used to create a new Service Registry instance within a multi-tenant deployment.
  * @export
- * @interface List
+ * @interface RegistryCreateRest
  */
-export interface List {
+export interface RegistryCreateRest {
     /**
-     * 
+     * User-defined Registry name. Does not have to be unique.
      * @type {string}
-     * @memberof List
+     * @memberof RegistryCreateRest
      */
-    kind: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof List
-     */
-    page: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof List
-     */
-    size: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof List
-     */
-    total: number;
+    name?: string;
 }
 
 

@@ -13,14 +13,20 @@
  */
 
 
-import { ErrorListAllOf } from './error-list-all-of';
-import { List } from './list';
+import { RegistryRest } from './registry-rest';
 
 /**
- * @type ErrorList
+ * 
  * @export
+ * @interface RegistryListRestAllOf
  */
-export type ErrorList = ErrorListAllOf & List;
-
+export interface RegistryListRestAllOf {
+    /**
+     * 
+     * @type {Array<RegistryRest>}
+     * @memberof RegistryListRestAllOf
+     */
+    items?: Array<RegistryRest>;
+}
 
 

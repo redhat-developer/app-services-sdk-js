@@ -15,17 +15,29 @@
 
 
 /**
- * Information used to create a new Service Registry instance within a multi-tenant deployment.
+ * 
  * @export
- * @interface RegistryCreate
+ * @interface ObjectReferenceRest
  */
-export interface RegistryCreate {
+export interface ObjectReferenceRest {
     /**
-     * User-defined Registry name. Does not have to be unique.
+     * 
      * @type {string}
-     * @memberof RegistryCreate
+     * @memberof ObjectReferenceRest
      */
-    name?: string;
+    id?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectReferenceRest
+     */
+    kind?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ObjectReferenceRest
+     */
+    href?: string;
 }
 
 

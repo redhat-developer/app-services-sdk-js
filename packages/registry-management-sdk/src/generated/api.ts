@@ -14,5 +14,6 @@
 
 
 
+export * from './api/default-api';
 export * from './api/registries-api';
 
