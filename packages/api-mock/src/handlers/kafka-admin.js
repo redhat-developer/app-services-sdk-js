@@ -7,10 +7,10 @@ module.exports = {
     let count = consumerGroups !== undefined ? consumerGroups.length : 0;
     
     const filteredConsumerGroups = () => {
-      let regexp = new RegExp(`${req.query.groupIdFilter.trim()}`,`i`);
+      let regexp = new RegExp(`${req.query['group-id-filter'].trim()}`,`i`);
       return consumerGroups.filter((consumerGroup) => regexp.test(consumerGroup.groupId));
     };
-    if (consumerGroups && req.query.groupIdFilter && req.query.groupIdFilter.trim() !== '') {
+    if (consumerGroups && req.query['group-id-filter'] && req.query['group-id-filter'].trim() !== '') {
       consumerGroupList = filteredConsumerGroups();
       count = consumerGroupList.length;
     }
