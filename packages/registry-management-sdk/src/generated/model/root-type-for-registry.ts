@@ -13,7 +13,7 @@
  */
 
 
-import { RegistryStatusValue } from './registry-status-value';
+import { RegistryStatusValueRest } from './registry-status-value-rest';
 
 /**
  * Service Registry instance within a multi-tenant deployment.
@@ -29,10 +29,10 @@ export interface RootTypeForRegistry {
     id: string;
     /**
      * 
-     * @type {RegistryStatusValue}
+     * @type {RegistryStatusValueRest}
      * @memberof RootTypeForRegistry
      */
-    status: RegistryStatusValue;
+    status: RegistryStatusValueRest;
     /**
      * 
      * @type {string}
