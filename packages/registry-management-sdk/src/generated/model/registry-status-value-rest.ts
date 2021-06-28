@@ -19,7 +19,7 @@
  * @export
  * @enum {string}
  */
-export enum RegistryStatusValue {
+export enum RegistryStatusValueRest {
     Provisioning = 'PROVISIONING',
     Available = 'AVAILABLE',
     Unavailable = 'UNAVAILABLE'

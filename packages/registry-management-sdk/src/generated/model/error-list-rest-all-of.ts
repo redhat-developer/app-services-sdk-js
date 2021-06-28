@@ -13,14 +13,20 @@
  */
 
 
-import { ErrorAllOf } from './error-all-of';
-import { ObjectReference } from './object-reference';
+import { ErrorRest } from './error-rest';
 
 /**
- * @type ModelError
+ * 
  * @export
+ * @interface ErrorListRestAllOf
  */
-export type ModelError = ErrorAllOf & ObjectReference;
-
+export interface ErrorListRestAllOf {
+    /**
+     * 
+     * @type {Array<ErrorRest>}
+     * @memberof ErrorListRestAllOf
+     */
+    items?: Array<ErrorRest>;
+}
 
 

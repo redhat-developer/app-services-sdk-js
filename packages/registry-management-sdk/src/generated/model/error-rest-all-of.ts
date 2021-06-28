@@ -13,20 +13,31 @@
  */
 
 
-import { Registry } from './registry';
 
 /**
  * 
  * @export
- * @interface RegistryRestListAllOf
+ * @interface ErrorRestAllOf
  */
-export interface RegistryRestListAllOf {
+export interface ErrorRestAllOf {
     /**
      * 
-     * @type {Array<Registry>}
-     * @memberof RegistryRestListAllOf
+     * @type {string}
+     * @memberof ErrorRestAllOf
      */
-    items?: Array<Registry>;
+    code?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ErrorRestAllOf
+     */
+    reason?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ErrorRestAllOf
+     */
+    operation_id?: string;
 }
 
 
