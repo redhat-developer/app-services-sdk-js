@@ -13,19 +13,15 @@
  */
 
 
+import { ErrorListRestAllOf } from './error-list-rest-all-of';
+import { ErrorRest } from './error-rest';
+import { ListRest } from './list-rest';
 
 /**
- * 
+ * @type ErrorListRest
  * @export
- * @interface ErrorListAllOf
  */
-export interface ErrorListAllOf {
-    /**
-     * 
-     * @type {Array<Error>}
-     * @memberof ErrorListAllOf
-     */
-    items?: Array<Error>;
-}
+export type ErrorListRest = ErrorListRestAllOf & ListRest;
+
 
 

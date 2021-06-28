@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Kafka Service Fleet Manager
- * Kafka Service Fleet Manager is a Rest API to manage Kakfa instances and connectors.
+ * Kafka Service Fleet Manager is a Rest API to manage Kafka instances and connectors.
  *
  * The version of the OpenAPI document: 1.1.1
  * 
@@ -21,13 +21,13 @@
  */
 export interface KafkaRequestAllOf {
     /**
-     * 
+     * Values: [accepted, preparing, provisioning, ready, failed, deprovision, deleting] 
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
     status?: string;
     /**
-     * 
+     * Name of Cloud used to deploy. For example AWS
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
@@ -39,7 +39,7 @@ export interface KafkaRequestAllOf {
      */
     multi_az?: boolean;
     /**
-     * 
+     * Values will be regions of specific cloud provider. For example: us-east-1 for AWS
      * @type {string}
      * @memberof KafkaRequestAllOf
      */

@@ -13,15 +13,15 @@
  */
 
 
-import { List } from './list';
-import { Registry } from './registry';
-import { RegistryRestListAllOf } from './registry-rest-list-all-of';
+import { ListRest } from './list-rest';
+import { RegistryListRestAllOf } from './registry-list-rest-all-of';
+import { RegistryRest } from './registry-rest';
 
 /**
- * @type RegistryRestList
+ * @type RegistryListRest
  * @export
  */
-export type RegistryRestList = List & RegistryRestListAllOf;
+export type RegistryListRest = ListRest & RegistryListRestAllOf;
 
 
 

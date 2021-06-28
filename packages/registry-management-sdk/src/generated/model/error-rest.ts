@@ -13,31 +13,14 @@
  */
 
 
+import { ErrorRestAllOf } from './error-rest-all-of';
+import { ObjectReferenceRest } from './object-reference-rest';
 
 /**
- * 
+ * @type ErrorRest
  * @export
- * @interface ErrorAllOf
  */
-export interface ErrorAllOf {
-    /**
-     * 
-     * @type {string}
-     * @memberof ErrorAllOf
-     */
-    code?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ErrorAllOf
-     */
-    reason?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ErrorAllOf
-     */
-    operation_id?: string;
-}
+export type ErrorRest = ErrorRestAllOf & ObjectReferenceRest;
+
 
 

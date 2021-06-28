@@ -21,11 +21,13 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { Registry } from '../model';
+import { ErrorRest } from '../model';
 // @ts-ignore
-import { RegistryCreate } from '../model';
+import { RegistryCreateRest } from '../model';
 // @ts-ignore
-import { RegistryRestList } from '../model';
+import { RegistryListRest } from '../model';
+// @ts-ignore
+import { RegistryRest } from '../model';
 /**
  * RegistriesApi - axios parameter creator
  * @export
@@ -35,13 +37,13 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Create a new Registry instance
-         * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; to be created.
+         * @param {RegistryCreateRest} registryCreateRest A new &#x60;Registry&#x60; to be created.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRegistry: async (registryCreate: RegistryCreate, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'registryCreate' is not null or undefined
-            assertParamExists('createRegistry', 'registryCreate', registryCreate)
+        createRegistry: async (registryCreateRest: RegistryCreateRest, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'registryCreateRest' is not null or undefined
+            assertParamExists('createRegistry', 'registryCreateRest', registryCreateRest)
             const localVarPath = `/api/serviceregistry_mgmt/v1/registries`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -65,7 +67,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(registryCreate, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(registryCreateRest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -82,7 +84,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
         deleteRegistry: async (id: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteRegistry', 'id', id)
-            const localVarPath = `/api/serviceregistry_mgmt/v1/{id}`
+            const localVarPath = `/api/serviceregistry_mgmt/v1/registries/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -113,14 +115,14 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Get the list of all registries.
-         * @param {string} [page] Page index
-         * @param {string} [size] Number of items in each page
+         * @param {number} [page] Page index
+         * @param {number} [size] Number of items in each page
          * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the kafkaRequests fields. For example, in order to retrieve all kafkas ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or in order to retrieve all kafkas ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results will be ordered by name.
          * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: cloud_provider, name, owner, region and status. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve kafka request with name equal &#x60;my-kafka&#x60; and region equal &#x60;aws&#x60;, the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;  To retrieve kafka request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the kafkas that the user has permission to see will be returned.  Note. If the query is invalid, an error will be returned 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRegistries: async (page?: string, size?: string, orderBy?: string, search?: string, options: any = {}): Promise<RequestArgs> => {
+        getRegistries: async (page?: number, size?: number, orderBy?: string, search?: string, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/serviceregistry_mgmt/v1/registries`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -174,7 +176,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
         getRegistry: async (id: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getRegistry', 'id', id)
-            const localVarPath = `/api/serviceregistry_mgmt/v1/{id}`
+            const localVarPath = `/api/serviceregistry_mgmt/v1/registries/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -215,12 +217,12 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a new Registry instance
-         * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; to be created.
+         * @param {RegistryCreateRest} registryCreateRest A new &#x60;Registry&#x60; to be created.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createRegistry(registryCreate: RegistryCreate, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Registry>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createRegistry(registryCreate, options);
+        async createRegistry(registryCreateRest: RegistryCreateRest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RegistryRest>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createRegistry(registryCreateRest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -237,14 +239,14 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get the list of all registries.
-         * @param {string} [page] Page index
-         * @param {string} [size] Number of items in each page
+         * @param {number} [page] Page index
+         * @param {number} [size] Number of items in each page
          * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the kafkaRequests fields. For example, in order to retrieve all kafkas ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or in order to retrieve all kafkas ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results will be ordered by name.
          * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: cloud_provider, name, owner, region and status. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve kafka request with name equal &#x60;my-kafka&#x60; and region equal &#x60;aws&#x60;, the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;  To retrieve kafka request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the kafkas that the user has permission to see will be returned.  Note. If the query is invalid, an error will be returned 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRegistries(page?: string, size?: string, orderBy?: string, search?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RegistryRestList>> {
+        async getRegistries(page?: number, size?: number, orderBy?: string, search?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RegistryListRest>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRegistries(page, size, orderBy, search, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -255,7 +257,7 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRegistry(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Registry>> {
+        async getRegistry(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RegistryRest>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRegistry(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -272,12 +274,12 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @summary Create a new Registry instance
-         * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; to be created.
+         * @param {RegistryCreateRest} registryCreateRest A new &#x60;Registry&#x60; to be created.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRegistry(registryCreate: RegistryCreate, options?: any): AxiosPromise<Registry> {
-            return localVarFp.createRegistry(registryCreate, options).then((request) => request(axios, basePath));
+        createRegistry(registryCreateRest: RegistryCreateRest, options?: any): AxiosPromise<RegistryRest> {
+            return localVarFp.createRegistry(registryCreateRest, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes an existing `Registry`.
@@ -292,14 +294,14 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @summary Get the list of all registries.
-         * @param {string} [page] Page index
-         * @param {string} [size] Number of items in each page
+         * @param {number} [page] Page index
+         * @param {number} [size] Number of items in each page
          * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the kafkaRequests fields. For example, in order to retrieve all kafkas ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or in order to retrieve all kafkas ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results will be ordered by name.
          * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: cloud_provider, name, owner, region and status. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve kafka request with name equal &#x60;my-kafka&#x60; and region equal &#x60;aws&#x60;, the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;  To retrieve kafka request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the kafkas that the user has permission to see will be returned.  Note. If the query is invalid, an error will be returned 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRegistries(page?: string, size?: string, orderBy?: string, search?: string, options?: any): AxiosPromise<RegistryRestList> {
+        getRegistries(page?: number, size?: number, orderBy?: string, search?: string, options?: any): AxiosPromise<RegistryListRest> {
             return localVarFp.getRegistries(page, size, orderBy, search, options).then((request) => request(axios, basePath));
         },
         /**
@@ -309,7 +311,7 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRegistry(id: string, options?: any): AxiosPromise<Registry> {
+        getRegistry(id: string, options?: any): AxiosPromise<RegistryRest> {
             return localVarFp.getRegistry(id, options).then((request) => request(axios, basePath));
         },
     };
@@ -324,12 +326,12 @@ export interface RegistriesApiInterface {
     /**
      * 
      * @summary Create a new Registry instance
-     * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; to be created.
+     * @param {RegistryCreateRest} registryCreateRest A new &#x60;Registry&#x60; to be created.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
      */
-    createRegistry(registryCreate: RegistryCreate, options?: any): AxiosPromise<Registry>;
+    createRegistry(registryCreateRest: RegistryCreateRest, options?: any): AxiosPromise<RegistryRest>;
 
     /**
      * Deletes an existing `Registry`.
@@ -344,15 +346,15 @@ export interface RegistriesApiInterface {
     /**
      * 
      * @summary Get the list of all registries.
-     * @param {string} [page] Page index
-     * @param {string} [size] Number of items in each page
+     * @param {number} [page] Page index
+     * @param {number} [size] Number of items in each page
      * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the kafkaRequests fields. For example, in order to retrieve all kafkas ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or in order to retrieve all kafkas ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results will be ordered by name.
      * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: cloud_provider, name, owner, region and status. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve kafka request with name equal &#x60;my-kafka&#x60; and region equal &#x60;aws&#x60;, the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;  To retrieve kafka request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the kafkas that the user has permission to see will be returned.  Note. If the query is invalid, an error will be returned 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
      */
-    getRegistries(page?: string, size?: string, orderBy?: string, search?: string, options?: any): AxiosPromise<RegistryRestList>;
+    getRegistries(page?: number, size?: number, orderBy?: string, search?: string, options?: any): AxiosPromise<RegistryListRest>;
 
     /**
      * Gets the details of a single instance of a `Registry`.
@@ -362,7 +364,7 @@ export interface RegistriesApiInterface {
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
      */
-    getRegistry(id: string, options?: any): AxiosPromise<Registry>;
+    getRegistry(id: string, options?: any): AxiosPromise<RegistryRest>;
 
 }
 
@@ -376,13 +378,13 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
     /**
      * 
      * @summary Create a new Registry instance
-     * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; to be created.
+     * @param {RegistryCreateRest} registryCreateRest A new &#x60;Registry&#x60; to be created.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApi
      */
-    public createRegistry(registryCreate: RegistryCreate, options?: any) {
-        return RegistriesApiFp(this.configuration).createRegistry(registryCreate, options).then((request) => request(this.axios, this.basePath));
+    public createRegistry(registryCreateRest: RegistryCreateRest, options?: any) {
+        return RegistriesApiFp(this.configuration).createRegistry(registryCreateRest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -400,15 +402,15 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
     /**
      * 
      * @summary Get the list of all registries.
-     * @param {string} [page] Page index
-     * @param {string} [size] Number of items in each page
+     * @param {number} [page] Page index
+     * @param {number} [size] Number of items in each page
      * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the kafkaRequests fields. For example, in order to retrieve all kafkas ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or in order to retrieve all kafkas ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results will be ordered by name.
      * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: cloud_provider, name, owner, region and status. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve kafka request with name equal &#x60;my-kafka&#x60; and region equal &#x60;aws&#x60;, the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;  To retrieve kafka request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the kafkas that the user has permission to see will be returned.  Note. If the query is invalid, an error will be returned 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApi
      */
-    public getRegistries(page?: string, size?: string, orderBy?: string, search?: string, options?: any) {
+    public getRegistries(page?: number, size?: number, orderBy?: string, search?: string, options?: any) {
         return RegistriesApiFp(this.configuration).getRegistries(page, size, orderBy, search, options).then((request) => request(this.axios, this.basePath));
     }
 
