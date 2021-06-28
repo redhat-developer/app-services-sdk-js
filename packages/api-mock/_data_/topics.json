@@ -9,6 +9,14 @@
       {
         "key": "max.message.bytes",
         "value": "1050000"
+      },
+      {
+        "key": "retention.ms",
+        "value": "6000000"
+      },
+      {
+        "key": "retention.bytes",
+        "value": "1024"
       }
     ],
     "partitions": [
@@ -145,7 +153,6 @@
         "key": "segment.index.bytes",
         "value": "10485760"
       },
-
       {
         "key": "flush.ms",
         "value": "9223372036854775807"
@@ -212,6 +219,14 @@
       {
         "key": "max.message.bytes",
         "value": "1050000"
+      },
+      {
+        "key": "retention.ms",
+        "value": "1000000"
+      },
+      {
+        "key": "retention.bytes",
+        "value": "10245"
       }
     ],
     "partitions": [
@@ -257,6 +272,51 @@
         ],
         "leader": {
           "id": 58
+        }
+      }
+    ]
+  },
+  {
+    "name": "sample-topic",
+    "config": [
+      {
+        "key": "min.insync.replicas",
+        "value": "1"
+      },
+      {
+        "key": "max.message.bytes",
+        "value": "1050000"
+      },
+      {
+        "key": "retention.ms",
+        "value": "6000000"
+      },
+      {
+        "key": "retention.bytes",
+        "value": "1024"
+      }
+    ],
+    "partitions": [
+      {
+        "id": 28,
+        "replicas": [
+          {
+            "id": 35
+          },
+          {
+            "id": 5
+          }
+        ],
+        "isr": [
+          {
+            "id": 44
+          },
+          {
+            "id": 83
+          }
+        ],
+        "leader": {
+          "id": 22
         }
       }
     ]
