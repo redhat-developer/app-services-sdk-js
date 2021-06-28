@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Kafka Service Fleet Manager
- * Kafka Service Fleet Manager is a Rest API to manage Kakfa instances and connectors.
+ * Kafka Service Fleet Manager is a Rest API to manage Kafka instances and connectors.
  *
  * The version of the OpenAPI document: 1.1.1
  * 
@@ -46,7 +46,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
     return {
         /**
          * 
-         * @summary Creates a Kakfa request
+         * @summary Creates a Kafka request
          * @param {boolean} async Perform the action in an asynchronous manner
          * @param {KafkaRequestPayload} kafkaRequestPayload Kafka data
          * @param {*} [options] Override http request option.
@@ -93,7 +93,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Deletes a Kakfa request by ID
+         * @summary Deletes a Kafka request by ID
          * @param {string} id The ID of record
          * @param {boolean} async Perform the action in an asynchronous manner
          * @param {*} [options] Override http request option.
@@ -230,7 +230,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Returns a Kakfa request by ID
+         * @summary Returns a Kafka request by ID
          * @param {string} id The ID of record
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -271,8 +271,8 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Returns a list of Kafka requests
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
-         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;kafkaRequests&#x60; fields. For example, to return all Kakfa instances ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Kakfa instances ordered by their name _and_ created date, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
-         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of an SQL statement. Allowed fields in the search are &#x60;cloud_provider&#x60;, &#x60;name&#x60;, &#x60;owner&#x60;, &#x60;region&#x60;, and &#x60;status&#x60;. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 joins in a search query.  Examples:  To return a Kakfa instance with the name &#x60;my-kafka&#x60; and the region &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;[p-]  To return a Kakfa instance with a name that starts with &#x60;my&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Kakfa instances that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
+         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;kafkaRequests&#x60; fields. For example, to return all Kafka instances ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Kafka instances ordered by their name _and_ created date, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
+         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of an SQL statement. Allowed fields in the search are &#x60;cloud_provider&#x60;, &#x60;name&#x60;, &#x60;owner&#x60;, &#x60;region&#x60;, and &#x60;status&#x60;. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 joins in a search query.  Examples:  To return a Kafka instance with the name &#x60;my-kafka&#x60; and the region &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;[p-]  To return a Kafka instance with a name that starts with &#x60;my&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Kafka instances that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -322,9 +322,9 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Returns metrics with instant query by Kakfa ID
+         * @summary Returns metrics with instant query by Kafka ID
          * @param {string} id The ID of record
-         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kakfa internal metric names.
+         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kafka internal metric names.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -365,11 +365,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Returns metrics with timeseries range query by Kakfa ID
+         * @summary Returns metrics with timeseries range query by Kafka ID
          * @param {string} id The ID of record
          * @param {number} duration The length of time in minutes for which to return the metrics
          * @param {number} interval The interval in seconds between data points
-         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kakfa internal metric names.
+         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kafka internal metric names.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -496,7 +496,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @summary Creates a Kakfa request
+         * @summary Creates a Kafka request
          * @param {boolean} async Perform the action in an asynchronous manner
          * @param {KafkaRequestPayload} kafkaRequestPayload Kafka data
          * @param {*} [options] Override http request option.
@@ -508,7 +508,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Deletes a Kakfa request by ID
+         * @summary Deletes a Kafka request by ID
          * @param {string} id The ID of record
          * @param {boolean} async Perform the action in an asynchronous manner
          * @param {*} [options] Override http request option.
@@ -545,7 +545,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Returns a Kakfa request by ID
+         * @summary Returns a Kafka request by ID
          * @param {string} id The ID of record
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -559,8 +559,8 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Returns a list of Kafka requests
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
-         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;kafkaRequests&#x60; fields. For example, to return all Kakfa instances ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Kakfa instances ordered by their name _and_ created date, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
-         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of an SQL statement. Allowed fields in the search are &#x60;cloud_provider&#x60;, &#x60;name&#x60;, &#x60;owner&#x60;, &#x60;region&#x60;, and &#x60;status&#x60;. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 joins in a search query.  Examples:  To return a Kakfa instance with the name &#x60;my-kafka&#x60; and the region &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;[p-]  To return a Kakfa instance with a name that starts with &#x60;my&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Kakfa instances that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
+         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;kafkaRequests&#x60; fields. For example, to return all Kafka instances ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Kafka instances ordered by their name _and_ created date, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
+         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of an SQL statement. Allowed fields in the search are &#x60;cloud_provider&#x60;, &#x60;name&#x60;, &#x60;owner&#x60;, &#x60;region&#x60;, and &#x60;status&#x60;. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 joins in a search query.  Examples:  To return a Kafka instance with the name &#x60;my-kafka&#x60; and the region &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;[p-]  To return a Kafka instance with a name that starts with &#x60;my&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Kafka instances that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -570,9 +570,9 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Returns metrics with instant query by Kakfa ID
+         * @summary Returns metrics with instant query by Kafka ID
          * @param {string} id The ID of record
-         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kakfa internal metric names.
+         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kafka internal metric names.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -582,11 +582,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Returns metrics with timeseries range query by Kakfa ID
+         * @summary Returns metrics with timeseries range query by Kafka ID
          * @param {string} id The ID of record
          * @param {number} duration The length of time in minutes for which to return the metrics
          * @param {number} interval The interval in seconds between data points
-         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kakfa internal metric names.
+         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kafka internal metric names.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -626,7 +626,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
     return {
         /**
          * 
-         * @summary Creates a Kakfa request
+         * @summary Creates a Kafka request
          * @param {boolean} async Perform the action in an asynchronous manner
          * @param {KafkaRequestPayload} kafkaRequestPayload Kafka data
          * @param {*} [options] Override http request option.
@@ -637,7 +637,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Deletes a Kakfa request by ID
+         * @summary Deletes a Kafka request by ID
          * @param {string} id The ID of record
          * @param {boolean} async Perform the action in an asynchronous manner
          * @param {*} [options] Override http request option.
@@ -671,7 +671,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Returns a Kakfa request by ID
+         * @summary Returns a Kafka request by ID
          * @param {string} id The ID of record
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -684,8 +684,8 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @summary Returns a list of Kafka requests
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
-         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;kafkaRequests&#x60; fields. For example, to return all Kakfa instances ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Kakfa instances ordered by their name _and_ created date, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
-         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of an SQL statement. Allowed fields in the search are &#x60;cloud_provider&#x60;, &#x60;name&#x60;, &#x60;owner&#x60;, &#x60;region&#x60;, and &#x60;status&#x60;. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 joins in a search query.  Examples:  To return a Kakfa instance with the name &#x60;my-kafka&#x60; and the region &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;[p-]  To return a Kakfa instance with a name that starts with &#x60;my&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Kakfa instances that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
+         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;kafkaRequests&#x60; fields. For example, to return all Kafka instances ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Kafka instances ordered by their name _and_ created date, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
+         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of an SQL statement. Allowed fields in the search are &#x60;cloud_provider&#x60;, &#x60;name&#x60;, &#x60;owner&#x60;, &#x60;region&#x60;, and &#x60;status&#x60;. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 joins in a search query.  Examples:  To return a Kafka instance with the name &#x60;my-kafka&#x60; and the region &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;[p-]  To return a Kafka instance with a name that starts with &#x60;my&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Kafka instances that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -694,9 +694,9 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Returns metrics with instant query by Kakfa ID
+         * @summary Returns metrics with instant query by Kafka ID
          * @param {string} id The ID of record
-         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kakfa internal metric names.
+         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kafka internal metric names.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -705,11 +705,11 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Returns metrics with timeseries range query by Kakfa ID
+         * @summary Returns metrics with timeseries range query by Kafka ID
          * @param {string} id The ID of record
          * @param {number} duration The length of time in minutes for which to return the metrics
          * @param {number} interval The interval in seconds between data points
-         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kakfa internal metric names.
+         * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kafka internal metric names.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -745,7 +745,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
 export interface DefaultApiInterface {
     /**
      * 
-     * @summary Creates a Kakfa request
+     * @summary Creates a Kafka request
      * @param {boolean} async Perform the action in an asynchronous manner
      * @param {KafkaRequestPayload} kafkaRequestPayload Kafka data
      * @param {*} [options] Override http request option.
@@ -756,7 +756,7 @@ export interface DefaultApiInterface {
 
     /**
      * 
-     * @summary Deletes a Kakfa request by ID
+     * @summary Deletes a Kafka request by ID
      * @param {string} id The ID of record
      * @param {boolean} async Perform the action in an asynchronous manner
      * @param {*} [options] Override http request option.
@@ -790,7 +790,7 @@ export interface DefaultApiInterface {
 
     /**
      * 
-     * @summary Returns a Kakfa request by ID
+     * @summary Returns a Kafka request by ID
      * @param {string} id The ID of record
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -803,8 +803,8 @@ export interface DefaultApiInterface {
      * @summary Returns a list of Kafka requests
      * @param {string} [page] Page index
      * @param {string} [size] Number of items in each page
-     * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;kafkaRequests&#x60; fields. For example, to return all Kakfa instances ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Kakfa instances ordered by their name _and_ created date, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
-     * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of an SQL statement. Allowed fields in the search are &#x60;cloud_provider&#x60;, &#x60;name&#x60;, &#x60;owner&#x60;, &#x60;region&#x60;, and &#x60;status&#x60;. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 joins in a search query.  Examples:  To return a Kakfa instance with the name &#x60;my-kafka&#x60; and the region &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;[p-]  To return a Kakfa instance with a name that starts with &#x60;my&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Kakfa instances that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
+     * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;kafkaRequests&#x60; fields. For example, to return all Kafka instances ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Kafka instances ordered by their name _and_ created date, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
+     * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of an SQL statement. Allowed fields in the search are &#x60;cloud_provider&#x60;, &#x60;name&#x60;, &#x60;owner&#x60;, &#x60;region&#x60;, and &#x60;status&#x60;. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 joins in a search query.  Examples:  To return a Kafka instance with the name &#x60;my-kafka&#x60; and the region &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;[p-]  To return a Kafka instance with a name that starts with &#x60;my&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Kafka instances that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
@@ -813,9 +813,9 @@ export interface DefaultApiInterface {
 
     /**
      * 
-     * @summary Returns metrics with instant query by Kakfa ID
+     * @summary Returns metrics with instant query by Kafka ID
      * @param {string} id The ID of record
-     * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kakfa internal metric names.
+     * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kafka internal metric names.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
@@ -824,11 +824,11 @@ export interface DefaultApiInterface {
 
     /**
      * 
-     * @summary Returns metrics with timeseries range query by Kakfa ID
+     * @summary Returns metrics with timeseries range query by Kafka ID
      * @param {string} id The ID of record
      * @param {number} duration The length of time in minutes for which to return the metrics
      * @param {number} interval The interval in seconds between data points
-     * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kakfa internal metric names.
+     * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kafka internal metric names.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
@@ -864,7 +864,7 @@ export interface DefaultApiInterface {
 export class DefaultApi extends BaseAPI implements DefaultApiInterface {
     /**
      * 
-     * @summary Creates a Kakfa request
+     * @summary Creates a Kafka request
      * @param {boolean} async Perform the action in an asynchronous manner
      * @param {KafkaRequestPayload} kafkaRequestPayload Kafka data
      * @param {*} [options] Override http request option.
@@ -877,7 +877,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
 
     /**
      * 
-     * @summary Deletes a Kakfa request by ID
+     * @summary Deletes a Kafka request by ID
      * @param {string} id The ID of record
      * @param {boolean} async Perform the action in an asynchronous manner
      * @param {*} [options] Override http request option.
@@ -917,7 +917,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
 
     /**
      * 
-     * @summary Returns a Kakfa request by ID
+     * @summary Returns a Kafka request by ID
      * @param {string} id The ID of record
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -932,8 +932,8 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @summary Returns a list of Kafka requests
      * @param {string} [page] Page index
      * @param {string} [size] Number of items in each page
-     * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;kafkaRequests&#x60; fields. For example, to return all Kakfa instances ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Kakfa instances ordered by their name _and_ created date, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
-     * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of an SQL statement. Allowed fields in the search are &#x60;cloud_provider&#x60;, &#x60;name&#x60;, &#x60;owner&#x60;, &#x60;region&#x60;, and &#x60;status&#x60;. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 joins in a search query.  Examples:  To return a Kakfa instance with the name &#x60;my-kafka&#x60; and the region &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;[p-]  To return a Kakfa instance with a name that starts with &#x60;my&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Kakfa instances that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
+     * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;kafkaRequests&#x60; fields. For example, to return all Kafka instances ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Kafka instances ordered by their name _and_ created date, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
+     * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of an SQL statement. Allowed fields in the search are &#x60;cloud_provider&#x60;, &#x60;name&#x60;, &#x60;owner&#x60;, &#x60;region&#x60;, and &#x60;status&#x60;. Allowed comparators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 joins in a search query.  Examples:  To return a Kafka instance with the name &#x60;my-kafka&#x60; and the region &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; my-kafka and cloud_provider &#x3D; aws &#x60;&#x60;&#x60;[p-]  To return a Kafka instance with a name that starts with &#x60;my&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Kafka instances that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
@@ -944,9 +944,9 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
 
     /**
      * 
-     * @summary Returns metrics with instant query by Kakfa ID
+     * @summary Returns metrics with instant query by Kafka ID
      * @param {string} id The ID of record
-     * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kakfa internal metric names.
+     * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kafka internal metric names.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
@@ -957,11 +957,11 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
 
     /**
      * 
-     * @summary Returns metrics with timeseries range query by Kakfa ID
+     * @summary Returns metrics with timeseries range query by Kafka ID
      * @param {string} id The ID of record
      * @param {number} duration The length of time in minutes for which to return the metrics
      * @param {number} interval The interval in seconds between data points
-     * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kakfa internal metric names.
+     * @param {Array<string>} [filters] List of metrics to fetch. Fetch all metrics when empty. List entries are Kafka internal metric names.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
