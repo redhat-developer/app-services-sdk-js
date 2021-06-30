@@ -58,7 +58,7 @@ module.exports = function createRegistryHandlers(preSeed) {
         ...commonFields,
       };
       registries[newId] = registry;
-      res.status(200).json(registries);
+      res.status(200).json(registry);
     },
 
     getRegistry: async (c, req, res) => {
