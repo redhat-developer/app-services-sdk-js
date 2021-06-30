@@ -5,6 +5,13 @@ module.exports = {
   getConsumerGroups: async (c, req, res) => {
     let consumerGroupList = consumerGroups;
     let count = consumerGroups !== undefined ? consumerGroups.length : 0;
+
+    let order = req.query.order || 'asc';
+    let orderKey = req.query.orderKey;
+    
+    if(orderKey=='name') {
+      order === 'asc' ? consumerGroups.sort(compareGroupId) : consumerGroups.sort((a, b) => compareGroupId(b, a));
+    }
     
     const filteredConsumerGroups = () => {
       let regexp = new RegExp(`${req.query['group-id-filter'].trim()}`,`i`);
@@ -14,7 +21,7 @@ module.exports = {
       consumerGroupList = filteredConsumerGroups();
       count = consumerGroupList.length;
     }
-
+    
     const filterConsumerGroups = (topicName) => {
       return consumerGroupList.filter((consumerGroup) => {
         return consumerGroup.consumers.some(
@@ -266,6 +273,12 @@ function getTopicRetentionSize(topic) {
 function compareName(a, b) {
   if (a.name < b.name) return -1;
   if (a.name > b.name) return 1;
+  return 0;
+}
+
+function compareGroupId(a, b) {
+  if (a.groupId < b.groupId) return -1;
+  if (a.groupId > b.groupId) return 1;
   return 0;
 }
 

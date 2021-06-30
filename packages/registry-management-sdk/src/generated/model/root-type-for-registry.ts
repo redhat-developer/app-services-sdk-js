@@ -51,6 +51,12 @@ export interface RootTypeForRegistry {
      * @memberof RootTypeForRegistry
      */
     registryDeploymentId?: number;
+    /**
+     * Registry instance owner
+     * @type {string}
+     * @memberof RootTypeForRegistry
+     */
+    owner?: string;
 }
 
 
