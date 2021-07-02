@@ -38,7 +38,7 @@ export interface RootTypeForRegistry {
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    registryUrl: string;
+    registryUrl?: string;
     /**
      * User-defined Registry name. Does not have to be unique.
      * @type {string}
@@ -57,6 +57,24 @@ export interface RootTypeForRegistry {
      * @memberof RootTypeForRegistry
      */
     owner?: string;
+    /**
+     * Description of the Registry instance.
+     * @type {string}
+     * @memberof RootTypeForRegistry
+     */
+    description?: string;
+    /**
+     * ISO 8601 UTC timestamp.
+     * @type {string}
+     * @memberof RootTypeForRegistry
+     */
+    created_at: string;
+    /**
+     * ISO 8601 UTC timestamp.
+     * @type {string}
+     * @memberof RootTypeForRegistry
+     */
+    updated_at: string;
 }
 
 

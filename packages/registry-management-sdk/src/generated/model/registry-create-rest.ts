@@ -21,11 +21,17 @@
  */
 export interface RegistryCreateRest {
     /**
-     * User-defined Registry name. Does not have to be unique.
+     * User-defined Registry name. Required. Does not have to be unique.
      * @type {string}
      * @memberof RegistryCreateRest
      */
     name?: string;
+    /**
+     * User-provided description of the new Registry instance. Not required.
+     * @type {string}
+     * @memberof RegistryCreateRest
+     */
+    description?: string;
 }
 
 

@@ -15,14 +15,17 @@
 
 
 /**
- * 
+ * \"accepted\": Registry status when accepted for processing.  \"provisioning\": Registry status when provisioning a new instance.  \"ready\": Registry status when ready for use.  \"failed\": Registry status when the provisioning failed. When removing a Registry in this state, the status transitions directly to \"deleting\".   \"deprovision\": Registry status when accepted for deprovisioning.  \"deleting\": Registry status when deprovisioning. 
  * @export
  * @enum {string}
  */
 export enum RegistryStatusValueRest {
-    Provisioning = 'PROVISIONING',
-    Available = 'AVAILABLE',
-    Unavailable = 'UNAVAILABLE'
+    Accepted = 'accepted',
+    Provisioning = 'provisioning',
+    Ready = 'ready',
+    Failed = 'failed',
+    Deprovision = 'deprovision',
+    Deleting = 'deleting'
 }
 
 
