@@ -26,7 +26,7 @@ export interface RegistryListRestAllOf {
      * @type {Array<RegistryRest>}
      * @memberof RegistryListRestAllOf
      */
-    items?: Array<RegistryRest>;
+    items: Array<RegistryRest>;
 }
 
 
