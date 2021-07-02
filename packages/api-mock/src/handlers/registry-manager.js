@@ -4,7 +4,7 @@ const path = require("path");
 
 const commonFields = {
   kind: "serviceregistry",
-  status: "AVAILABLE",
+  status: "ready",
   owner: process.env.RESOURCE_OWNER,
   registryDeploymentId: 1,
   registryUrl: getFullHostname(),
