@@ -216,16 +216,16 @@ export const ConnectorsApiAxiosParamCreator = function (configuration?: Configur
          * 
          * @summary patch a connector
          * @param {string} id The ID of record
-         * @param {object} body Data to patch the connector with
+         * @param {Connector} connector Data to patch the connector with
          * @param {string} [kafkaId] The kafka cluster id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchConnector: async (id: string, body: object, kafkaId?: string, options: any = {}): Promise<RequestArgs> => {
+        patchConnector: async (id: string, connector: Connector, kafkaId?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('patchConnector', 'id', id)
-            // verify required parameter 'body' is not null or undefined
-            assertParamExists('patchConnector', 'body', body)
+            // verify required parameter 'connector' is not null or undefined
+            assertParamExists('patchConnector', 'connector', connector)
             const localVarPath = `/api/connector_mgmt/v1/kafka_connectors/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -249,12 +249,12 @@ export const ConnectorsApiAxiosParamCreator = function (configuration?: Configur
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(connector, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -324,13 +324,13 @@ export const ConnectorsApiFp = function(configuration?: Configuration) {
          * 
          * @summary patch a connector
          * @param {string} id The ID of record
-         * @param {object} body Data to patch the connector with
+         * @param {Connector} connector Data to patch the connector with
          * @param {string} [kafkaId] The kafka cluster id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async patchConnector(id: string, body: object, kafkaId?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Connector>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.patchConnector(id, body, kafkaId, options);
+        async patchConnector(id: string, connector: Connector, kafkaId?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Connector>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.patchConnector(id, connector, kafkaId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -392,13 +392,13 @@ export const ConnectorsApiFactory = function (configuration?: Configuration, bas
          * 
          * @summary patch a connector
          * @param {string} id The ID of record
-         * @param {object} body Data to patch the connector with
+         * @param {Connector} connector Data to patch the connector with
          * @param {string} [kafkaId] The kafka cluster id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        patchConnector(id: string, body: object, kafkaId?: string, options?: any): AxiosPromise<Connector> {
-            return localVarFp.patchConnector(id, body, kafkaId, options).then((request) => request(axios, basePath));
+        patchConnector(id: string, connector: Connector, kafkaId?: string, options?: any): AxiosPromise<Connector> {
+            return localVarFp.patchConnector(id, connector, kafkaId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -458,13 +458,13 @@ export interface ConnectorsApiInterface {
      * 
      * @summary patch a connector
      * @param {string} id The ID of record
-     * @param {object} body Data to patch the connector with
+     * @param {Connector} connector Data to patch the connector with
      * @param {string} [kafkaId] The kafka cluster id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ConnectorsApiInterface
      */
-    patchConnector(id: string, body: object, kafkaId?: string, options?: any): AxiosPromise<Connector>;
+    patchConnector(id: string, connector: Connector, kafkaId?: string, options?: any): AxiosPromise<Connector>;
 
 }
 
@@ -532,13 +532,13 @@ export class ConnectorsApi extends BaseAPI implements ConnectorsApiInterface {
      * 
      * @summary patch a connector
      * @param {string} id The ID of record
-     * @param {object} body Data to patch the connector with
+     * @param {Connector} connector Data to patch the connector with
      * @param {string} [kafkaId] The kafka cluster id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ConnectorsApi
      */
-    public patchConnector(id: string, body: object, kafkaId?: string, options?: any) {
-        return ConnectorsApiFp(this.configuration).patchConnector(id, body, kafkaId, options).then((request) => request(this.axios, this.basePath));
+    public patchConnector(id: string, connector: Connector, kafkaId?: string, options?: any) {
+        return ConnectorsApiFp(this.configuration).patchConnector(id, connector, kafkaId, options).then((request) => request(this.axios, this.basePath));
     }
 }
