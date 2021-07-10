@@ -32,7 +32,7 @@ export interface UpdateTopicInput {
      * @type {number}
      * @memberof UpdateTopicInput
      */
-    partitions?: number;
+    numPartitions?: number;
 }
 
 
