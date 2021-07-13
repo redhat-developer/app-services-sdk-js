@@ -59,6 +59,13 @@ export interface ConsumerGroupList {
      * @deprecated
      */
     limit?: number;
+    /**
+     * The total number of consumer groups.
+     * @type {number}
+     * @memberof ConsumerGroupList
+     * @deprecated
+     */
+    count?: number;
 }
 
 
