@@ -237,6 +237,50 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary udpate a connector cluster
+         * @param {string} connectorClusterId The id of the connector cluster
+         * @param {ConnectorCluster} connectorCluster Data to updated connector with
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateConnectorClusterById: async (connectorClusterId: string, connectorCluster: ConnectorCluster, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'connectorClusterId' is not null or undefined
+            assertParamExists('updateConnectorClusterById', 'connectorClusterId', connectorClusterId)
+            // verify required parameter 'connectorCluster' is not null or undefined
+            assertParamExists('updateConnectorClusterById', 'connectorCluster', connectorCluster)
+            const localVarPath = `/api/connector_mgmt/v1/kafka_connector_clusters/{connector_cluster_id}`
+                .replace(`{${"connector_cluster_id"}}`, encodeURIComponent(String(connectorClusterId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(connectorCluster, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -304,6 +348,18 @@ export const ConnectorClustersApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listConnectorClusters(page, size, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * 
+         * @summary udpate a connector cluster
+         * @param {string} connectorClusterId The id of the connector cluster
+         * @param {ConnectorCluster} connectorCluster Data to updated connector with
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateConnectorClusterById(connectorClusterId: string, connectorCluster: ConnectorCluster, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateConnectorClusterById(connectorClusterId, connectorCluster, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -366,6 +422,17 @@ export const ConnectorClustersApiFactory = function (configuration?: Configurati
         listConnectorClusters(page?: string, size?: string, options?: any): AxiosPromise<ConnectorClusterList> {
             return localVarFp.listConnectorClusters(page, size, options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @summary udpate a connector cluster
+         * @param {string} connectorClusterId The id of the connector cluster
+         * @param {ConnectorCluster} connectorCluster Data to updated connector with
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateConnectorClusterById(connectorClusterId: string, connectorCluster: ConnectorCluster, options?: any): AxiosPromise<void> {
+            return localVarFp.updateConnectorClusterById(connectorClusterId, connectorCluster, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -426,6 +493,17 @@ export interface ConnectorClustersApiInterface {
      * @memberof ConnectorClustersApiInterface
      */
     listConnectorClusters(page?: string, size?: string, options?: any): AxiosPromise<ConnectorClusterList>;
+
+    /**
+     * 
+     * @summary udpate a connector cluster
+     * @param {string} connectorClusterId The id of the connector cluster
+     * @param {ConnectorCluster} connectorCluster Data to updated connector with
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ConnectorClustersApiInterface
+     */
+    updateConnectorClusterById(connectorClusterId: string, connectorCluster: ConnectorCluster, options?: any): AxiosPromise<void>;
 
 }
 
@@ -496,5 +574,18 @@ export class ConnectorClustersApi extends BaseAPI implements ConnectorClustersAp
      */
     public listConnectorClusters(page?: string, size?: string, options?: any) {
         return ConnectorClustersApiFp(this.configuration).listConnectorClusters(page, size, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary udpate a connector cluster
+     * @param {string} connectorClusterId The id of the connector cluster
+     * @param {ConnectorCluster} connectorCluster Data to updated connector with
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ConnectorClustersApi
+     */
+    public updateConnectorClusterById(connectorClusterId: string, connectorCluster: ConnectorCluster, options?: any) {
+        return ConnectorClustersApiFp(this.configuration).updateConnectorClusterById(connectorClusterId, connectorCluster, options).then((request) => request(this.axios, this.basePath));
     }
 }
