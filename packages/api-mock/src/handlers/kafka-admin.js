@@ -4,7 +4,7 @@ var consumerGroups = require('../../_data_/consumer-groups.json');
 module.exports = {
   getConsumerGroups: async (c, req, res) => {
     let consumerGroupList = consumerGroups;
-    let count = consumerGroups !== undefined ? consumerGroups.length : 0;
+    let total = consumerGroups !== undefined ? consumerGroups.length : 0;
 
     let order = req.query.order || 'asc';
     let orderKey = req.query.orderKey;
@@ -19,7 +19,7 @@ module.exports = {
     };
     if (consumerGroups && req.query['group-id-filter'] && req.query['group-id-filter'].trim() !== '') {
       consumerGroupList = filteredConsumerGroups();
-      count = consumerGroupList.length;
+      total = consumerGroupList.length;
     }
     
     const filterConsumerGroups = (topicName) => {
@@ -37,13 +37,13 @@ module.exports = {
       req.query.topic.trim() !== ''
     ) {
       consumerGroupList = filterConsumerGroups(req.query.topic);
-      count = consumerGroupList.length;
+      total = consumerGroupList.length;
     }
 
     return res.status(200).json({
-      limit: parseInt(req.query.limit, 10) || 100,
-      offset: 0,
-      count,
+      total,
+      page: Number(req.query.page) || 1,
+      size: Number(req.query.size) || 10,
       items: consumerGroupList,
     });
   },
@@ -141,7 +141,7 @@ module.exports = {
   },
 
   getTopics: async (c, req, res) => {
-    let count = topics ? topics.length : 0,
+    let total = topics ? topics.length : 0,
       topicList = topics;
 
     const filterTopics = () => {
@@ -151,7 +151,7 @@ module.exports = {
 
     if (topics && req.query.filter && req.query.filter.trim() !== '') {
       topicList = filterTopics();
-      count = topicList.length;
+      total = topicList.length;
     }
 
     let order = req.query.order || 'asc';
@@ -176,9 +176,9 @@ module.exports = {
     }
 
     return res.status(200).json({
-      limit: parseInt(req.query.limit, 10) || 100,
-      offset: 0,
-      count,
+      total,
+      page: Number(req.query.page) || 1,
+      size: Number(req.query.size) || 10,
       items: topicList,
     });
   },
