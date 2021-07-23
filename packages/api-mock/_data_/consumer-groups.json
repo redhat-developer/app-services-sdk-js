@@ -19,6 +19,15 @@
         "offset": 3,
         "lag": 0,
         "logEndOffset": 3
+      },
+      {
+        "groupId": "consumer_group_1",
+        "topic": "topic-1",
+        "partition": 1,
+        "memberId": "",
+        "offset": 3,
+        "lag": 0,
+        "logEndOffset": 3
       }
     ]
   },
