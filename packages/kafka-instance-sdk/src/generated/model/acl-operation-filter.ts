@@ -13,8 +13,14 @@
  */
 
 
+import { AclFilterAny } from './acl-filter-any';
+import { AclOperation } from './acl-operation';
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/topics-api';
+/**
+ * @type AclOperationFilter
+ * @export
+ */
+export type AclOperationFilter = AclFilterAny | AclOperation;
+
+
 

@@ -14,7 +14,14 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/topics-api';
+/**
+ * Filter any value for enumerated ACL properties
+ * @export
+ * @enum {string}
+ */
+export enum AclFilterAny {
+    Any = 'ANY'
+}
+
+
 

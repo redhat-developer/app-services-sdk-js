@@ -14,7 +14,22 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum AclOperation {
+    All = 'ALL',
+    Read = 'READ',
+    Write = 'WRITE',
+    Create = 'CREATE',
+    Delete = 'DELETE',
+    Alter = 'ALTER',
+    Describe = 'DESCRIBE',
+    DescribeConfigs = 'DESCRIBE_CONFIGS',
+    AlterConfigs = 'ALTER_CONFIGS'
+}
+
+
 

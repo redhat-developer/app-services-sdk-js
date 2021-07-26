@@ -13,8 +13,15 @@
  */
 
 
+import { AclFilterAny } from './acl-filter-any';
+import { AclPatternType } from './acl-pattern-type';
+import { AclPatternTypeFilterOneOf } from './acl-pattern-type-filter-one-of';
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/topics-api';
+/**
+ * @type AclPatternTypeFilter
+ * @export
+ */
+export type AclPatternTypeFilter = AclFilterAny | AclPatternType | AclPatternTypeFilterOneOf;
+
+
 

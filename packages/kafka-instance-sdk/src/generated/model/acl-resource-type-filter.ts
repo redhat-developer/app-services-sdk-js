@@ -13,8 +13,14 @@
  */
 
 
+import { AclFilterAny } from './acl-filter-any';
+import { AclResourceType } from './acl-resource-type';
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/topics-api';
+/**
+ * @type AclResourceTypeFilter
+ * @export
+ */
+export type AclResourceTypeFilter = AclFilterAny | AclResourceType;
+
+
 

@@ -1,4 +1,4 @@
-import { Configuration, DefaultApi } from "../../packages/kafka-instance-sdk/dist";
+import { Configuration, TopicsApi, GroupsApi  } from "../../packages/kafka-instance-sdk/dist";
 
 const accessToken = process.env.IDENTIY_OPENSHIFT_API_TOKEN;
 // Path to your kafka - bootstrapServerHost value from Management API
@@ -9,11 +9,22 @@ const apiConfig = new Configuration({
     basePath
 })
 
-const kafkaInstance = new DefaultApi(apiConfig)
+const topicsAPI = new TopicsApi(apiConfig)
 
-kafkaInstance.getTopics().then((data) => {
+topicsAPI.getTopics().then((data) => {
     console.log(data?.data)
 }).catch((err) => {
     console.error(err.message)
 })
+
+
+const groupsApi = new GroupsApi(apiConfig)
+
+groupsApi.getConsumerGroups().then((data) => {
+    console.log(data?.data)
+}).catch((err) => {
+    console.error(err.message)
+})
+
+
 

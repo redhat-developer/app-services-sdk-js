@@ -14,7 +14,14 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/topics-api';
+/**
+ * Use value \'MATCH\' to perform pattern matching.
+ * @export
+ * @enum {string}
+ */
+export enum AclPatternTypeFilterOneOf {
+    Match = 'MATCH'
+}
+
+
 

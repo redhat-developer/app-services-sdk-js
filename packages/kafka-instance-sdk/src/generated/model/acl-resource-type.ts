@@ -14,7 +14,17 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum AclResourceType {
+    Group = 'GROUP',
+    Topic = 'TOPIC',
+    Cluster = 'CLUSTER',
+    TransactionalId = 'TRANSACTIONAL_ID'
+}
+
+
 

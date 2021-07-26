@@ -13,8 +13,16 @@
  */
 
 
+import { AclBinding } from './acl-binding';
+import { AclBindingListPageAllOf } from './acl-binding-list-page-all-of';
+import { ResultListPage } from './result-list-page';
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/topics-api';
+/**
+ * @type AclBindingListPage
+ * A page of ACL binding entries
+ * @export
+ */
+export type AclBindingListPage = AclBindingListPageAllOf & ResultListPage;
+
+
 

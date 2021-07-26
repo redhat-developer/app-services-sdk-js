@@ -13,26 +13,20 @@
  */
 
 
-import { TopicSettings } from './topic-settings';
+import { AclBinding } from './acl-binding';
 
 /**
- * Input object to create a new topic.
+ * 
  * @export
- * @interface NewTopicInput
+ * @interface AclBindingListPageAllOf
  */
-export interface NewTopicInput {
-    /**
-     * The topic name, this value must be unique.
-     * @type {string}
-     * @memberof NewTopicInput
-     */
-    name: string;
+export interface AclBindingListPageAllOf {
     /**
      * 
-     * @type {TopicSettings}
-     * @memberof NewTopicInput
+     * @type {Array<AclBinding>}
+     * @memberof AclBindingListPageAllOf
      */
-    settings: TopicSettings;
+    items?: Array<AclBinding>;
 }
 
 
