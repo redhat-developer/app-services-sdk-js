@@ -1,6 +1,7 @@
 [
   {
     "groupId": "consumer_group_1",
+    "state": "STABLE",
     "consumers": [
       {
         "groupId": "consumer_group_1",
@@ -33,6 +34,7 @@
   },
   {
     "groupId": "consumer_group_2",
+    "state": "STABLE",
     "consumers": [
       {
         "groupId": "consumer_group_2",
@@ -56,6 +58,7 @@
   },
   {
     "groupId": "consumer_group_3",
+    "state": "DEAD",
     "consumers": [
       {
         "groupId": "consumer_group_3",
@@ -79,6 +82,7 @@
   },
   {
     "groupId": "consumer_group_4",
+    "state": "EMPTY",
     "consumers": [
       {
         "groupId": "consumer_group_4",
@@ -102,6 +106,7 @@
   },
   {
     "groupId": "consumer_group_5",
+    "state": "UNKNOWN",
     "consumers": [
       {
         "groupId": "consumer_group_5",
