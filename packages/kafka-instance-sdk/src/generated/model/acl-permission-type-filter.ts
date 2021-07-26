@@ -13,8 +13,14 @@
  */
 
 
+import { AclFilterAny } from './acl-filter-any';
+import { AclPermissionType } from './acl-permission-type';
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/topics-api';
+/**
+ * @type AclPermissionTypeFilter
+ * @export
+ */
+export type AclPermissionTypeFilter = AclFilterAny | AclPermissionType;
+
+
 

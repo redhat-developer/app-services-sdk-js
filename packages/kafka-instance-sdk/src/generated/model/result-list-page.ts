@@ -13,26 +13,31 @@
  */
 
 
-import { TopicSettings } from './topic-settings';
 
 /**
- * Input object to create a new topic.
+ * 
  * @export
- * @interface NewTopicInput
+ * @interface ResultListPage
  */
-export interface NewTopicInput {
+export interface ResultListPage {
     /**
-     * The topic name, this value must be unique.
-     * @type {string}
-     * @memberof NewTopicInput
+     * Total number of entries in the full result set
+     * @type {number}
+     * @memberof ResultListPage
      */
-    name: string;
+    total?: number;
     /**
-     * 
-     * @type {TopicSettings}
-     * @memberof NewTopicInput
+     * Current page number
+     * @type {number}
+     * @memberof ResultListPage
      */
-    settings: TopicSettings;
+    page?: number;
+    /**
+     * Number of entries per page
+     * @type {number}
+     * @memberof ResultListPage
+     */
+    size?: number;
 }
 
 

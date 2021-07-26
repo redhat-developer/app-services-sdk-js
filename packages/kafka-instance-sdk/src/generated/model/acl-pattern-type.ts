@@ -14,7 +14,15 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum AclPatternType {
+    Literal = 'LITERAL',
+    Prefixed = 'PREFIXED'
+}
+
+
 

@@ -13,26 +13,31 @@
  */
 
 
-import { TopicSettings } from './topic-settings';
 
 /**
- * Input object to create a new topic.
+ * General error response
  * @export
- * @interface NewTopicInput
+ * @interface ModelError
  */
-export interface NewTopicInput {
-    /**
-     * The topic name, this value must be unique.
-     * @type {string}
-     * @memberof NewTopicInput
-     */
-    name: string;
+export interface ModelError {
     /**
      * 
-     * @type {TopicSettings}
-     * @memberof NewTopicInput
+     * @type {number}
+     * @memberof ModelError
      */
-    settings: TopicSettings;
+    code?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelError
+     */
+    error_message?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelError
+     */
+    _class?: string;
 }
 
 
