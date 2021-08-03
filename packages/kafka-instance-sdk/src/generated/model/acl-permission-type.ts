@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum AclPermissionType {
     Allow = 'ALLOW',
     Deny = 'DENY'
