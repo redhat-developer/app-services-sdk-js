@@ -70,8 +70,17 @@ module.exports = {
     const id = c.request.params.consumerGroupId;
     const payload = c.request.body;
 
-    if (!payload || !payload.length && !payload.offset || !payload.value) {
+    if (!payload || !payload.length && !payload.offset) {
       return res.status(400).json({ error_message: 'missing request body' })
+    }
+
+
+    if(!payload.value && payload.offset !== "latest" && payload.offset !== "earliest") {
+      return res.status(400).json({ error_message: `Value has to be set when ${payload.offset} offset is used.`})
+    }
+
+    if((payload.offset === "latest" || payload.offset === "earliest") && payload.value) {
+      return res.status(400).json({ error_message: `Value can't be used when ${payload.offset} offset is used.`})
     }
 
     const group = getConsumerGroup(id);
