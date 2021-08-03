@@ -22,7 +22,7 @@ generate_sdk() {
     --ignore-file-override=.openapi-generator-ignore
 }
 
-npx @openapitools/openapi-generator-cli version-manager set 5.1.1
+npx @openapitools/openapi-generator-cli version-manager set 5.2.0
 echo "Generating SDKs"
 additional_properties="ngVersion=6.1.7,npmName=${PACKAGE_NAME},supportsES6=true,withInterfaces=true,withSeparateModelsAndApi=true,modelPackage=model,apiPackage=api"
 
