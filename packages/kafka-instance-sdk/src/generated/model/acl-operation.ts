@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum AclOperation {
     All = 'ALL',
     Read = 'READ',

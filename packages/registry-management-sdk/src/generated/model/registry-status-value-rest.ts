@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum RegistryStatusValueRest {
     Accepted = 'accepted',
     Provisioning = 'provisioning',

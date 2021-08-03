@@ -19,6 +19,7 @@
  * @export
  * @enum {string}
  */
+
 export enum AclResourceType {
     Group = 'GROUP',
     Topic = 'TOPIC',
