@@ -31,6 +31,8 @@ import { KafkaRequestList } from '../model';
 // @ts-ignore
 import { KafkaRequestPayload } from '../model';
 // @ts-ignore
+import { KafkaUpdateRequest } from '../model';
+// @ts-ignore
 import { MetricsInstantQueryList } from '../model';
 // @ts-ignore
 import { MetricsRangeQueryList } from '../model';
@@ -484,6 +486,50 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Update a Kafka instance by id
+         * @param {string} id The ID of record
+         * @param {KafkaUpdateRequest} kafkaUpdateRequest Update owner of kafka
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateKafkaById: async (id: string, kafkaUpdateRequest: KafkaUpdateRequest, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('updateKafkaById', 'id', id)
+            // verify required parameter 'kafkaUpdateRequest' is not null or undefined
+            assertParamExists('updateKafkaById', 'kafkaUpdateRequest', kafkaUpdateRequest)
+            const localVarPath = `/api/kafkas_mgmt/v1/kafkas/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(kafkaUpdateRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -614,6 +660,18 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getVersionMetadata(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+        /**
+         * 
+         * @summary Update a Kafka instance by id
+         * @param {string} id The ID of record
+         * @param {KafkaUpdateRequest} kafkaUpdateRequest Update owner of kafka
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateKafkaById(id: string, kafkaUpdateRequest: KafkaUpdateRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<KafkaRequest>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateKafkaById(id, kafkaUpdateRequest, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
     }
 };
 
@@ -734,6 +792,17 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         getVersionMetadata(options?: any): AxiosPromise<VersionMetadata> {
             return localVarFp.getVersionMetadata(options).then((request) => request(axios, basePath));
         },
+        /**
+         * 
+         * @summary Update a Kafka instance by id
+         * @param {string} id The ID of record
+         * @param {KafkaUpdateRequest} kafkaUpdateRequest Update owner of kafka
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateKafkaById(id: string, kafkaUpdateRequest: KafkaUpdateRequest, options?: any): AxiosPromise<KafkaRequest> {
+            return localVarFp.updateKafkaById(id, kafkaUpdateRequest, options).then((request) => request(axios, basePath));
+        },
     };
 };
 
@@ -852,6 +921,17 @@ export interface DefaultApiInterface {
      * @memberof DefaultApiInterface
      */
     getVersionMetadata(options?: any): AxiosPromise<VersionMetadata>;
+
+    /**
+     * 
+     * @summary Update a Kafka instance by id
+     * @param {string} id The ID of record
+     * @param {KafkaUpdateRequest} kafkaUpdateRequest Update owner of kafka
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    updateKafkaById(id: string, kafkaUpdateRequest: KafkaUpdateRequest, options?: any): AxiosPromise<KafkaRequest>;
 
 }
 
@@ -990,5 +1070,18 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      */
     public getVersionMetadata(options?: any) {
         return DefaultApiFp(this.configuration).getVersionMetadata(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Update a Kafka instance by id
+     * @param {string} id The ID of record
+     * @param {KafkaUpdateRequest} kafkaUpdateRequest Update owner of kafka
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public updateKafkaById(id: string, kafkaUpdateRequest: KafkaUpdateRequest, options?: any) {
+        return DefaultApiFp(this.configuration).updateKafkaById(id, kafkaUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
