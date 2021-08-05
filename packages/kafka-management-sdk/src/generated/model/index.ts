@@ -13,6 +13,7 @@ export * from './kafka-request-all-of';
 export * from './kafka-request-list';
 export * from './kafka-request-list-all-of';
 export * from './kafka-request-payload';
+export * from './kafka-update-request';
 export * from './list';
 export * from './metrics-instant-query-list';
 export * from './metrics-instant-query-list-all-of';
