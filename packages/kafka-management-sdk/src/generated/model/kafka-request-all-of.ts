@@ -86,6 +86,12 @@ export interface KafkaRequestAllOf {
      * @memberof KafkaRequestAllOf
      */
     version?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof KafkaRequestAllOf
+     */
+    instance_type?: string;
 }
 
 
