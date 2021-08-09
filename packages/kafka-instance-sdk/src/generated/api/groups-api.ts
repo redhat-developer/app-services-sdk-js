@@ -26,6 +26,8 @@ import { ConsumerGroup } from '../model';
 import { ConsumerGroupList } from '../model';
 // @ts-ignore
 import { ConsumerGroupResetOffsetParameters } from '../model';
+// @ts-ignore
+import { ConsumerGroupResetOffsetResult } from '../model';
 /**
  * GroupsApi - axios parameter creator
  * @export
@@ -308,7 +310,7 @@ export const GroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Array<object>>>> {
+        async resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroupResetOffsetResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.resetConsumerGroupOffset(consumerGroupId, consumerGroupResetOffsetParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -371,7 +373,7 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): AxiosPromise<Array<Array<object>>> {
+        resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): AxiosPromise<ConsumerGroupResetOffsetResult> {
             return localVarFp.resetConsumerGroupOffset(consumerGroupId, consumerGroupResetOffsetParameters, options).then((request) => request(axios, basePath));
         },
     };
@@ -433,7 +435,7 @@ export interface GroupsApiInterface {
      * @throws {RequiredError}
      * @memberof GroupsApiInterface
      */
-    resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): AxiosPromise<Array<Array<object>>>;
+    resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): AxiosPromise<ConsumerGroupResetOffsetResult>;
 
 }
 

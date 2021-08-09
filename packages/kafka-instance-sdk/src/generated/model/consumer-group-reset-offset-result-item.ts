@@ -17,27 +17,27 @@
 /**
  * 
  * @export
- * @interface ResultListPage
+ * @interface ConsumerGroupResetOffsetResultItem
  */
-export interface ResultListPage {
+export interface ConsumerGroupResetOffsetResultItem {
     /**
-     * Total number of entries in the full result set
-     * @type {number}
-     * @memberof ResultListPage
+     * 
+     * @type {string}
+     * @memberof ConsumerGroupResetOffsetResultItem
      */
-    total: number;
+    topic?: string;
     /**
-     * Current page number (returned for fetch requests)
+     * 
      * @type {number}
-     * @memberof ResultListPage
+     * @memberof ConsumerGroupResetOffsetResultItem
      */
-    page?: number;
+    partition?: number;
     /**
-     * Number of entries per page (returned for fetch requests)
+     * 
      * @type {number}
-     * @memberof ResultListPage
+     * @memberof ConsumerGroupResetOffsetResultItem
      */
-    size?: number;
+    offset?: number;
 }
 
 
