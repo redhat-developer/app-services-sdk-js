@@ -121,7 +121,16 @@ module.exports = {
     consumerGroups = consumerGroups.filter((t) => t.groupId !== id);
     consumerGroups.push(group);
 
-    return res.status(200).json(group);
+    const updatedConsumers = group.consumers.map(({ topic, partition, offset }) => ({
+      topic,
+      partition,
+      offset
+    }))
+
+    return res.status(200).json({
+      items: updatedConsumers,
+      total: updatedConsumers.length
+    });
   },
 
   createTopic: async (c, req, res) => {
