@@ -187,10 +187,12 @@ export const AclsApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {AclPermissionTypeFilter} [permission] ACL Permission Type Filter
          * @param {number} [page] Page number for result lists
          * @param {number} [size] Page size for result lists
+         * @param {'asc' | 'desc'} [order] Order of the ACL binding sorting.
+         * @param {'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission'} [orderKey] Order key to sort the items by.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAcls: async (resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, options: any = {}): Promise<RequestArgs> => {
+        getAcls: async (resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/acls`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -237,6 +239,14 @@ export const AclsApiAxiosParamCreator = function (configuration?: Configuration)
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (order !== undefined) {
+                localVarQueryParameter['order'] = order;
+            }
+
+            if (orderKey !== undefined) {
+                localVarQueryParameter['orderKey'] = orderKey;
             }
 
 
@@ -308,11 +318,13 @@ export const AclsApiFp = function(configuration?: Configuration) {
          * @param {AclPermissionTypeFilter} [permission] ACL Permission Type Filter
          * @param {number} [page] Page number for result lists
          * @param {number} [size] Page size for result lists
+         * @param {'asc' | 'desc'} [order] Order of the ACL binding sorting.
+         * @param {'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission'} [orderKey] Order key to sort the items by.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AclBindingListPage>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAcls(resourceType, resourceName, patternType, principal, operation, permission, page, size, options);
+        async getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AclBindingListPage>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAcls(resourceType, resourceName, patternType, principal, operation, permission, page, size, order, orderKey, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -370,11 +382,13 @@ export const AclsApiFactory = function (configuration?: Configuration, basePath?
          * @param {AclPermissionTypeFilter} [permission] ACL Permission Type Filter
          * @param {number} [page] Page number for result lists
          * @param {number} [size] Page size for result lists
+         * @param {'asc' | 'desc'} [order] Order of the ACL binding sorting.
+         * @param {'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission'} [orderKey] Order key to sort the items by.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, options?: any): AxiosPromise<AclBindingListPage> {
-            return localVarFp.getAcls(resourceType, resourceName, patternType, principal, operation, permission, page, size, options).then((request) => request(axios, basePath));
+        getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options?: any): AxiosPromise<AclBindingListPage> {
+            return localVarFp.getAcls(resourceType, resourceName, patternType, principal, operation, permission, page, size, order, orderKey, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -430,11 +444,13 @@ export interface AclsApiInterface {
      * @param {AclPermissionTypeFilter} [permission] ACL Permission Type Filter
      * @param {number} [page] Page number for result lists
      * @param {number} [size] Page size for result lists
+     * @param {'asc' | 'desc'} [order] Order of the ACL binding sorting.
+     * @param {'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission'} [orderKey] Order key to sort the items by.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AclsApiInterface
      */
-    getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, options?: any): AxiosPromise<AclBindingListPage>;
+    getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options?: any): AxiosPromise<AclBindingListPage>;
 
 }
 
@@ -496,11 +512,13 @@ export class AclsApi extends BaseAPI implements AclsApiInterface {
      * @param {AclPermissionTypeFilter} [permission] ACL Permission Type Filter
      * @param {number} [page] Page number for result lists
      * @param {number} [size] Page size for result lists
+     * @param {'asc' | 'desc'} [order] Order of the ACL binding sorting.
+     * @param {'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission'} [orderKey] Order key to sort the items by.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AclsApi
      */
-    public getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, options?: any) {
-        return AclsApiFp(this.configuration).getAcls(resourceType, resourceName, patternType, principal, operation, permission, page, size, options).then((request) => request(this.axios, this.basePath));
+    public getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options?: any) {
+        return AclsApiFp(this.configuration).getAcls(resourceType, resourceName, patternType, principal, operation, permission, page, size, order, orderKey, options).then((request) => request(this.axios, this.basePath));
     }
 }
