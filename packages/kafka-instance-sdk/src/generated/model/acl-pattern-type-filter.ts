@@ -13,15 +13,19 @@
  */
 
 
-import { AclFilterAny } from './acl-filter-any';
-import { AclPatternType } from './acl-pattern-type';
-import { AclPatternTypeFilterOneOf } from './acl-pattern-type-filter-one-of';
 
 /**
- * @type AclPatternTypeFilter
+ * Use value \'MATCH\' to perform pattern matching.
  * @export
+ * @enum {string}
  */
-export type AclPatternTypeFilter = AclFilterAny | AclPatternType | AclPatternTypeFilterOneOf;
+
+export enum AclPatternTypeFilter {
+    Literal = 'LITERAL',
+    Prefixed = 'PREFIXED',
+    Any = 'ANY',
+    Match = 'MATCH'
+}
 
 
 

@@ -13,14 +13,18 @@
  */
 
 
-import { AclFilterAny } from './acl-filter-any';
-import { AclPermissionType } from './acl-permission-type';
 
 /**
- * @type AclPermissionTypeFilter
+ * 
  * @export
+ * @enum {string}
  */
-export type AclPermissionTypeFilter = AclFilterAny | AclPermissionType;
+
+export enum AclPermissionTypeFilter {
+    Allow = 'ALLOW',
+    Deny = 'DENY',
+    Any = 'ANY'
+}
 
 
 

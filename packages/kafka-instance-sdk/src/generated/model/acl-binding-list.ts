@@ -13,16 +13,20 @@
  */
 
 
+import { AclBinding } from './acl-binding';
 
 /**
- * Use value \'MATCH\' to perform pattern matching.
+ * 
  * @export
- * @enum {string}
+ * @interface AclBindingList
  */
-
-export enum AclPatternTypeFilterOneOf {
-    Match = 'MATCH'
+export interface AclBindingList {
+    /**
+     * 
+     * @type {Array<AclBinding>}
+     * @memberof AclBindingList
+     */
+    items?: Array<AclBinding>;
 }
-
 
 

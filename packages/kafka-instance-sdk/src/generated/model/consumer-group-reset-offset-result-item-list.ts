@@ -18,13 +18,13 @@ import { ConsumerGroupResetOffsetResultItem } from './consumer-group-reset-offse
 /**
  * 
  * @export
- * @interface ConsumerGroupResetOffsetResultAllOf
+ * @interface ConsumerGroupResetOffsetResultItemList
  */
-export interface ConsumerGroupResetOffsetResultAllOf {
+export interface ConsumerGroupResetOffsetResultItemList {
     /**
      * 
      * @type {Array<ConsumerGroupResetOffsetResultItem>}
-     * @memberof ConsumerGroupResetOffsetResultAllOf
+     * @memberof ConsumerGroupResetOffsetResultItemList
      */
     items?: Array<ConsumerGroupResetOffsetResultItem>;
 }
