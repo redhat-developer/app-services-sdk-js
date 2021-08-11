@@ -14,7 +14,7 @@
 
 
 import { AclBinding } from './acl-binding';
-import { AclBindingListPageAllOf } from './acl-binding-list-page-all-of';
+import { AclBindingList } from './acl-binding-list';
 import { ResultListPage } from './result-list-page';
 
 /**
@@ -22,7 +22,7 @@ import { ResultListPage } from './result-list-page';
  * A page of ACL binding entries
  * @export
  */
-export type AclBindingListPage = AclBindingListPageAllOf & ResultListPage;
+export type AclBindingListPage = AclBindingList & ResultListPage;
 
 
 

@@ -13,14 +13,20 @@
  */
 
 
-import { AclFilterAny } from './acl-filter-any';
-import { AclResourceType } from './acl-resource-type';
 
 /**
- * @type AclResourceTypeFilter
+ * 
  * @export
+ * @enum {string}
  */
-export type AclResourceTypeFilter = AclFilterAny | AclResourceType;
+
+export enum AclResourceTypeFilter {
+    Any = 'ANY',
+    Group = 'GROUP',
+    Topic = 'TOPIC',
+    Cluster = 'CLUSTER',
+    TransactionalId = 'TRANSACTIONAL_ID'
+}
 
 
 

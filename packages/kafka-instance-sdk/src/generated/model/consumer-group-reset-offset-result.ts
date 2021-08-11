@@ -13,15 +13,15 @@
  */
 
 
-import { ConsumerGroupResetOffsetResultAllOf } from './consumer-group-reset-offset-result-all-of';
 import { ConsumerGroupResetOffsetResultItem } from './consumer-group-reset-offset-result-item';
+import { ConsumerGroupResetOffsetResultItemList } from './consumer-group-reset-offset-result-item-list';
 import { ResultListPage } from './result-list-page';
 
 /**
  * @type ConsumerGroupResetOffsetResult
  * @export
  */
-export type ConsumerGroupResetOffsetResult = ConsumerGroupResetOffsetResultAllOf & ResultListPage;
+export type ConsumerGroupResetOffsetResult = ConsumerGroupResetOffsetResultItemList & ResultListPage;
 
 
 

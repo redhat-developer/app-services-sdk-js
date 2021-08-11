@@ -13,14 +13,25 @@
  */
 
 
-import { AclFilterAny } from './acl-filter-any';
-import { AclOperation } from './acl-operation';
 
 /**
- * @type AclOperationFilter
+ * 
  * @export
+ * @enum {string}
  */
-export type AclOperationFilter = AclFilterAny | AclOperation;
+
+export enum AclOperationFilter {
+    All = 'ALL',
+    Read = 'READ',
+    Write = 'WRITE',
+    Create = 'CREATE',
+    Delete = 'DELETE',
+    Alter = 'ALTER',
+    Describe = 'DESCRIBE',
+    DescribeConfigs = 'DESCRIBE_CONFIGS',
+    AlterConfigs = 'ALTER_CONFIGS',
+    Any = 'ANY'
+}
 
 
 
