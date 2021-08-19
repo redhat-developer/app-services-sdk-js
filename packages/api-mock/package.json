@@ -19,7 +19,7 @@
     "build": "cp -Rf ../../.openapi ./openapi && json2yaml ./openapi/srs-fleet-manager.json > ./openapi/srs-fleet-manager.yaml",
     "start": "node ./src/index.js",
     "api:kafka-management": "openapi-editor --file openapi/kas-fleet-manager.yaml --port 10000",
-    "api:kafka-instance": "openapi-editor --file openapi/kafka-admin-rest.yml --port 10001",
+    "api:kafka-instance": "openapi-editor --file openapi/kafka-admin-rest.yaml --port 10001",
     "api:registry-management": "openapi-editor --file openapi/srs-fleet-manager.yaml --port 10003",
     "api:registry-instance": "openapi-editor --file openapi/registry-instance-rest.yml --port 10004",
     "packageRelease": "npm publish"
