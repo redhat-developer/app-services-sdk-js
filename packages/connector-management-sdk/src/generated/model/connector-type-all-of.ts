@@ -33,7 +33,7 @@ export interface ConnectorTypeAllOf {
      */
     version?: string;
     /**
-     * Version of the connector type.
+     * Channels of the connector type.
      * @type {Array<string>}
      * @memberof ConnectorTypeAllOf
      */
@@ -51,7 +51,7 @@ export interface ConnectorTypeAllOf {
      */
     icon_href?: string;
     /**
-     * labels used to categorize the connector
+     * Labels used to categorize the connector
      * @type {Array<string>}
      * @memberof ConnectorTypeAllOf
      */
