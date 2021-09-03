@@ -151,7 +151,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Returns a list of all of the available topics, or the list of topics that meet the users URL Query Parameters.
+         * Returns a list of all of the available topics, or the list of topics that meet the request query parameters. The topics returned are limited to those records the requestor is authorized to view.
          * @summary List of topics
          * @param {number} [offset] The page offset
          * @param {number} [limit] Maximum number of topics to return
@@ -307,7 +307,7 @@ export const TopicsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Returns a list of all of the available topics, or the list of topics that meet the users URL Query Parameters.
+         * Returns a list of all of the available topics, or the list of topics that meet the request query parameters. The topics returned are limited to those records the requestor is authorized to view.
          * @summary List of topics
          * @param {number} [offset] The page offset
          * @param {number} [limit] Maximum number of topics to return
@@ -376,7 +376,7 @@ export const TopicsApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.getTopic(topicName, options).then((request) => request(axios, basePath));
         },
         /**
-         * Returns a list of all of the available topics, or the list of topics that meet the users URL Query Parameters.
+         * Returns a list of all of the available topics, or the list of topics that meet the request query parameters. The topics returned are limited to those records the requestor is authorized to view.
          * @summary List of topics
          * @param {number} [offset] The page offset
          * @param {number} [limit] Maximum number of topics to return
@@ -442,7 +442,7 @@ export interface TopicsApiInterface {
     getTopic(topicName: string, options?: any): AxiosPromise<Topic>;
 
     /**
-     * Returns a list of all of the available topics, or the list of topics that meet the users URL Query Parameters.
+     * Returns a list of all of the available topics, or the list of topics that meet the request query parameters. The topics returned are limited to those records the requestor is authorized to view.
      * @summary List of topics
      * @param {number} [offset] The page offset
      * @param {number} [limit] Maximum number of topics to return
@@ -514,7 +514,7 @@ export class TopicsApi extends BaseAPI implements TopicsApiInterface {
     }
 
     /**
-     * Returns a list of all of the available topics, or the list of topics that meet the users URL Query Parameters.
+     * Returns a list of all of the available topics, or the list of topics that meet the request query parameters. The topics returned are limited to those records the requestor is authorized to view.
      * @summary List of topics
      * @param {number} [offset] The page offset
      * @param {number} [limit] Maximum number of topics to return

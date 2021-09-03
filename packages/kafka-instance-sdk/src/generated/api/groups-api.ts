@@ -131,7 +131,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Returns a list of all consumer groups for a particular Kafka instance.
+         * Returns a list of all consumer groups for a particular Kafka instance. The consumer groups returned are limited to those records the requestor is authorized to view.
          * @summary List of consumer groups in the Kafka instance.
          * @param {number} [offset] The page offset
          * @param {number} [limit] Maximum number of consumer groups to return
@@ -285,7 +285,7 @@ export const GroupsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Returns a list of all consumer groups for a particular Kafka instance.
+         * Returns a list of all consumer groups for a particular Kafka instance. The consumer groups returned are limited to those records the requestor is authorized to view.
          * @summary List of consumer groups in the Kafka instance.
          * @param {number} [offset] The page offset
          * @param {number} [limit] Maximum number of consumer groups to return
@@ -349,7 +349,7 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.getConsumerGroupById(consumerGroupId, order, orderKey, partitionFilter, topic, options).then((request) => request(axios, basePath));
         },
         /**
-         * Returns a list of all consumer groups for a particular Kafka instance.
+         * Returns a list of all consumer groups for a particular Kafka instance. The consumer groups returned are limited to those records the requestor is authorized to view.
          * @summary List of consumer groups in the Kafka instance.
          * @param {number} [offset] The page offset
          * @param {number} [limit] Maximum number of consumer groups to return
@@ -410,7 +410,7 @@ export interface GroupsApiInterface {
     getConsumerGroupById(consumerGroupId: string, order?: 'asc' | 'desc', orderKey?: 'offset' | 'endOffset' | 'lag' | 'partition', partitionFilter?: number, topic?: string, options?: any): AxiosPromise<ConsumerGroup>;
 
     /**
-     * Returns a list of all consumer groups for a particular Kafka instance.
+     * Returns a list of all consumer groups for a particular Kafka instance. The consumer groups returned are limited to those records the requestor is authorized to view.
      * @summary List of consumer groups in the Kafka instance.
      * @param {number} [offset] The page offset
      * @param {number} [limit] Maximum number of consumer groups to return
@@ -475,7 +475,7 @@ export class GroupsApi extends BaseAPI implements GroupsApiInterface {
     }
 
     /**
-     * Returns a list of all consumer groups for a particular Kafka instance.
+     * Returns a list of all consumer groups for a particular Kafka instance. The consumer groups returned are limited to those records the requestor is authorized to view.
      * @summary List of consumer groups in the Kafka instance.
      * @param {number} [offset] The page offset
      * @param {number} [limit] Maximum number of consumer groups to return
