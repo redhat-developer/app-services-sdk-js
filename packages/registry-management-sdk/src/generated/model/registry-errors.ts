@@ -13,32 +13,17 @@
  */
 
 
-import { RegistryErrors } from './registry-errors';
 
 /**
- * 
+ * SRS-ERR-5: When user did not accepted terms  SRS-ERR-6: When user did reached quota 
  * @export
- * @interface ErrorAllOf
+ * @enum {string}
  */
-export interface ErrorAllOf {
-    /**
-     * 
-     * @type {RegistryErrors}
-     * @memberof ErrorAllOf
-     */
-    code?: RegistryErrors;
-    /**
-     * 
-     * @type {string}
-     * @memberof ErrorAllOf
-     */
-    reason?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ErrorAllOf
-     */
-    operation_id?: string;
+
+export enum RegistryErrors {
+    _5 = 'SRS-ERR-5',
+    _6 = 'SRS-ERR-6'
 }
+
 
 

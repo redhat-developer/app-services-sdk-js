@@ -533,7 +533,8 @@
             "type": "object",
             "properties": {
               "code": {
-                "type": "string"
+                  "$ref": "#/components/schemas/RegistryErrors" 
+
               },
               "reason": {
                 "type": "string"
@@ -735,6 +736,14 @@
           "failed",
           "deprovision",
           "deleting"
+        ],
+        "type": "string"
+      },
+      "RegistryErrors": {
+        "description": "SRS-ERR-5: When user did not accepted terms\n SRS-ERR-6: When user did reached quota\n",
+        "enum": [
+          "SRS-ERR-5",
+          "SRS-ERR-6"
         ],
         "type": "string"
       }

@@ -15,6 +15,7 @@
 
 import { ErrorAllOf } from './error-all-of';
 import { ObjectReference } from './object-reference';
+import { RegistryErrors } from './registry-errors';
 
 /**
  * @type ModelError
