@@ -137,8 +137,8 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {number} [limit] Maximum number of consumer groups to return
          * @param {number} [size] Maximum number of consumer groups to return on single page
          * @param {number} [page] The page when returning the list of consumer groups
-         * @param {string} [topic] Return consumer groups for this topic
-         * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
+         * @param {string} [topic] Return consumer groups where the topic name contains with this value
+         * @param {string} [groupIdFilter] Return the consumer groups where the ID contains with this value
          * @param {'asc' | 'desc'} [order] Order of the consumer groups sorting. Ascending order is used as default.
          * @param {'name'} [orderKey] Order key to sort the items by. Only the value \&#39;name\&#39; is currently applicable.
          * @param {*} [options] Override http request option.
@@ -291,8 +291,8 @@ export const GroupsApiFp = function(configuration?: Configuration) {
          * @param {number} [limit] Maximum number of consumer groups to return
          * @param {number} [size] Maximum number of consumer groups to return on single page
          * @param {number} [page] The page when returning the list of consumer groups
-         * @param {string} [topic] Return consumer groups for this topic
-         * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
+         * @param {string} [topic] Return consumer groups where the topic name contains with this value
+         * @param {string} [groupIdFilter] Return the consumer groups where the ID contains with this value
          * @param {'asc' | 'desc'} [order] Order of the consumer groups sorting. Ascending order is used as default.
          * @param {'name'} [orderKey] Order key to sort the items by. Only the value \&#39;name\&#39; is currently applicable.
          * @param {*} [options] Override http request option.
@@ -355,8 +355,8 @@ export const GroupsApiFactory = function (configuration?: Configuration, basePat
          * @param {number} [limit] Maximum number of consumer groups to return
          * @param {number} [size] Maximum number of consumer groups to return on single page
          * @param {number} [page] The page when returning the list of consumer groups
-         * @param {string} [topic] Return consumer groups for this topic
-         * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
+         * @param {string} [topic] Return consumer groups where the topic name contains with this value
+         * @param {string} [groupIdFilter] Return the consumer groups where the ID contains with this value
          * @param {'asc' | 'desc'} [order] Order of the consumer groups sorting. Ascending order is used as default.
          * @param {'name'} [orderKey] Order key to sort the items by. Only the value \&#39;name\&#39; is currently applicable.
          * @param {*} [options] Override http request option.
@@ -416,8 +416,8 @@ export interface GroupsApiInterface {
      * @param {number} [limit] Maximum number of consumer groups to return
      * @param {number} [size] Maximum number of consumer groups to return on single page
      * @param {number} [page] The page when returning the list of consumer groups
-     * @param {string} [topic] Return consumer groups for this topic
-     * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
+     * @param {string} [topic] Return consumer groups where the topic name contains with this value
+     * @param {string} [groupIdFilter] Return the consumer groups where the ID contains with this value
      * @param {'asc' | 'desc'} [order] Order of the consumer groups sorting. Ascending order is used as default.
      * @param {'name'} [orderKey] Order key to sort the items by. Only the value \&#39;name\&#39; is currently applicable.
      * @param {*} [options] Override http request option.
@@ -481,8 +481,8 @@ export class GroupsApi extends BaseAPI implements GroupsApiInterface {
      * @param {number} [limit] Maximum number of consumer groups to return
      * @param {number} [size] Maximum number of consumer groups to return on single page
      * @param {number} [page] The page when returning the list of consumer groups
-     * @param {string} [topic] Return consumer groups for this topic
-     * @param {string} [groupIdFilter] Return the consumer groups where the ID begins with this value
+     * @param {string} [topic] Return consumer groups where the topic name contains with this value
+     * @param {string} [groupIdFilter] Return the consumer groups where the ID contains with this value
      * @param {'asc' | 'desc'} [order] Order of the consumer groups sorting. Ascending order is used as default.
      * @param {'name'} [orderKey] Order key to sort the items by. Only the value \&#39;name\&#39; is currently applicable.
      * @param {*} [options] Override http request option.
