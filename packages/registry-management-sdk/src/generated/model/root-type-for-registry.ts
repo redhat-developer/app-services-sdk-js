@@ -13,6 +13,7 @@
  */
 
 
+import { RegistryInstanceTypeValue } from './registry-instance-type-value';
 import { RegistryStatusValue } from './registry-status-value';
 
 /**
@@ -75,6 +76,12 @@ export interface RootTypeForRegistry {
      * @memberof RootTypeForRegistry
      */
     updated_at: string;
+    /**
+     * 
+     * @type {RegistryInstanceTypeValue}
+     * @memberof RootTypeForRegistry
+     */
+    instance_type: RegistryInstanceTypeValue;
 }
 
 
