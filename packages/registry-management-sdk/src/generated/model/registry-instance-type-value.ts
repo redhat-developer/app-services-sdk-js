@@ -13,16 +13,17 @@
  */
 
 
-import { ObjectReference } from './object-reference';
-import { RegistryInstanceTypeValue } from './registry-instance-type-value';
-import { RegistryStatusValue } from './registry-status-value';
-import { RootTypeForRegistry } from './root-type-for-registry';
 
 /**
- * @type Registry
+ * \"standard\": Standard, full-featured Registry instance  \"eval\": Evaluation (Trial) instance, provided for a limited time 
  * @export
+ * @enum {string}
  */
-export type Registry = ObjectReference & RootTypeForRegistry;
+
+export enum RegistryInstanceTypeValue {
+    Standard = 'standard',
+    Eval = 'eval'
+}
 
 
 
