@@ -14,7 +14,18 @@
 
 
 
-export * from './api/default-api';
-export * from './api/errors-api';
-export * from './api/registries-api';
+/**
+ * Schema for the service status response body
+ * @export
+ * @interface ServiceStatus
+ */
+export interface ServiceStatus {
+    /**
+     * Boolean property indicating if the maximum number of Trial instances have been reached, therefore creation of more eval instances should not be allowed.
+     * @type {boolean}
+     * @memberof ServiceStatus
+     */
+    max_eval_instances_reached?: boolean;
+}
+
 
