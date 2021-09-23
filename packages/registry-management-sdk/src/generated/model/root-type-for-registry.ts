@@ -41,6 +41,12 @@ export interface RootTypeForRegistry {
      */
     registryUrl?: string;
     /**
+     * 
+     * @type {string}
+     * @memberof RootTypeForRegistry
+     */
+    browserUrl?: string;
+    /**
      * User-defined Registry name. Does not have to be unique.
      * @type {string}
      * @memberof RootTypeForRegistry
