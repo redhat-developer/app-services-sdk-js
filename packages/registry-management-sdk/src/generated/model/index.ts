@@ -11,3 +11,4 @@ export * from './registry-list';
 export * from './registry-list-all-of';
 export * from './registry-status-value';
 export * from './root-type-for-registry';
+export * from './service-status';
