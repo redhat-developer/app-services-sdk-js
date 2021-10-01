@@ -25,8 +25,6 @@ import { CloudProviderList } from '../model';
 // @ts-ignore
 import { CloudRegionList } from '../model';
 // @ts-ignore
-import { ErrorList } from '../model';
-// @ts-ignore
 import { KafkaRequest } from '../model';
 // @ts-ignore
 import { KafkaRequestList } from '../model';
@@ -220,70 +218,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
             }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Returns the error by id
-         * @param {string} id The ID of record
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getErrorById: async (id: string, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('getErrorById', 'id', id)
-            const localVarPath = `/api/kafkas_mgmt/v1/errors/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Returns the list of possible API errors
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getErrors: async (options: any = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/kafkas_mgmt/v1/errors`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
 
 
     
@@ -657,27 +591,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Returns the error by id
-         * @param {string} id The ID of record
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getErrorById(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getErrorById(id, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
-         * @summary Returns the list of possible API errors
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getErrors(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ErrorList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getErrors(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @summary Returns a Kafka request by ID
          * @param {string} id The ID of record
          * @param {*} [options] Override http request option.
@@ -816,25 +729,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Returns the error by id
-         * @param {string} id The ID of record
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getErrorById(id: string, options?: any): AxiosPromise<Error> {
-            return localVarFp.getErrorById(id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Returns the list of possible API errors
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getErrors(options?: any): AxiosPromise<ErrorList> {
-            return localVarFp.getErrors(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Returns a Kafka request by ID
          * @param {string} id The ID of record
          * @param {*} [options] Override http request option.
@@ -962,25 +856,6 @@ export interface DefaultApiInterface {
      * @memberof DefaultApiInterface
      */
     getCloudProviders(page?: string, size?: string, options?: any): AxiosPromise<CloudProviderList>;
-
-    /**
-     * 
-     * @summary Returns the error by id
-     * @param {string} id The ID of record
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApiInterface
-     */
-    getErrorById(id: string, options?: any): AxiosPromise<Error>;
-
-    /**
-     * 
-     * @summary Returns the list of possible API errors
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApiInterface
-     */
-    getErrors(options?: any): AxiosPromise<ErrorList>;
 
     /**
      * 
@@ -1118,29 +993,6 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      */
     public getCloudProviders(page?: string, size?: string, options?: any) {
         return DefaultApiFp(this.configuration).getCloudProviders(page, size, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Returns the error by id
-     * @param {string} id The ID of record
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getErrorById(id: string, options?: any) {
-        return DefaultApiFp(this.configuration).getErrorById(id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Returns the list of possible API errors
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getErrors(options?: any) {
-        return DefaultApiFp(this.configuration).getErrors(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
