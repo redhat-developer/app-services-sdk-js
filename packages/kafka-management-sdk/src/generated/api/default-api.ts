@@ -140,6 +140,44 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Returns all metrics in scrapeable format for a given kafka id
+         * @param {string} id The ID of record
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        federateMetrics: async (id: string, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('federateMetrics', 'id', id)
+            const localVarPath = `/api/kafkas_mgmt/v1/kafkas/{id}/metrics/federate`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Returns the list of supported regions of the supported cloud provider
          * @param {string} id The ID of record
          * @param {string} [page] Page index
@@ -566,6 +604,17 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Returns all metrics in scrapeable format for a given kafka id
+         * @param {string} id The ID of record
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async federateMetrics(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.federateMetrics(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Returns the list of supported regions of the supported cloud provider
          * @param {string} id The ID of record
          * @param {string} [page] Page index
@@ -706,6 +755,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Returns all metrics in scrapeable format for a given kafka id
+         * @param {string} id The ID of record
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        federateMetrics(id: string, options?: any): AxiosPromise<string> {
+            return localVarFp.federateMetrics(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Returns the list of supported regions of the supported cloud provider
          * @param {string} id The ID of record
          * @param {string} [page] Page index
@@ -833,6 +892,16 @@ export interface DefaultApiInterface {
      * @memberof DefaultApiInterface
      */
     deleteKafkaById(id: string, async: boolean, options?: any): AxiosPromise<Error>;
+
+    /**
+     * 
+     * @summary Returns all metrics in scrapeable format for a given kafka id
+     * @param {string} id The ID of record
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApiInterface
+     */
+    federateMetrics(id: string, options?: any): AxiosPromise<string>;
 
     /**
      * 
@@ -966,6 +1035,18 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      */
     public deleteKafkaById(id: string, async: boolean, options?: any) {
         return DefaultApiFp(this.configuration).deleteKafkaById(id, async, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Returns all metrics in scrapeable format for a given kafka id
+     * @param {string} id The ID of record
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public federateMetrics(id: string, options?: any) {
+        return DefaultApiFp(this.configuration).federateMetrics(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
