@@ -21,11 +21,18 @@
  */
 export interface Partition {
     /**
-     * Uniquie id for the partition
+     * The partition id, unique among partitions of the same topic
      * @type {number}
      * @memberof Partition
      */
-    id: number;
+    partition: number;
+    /**
+     * Unique id for the partition (deprecated, use `partition` instead)
+     * @type {number}
+     * @memberof Partition
+     * @deprecated
+     */
+    id?: number;
     /**
      * List of replicas for the partition
      * @type {Array<object>}
@@ -33,7 +40,7 @@ export interface Partition {
      */
     replicas?: Array<object>;
     /**
-     * List isync-replicas for this partition.
+     * List in-sync replicas for this partition.
      * @type {Array<object>}
      * @memberof Partition
      */
