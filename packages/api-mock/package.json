@@ -28,7 +28,7 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "nanoid": "3.1.30",
-    "openapi-backend": "4.2.0",
+    "openapi-backend": "5.0.0",
     "yargs": "17.2.1"
   },
   "devDependencies": {
