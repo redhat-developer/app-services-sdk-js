@@ -182,10 +182,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} id The ID of record
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
+         * @param {string} [instanceType] The Kafka instance type to filter the results by
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCloudProviderRegions: async (id: string, page?: string, size?: string, options: any = {}): Promise<RequestArgs> => {
+        getCloudProviderRegions: async (id: string, page?: string, size?: string, instanceType?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getCloudProviderRegions', 'id', id)
             const localVarPath = `/api/kafkas_mgmt/v1/cloud_providers/{id}/regions`
@@ -211,6 +212,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (instanceType !== undefined) {
+                localVarQueryParameter['instance_type'] = instanceType;
             }
 
 
@@ -619,11 +624,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} id The ID of record
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
+         * @param {string} [instanceType] The Kafka instance type to filter the results by
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCloudProviderRegions(id: string, page?: string, size?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudRegionList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getCloudProviderRegions(id, page, size, options);
+        async getCloudProviderRegions(id: string, page?: string, size?: string, instanceType?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudRegionList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCloudProviderRegions(id, page, size, instanceType, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -769,11 +775,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {string} id The ID of record
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
+         * @param {string} [instanceType] The Kafka instance type to filter the results by
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCloudProviderRegions(id: string, page?: string, size?: string, options?: any): AxiosPromise<CloudRegionList> {
-            return localVarFp.getCloudProviderRegions(id, page, size, options).then((request) => request(axios, basePath));
+        getCloudProviderRegions(id: string, page?: string, size?: string, instanceType?: string, options?: any): AxiosPromise<CloudRegionList> {
+            return localVarFp.getCloudProviderRegions(id, page, size, instanceType, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -909,11 +916,12 @@ export interface DefaultApiInterface {
      * @param {string} id The ID of record
      * @param {string} [page] Page index
      * @param {string} [size] Number of items in each page
+     * @param {string} [instanceType] The Kafka instance type to filter the results by
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getCloudProviderRegions(id: string, page?: string, size?: string, options?: any): AxiosPromise<CloudRegionList>;
+    getCloudProviderRegions(id: string, page?: string, size?: string, instanceType?: string, options?: any): AxiosPromise<CloudRegionList>;
 
     /**
      * 
@@ -1055,12 +1063,13 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @param {string} id The ID of record
      * @param {string} [page] Page index
      * @param {string} [size] Number of items in each page
+     * @param {string} [instanceType] The Kafka instance type to filter the results by
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getCloudProviderRegions(id: string, page?: string, size?: string, options?: any) {
-        return DefaultApiFp(this.configuration).getCloudProviderRegions(id, page, size, options).then((request) => request(this.axios, this.basePath));
+    public getCloudProviderRegions(id: string, page?: string, size?: string, instanceType?: string, options?: any) {
+        return DefaultApiFp(this.configuration).getCloudProviderRegions(id, page, size, instanceType, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
