@@ -44,6 +44,12 @@ export interface CloudRegion {
      * @memberof CloudRegion
      */
     enabled: boolean;
+    /**
+     * The Kafka instance types supported by this region.
+     * @type {Array<string>}
+     * @memberof CloudRegion
+     */
+    supported_instance_types: Array<string>;
 }
 
 
