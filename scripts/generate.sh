@@ -50,10 +50,16 @@ additional_properties="ngVersion=6.1.7,npmName=${PACKAGE_NAME},supportsES6=true,
 
 # generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
 
-OPENAPI_FILENAME=".openapi/ams.yaml"
+OPENAPI_FILENAME=".openapi/ams.json"
 PATCH_FILE=".openapi/ams.patch" 
 PACKAGE_NAME="@rhoas/account-management-sdk"
 OUTPUT_PATH="packages/account-management-sdk/src/generated"
 
-patch $OPENAPI_FILENAME < $PATCH_FILE
-generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+#patch $OPENAPI_FILENAME < $PATCH_FILE
+
+npx @openapitools/openapi-generator-cli generate -g typescript-fetch -i \
+    "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
+    --package-name="${PACKAGE_NAME}" \
+    --additional-properties=$additional_properties \
+    --ignore-file-override=.openapi-generator-ignore --global-property="apis=rhoas" 
+     
