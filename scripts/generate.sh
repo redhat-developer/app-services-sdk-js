@@ -55,11 +55,12 @@ PATCH_FILE=".openapi/ams.patch"
 PACKAGE_NAME="@rhoas/account-management-sdk"
 OUTPUT_PATH="packages/account-management-sdk/src/generated"
 
-#patch $OPENAPI_FILENAME < $PATCH_FILE
+patch $OPENAPI_FILENAME < $PATCH_FILE
 
 npx @openapitools/openapi-generator-cli generate -g typescript-fetch -i \
     "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
     --package-name="${PACKAGE_NAME}" \
     --additional-properties=$additional_properties \
-    --ignore-file-override=.openapi-generator-ignore --global-property="apis=rhoas" 
-     
+    --ignore-file-override=.openapi-generator-ignore --global-property="models=true,supportingFiles=true,apis=true"
+
+git checkout -- $OPENAPI_FILENAME
