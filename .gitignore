@@ -120,3 +120,4 @@ yarn.lock
 typings
 dist
 .openapi-generator
+.openapi/ams.json.orig
