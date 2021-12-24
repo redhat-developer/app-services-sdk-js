@@ -61,6 +61,6 @@ npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
     "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
     --package-name="${PACKAGE_NAME}" \
     --additional-properties=$additional_properties \
-    --ignore-file-override=.openapi-generator-ignore 
+    --ignore-file-override=./packages/account-management-sdk/.openapi-generator-ignore 
 
 git checkout -- $OPENAPI_FILENAME
