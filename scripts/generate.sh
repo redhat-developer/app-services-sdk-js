@@ -57,10 +57,10 @@ OUTPUT_PATH="packages/account-management-sdk/src/generated"
 
 patch $OPENAPI_FILENAME < $PATCH_FILE
 
-npx @openapitools/openapi-generator-cli generate -g typescript-fetch -i \
+npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
     "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
     --package-name="${PACKAGE_NAME}" \
     --additional-properties=$additional_properties \
-    --ignore-file-override=.openapi-generator-ignore --global-property="models=true,supportingFiles=true,apis=true"
+    --ignore-file-override=.openapi-generator-ignore 
 
 git checkout -- $OPENAPI_FILENAME
