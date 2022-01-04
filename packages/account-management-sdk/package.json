@@ -1,13 +1,12 @@
 {
   "name": "@rhoas/account-management-sdk",
-  "version": "0.0.0-dev",
+  "version": "0.0.1-dev",
   "description": "RHOAS Account Management SDK",
   "author": "Red Hat Developers",
   "keywords": [
     "rhoas",
-    "kafka",
     "redhat",
-    "@rhoas/registry-management-sdk"
+    "@rhoas/account-management-sdk"
   ],
   "repository": {
     "type": "git",

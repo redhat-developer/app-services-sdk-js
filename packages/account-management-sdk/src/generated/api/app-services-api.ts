@@ -31,10 +31,10 @@ import { QuotaCostList } from '../model';
 // @ts-ignore
 import { SelfAccessReview } from '../model';
 /**
- * RhoasApi - axios parameter creator
+ * AppServicesApi - axios parameter creator
  * @export
  */
-export const RhoasApiAxiosParamCreator = function (configuration?: Configuration) {
+export const AppServicesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
          * 
@@ -201,11 +201,11 @@ export const RhoasApiAxiosParamCreator = function (configuration?: Configuration
 };
 
 /**
- * RhoasApi - functional programming interface
+ * AppServicesApi - functional programming interface
  * @export
  */
-export const RhoasApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = RhoasApiAxiosParamCreator(configuration)
+export const AppServicesApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = AppServicesApiAxiosParamCreator(configuration)
     return {
         /**
          * 
@@ -256,11 +256,11 @@ export const RhoasApiFp = function(configuration?: Configuration) {
 };
 
 /**
- * RhoasApi - factory interface
+ * AppServicesApi - factory interface
  * @export
  */
-export const RhoasApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = RhoasApiFp(configuration)
+export const AppServicesApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = AppServicesApiFp(configuration)
     return {
         /**
          * 
@@ -307,17 +307,17 @@ export const RhoasApiFactory = function (configuration?: Configuration, basePath
 };
 
 /**
- * RhoasApi - interface
+ * AppServicesApi - interface
  * @export
- * @interface RhoasApi
+ * @interface AppServicesApi
  */
-export interface RhoasApiInterface {
+export interface AppServicesApiInterface {
     /**
      * 
      * @summary Return access token generated from registries in docker format
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RhoasApiInterface
+     * @memberof AppServicesApiInterface
      */
     apiAccountsMgmtV1AccessTokenPost(options?: any): AxiosPromise<AccessTokenCfg>;
 
@@ -327,7 +327,7 @@ export interface RhoasApiInterface {
      * @param {boolean} [fetchLabels] If true, includes the labels on a subscription/organization/account in the output. Could slow request response time.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RhoasApiInterface
+     * @memberof AppServicesApiInterface
      */
     apiAccountsMgmtV1CurrentAccountGet(fetchLabels?: boolean, options?: any): AxiosPromise<Account>;
 
@@ -339,7 +339,7 @@ export interface RhoasApiInterface {
      * @param {boolean} [fetchRelatedResources] If true, includes the related resources in the output. Could slow request response time.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RhoasApiInterface
+     * @memberof AppServicesApiInterface
      */
     apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: any): AxiosPromise<QuotaCostList>;
 
@@ -349,28 +349,28 @@ export interface RhoasApiInterface {
      * @param {SelfAccessReview} selfAccessReview Self access review data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RhoasApiInterface
+     * @memberof AppServicesApiInterface
      */
     apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview: SelfAccessReview, options?: any): AxiosPromise<AccessReviewResponse>;
 
 }
 
 /**
- * RhoasApi - object-oriented interface
+ * AppServicesApi - object-oriented interface
  * @export
- * @class RhoasApi
+ * @class AppServicesApi
  * @extends {BaseAPI}
  */
-export class RhoasApi extends BaseAPI implements RhoasApiInterface {
+export class AppServicesApi extends BaseAPI implements AppServicesApiInterface {
     /**
      * 
      * @summary Return access token generated from registries in docker format
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RhoasApi
+     * @memberof AppServicesApi
      */
     public apiAccountsMgmtV1AccessTokenPost(options?: any) {
-        return RhoasApiFp(this.configuration).apiAccountsMgmtV1AccessTokenPost(options).then((request) => request(this.axios, this.basePath));
+        return AppServicesApiFp(this.configuration).apiAccountsMgmtV1AccessTokenPost(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -379,10 +379,10 @@ export class RhoasApi extends BaseAPI implements RhoasApiInterface {
      * @param {boolean} [fetchLabels] If true, includes the labels on a subscription/organization/account in the output. Could slow request response time.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RhoasApi
+     * @memberof AppServicesApi
      */
     public apiAccountsMgmtV1CurrentAccountGet(fetchLabels?: boolean, options?: any) {
-        return RhoasApiFp(this.configuration).apiAccountsMgmtV1CurrentAccountGet(fetchLabels, options).then((request) => request(this.axios, this.basePath));
+        return AppServicesApiFp(this.configuration).apiAccountsMgmtV1CurrentAccountGet(fetchLabels, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -393,10 +393,10 @@ export class RhoasApi extends BaseAPI implements RhoasApiInterface {
      * @param {boolean} [fetchRelatedResources] If true, includes the related resources in the output. Could slow request response time.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RhoasApi
+     * @memberof AppServicesApi
      */
     public apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: any) {
-        return RhoasApiFp(this.configuration).apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId, search, fetchRelatedResources, options).then((request) => request(this.axios, this.basePath));
+        return AppServicesApiFp(this.configuration).apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId, search, fetchRelatedResources, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -405,9 +405,9 @@ export class RhoasApi extends BaseAPI implements RhoasApiInterface {
      * @param {SelfAccessReview} selfAccessReview Self access review data
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof RhoasApi
+     * @memberof AppServicesApi
      */
     public apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview: SelfAccessReview, options?: any) {
-        return RhoasApiFp(this.configuration).apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview, options).then((request) => request(this.axios, this.basePath));
+        return AppServicesApiFp(this.configuration).apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview, options).then((request) => request(this.axios, this.basePath));
     }
 }

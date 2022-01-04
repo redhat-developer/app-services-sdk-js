@@ -4,7 +4,7 @@
    "paths": {
      "/api/accounts_mgmt/v1/access_token": {
        "post": {
-+        "tags": ["rhoas"],
++        "tags": ["AppServices"],
          "responses": {
            "200": {
              "content": {
@@ -12,7 +12,7 @@
      },
      "/api/accounts_mgmt/v1/current_account": {
        "get": {
-+        "tags": ["rhoas"],
++        "tags": ["AppServices"],
          "parameters": [{ "$ref": "#/components/parameters/fetchLabels" }],
          "responses": {
            "200": {
@@ -20,7 +20,7 @@
      },
      "/api/accounts_mgmt/v1/organizations/{orgId}/quota_cost": {
        "get": {
-+        "tags": ["rhoas"],
++        "tags": ["AppServices"],
          "responses": {
            "200": {
              "content": {
@@ -28,7 +28,7 @@
      },
      "/api/authorizations/v1/self_access_review": {
        "post": {
-+        "tags": ["rhoas"],
++        "tags": ["AppServices"],
          "requestBody": {
            "content": {
              "application/json": {
