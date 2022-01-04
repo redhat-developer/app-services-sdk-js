@@ -13,5 +13,5 @@
  */
 
 
-export * from './api/rhoas-api';
+export * from './api/app-services-api';
 
