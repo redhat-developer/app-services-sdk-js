@@ -21,15 +21,15 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { AccessReviewResponse } from '../model';
-// @ts-ignore
 import { AccessTokenCfg } from '../model';
 // @ts-ignore
 import { Account } from '../model';
 // @ts-ignore
 import { QuotaCostList } from '../model';
 // @ts-ignore
-import { SelfAccessReview } from '../model';
+import { SelfTermsReview } from '../model';
+// @ts-ignore
+import { TermsReviewResponse } from '../model';
 /**
  * AppServicesApi - axios parameter creator
  * @export
@@ -159,15 +159,15 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
         },
         /**
          * 
-         * @summary Review your ability to perform an action on a particular resource or resource type
-         * @param {SelfAccessReview} selfAccessReview Self access review data
+         * @summary Review your status of Terms
+         * @param {SelfTermsReview} selfTermsReview Data to check self terms for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAuthorizationsV1SelfAccessReviewPost: async (selfAccessReview: SelfAccessReview, options: any = {}): Promise<RequestArgs> => {
-            // verify required parameter 'selfAccessReview' is not null or undefined
-            assertParamExists('apiAuthorizationsV1SelfAccessReviewPost', 'selfAccessReview', selfAccessReview)
-            const localVarPath = `/api/authorizations/v1/self_access_review`;
+        apiAuthorizationsV1SelfTermsReviewPost: async (selfTermsReview: SelfTermsReview, options: any = {}): Promise<RequestArgs> => {
+            // verify required parameter 'selfTermsReview' is not null or undefined
+            assertParamExists('apiAuthorizationsV1SelfTermsReviewPost', 'selfTermsReview', selfTermsReview)
+            const localVarPath = `/api/authorizations/v1/self_terms_review`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -190,7 +190,7 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(selfAccessReview, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(selfTermsReview, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -243,13 +243,13 @@ export const AppServicesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Review your ability to perform an action on a particular resource or resource type
-         * @param {SelfAccessReview} selfAccessReview Self access review data
+         * @summary Review your status of Terms
+         * @param {SelfTermsReview} selfTermsReview Data to check self terms for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview: SelfAccessReview, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccessReviewResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview, options);
+        async apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview: SelfTermsReview, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TermsReviewResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -295,13 +295,13 @@ export const AppServicesApiFactory = function (configuration?: Configuration, ba
         },
         /**
          * 
-         * @summary Review your ability to perform an action on a particular resource or resource type
-         * @param {SelfAccessReview} selfAccessReview Self access review data
+         * @summary Review your status of Terms
+         * @param {SelfTermsReview} selfTermsReview Data to check self terms for
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview: SelfAccessReview, options?: any): AxiosPromise<AccessReviewResponse> {
-            return localVarFp.apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview, options).then((request) => request(axios, basePath));
+        apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview: SelfTermsReview, options?: any): AxiosPromise<TermsReviewResponse> {
+            return localVarFp.apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -345,13 +345,13 @@ export interface AppServicesApiInterface {
 
     /**
      * 
-     * @summary Review your ability to perform an action on a particular resource or resource type
-     * @param {SelfAccessReview} selfAccessReview Self access review data
+     * @summary Review your status of Terms
+     * @param {SelfTermsReview} selfTermsReview Data to check self terms for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AppServicesApiInterface
      */
-    apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview: SelfAccessReview, options?: any): AxiosPromise<AccessReviewResponse>;
+    apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview: SelfTermsReview, options?: any): AxiosPromise<TermsReviewResponse>;
 
 }
 
@@ -401,13 +401,13 @@ export class AppServicesApi extends BaseAPI implements AppServicesApiInterface {
 
     /**
      * 
-     * @summary Review your ability to perform an action on a particular resource or resource type
-     * @param {SelfAccessReview} selfAccessReview Self access review data
+     * @summary Review your status of Terms
+     * @param {SelfTermsReview} selfTermsReview Data to check self terms for
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AppServicesApi
      */
-    public apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview: SelfAccessReview, options?: any) {
-        return AppServicesApiFp(this.configuration).apiAuthorizationsV1SelfAccessReviewPost(selfAccessReview, options).then((request) => request(this.axios, this.basePath));
+    public apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview: SelfTermsReview, options?: any) {
+        return AppServicesApiFp(this.configuration).apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview, options).then((request) => request(this.axios, this.basePath));
     }
 }
