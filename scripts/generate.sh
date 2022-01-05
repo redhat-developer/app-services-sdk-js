@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-## OPENAPI_FILENAME=yourapi generate_js.sh 
+## OPENAPI_FILENAME=yourapi generate.sh 
 
 # generate an API client for a service
 generate_sdk() {
     local file_name=$1
     local output_path=$2
     local package_name=$3
-
+     
     echo "Validating OpenAPI ${file_name}"
     npx @openapitools/openapi-generator-cli validate -i "$file_name"
 
@@ -49,3 +49,18 @@ PACKAGE_NAME="@rhoas/kafka-instance-sdk"
 OUTPUT_PATH="packages/kafka-instance-sdk/src/generated"
 
 generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+
+OPENAPI_FILENAME=".openapi/ams.json"
+PATCH_FILE=".openapi/ams.patch" 
+PACKAGE_NAME="@rhoas/account-management-sdk"
+OUTPUT_PATH="packages/account-management-sdk/src/generated"
+
+patch $OPENAPI_FILENAME < $PATCH_FILE
+
+npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
+    "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
+    --package-name="${PACKAGE_NAME}" \
+    --additional-properties=$additional_properties \
+    --ignore-file-override=./packages/account-management-sdk/.openapi-generator-ignore 
+
+git checkout -- $OPENAPI_FILENAME

@@ -1,0 +1,34 @@
+--- .openapi/ams.json	2021-12-24 12:41:07.000000000 +0000
++++ .openapi/ams_patched.json	2021-12-24 12:39:16.000000000 +0000
+@@ -1729,6 +1729,7 @@
+   "paths": {
+     "/api/accounts_mgmt/v1/access_token": {
+       "post": {
++        "tags": ["AppServices"],
+         "responses": {
+           "200": {
+             "content": {
+@@ -2459,6 +2460,7 @@
+     },
+     "/api/accounts_mgmt/v1/current_account": {
+       "get": {
++        "tags": ["AppServices"],
+         "parameters": [{ "$ref": "#/components/parameters/fetchLabels" }],
+         "responses": {
+           "200": {
+@@ -3320,6 +3322,7 @@
+     },
+     "/api/accounts_mgmt/v1/organizations/{orgId}/quota_cost": {
+       "get": {
++        "tags": ["AppServices"],
+         "responses": {
+           "200": {
+             "content": {
+@@ -6163,6 +6166,7 @@
+     },
+     "/api/authorizations/v1/self_access_review": {
+       "post": {
++        "tags": ["AppServices"],
+         "requestBody": {
+           "content": {
+             "application/json": {
