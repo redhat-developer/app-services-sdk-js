@@ -73,10 +73,12 @@ export const ConnectorTypesApiAxiosParamCreator = function (configuration?: Conf
          * @summary Returns a list of connector types
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
+         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;ConnectorType&#x60; fields. For example, to return all Connector types ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Connector types ordered by their name _and_ version, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, version asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
+         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of a SQL statement. Allowed fields in the search are &#x60;name&#x60;, &#x60;description&#x60;, &#x60;version&#x60;, &#x60;label&#x60;, and &#x60;channel&#x60;. Allowed operators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed conjunctive operators are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 conjunctions in a search query.  Examples:  To return a Connector Type with the name &#x60;aws-sqs-source&#x60; and the channel &#x60;stable&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; aws-sqs-source and channel &#x3D; stable &#x60;&#x60;&#x60;[p-]  To return a Kafka instance with a name that starts with &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like aws%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Connector Type that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listConnectorTypes: async (page?: string, size?: string, options: any = {}): Promise<RequestArgs> => {
+        listConnectorTypes: async (page?: string, size?: string, orderBy?: string, search?: string, options: any = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/connector_mgmt/v1/kafka_connector_types`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -99,6 +101,14 @@ export const ConnectorTypesApiAxiosParamCreator = function (configuration?: Conf
 
             if (size !== undefined) {
                 localVarQueryParameter['size'] = size;
+            }
+
+            if (orderBy !== undefined) {
+                localVarQueryParameter['orderBy'] = orderBy;
+            }
+
+            if (search !== undefined) {
+                localVarQueryParameter['search'] = search;
             }
 
 
@@ -138,11 +148,13 @@ export const ConnectorTypesApiFp = function(configuration?: Configuration) {
          * @summary Returns a list of connector types
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
+         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;ConnectorType&#x60; fields. For example, to return all Connector types ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Connector types ordered by their name _and_ version, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, version asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
+         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of a SQL statement. Allowed fields in the search are &#x60;name&#x60;, &#x60;description&#x60;, &#x60;version&#x60;, &#x60;label&#x60;, and &#x60;channel&#x60;. Allowed operators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed conjunctive operators are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 conjunctions in a search query.  Examples:  To return a Connector Type with the name &#x60;aws-sqs-source&#x60; and the channel &#x60;stable&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; aws-sqs-source and channel &#x3D; stable &#x60;&#x60;&#x60;[p-]  To return a Kafka instance with a name that starts with &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like aws%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Connector Type that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listConnectorTypes(page?: string, size?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorTypeList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listConnectorTypes(page, size, options);
+        async listConnectorTypes(page?: string, size?: string, orderBy?: string, search?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorTypeList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listConnectorTypes(page, size, orderBy, search, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -170,11 +182,13 @@ export const ConnectorTypesApiFactory = function (configuration?: Configuration,
          * @summary Returns a list of connector types
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
+         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;ConnectorType&#x60; fields. For example, to return all Connector types ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Connector types ordered by their name _and_ version, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, version asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
+         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of a SQL statement. Allowed fields in the search are &#x60;name&#x60;, &#x60;description&#x60;, &#x60;version&#x60;, &#x60;label&#x60;, and &#x60;channel&#x60;. Allowed operators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed conjunctive operators are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 conjunctions in a search query.  Examples:  To return a Connector Type with the name &#x60;aws-sqs-source&#x60; and the channel &#x60;stable&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; aws-sqs-source and channel &#x3D; stable &#x60;&#x60;&#x60;[p-]  To return a Kafka instance with a name that starts with &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like aws%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Connector Type that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listConnectorTypes(page?: string, size?: string, options?: any): AxiosPromise<ConnectorTypeList> {
-            return localVarFp.listConnectorTypes(page, size, options).then((request) => request(axios, basePath));
+        listConnectorTypes(page?: string, size?: string, orderBy?: string, search?: string, options?: any): AxiosPromise<ConnectorTypeList> {
+            return localVarFp.listConnectorTypes(page, size, orderBy, search, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -200,11 +214,13 @@ export interface ConnectorTypesApiInterface {
      * @summary Returns a list of connector types
      * @param {string} [page] Page index
      * @param {string} [size] Number of items in each page
+     * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;ConnectorType&#x60; fields. For example, to return all Connector types ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Connector types ordered by their name _and_ version, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, version asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
+     * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of a SQL statement. Allowed fields in the search are &#x60;name&#x60;, &#x60;description&#x60;, &#x60;version&#x60;, &#x60;label&#x60;, and &#x60;channel&#x60;. Allowed operators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed conjunctive operators are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 conjunctions in a search query.  Examples:  To return a Connector Type with the name &#x60;aws-sqs-source&#x60; and the channel &#x60;stable&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; aws-sqs-source and channel &#x3D; stable &#x60;&#x60;&#x60;[p-]  To return a Kafka instance with a name that starts with &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like aws%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Connector Type that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ConnectorTypesApiInterface
      */
-    listConnectorTypes(page?: string, size?: string, options?: any): AxiosPromise<ConnectorTypeList>;
+    listConnectorTypes(page?: string, size?: string, orderBy?: string, search?: string, options?: any): AxiosPromise<ConnectorTypeList>;
 
 }
 
@@ -232,11 +248,13 @@ export class ConnectorTypesApi extends BaseAPI implements ConnectorTypesApiInter
      * @summary Returns a list of connector types
      * @param {string} [page] Page index
      * @param {string} [size] Number of items in each page
+     * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the &#x60;order by&#x60; clause of an SQL statement. Each query can be ordered by any of the &#x60;ConnectorType&#x60; fields. For example, to return all Connector types ordered by their name, use the following syntax:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  To return all Connector types ordered by their name _and_ version, use the following syntax:  &#x60;&#x60;&#x60;sql name asc, version asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results are ordered by name.
+     * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the &#x60;where&#x60; clause of a SQL statement. Allowed fields in the search are &#x60;name&#x60;, &#x60;description&#x60;, &#x60;version&#x60;, &#x60;label&#x60;, and &#x60;channel&#x60;. Allowed operators are &#x60;&lt;&gt;&#x60;, &#x60;&#x3D;&#x60;, or &#x60;LIKE&#x60;. Allowed conjunctive operators are &#x60;AND&#x60; and &#x60;OR&#x60;. However, you can use a maximum of 10 conjunctions in a search query.  Examples:  To return a Connector Type with the name &#x60;aws-sqs-source&#x60; and the channel &#x60;stable&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name &#x3D; aws-sqs-source and channel &#x3D; stable &#x60;&#x60;&#x60;[p-]  To return a Kafka instance with a name that starts with &#x60;aws&#x60;, use the following syntax:  &#x60;&#x60;&#x60; name like aws%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the Connector Type that the user has permission to see are returned.  Note. If the query is invalid, an error is returned. 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ConnectorTypesApi
      */
-    public listConnectorTypes(page?: string, size?: string, options?: any) {
-        return ConnectorTypesApiFp(this.configuration).listConnectorTypes(page, size, options).then((request) => request(this.axios, this.basePath));
+    public listConnectorTypes(page?: string, size?: string, orderBy?: string, search?: string, options?: any) {
+        return ConnectorTypesApiFp(this.configuration).listConnectorTypes(page, size, orderBy, search, options).then((request) => request(this.axios, this.basePath));
     }
 }
