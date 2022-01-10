@@ -21,7 +21,7 @@ import { ObjectReference } from './object-reference';
  * Represents a connector type supported by the API
  * @export
  */
-export type ConnectorType = ConnectorTypeAllOf & ObjectReference;
+export type ConnectorType = ConnectorTypeAllOf | ObjectReference;
 
 
 

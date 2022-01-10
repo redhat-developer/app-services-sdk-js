@@ -61,6 +61,12 @@ export interface ConnectorTypeAllOf {
      * @type {object}
      * @memberof ConnectorTypeAllOf
      */
+    schema?: object;
+    /**
+     * A json schema that can be used to validate a connectors connector_spec field.
+     * @type {object}
+     * @memberof ConnectorTypeAllOf
+     */
     json_schema?: object;
 }
 
