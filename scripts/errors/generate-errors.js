@@ -33,7 +33,7 @@ for (api in apis) {
 
   apiJson.items.forEach(function (errorType) {
     stringBuffer += `  /** ${errorType.reason}*/\n`;
-    stringBuffer += `  ERROR_${errorType.id} = "${errorType.code}", \n\n`;``
+    stringBuffer += `  ERROR_${errorType.id} = "${errorType.code}", \n\n`;
   });
 
   stringBuffer += `}`;
