@@ -13,7 +13,7 @@ npm install @rhoas/kafka-management-sdk --save
 #### Usage
 
 ```ts
-import { Configuration, DefaultApi } from "@rhoas/kafka-management-sdk";
+import { Configuration, DefaultApi, APIErrorCodes } from "@rhoas/kafka-management-sdk";
 
 const accessToken = process.env.CLOUD_API_TOKEN;
 const basePath = "https://api.openshift.com";
@@ -32,6 +32,7 @@ kafkaApi
   })
   .catch((err) => {
     console.error(err.message);
+    console.error("Validation issue", err.code == APIErrorCodes.ERROR_8)
   });
 ```
 

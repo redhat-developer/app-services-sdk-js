@@ -13,7 +13,7 @@ npm install @rhoas/registry-management-sdk --save
 #### Usage
 
 ```ts
-import { Configuration, DefaultApi } from "@rhoas/registry-management-sdk";
+import { Configuration, DefaultApi, APIErrorCodes } from "@rhoas/registry-management-sdk";
 
 const accessToken = process.env.CLOUD_API_TOKEN;
 const basePath = "https://api.openshift.com";
@@ -29,6 +29,7 @@ registryApi.getRegistries().then((data) => {
     console.log(data?.data)
 }).catch((err) => {
     console.error(err.message)
+    console.error("Invalid JSON format",err.code == APIErrorCodes.ERROR_5)
 })
 ```
 
