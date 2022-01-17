@@ -78,6 +78,16 @@ See [a working example here](https://github.com/bf2fc6cc711aee1a0c2a/kas-fleet-m
     - Replace `<v1alpha>` with the major API version of your service.
     - Replace `<openai_file_download_url>` with the direct URL to the raw OpenAPI document. Example: [https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/kas-fleet-manager/main/openapi/kas-fleet-manager.yaml](https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/kas-fleet-manager/main/openapi/kas-fleet-manager.yaml)
 
+## Updating error codes
+
+Error codes are fetched dynamically from backend and generated inside every SDK.
+To generate error codes execute:
+
+```bash
+yarn fetchErrors
+yarn generateErrors
+```
+
 ## Release process
 
 ### Automatic
@@ -91,3 +101,4 @@ See [a working example here](https://github.com/bf2fc6cc711aee1a0c2a/kas-fleet-m
 2. Execute npm publish --workspace=packages --dry-run
 
 > NOTE: You should never change package versions in repository. 0.0.0-dev version is used as marker for unreleased changes
+

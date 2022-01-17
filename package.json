@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "generate": "./scripts/generate.sh",
+    "fetchErrors": "./scripts/errors/fetch-errors.sh",
+    "generateErrors": "node ./scripts/errors/generate-errors.js",
     "wrun": "yarn workspaces run",
     "setupRelease": "npm version --workspace=packages",
     "build": "yarn workspaces run build"
