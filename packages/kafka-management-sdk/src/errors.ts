@@ -1,19 +1,19 @@
 
-  /**
-     kafka error codes
+/**
+   kafka error codes
 
-     ```ts
-      apiCall.then((data) => {
-          console.log(data?.data.items)
-      }).catch((err) => {
-        if(APIErrorCodes.ERROR_5 == err.code) {
-          // Handle error
-        }
-      })
-      ```
-  */
-  export enum APIErrorCodes  {
-    /** Forbidden to perform this action*/
+    ```ts
+    apiCall.then((data) => {
+        console.log(data?.data.items)
+    }).catch((err) => {
+      if(APIErrorCodes.ERROR_5 == err.code) {
+        // Handle error
+      }
+    })
+    ```
+*/
+export enum APIErrorCodes  {
+  /** Forbidden to perform this action*/
   ERROR_4 = "KAFKAS-MGMT-4", 
 
   /** Forbidden to create more instances than the maximum allowed*/

@@ -15,21 +15,21 @@ for (api in apis) {
   }
 
   stringBuffer = `
-  /**
-     ${api} error codes
+/**
+   ${api} error codes
 
-     \`\`\`ts
-      apiCall.then((data) => {
-          console.log(data?.data.items)
-      }).catch((err) => {
-        if(APIErrorCodes.ERROR_5 == err.code) {
-          // Handle error
-        }
-      })
-      \`\`\`
-  */
-  export enum APIErrorCodes  {
-  `;
+    \`\`\`ts
+    apiCall.then((data) => {
+        console.log(data?.data.items)
+    }).catch((err) => {
+      if(APIErrorCodes.ERROR_5 == err.code) {
+        // Handle error
+      }
+    })
+    \`\`\`
+*/
+export enum APIErrorCodes  {
+`;
 
   apiJson.items.forEach(function (errorType) {
     stringBuffer += `  /** ${errorType.reason}*/\n`;

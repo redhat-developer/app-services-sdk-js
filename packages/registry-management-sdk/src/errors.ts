@@ -1,19 +1,19 @@
 
-  /**
-     srs error codes
+/**
+   srs error codes
 
-     ```ts
-      apiCall.then((data) => {
-          console.log(data?.data.items)
-      }).catch((err) => {
-        if(APIErrorCodes.ERROR_5 == err.code) {
-          // Handle error
-        }
-      })
-      ```
-  */
-  export enum APIErrorCodes  {
-    /** Unspecified error*/
+    ```ts
+    apiCall.then((data) => {
+        console.log(data?.data.items)
+    }).catch((err) => {
+      if(APIErrorCodes.ERROR_5 == err.code) {
+        // Handle error
+      }
+    })
+    ```
+*/
+export enum APIErrorCodes  {
+  /** Unspecified error*/
   ERROR_1 = "SRS-MGMT-1", 
 
   /** Registry with id='?' not found*/

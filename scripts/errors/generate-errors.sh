@@ -1,1 +1,1 @@
-node ./generate-errors.js
+node ./scripts/errors/generate-errors.js
