@@ -3,9 +3,6 @@ name: Publish Mock Docker image
 on:
   release:
     types: [published]
-  push:
-    branches:
-      - "mock-docker"
 
 jobs:
   push_to_registry:
