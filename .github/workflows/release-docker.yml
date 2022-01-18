@@ -1,0 +1,27 @@
+name: Publish Mock Docker image
+
+on:
+  release:
+    types: [published]
+  push:
+    branches:
+      - "mock-docker"
+
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Login
+        run: docker login -u="rhosak+rhosak_robot" -p="${{secrets.QUAY_RHOSAK_ROBOT_SECRET}}" quay.io
+      - name: Build Image
+        working-directory: packages/api-mock
+        run: docker build -t quay.io/rhosak/api-mock .
+      - name: Push To quay.io
+        id: push-to-quay
+        run: docker push quay.io/rhosak/api-mock
+      
+      
+ 
