@@ -67,7 +67,7 @@ npx @rhoas/api-mock
 2. Container image
 
 ```
-docker run  -p 8080:8000 quay.io/wtrocki/api-mock
+docker run  -p 8080:8000 quay.io/rhosak/api-mock
 ```
 
 3. Using as CLI
