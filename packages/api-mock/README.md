@@ -20,7 +20,7 @@ npx @rhoas/api-mock
 2. Container image
 
 ```
-docker run  -p 8080:8000 quay.io/wtrocki/api-mock
+docker run  -p 8080:8000 quay.io/rhosak/api-mock
 ```
 
 3. Using as CLI
@@ -61,8 +61,8 @@ TODO - provide arguments in CLI to override those values
 ## Build container
 
 ```
-docker build -t quay.io/wtrocki/api-mock .
-docker push quay.io/wtrocki/api-mock
+docker build -t quay.io/rhosak/api-mock .
+docker push quay.io/rhosak/api-mock
 ```
 
 ## API Clients
