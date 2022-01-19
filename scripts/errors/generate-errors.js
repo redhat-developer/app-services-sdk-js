@@ -22,18 +22,18 @@ for (api in apis) {
     apiCall.then((data) => {
         console.log(data?.data.items)
     }).catch((err) => {
-      if(APIErrorCodes.ERROR_5 == err.code) {
+      if(APIErrorCodes.ERROR_5 == err.response?.data.code) {
         // Handle error
       }
     })
     \`\`\`
 */
-export enum APIErrorCodes  {
+export const APIErrorCodes = {
 `;
 
   apiJson.items.forEach(function (errorType) {
     stringBuffer += `  /** ${errorType.reason}*/\n`;
-    stringBuffer += `  ERROR_${errorType.id} = "${errorType.code}", \n\n`;
+    stringBuffer += `  ERROR_${errorType.id} : "${errorType.code}", \n\n`;
   });
 
   stringBuffer += `}`;
