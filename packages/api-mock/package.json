@@ -18,6 +18,7 @@
   "scripts": {
     "build": "cp -Rf ../../.openapi ./openapi && json2yaml ./openapi/srs-fleet-manager.json > ./openapi/srs-fleet-manager.yaml",
     "start": "node ./src/index.js",
+    "start-preseed": "node ./src/index.js --pre-seed",
     "api:kafka-management": "openapi-editor --file openapi/kas-fleet-manager.yaml --port 10000",
     "api:kafka-instance": "openapi-editor --file openapi/kafka-admin-rest.yaml --port 10001",
     "api:registry-management": "openapi-editor --file openapi/srs-fleet-manager.yaml --port 10003",
@@ -33,7 +34,7 @@
   },
   "devDependencies": {
     "axios": "0.25.0",
-    "json2yaml": "1.1.0",
+    "json2yaml": "^1.1.0",
     "openapi-editor": "0.3.0",
     "wait-on": "6.0.0"
   }
