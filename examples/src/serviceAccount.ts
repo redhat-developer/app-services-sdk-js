@@ -14,6 +14,6 @@ serviceAccountAPI.getServiceAccounts().then((data) => {
     console.log(data?.data.items)
 }).catch((err) => {
     console.error(err.message)
-    console.error("Service account fail error", err.code == APIErrorCodes.ERROR_111)
+    console.error("Service account fail error", err.response?.data.code == APIErrorCodes.ERROR_111)
 })
 

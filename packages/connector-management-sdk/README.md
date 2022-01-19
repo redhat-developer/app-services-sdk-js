@@ -13,7 +13,7 @@ npm install @rhoas/connector-management-sdk --save
 #### Usage
 
 ```ts
-import { Configuration, ConnectorsApi, APIErrorCodes } from "@rhoas/connector-management-sdk";
+import { Configuration, ConnectorsApi, getErrorCode, isServiceApiError, APIErrorCodes } from "@rhoas/connector-management-sdk";
 
 const accessToken = process.env.CLOUD_API_TOKEN;
 const basePath = "https://api.openshift.com";
@@ -28,8 +28,9 @@ const connectorsApi = new ConnectorsApi(apiConfig)
 connectorsApi.getConnector("id", "kafka-id").then((data) => {
     console.log(data?.data)
 }).catch((err) => {
-    console.error(err.message)
-    console.error("Validation issue", err.code == APIErrorCodes.ERROR_8)
+    if(isServiceApiError(err)){
+        console.error("Validation issue", getErrorCode(err) == APIErrorCodes.ERROR_8)
+    }
 })
 ```
 
