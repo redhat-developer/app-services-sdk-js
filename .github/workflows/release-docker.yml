@@ -15,7 +15,7 @@ jobs:
         run: docker login -u="rhosak+rhosak_robot" -p="${{secrets.QUAY_RHOSAK_ROBOT_SECRET}}" quay.io
       - name: Prepare
         working-directory: packages/api-mock
-        run: npm run build               
+        run: npm install && npm run build                              
       - name: Build Image
         working-directory: packages/api-mock
         run: docker build -t quay.io/rhosak/api-mock  .
