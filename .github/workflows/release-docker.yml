@@ -17,7 +17,7 @@ jobs:
         working-directory: packages/api-mock
         run: npm run build               
       - name: Build Image
-         working-directory: packages/api-mock
+        working-directory: packages/api-mock
         run: docker build -t quay.io/rhosak/api-mock  .
       - name: Push To quay.io
         id: push-to-quay
