@@ -13,6 +13,20 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { LogLevel } from './log-level';
+
+/**
+ * 
+ * @export
+ * @interface LogConfiguration
+ */
+export interface LogConfiguration {
+    /**
+     * 
+     * @type {LogLevel}
+     * @memberof LogConfiguration
+     */
+    level: LogLevel;
+}
+
+

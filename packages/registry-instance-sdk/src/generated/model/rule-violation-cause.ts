@@ -13,6 +13,25 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @interface RuleViolationCause
+ */
+export interface RuleViolationCause {
+    /**
+     * 
+     * @type {string}
+     * @memberof RuleViolationCause
+     */
+    description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RuleViolationCause
+     */
+    context?: string;
+}
+
+

@@ -13,6 +13,37 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @interface SystemInfo
+ */
+export interface SystemInfo {
+    /**
+     * 
+     * @type {string}
+     * @memberof SystemInfo
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SystemInfo
+     */
+    description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SystemInfo
+     */
+    version?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SystemInfo
+     */
+    builtOn?: string;
+}
+
+

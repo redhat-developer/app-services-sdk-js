@@ -13,6 +13,19 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export enum IfExists {
+    Fail = 'FAIL',
+    Update = 'UPDATE',
+    Return = 'RETURN',
+    ReturnOrUpdate = 'RETURN_OR_UPDATE'
+}
+
+
+

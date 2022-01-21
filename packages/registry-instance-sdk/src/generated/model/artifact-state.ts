@@ -13,6 +13,18 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * Describes the state of an artifact or artifact version.  The following states are possible:  * ENABLED * DISABLED * DEPRECATED 
+ * @export
+ * @enum {string}
+ */
+
+export enum ArtifactState {
+    Enabled = 'ENABLED',
+    Disabled = 'DISABLED',
+    Deprecated = 'DEPRECATED'
+}
+
+
+

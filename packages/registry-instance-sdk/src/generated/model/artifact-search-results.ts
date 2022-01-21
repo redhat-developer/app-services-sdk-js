@@ -13,6 +13,26 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { SearchedArtifact } from './searched-artifact';
+
+/**
+ * Describes the response received when searching for artifacts.
+ * @export
+ * @interface ArtifactSearchResults
+ */
+export interface ArtifactSearchResults {
+    /**
+     * The artifacts returned in the result set.
+     * @type {Array<SearchedArtifact>}
+     * @memberof ArtifactSearchResults
+     */
+    artifacts: Array<SearchedArtifact>;
+    /**
+     * The total number of artifacts that matched the query that produced the result set (may be  more than the number of artifacts in the result set).
+     * @type {number}
+     * @memberof ArtifactSearchResults
+     */
+    count: number;
+}
+
+

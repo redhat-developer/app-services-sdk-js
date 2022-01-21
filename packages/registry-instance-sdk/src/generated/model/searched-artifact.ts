@@ -13,6 +13,81 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ArtifactState } from './artifact-state';
+import { ArtifactType } from './artifact-type';
+
+/**
+ * Models a single artifact from the result set returned when searching for artifacts.
+ * @export
+ * @interface SearchedArtifact
+ */
+export interface SearchedArtifact {
+    /**
+     * The ID of a single artifact.
+     * @type {string}
+     * @memberof SearchedArtifact
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedArtifact
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedArtifact
+     */
+    description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedArtifact
+     */
+    createdOn: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedArtifact
+     */
+    createdBy: string;
+    /**
+     * 
+     * @type {ArtifactType}
+     * @memberof SearchedArtifact
+     */
+    type: ArtifactType;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof SearchedArtifact
+     */
+    labels?: Array<string>;
+    /**
+     * 
+     * @type {ArtifactState}
+     * @memberof SearchedArtifact
+     */
+    state: ArtifactState;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedArtifact
+     */
+    modifiedOn?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedArtifact
+     */
+    modifiedBy?: string;
+    /**
+     * An ID of a single artifact group.
+     * @type {string}
+     * @memberof SearchedArtifact
+     */
+    groupId?: string;
+}
+
+

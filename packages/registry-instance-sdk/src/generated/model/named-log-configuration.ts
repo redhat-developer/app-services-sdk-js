@@ -13,6 +13,15 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { LogConfiguration } from './log-configuration';
+import { LogLevel } from './log-level';
+import { NamedLogConfigurationAllOf } from './named-log-configuration-all-of';
+
+/**
+ * @type NamedLogConfiguration
+ * @export
+ */
+export type NamedLogConfiguration = LogConfiguration & NamedLogConfigurationAllOf;
+
+
+

@@ -13,6 +13,81 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ArtifactState } from './artifact-state';
+import { ArtifactType } from './artifact-type';
+
+/**
+ * Models a single artifact from the result set returned when searching for artifacts.
+ * @export
+ * @interface SearchedVersion
+ */
+export interface SearchedVersion {
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedVersion
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedVersion
+     */
+    description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedVersion
+     */
+    createdOn: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedVersion
+     */
+    createdBy: string;
+    /**
+     * 
+     * @type {ArtifactType}
+     * @memberof SearchedVersion
+     */
+    type: ArtifactType;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof SearchedVersion
+     */
+    labels?: Array<string>;
+    /**
+     * 
+     * @type {ArtifactState}
+     * @memberof SearchedVersion
+     */
+    state: ArtifactState;
+    /**
+     * 
+     * @type {number}
+     * @memberof SearchedVersion
+     */
+    globalId: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof SearchedVersion
+     */
+    version: string;
+    /**
+     * User-defined name-value pairs. Name and value must be strings.
+     * @type {{ [key: string]: string; }}
+     * @memberof SearchedVersion
+     */
+    properties?: { [key: string]: string; };
+    /**
+     * 
+     * @type {number}
+     * @memberof SearchedVersion
+     */
+    contentId: number;
+}
+
+
