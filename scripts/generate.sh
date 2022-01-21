@@ -80,3 +80,27 @@ npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
     --ignore-file-override=./packages/account-management-sdk/.openapi-generator-ignore 
 
 git checkout -- $OPENAPI_FILENAME
+
+echo "generating registry instance SDK "
+
+cd .openapi
+echo "Removing codegen "
+cat registry-instance.json | jq 'del(.paths."x-codegen-contextRoot")' > registry-instance-tmp.json
+mv -f registry-instance-tmp.json registry-instance.json
+
+echo "Ensuring only single tag is created "
+cat registry-instance.json | jq 'walk( if type == "object" and has("tags") 
+       then .tags |= select(.[0])
+       else . end )' > registry-instance-tmp.json
+mv -f registry-instance-tmp.json registry-instance.json
+
+echo "Removing invalid datetime definitions"
+sed -i '' 's/date-time/utc-date/' registry-instance.json
+
+cd ..
+
+OPENAPI_FILENAME=".openapi/registry-instance.json"
+PACKAGE_NAME="@rhoas/registry-instance-sdk"
+OUTPUT_PATH="packages/registry-instance-sdk/src/generated"
+
+generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME

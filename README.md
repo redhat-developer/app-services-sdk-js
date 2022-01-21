@@ -23,19 +23,19 @@ You can view all SDK packages directly in [npm](https://www.npmjs.com/search?q=k
 
 ## Management SDK's
 
-| Name             | Package name                       | Status | Version           | NPM                | Docs               |
-| ---------------- | :--------------------------------- | :----- | ----------------- | ------------------ | ------------------ |
-| kafka            | **@rhoas/kafka-management-sdk**    | beta   | ![kafkashield]    | [npm][kafkanpm]    | [doc][kafkagit]    |
-| connector            | **@rhoas/connector-management-sdk**    | alpha   | ![connectorshield]    | [npm][connectornpm]    | [doc][connectorgit]    |
-| service registry | **@rhoas/registry-management-sdk** | alpha  | ![registryshield] | [npm][registrynpm] | [doc][registrygit] |
-| service accounts | **@rhoas/kafka-management-sdk**    | alpha  | ![kafkashield]    | [npm][kafkanpm]    | [doc][kafkagit]    |
+| Name             | Package name                        | Status | Version            | NPM                 | Docs                |
+| ---------------- | :---------------------------------- | :----- | ------------------ | ------------------- | ------------------- |
+| kafka            | **@rhoas/kafka-management-sdk**     | beta   | ![kafkashield]     | [npm][kafkanpm]     | [doc][kafkagit]     |
+| connector        | **@rhoas/connector-management-sdk** | alpha  | ![connectorshield] | [npm][connectornpm] | [doc][connectorgit] |
+| service registry | **@rhoas/registry-management-sdk**  | alpha  | ![registryshield]  | [npm][registrynpm]  | [doc][registrygit]  |
+| service accounts | **@rhoas/kafka-management-sdk**     | alpha  | ![kafkashield]     | [npm][kafkanpm]     | [doc][kafkagit]     |
 
 ## Instances SDK's
 
-| Name             | Package name                  | Status | Version            | NPM                 | Docs                |
-| ---------------- | :---------------------------- | :----- | ------------------ | ------------------- | ------------------- |
-| kafka            | **@rhoas/kafka-instance-sdk** | beta   | ![kinstanceshield] | [npm][kinstancenpm] | [doc][kinstancegit] |
-| service registry | TBA                           | TBA    | TBA                | TBA                 | TBA                 |
+| Name             | Package name                     | Status | Version             | NPM                 | Docs                |
+| ---------------- | :------------------------------- | :----- | ------------------- | ------------------- | ------------------- |
+| kafka            | **@rhoas/kafka-instance-sdk**    | beta   | ![kinstanceshield]  | [npm][kinstancenpm] | [doc][kinstancegit] |
+| service registry | **@rhoas/registry-instance-sdk** | beta   | ![srinstanceshield] | [npm][srnstancenpm] | [doc][srnstancegit] |
 
 ## Docs
 
@@ -84,6 +84,9 @@ asapi
 [kinstancegit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/kafka-instance-sdk 
 [kinstancenpm]: https://www.npmjs.com/package/@rhoas/kafka-instance-sdk
 [kinstanceshield]: https://img.shields.io/npm/v/@rhoas/kafka-instance-sdk
+[srinstancegit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/registry-instance-sdk 
+[srinstancenpm]: https://www.npmjs.com/package/@rhoas/registry-instance-sdk
+[srinstanceshield]: https://img.shields.io/npm/v/@rhoas/registry-instance-sdk
 [registrygit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/registry-management-sdk 
 [registrynpm]: https://www.npmjs.com/package/@rhoas/registry-management-sdk
 [registryshield]: https://img.shields.io/npm/v/@rhoas/registry-management-sdk

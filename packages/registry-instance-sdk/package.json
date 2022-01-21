@@ -1,0 +1,34 @@
+{
+  "name": "@rhoas/registry-instance-sdk",
+  "version": "0.0.0-dev",
+  "description": "RHOAS Service Registry Instance Adminstration SDK",
+  "author": "Red Hat Developers",
+  "keywords": [
+    "rhoas",
+    "service registry",
+    "apicurio",
+    "redhat",
+    "@rhoas/registry-instance-sdk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redhat-developer/app-services-sdk-js"
+  },
+  "license": "Apache-2.0",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc --outDir dist/",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "axios": "0.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.21",
+    "typescript": "4.5.4"
+  }
+}
