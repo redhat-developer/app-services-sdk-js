@@ -13,6 +13,26 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { RuleType } from './rule-type';
+
+/**
+ * 
+ * @export
+ * @interface Rule
+ */
+export interface Rule {
+    /**
+     * 
+     * @type {string}
+     * @memberof Rule
+     */
+    config: string;
+    /**
+     * 
+     * @type {RuleType}
+     * @memberof Rule
+     */
+    type?: RuleType;
+}
+
+

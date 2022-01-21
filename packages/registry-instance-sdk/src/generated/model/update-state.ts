@@ -13,6 +13,20 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ArtifactState } from './artifact-state';
+
+/**
+ * 
+ * @export
+ * @interface UpdateState
+ */
+export interface UpdateState {
+    /**
+     * 
+     * @type {ArtifactState}
+     * @memberof UpdateState
+     */
+    state: ArtifactState;
+}
+
+

@@ -13,6 +13,19 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @interface NamedLogConfigurationAllOf
+ */
+export interface NamedLogConfigurationAllOf {
+    /**
+     * 
+     * @type {string}
+     * @memberof NamedLogConfigurationAllOf
+     */
+    name: string;
+}
+
+

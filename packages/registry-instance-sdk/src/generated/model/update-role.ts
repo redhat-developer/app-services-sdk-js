@@ -13,6 +13,20 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { RoleType } from './role-type';
+
+/**
+ * 
+ * @export
+ * @interface UpdateRole
+ */
+export interface UpdateRole {
+    /**
+     * 
+     * @type {RoleType}
+     * @memberof UpdateRole
+     */
+    role: RoleType;
+}
+
+

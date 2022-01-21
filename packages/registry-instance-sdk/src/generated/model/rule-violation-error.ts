@@ -13,6 +13,16 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { ModelError } from './model-error';
+import { RuleViolationCause } from './rule-violation-cause';
+import { RuleViolationErrorAllOf } from './rule-violation-error-all-of';
+
+/**
+ * @type RuleViolationError
+ * All error responses, whether `4xx` or `5xx` will include one of these as the response body.
+ * @export
+ */
+export type RuleViolationError = ModelError & RuleViolationErrorAllOf;
+
+
+

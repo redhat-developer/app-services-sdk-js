@@ -13,6 +13,25 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export enum ArtifactType {
+    Avro = 'AVRO',
+    Protobuf = 'PROTOBUF',
+    Json = 'JSON',
+    Openapi = 'OPENAPI',
+    Asyncapi = 'ASYNCAPI',
+    Graphql = 'GRAPHQL',
+    Kconnect = 'KCONNECT',
+    Wsdl = 'WSDL',
+    Xsd = 'XSD',
+    Xml = 'XML'
+}
+
+
+

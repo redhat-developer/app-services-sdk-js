@@ -13,6 +13,18 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export enum RoleType {
+    ReadOnly = 'READ_ONLY',
+    Developer = 'DEVELOPER',
+    Admin = 'ADMIN'
+}
+
+
+

@@ -13,6 +13,37 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @interface EditableMetaData
+ */
+export interface EditableMetaData {
+    /**
+     * 
+     * @type {string}
+     * @memberof EditableMetaData
+     */
+    name?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EditableMetaData
+     */
+    description?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof EditableMetaData
+     */
+    labels?: Array<string>;
+    /**
+     * User-defined name-value pairs. Name and value must be strings.
+     * @type {{ [key: string]: string; }}
+     * @memberof EditableMetaData
+     */
+    properties?: { [key: string]: string; };
+}
+
+

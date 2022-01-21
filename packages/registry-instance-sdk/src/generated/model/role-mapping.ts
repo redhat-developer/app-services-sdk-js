@@ -13,6 +13,26 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { RoleType } from './role-type';
+
+/**
+ * The mapping between a user/principal and their role.
+ * @export
+ * @interface RoleMapping
+ */
+export interface RoleMapping {
+    /**
+     * 
+     * @type {string}
+     * @memberof RoleMapping
+     */
+    principalId: string;
+    /**
+     * 
+     * @type {RoleType}
+     * @memberof RoleMapping
+     */
+    role: RoleType;
+}
+
+

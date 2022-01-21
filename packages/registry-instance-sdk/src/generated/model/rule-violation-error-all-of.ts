@@ -13,6 +13,20 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+import { RuleViolationCause } from './rule-violation-cause';
+
+/**
+ * 
+ * @export
+ * @interface RuleViolationErrorAllOf
+ */
+export interface RuleViolationErrorAllOf {
+    /**
+     * List of rule violation causes.
+     * @type {Array<RuleViolationCause>}
+     * @memberof RuleViolationErrorAllOf
+     */
+    causes: Array<RuleViolationCause>;
+}
+
+

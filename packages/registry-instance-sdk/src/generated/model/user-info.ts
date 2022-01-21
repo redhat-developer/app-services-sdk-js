@@ -13,6 +13,43 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * Information about a single user.
+ * @export
+ * @interface UserInfo
+ */
+export interface UserInfo {
+    /**
+     * 
+     * @type {string}
+     * @memberof UserInfo
+     */
+    username?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserInfo
+     */
+    displayName?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserInfo
+     */
+    admin?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserInfo
+     */
+    developer?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UserInfo
+     */
+    viewer?: boolean;
+}
+
+
