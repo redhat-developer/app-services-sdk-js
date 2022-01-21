@@ -35,7 +35,7 @@ You can view all SDK packages directly in [npm](https://www.npmjs.com/search?q=k
 | Name             | Package name                     | Status | Version             | NPM                 | Docs                |
 | ---------------- | :------------------------------- | :----- | ------------------- | ------------------- | ------------------- |
 | kafka            | **@rhoas/kafka-instance-sdk**    | beta   | ![kinstanceshield]  | [npm][kinstancenpm] | [doc][kinstancegit] |
-| service registry | **@rhoas/registry-instance-sdk** | beta   | ![srinstanceshield] | [npm][srnstancenpm] | [doc][srnstancegit] |
+| service registry | **@rhoas/registry-instance-sdk** | beta   | ![srinstanceshield] | [npm][srinstancenpm]| [doc][srinstancegit]|
 
 ## Docs
 
