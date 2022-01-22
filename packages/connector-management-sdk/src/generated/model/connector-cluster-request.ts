@@ -13,15 +13,14 @@
  */
 
 
-import { ConnectorType } from './connector-type';
-import { ConnectorTypeListAllOf } from './connector-type-list-all-of';
-import { List } from './list';
+import { ConnectorClusterRequestMeta } from './connector-cluster-request-meta';
 
 /**
- * @type ConnectorTypeList
+ * @type ConnectorClusterRequest
+ * Schema for the request to update a data plane cluster\'s status
  * @export
  */
-export type ConnectorTypeList = ConnectorTypeListAllOf & List;
+export type ConnectorClusterRequest = ConnectorClusterRequestMeta;
 
 
 

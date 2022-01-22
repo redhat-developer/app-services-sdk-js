@@ -13,15 +13,14 @@
  */
 
 
-import { ConnectorType } from './connector-type';
-import { ConnectorTypeListAllOf } from './connector-type-list-all-of';
-import { List } from './list';
+import { ObjectReference } from './object-reference';
+import { VersionMetadataAllOf } from './version-metadata-all-of';
 
 /**
- * @type ConnectorTypeList
+ * @type VersionMetadata
  * @export
  */
-export type ConnectorTypeList = ConnectorTypeListAllOf & List;
+export type VersionMetadata = ObjectReference & VersionMetadataAllOf;
 
 
 

@@ -13,15 +13,13 @@
  */
 
 
-import { ConnectorType } from './connector-type';
-import { ConnectorTypeListAllOf } from './connector-type-list-all-of';
-import { List } from './list';
+import { ConnectorClusterTarget } from './connector-cluster-target';
 
 /**
- * @type ConnectorTypeList
+ * @type DeploymentLocation
  * @export
  */
-export type ConnectorTypeList = ConnectorTypeListAllOf & List;
+export type DeploymentLocation = ConnectorClusterTarget;
 
 
 

@@ -13,15 +13,14 @@
  */
 
 
-import { ConnectorType } from './connector-type';
-import { ConnectorTypeListAllOf } from './connector-type-list-all-of';
-import { List } from './list';
+import { ConnectorClusterRequestMeta } from './connector-cluster-request-meta';
+import { ObjectMeta } from './object-meta';
 
 /**
- * @type ConnectorTypeList
+ * @type ConnectorClusterMeta
  * @export
  */
-export type ConnectorTypeList = ConnectorTypeListAllOf & List;
+export type ConnectorClusterMeta = ConnectorClusterRequestMeta & ObjectMeta;
 
 
 

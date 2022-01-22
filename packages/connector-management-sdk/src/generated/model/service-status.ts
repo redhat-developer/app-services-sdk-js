@@ -13,15 +13,19 @@
  */
 
 
-import { ConnectorType } from './connector-type';
-import { ConnectorTypeListAllOf } from './connector-type-list-all-of';
-import { List } from './list';
 
 /**
- * @type ConnectorTypeList
+ * Schema for the service status response body
  * @export
+ * @interface ServiceStatus
  */
-export type ConnectorTypeList = ConnectorTypeListAllOf & List;
-
+export interface ServiceStatus {
+    /**
+     * The connector to upgrade
+     * @type {string}
+     * @memberof ServiceStatus
+     */
+    clusters?: string;
+}
 
 

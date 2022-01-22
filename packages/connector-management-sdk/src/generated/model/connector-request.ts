@@ -16,20 +16,17 @@
 import { Channel } from './channel';
 import { ConnectorConfiguration } from './connector-configuration';
 import { ConnectorDesiredState } from './connector-desired-state';
-import { ConnectorMeta } from './connector-meta';
-import { ConnectorStatus } from './connector-status';
-import { ConnectorStatusStatus } from './connector-status-status';
+import { ConnectorRequestMeta } from './connector-request-meta';
 import { DeploymentLocation } from './deployment-location';
 import { KafkaConnectionSettings } from './kafka-connection-settings';
-import { ObjectReference } from './object-reference';
 import { SchemaRegistryConnectionSettings } from './schema-registry-connection-settings';
 import { ServiceAccount } from './service-account';
 
 /**
- * @type Connector
+ * @type ConnectorRequest
  * @export
  */
-export type Connector = ConnectorConfiguration & ConnectorMeta & ConnectorStatus & ObjectReference;
+export type ConnectorRequest = ConnectorConfiguration & ConnectorRequestMeta;
 
 
 
