@@ -13,15 +13,20 @@
  */
 
 
-import { ConnectorType } from './connector-type';
-import { ConnectorTypeListAllOf } from './connector-type-list-all-of';
-import { List } from './list';
+import { ConnectorClusterStatusStatus } from './connector-cluster-status-status';
 
 /**
- * @type ConnectorTypeList
+ * 
  * @export
+ * @interface ConnectorClusterStatus
  */
-export type ConnectorTypeList = ConnectorTypeListAllOf & List;
-
+export interface ConnectorClusterStatus {
+    /**
+     * 
+     * @type {ConnectorClusterStatusStatus}
+     * @memberof ConnectorClusterStatus
+     */
+    status?: ConnectorClusterStatusStatus;
+}
 
 

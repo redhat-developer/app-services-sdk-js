@@ -14,15 +14,17 @@
 
 
 import { Channel } from './channel';
-import { ConnectorTypeAllOf } from './connector-type-all-of';
-import { ObjectReference } from './object-reference';
+import { ConnectorDesiredState } from './connector-desired-state';
+import { ConnectorMetaAllOf } from './connector-meta-all-of';
+import { ConnectorRequestMeta } from './connector-request-meta';
+import { DeploymentLocation } from './deployment-location';
+import { ObjectMeta } from './object-meta';
 
 /**
- * @type ConnectorType
- * Represents a connector type supported by the API
+ * @type ConnectorMeta
  * @export
  */
-export type ConnectorType = ConnectorTypeAllOf | ObjectReference;
+export type ConnectorMeta = ConnectorMetaAllOf & ConnectorRequestMeta & ObjectMeta;
 
 
 

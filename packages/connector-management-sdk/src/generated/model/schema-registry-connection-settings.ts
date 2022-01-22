@@ -13,15 +13,14 @@
  */
 
 
-import { ConnectorType } from './connector-type';
-import { ConnectorTypeListAllOf } from './connector-type-list-all-of';
-import { List } from './list';
+import { ServiceConnectionSettings } from './service-connection-settings';
 
 /**
- * @type ConnectorTypeList
+ * @type SchemaRegistryConnectionSettings
+ * Holds the configuration to connect to a Schem Registry Instance.
  * @export
  */
-export type ConnectorTypeList = ConnectorTypeListAllOf & List;
+export type SchemaRegistryConnectionSettings = ServiceConnectionSettings;
 
 
 

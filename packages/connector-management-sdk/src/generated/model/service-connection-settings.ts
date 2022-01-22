@@ -13,15 +13,25 @@
  */
 
 
-import { ConnectorType } from './connector-type';
-import { ConnectorTypeListAllOf } from './connector-type-list-all-of';
-import { List } from './list';
 
 /**
- * @type ConnectorTypeList
+ * 
  * @export
+ * @interface ServiceConnectionSettings
  */
-export type ConnectorTypeList = ConnectorTypeListAllOf & List;
-
+export interface ServiceConnectionSettings {
+    /**
+     * 
+     * @type {string}
+     * @memberof ServiceConnectionSettings
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ServiceConnectionSettings
+     */
+    url: string;
+}
 
 

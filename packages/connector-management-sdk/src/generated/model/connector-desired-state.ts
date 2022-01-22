@@ -13,15 +13,18 @@
  */
 
 
-import { ConnectorType } from './connector-type';
-import { ConnectorTypeListAllOf } from './connector-type-list-all-of';
-import { List } from './list';
 
 /**
- * @type ConnectorTypeList
+ * 
  * @export
+ * @enum {string}
  */
-export type ConnectorTypeList = ConnectorTypeListAllOf & List;
+
+export enum ConnectorDesiredState {
+    Ready = 'ready',
+    Stopped = 'stopped',
+    Deleted = 'deleted'
+}
 
 
 

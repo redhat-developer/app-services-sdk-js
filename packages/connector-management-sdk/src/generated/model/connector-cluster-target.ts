@@ -13,15 +13,25 @@
  */
 
 
-import { ConnectorType } from './connector-type';
-import { ConnectorTypeListAllOf } from './connector-type-list-all-of';
-import { List } from './list';
 
 /**
- * @type ConnectorTypeList
+ * Targets workloads to an addon cluster
  * @export
+ * @interface ConnectorClusterTarget
  */
-export type ConnectorTypeList = ConnectorTypeListAllOf & List;
-
+export interface ConnectorClusterTarget {
+    /**
+     * 
+     * @type {string}
+     * @memberof ConnectorClusterTarget
+     */
+    kind: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConnectorClusterTarget
+     */
+    cluster_id?: string;
+}
 
 
