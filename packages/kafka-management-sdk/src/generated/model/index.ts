@@ -22,6 +22,7 @@ export * from './metrics-range-query-list-all-of';
 export * from './model-error';
 export * from './object-reference';
 export * from './range-query';
+export * from './region-capacity-list-item';
 export * from './service-account';
 export * from './service-account-all-of';
 export * from './service-account-list';

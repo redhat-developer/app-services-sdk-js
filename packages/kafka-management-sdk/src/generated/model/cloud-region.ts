@@ -13,6 +13,7 @@
  */
 
 
+import { RegionCapacityListItem } from './region-capacity-list-item';
 
 /**
  * Description of a region of a cloud provider.
@@ -50,6 +51,12 @@ export interface CloudRegion {
      * @memberof CloudRegion
      */
     supported_instance_types: Array<string>;
+    /**
+     * Indicates whether there is capacity left per instance type
+     * @type {Array<RegionCapacityListItem>}
+     * @memberof CloudRegion
+     */
+    capacity: Array<RegionCapacityListItem>;
 }
 
 
