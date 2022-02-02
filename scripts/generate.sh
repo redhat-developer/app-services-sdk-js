@@ -22,21 +22,21 @@ generate_sdk() {
     --ignore-file-override=.openapi-generator-ignore
 }
 
-npx @openapitools/openapi-generator-cli version-manager set 5.2.0
-echo "Generating SDKs"
-additional_properties="ngVersion=6.1.7,npmName=${PACKAGE_NAME},supportsES6=true,withInterfaces=true,withSeparateModelsAndApi=true,modelPackage=model,apiPackage=api"
+# npx @openapitools/openapi-generator-cli version-manager set 5.2.0
+# echo "Generating SDKs"
+# additional_properties="ngVersion=6.1.7,npmName=${PACKAGE_NAME},supportsES6=true,withInterfaces=true,withSeparateModelsAndApi=true,modelPackage=model,apiPackage=api"
 
-OPENAPI_FILENAME=".openapi/kas-fleet-manager.yaml"
-PACKAGE_NAME="@rhoas/kafka-management-sdk"
-OUTPUT_PATH="packages/kafka-management-sdk/src/generated"
+# OPENAPI_FILENAME=".openapi/kas-fleet-manager.yaml"
+# PACKAGE_NAME="@rhoas/kafka-management-sdk"
+# OUTPUT_PATH="packages/kafka-management-sdk/src/generated"
 
-generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+# generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
 
-OPENAPI_FILENAME=".openapi/srs-fleet-manager.json"
-PACKAGE_NAME="@rhoas/registry-management-sdk"
-OUTPUT_PATH="packages/registry-management-sdk/src/generated"
+# OPENAPI_FILENAME=".openapi/srs-fleet-manager.json"
+# PACKAGE_NAME="@rhoas/registry-management-sdk"
+# OUTPUT_PATH="packages/registry-management-sdk/src/generated"
 
-generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+# generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
 
 OPENAPI_FILENAME=".openapi/connector_mgmt.yaml"
 PACKAGE_NAME="@rhoas/connector-management-sdk"
@@ -44,63 +44,63 @@ OUTPUT_PATH="packages/connector-management-sdk/src/generated"
 
 generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
 
-OPENAPI_FILENAME=".openapi/kafka-admin-rest.yaml"
-PACKAGE_NAME="@rhoas/kafka-instance-sdk"
-OUTPUT_PATH="packages/kafka-instance-sdk/src/generated"
+# OPENAPI_FILENAME=".openapi/kafka-admin-rest.yaml"
+# PACKAGE_NAME="@rhoas/kafka-instance-sdk"
+# OUTPUT_PATH="packages/kafka-instance-sdk/src/generated"
 
-generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+# generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
 
-OPENAPI_FILENAME=".openapi/ams.json"
-PATCH_FILE=".openapi/ams.patch" 
-PACKAGE_NAME="@rhoas/account-management-sdk"
-OUTPUT_PATH="packages/account-management-sdk/src/generated"
+# OPENAPI_FILENAME=".openapi/ams.json"
+# PATCH_FILE=".openapi/ams.patch" 
+# PACKAGE_NAME="@rhoas/account-management-sdk"
+# OUTPUT_PATH="packages/account-management-sdk/src/generated"
 
-patch $OPENAPI_FILENAME < $PATCH_FILE
+# patch $OPENAPI_FILENAME < $PATCH_FILE
 
-npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
-    "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
-    --package-name="${PACKAGE_NAME}" \
-    --additional-properties=$additional_properties \
-    --ignore-file-override=./packages/account-management-sdk/.openapi-generator-ignore 
+# npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
+#     "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
+#     --package-name="${PACKAGE_NAME}" \
+#     --additional-properties=$additional_properties \
+#     --ignore-file-override=./packages/account-management-sdk/.openapi-generator-ignore 
 
-git checkout -- $OPENAPI_FILENAME
+# git checkout -- $OPENAPI_FILENAME
 
 
-OPENAPI_FILENAME=".openapi/ams.json"
-PATCH_FILE=".openapi/ams.patch" 
-PACKAGE_NAME="@rhoas/account-management-sdk"
-OUTPUT_PATH="packages/account-management-sdk/src/generated"
+# OPENAPI_FILENAME=".openapi/ams.json"
+# PATCH_FILE=".openapi/ams.patch" 
+# PACKAGE_NAME="@rhoas/account-management-sdk"
+# OUTPUT_PATH="packages/account-management-sdk/src/generated"
 
-patch $OPENAPI_FILENAME < $PATCH_FILE
+# patch $OPENAPI_FILENAME < $PATCH_FILE
 
-npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
-    "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
-    --package-name="${PACKAGE_NAME}" \
-    --additional-properties=$additional_properties \
-    --ignore-file-override=./packages/account-management-sdk/.openapi-generator-ignore 
+# npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
+#     "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
+#     --package-name="${PACKAGE_NAME}" \
+#     --additional-properties=$additional_properties \
+#     --ignore-file-override=./packages/account-management-sdk/.openapi-generator-ignore 
 
-git checkout -- $OPENAPI_FILENAME
+# git checkout -- $OPENAPI_FILENAME
 
-echo "generating registry instance SDK "
+# echo "generating registry instance SDK "
 
-cd .openapi
-echo "Removing codegen "
-cat registry-instance.json | jq 'del(.paths."x-codegen-contextRoot")' > registry-instance-tmp.json
-mv -f registry-instance-tmp.json registry-instance.json
+# cd .openapi
+# echo "Removing codegen "
+# cat registry-instance.json | jq 'del(.paths."x-codegen-contextRoot")' > registry-instance-tmp.json
+# mv -f registry-instance-tmp.json registry-instance.json
 
-echo "Ensuring only single tag is created "
-cat registry-instance.json | jq 'walk( if type == "object" and has("tags") 
-       then .tags |= select(.[0])
-       else . end )' > registry-instance-tmp.json
-mv -f registry-instance-tmp.json registry-instance.json
+# echo "Ensuring only single tag is created "
+# cat registry-instance.json | jq 'walk( if type == "object" and has("tags") 
+#        then .tags |= select(.[0])
+#        else . end )' > registry-instance-tmp.json
+# mv -f registry-instance-tmp.json registry-instance.json
 
-echo "Removing invalid datetime definitions"
-sed -i '' 's/date-time/utc-date/' registry-instance.json
+# echo "Removing invalid datetime definitions"
+# sed -i '' 's/date-time/utc-date/' registry-instance.json
 
-cd ..
+# cd ..
 
-OPENAPI_FILENAME=".openapi/registry-instance.json"
-PACKAGE_NAME="@rhoas/registry-instance-sdk"
-OUTPUT_PATH="packages/registry-instance-sdk/src/generated"
+# OPENAPI_FILENAME=".openapi/registry-instance.json"
+# PACKAGE_NAME="@rhoas/registry-instance-sdk"
+# OUTPUT_PATH="packages/registry-instance-sdk/src/generated"
 
-generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+# generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
