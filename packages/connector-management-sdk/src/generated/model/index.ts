@@ -36,6 +36,5 @@ export * from './object-reference';
 export * from './schema-registry-connection-settings';
 export * from './service-account';
 export * from './service-connection-settings';
-export * from './service-status';
 export * from './version-metadata';
 export * from './version-metadata-all-of';
