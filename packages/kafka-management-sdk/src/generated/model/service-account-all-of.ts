@@ -25,43 +25,42 @@ export interface ServiceAccountAllOf {
      * @type {string}
      * @memberof ServiceAccountAllOf
      */
-    id?: string;
+    'id'?: string;
     /**
      * 
      * @type {string}
      * @memberof ServiceAccountAllOf
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof ServiceAccountAllOf
      */
-    description?: string;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof ServiceAccountAllOf
      */
-    client_id?: string;
+    'client_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof ServiceAccountAllOf
      */
-    client_secret?: string;
+    'client_secret'?: string;
     /**
      * 
      * @type {string}
      * @memberof ServiceAccountAllOf
      */
-    owner?: string;
+    'owner'?: string;
     /**
      * 
      * @type {string}
      * @memberof ServiceAccountAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
 }
-
 

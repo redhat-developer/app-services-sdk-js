@@ -26,7 +26,6 @@ export interface VersionMetadataAllOf {
      * @type {Array<ObjectReference>}
      * @memberof VersionMetadataAllOf
      */
-    collections?: Array<ObjectReference>;
+    'collections'?: Array<ObjectReference>;
 }
-
 

@@ -25,25 +25,24 @@ export interface ClusterUpgrade {
      * @type {boolean}
      * @memberof ClusterUpgrade
      */
-    available?: boolean;
+    'available'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof ClusterUpgrade
      */
-    state?: string;
+    'state'?: string;
     /**
      * 
      * @type {string}
      * @memberof ClusterUpgrade
      */
-    updated_timestamp?: string;
+    'updated_timestamp'?: string;
     /**
      * 
      * @type {string}
      * @memberof ClusterUpgrade
      */
-    version?: string;
+    'version'?: string;
 }
-
 

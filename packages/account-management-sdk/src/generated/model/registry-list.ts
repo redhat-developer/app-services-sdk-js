@@ -24,4 +24,3 @@ import { RegistryListAllOf } from './registry-list-all-of';
 export type RegistryList = List & RegistryListAllOf;
 
 
-

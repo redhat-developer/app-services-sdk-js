@@ -23,4 +23,3 @@ import { ServiceConnectionSettings } from './service-connection-settings';
 export type SchemaRegistryConnectionSettings = ServiceConnectionSettings;
 
 
-

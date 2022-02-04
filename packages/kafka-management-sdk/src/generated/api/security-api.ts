@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -39,7 +39,7 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createServiceAccount: async (serviceAccountRequest: ServiceAccountRequest, options: any = {}): Promise<RequestArgs> => {
+        createServiceAccount: async (serviceAccountRequest: ServiceAccountRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'serviceAccountRequest' is not null or undefined
             assertParamExists('createServiceAccount', 'serviceAccountRequest', serviceAccountRequest)
             const localVarPath = `/api/kafkas_mgmt/v1/service_accounts`;
@@ -62,7 +62,7 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(serviceAccountRequest, localVarRequestOptions, configuration)
@@ -79,7 +79,7 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteServiceAccountById: async (id: string, options: any = {}): Promise<RequestArgs> => {
+        deleteServiceAccountById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteServiceAccountById', 'id', id)
             const localVarPath = `/api/kafkas_mgmt/v1/service_accounts/{id}`
@@ -101,7 +101,7 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -117,7 +117,7 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceAccountById: async (id: string, options: any = {}): Promise<RequestArgs> => {
+        getServiceAccountById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getServiceAccountById', 'id', id)
             const localVarPath = `/api/kafkas_mgmt/v1/service_accounts/{id}`
@@ -139,7 +139,7 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -154,7 +154,7 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceAccounts: async (options: any = {}): Promise<RequestArgs> => {
+        getServiceAccounts: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/kafkas_mgmt/v1/service_accounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -173,7 +173,7 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -189,7 +189,7 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resetServiceAccountCreds: async (id: string, options: any = {}): Promise<RequestArgs> => {
+        resetServiceAccountCreds: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('resetServiceAccountCreds', 'id', id)
             const localVarPath = `/api/kafkas_mgmt/v1/service_accounts/{id}/reset_credentials`
@@ -211,7 +211,7 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -237,7 +237,7 @@ export const SecurityApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createServiceAccount(serviceAccountRequest: ServiceAccountRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceAccount>> {
+        async createServiceAccount(serviceAccountRequest: ServiceAccountRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceAccount>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createServiceAccount(serviceAccountRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -248,7 +248,7 @@ export const SecurityApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteServiceAccountById(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
+        async deleteServiceAccountById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteServiceAccountById(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -259,7 +259,7 @@ export const SecurityApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getServiceAccountById(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceAccount>> {
+        async getServiceAccountById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceAccount>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceAccountById(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -269,7 +269,7 @@ export const SecurityApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getServiceAccounts(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceAccountList>> {
+        async getServiceAccounts(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceAccountList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceAccounts(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -280,7 +280,7 @@ export const SecurityApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async resetServiceAccountCreds(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceAccount>> {
+        async resetServiceAccountCreds(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceAccount>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.resetServiceAccountCreds(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -360,7 +360,7 @@ export interface SecurityApiInterface {
      * @throws {RequiredError}
      * @memberof SecurityApiInterface
      */
-    createServiceAccount(serviceAccountRequest: ServiceAccountRequest, options?: any): AxiosPromise<ServiceAccount>;
+    createServiceAccount(serviceAccountRequest: ServiceAccountRequest, options?: AxiosRequestConfig): AxiosPromise<ServiceAccount>;
 
     /**
      * 
@@ -370,7 +370,7 @@ export interface SecurityApiInterface {
      * @throws {RequiredError}
      * @memberof SecurityApiInterface
      */
-    deleteServiceAccountById(id: string, options?: any): AxiosPromise<Error>;
+    deleteServiceAccountById(id: string, options?: AxiosRequestConfig): AxiosPromise<Error>;
 
     /**
      * 
@@ -380,7 +380,7 @@ export interface SecurityApiInterface {
      * @throws {RequiredError}
      * @memberof SecurityApiInterface
      */
-    getServiceAccountById(id: string, options?: any): AxiosPromise<ServiceAccount>;
+    getServiceAccountById(id: string, options?: AxiosRequestConfig): AxiosPromise<ServiceAccount>;
 
     /**
      * 
@@ -389,7 +389,7 @@ export interface SecurityApiInterface {
      * @throws {RequiredError}
      * @memberof SecurityApiInterface
      */
-    getServiceAccounts(options?: any): AxiosPromise<ServiceAccountList>;
+    getServiceAccounts(options?: AxiosRequestConfig): AxiosPromise<ServiceAccountList>;
 
     /**
      * 
@@ -399,7 +399,7 @@ export interface SecurityApiInterface {
      * @throws {RequiredError}
      * @memberof SecurityApiInterface
      */
-    resetServiceAccountCreds(id: string, options?: any): AxiosPromise<ServiceAccount>;
+    resetServiceAccountCreds(id: string, options?: AxiosRequestConfig): AxiosPromise<ServiceAccount>;
 
 }
 
@@ -418,7 +418,7 @@ export class SecurityApi extends BaseAPI implements SecurityApiInterface {
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public createServiceAccount(serviceAccountRequest: ServiceAccountRequest, options?: any) {
+    public createServiceAccount(serviceAccountRequest: ServiceAccountRequest, options?: AxiosRequestConfig) {
         return SecurityApiFp(this.configuration).createServiceAccount(serviceAccountRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -430,7 +430,7 @@ export class SecurityApi extends BaseAPI implements SecurityApiInterface {
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public deleteServiceAccountById(id: string, options?: any) {
+    public deleteServiceAccountById(id: string, options?: AxiosRequestConfig) {
         return SecurityApiFp(this.configuration).deleteServiceAccountById(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -442,7 +442,7 @@ export class SecurityApi extends BaseAPI implements SecurityApiInterface {
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public getServiceAccountById(id: string, options?: any) {
+    public getServiceAccountById(id: string, options?: AxiosRequestConfig) {
         return SecurityApiFp(this.configuration).getServiceAccountById(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -453,7 +453,7 @@ export class SecurityApi extends BaseAPI implements SecurityApiInterface {
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public getServiceAccounts(options?: any) {
+    public getServiceAccounts(options?: AxiosRequestConfig) {
         return SecurityApiFp(this.configuration).getServiceAccounts(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -465,7 +465,7 @@ export class SecurityApi extends BaseAPI implements SecurityApiInterface {
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public resetServiceAccountCreds(id: string, options?: any) {
+    public resetServiceAccountCreds(id: string, options?: AxiosRequestConfig) {
         return SecurityApiFp(this.configuration).resetServiceAccountCreds(id, options).then((request) => request(this.axios, this.basePath));
     }
 }

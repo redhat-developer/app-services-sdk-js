@@ -25,55 +25,54 @@ export interface LabelAllOf {
      * @type {string}
      * @memberof LabelAllOf
      */
-    account_id?: string;
+    'account_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof LabelAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof LabelAllOf
      */
-    internal: boolean;
+    'internal': boolean;
     /**
      * 
      * @type {string}
      * @memberof LabelAllOf
      */
-    key: string;
+    'key': string;
     /**
      * 
      * @type {string}
      * @memberof LabelAllOf
      */
-    organization_id?: string;
+    'organization_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof LabelAllOf
      */
-    subscription_id?: string;
+    'subscription_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof LabelAllOf
      */
-    type?: string;
+    'type'?: string;
     /**
      * 
      * @type {string}
      * @memberof LabelAllOf
      */
-    updated_at?: string;
+    'updated_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof LabelAllOf
      */
-    value: string;
+    'value': string;
 }
-
 

@@ -24,4 +24,3 @@ import { RegistryCredentialListAllOf } from './registry-credential-list-all-of';
 export type RegistryCredentialList = List & RegistryCredentialListAllOf;
 
 
-

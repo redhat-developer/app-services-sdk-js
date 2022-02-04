@@ -24,4 +24,3 @@ import { SkuRulesListAllOf } from './sku-rules-list-all-of';
 export type SkuRulesList = List & SkuRulesListAllOf;
 
 
-

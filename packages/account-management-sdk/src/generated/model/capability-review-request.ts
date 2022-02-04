@@ -25,53 +25,48 @@ export interface CapabilityReviewRequest {
      * @type {string}
      * @memberof CapabilityReviewRequest
      */
-    account_username: string;
+    'account_username': string;
     /**
      * 
      * @type {string}
      * @memberof CapabilityReviewRequest
      */
-    capability: CapabilityReviewRequestCapabilityEnum;
+    'capability': CapabilityReviewRequestCapabilityEnum;
     /**
      * 
      * @type {string}
      * @memberof CapabilityReviewRequest
      */
-    cluster_id?: string;
+    'cluster_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof CapabilityReviewRequest
      */
-    organization_id?: string;
+    'organization_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof CapabilityReviewRequest
      */
-    subscription_id?: string;
+    'subscription_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof CapabilityReviewRequest
      */
-    type: CapabilityReviewRequestTypeEnum;
+    'type': CapabilityReviewRequestTypeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CapabilityReviewRequestCapabilityEnum {
-    ManageClusterAdmin = 'manage_cluster_admin'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum CapabilityReviewRequestTypeEnum {
-    Cluster = 'Cluster'
-}
+export const CapabilityReviewRequestCapabilityEnum = {
+    ManageClusterAdmin: 'manage_cluster_admin'
+} as const;
 
+export type CapabilityReviewRequestCapabilityEnum = typeof CapabilityReviewRequestCapabilityEnum[keyof typeof CapabilityReviewRequestCapabilityEnum];
+export const CapabilityReviewRequestTypeEnum = {
+    Cluster: 'Cluster'
+} as const;
+
+export type CapabilityReviewRequestTypeEnum = typeof CapabilityReviewRequestTypeEnum[keyof typeof CapabilityReviewRequestTypeEnum];
 
 

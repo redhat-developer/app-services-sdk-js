@@ -27,79 +27,78 @@ export interface VersionMetaData {
      * @type {string}
      * @memberof VersionMetaData
      */
-    version: string;
+    'version': string;
     /**
      * 
      * @type {string}
      * @memberof VersionMetaData
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof VersionMetaData
      */
-    description?: string;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof VersionMetaData
      */
-    createdBy: string;
+    'createdBy': string;
     /**
      * 
      * @type {string}
      * @memberof VersionMetaData
      */
-    createdOn: string;
+    'createdOn': string;
     /**
      * 
      * @type {ArtifactType}
      * @memberof VersionMetaData
      */
-    type: ArtifactType;
+    'type': ArtifactType;
     /**
      * 
      * @type {number}
      * @memberof VersionMetaData
      */
-    globalId: number;
+    'globalId': number;
     /**
      * 
      * @type {ArtifactState}
      * @memberof VersionMetaData
      */
-    state?: ArtifactState;
+    'state'?: ArtifactState;
     /**
      * The ID of a single artifact.
      * @type {string}
      * @memberof VersionMetaData
      */
-    id: string;
+    'id': string;
     /**
      * 
      * @type {Array<string>}
      * @memberof VersionMetaData
      */
-    labels?: Array<string>;
+    'labels'?: Array<string>;
     /**
      * User-defined name-value pairs. Name and value must be strings.
      * @type {{ [key: string]: string; }}
      * @memberof VersionMetaData
      */
-    properties?: { [key: string]: string; };
+    'properties'?: { [key: string]: string; };
     /**
      * An ID of a single artifact group.
      * @type {string}
      * @memberof VersionMetaData
      */
-    groupId?: string;
+    'groupId'?: string;
     /**
      * 
      * @type {number}
      * @memberof VersionMetaData
      */
-    contentId: number;
+    'contentId': number;
 }
-
 

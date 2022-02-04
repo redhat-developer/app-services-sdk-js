@@ -26,7 +26,6 @@ export interface PlanListAllOf {
      * @type {Array<Plan>}
      * @memberof PlanListAllOf
      */
-    items?: Array<Plan>;
+    'items'?: Array<Plan>;
 }
-
 

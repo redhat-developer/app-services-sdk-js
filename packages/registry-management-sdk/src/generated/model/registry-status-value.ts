@@ -20,14 +20,16 @@
  * @enum {string}
  */
 
-export enum RegistryStatusValue {
-    Accepted = 'accepted',
-    Provisioning = 'provisioning',
-    Ready = 'ready',
-    Failed = 'failed',
-    Deprovision = 'deprovision',
-    Deleting = 'deleting'
-}
+export const RegistryStatusValue = {
+    Accepted: 'accepted',
+    Provisioning: 'provisioning',
+    Ready: 'ready',
+    Failed: 'failed',
+    Deprovision: 'deprovision',
+    Deleting: 'deleting'
+} as const;
+
+export type RegistryStatusValue = typeof RegistryStatusValue[keyof typeof RegistryStatusValue];
 
 
 

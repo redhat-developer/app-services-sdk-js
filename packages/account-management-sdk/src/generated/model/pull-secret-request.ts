@@ -25,7 +25,6 @@ export interface PullSecretRequest {
      * @type {string}
      * @memberof PullSecretRequest
      */
-    external_resource_id: string;
+    'external_resource_id': string;
 }
-
 

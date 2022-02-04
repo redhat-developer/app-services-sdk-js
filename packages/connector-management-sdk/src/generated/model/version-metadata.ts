@@ -23,4 +23,3 @@ import { VersionMetadataAllOf } from './version-metadata-all-of';
 export type VersionMetadata = ObjectReference & VersionMetadataAllOf;
 
 
-

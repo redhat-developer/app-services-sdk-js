@@ -25,19 +25,18 @@ export interface OrganizationPatchRequest {
      * @type {string}
      * @memberof OrganizationPatchRequest
      */
-    ebs_account_id?: string;
+    'ebs_account_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof OrganizationPatchRequest
      */
-    external_id?: string;
+    'external_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof OrganizationPatchRequest
      */
-    name?: string;
+    'name'?: string;
 }
-
 

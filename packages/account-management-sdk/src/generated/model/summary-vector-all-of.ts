@@ -25,13 +25,12 @@ export interface SummaryVectorAllOf {
      * @type {string}
      * @memberof SummaryVectorAllOf
      */
-    time?: string;
+    'time'?: string;
     /**
      * 
      * @type {number}
      * @memberof SummaryVectorAllOf
      */
-    value?: number;
+    'value'?: number;
 }
-
 

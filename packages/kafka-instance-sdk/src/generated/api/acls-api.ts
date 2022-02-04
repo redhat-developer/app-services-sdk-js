@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -45,7 +45,7 @@ export const AclsApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createAcl: async (aclBinding: AclBinding, options: any = {}): Promise<RequestArgs> => {
+        createAcl: async (aclBinding: AclBinding, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'aclBinding' is not null or undefined
             assertParamExists('createAcl', 'aclBinding', aclBinding)
             const localVarPath = `/acls`;
@@ -68,7 +68,7 @@ export const AclsApiAxiosParamCreator = function (configuration?: Configuration)
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(aclBinding, localVarRequestOptions, configuration)
@@ -90,7 +90,7 @@ export const AclsApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteAcls: async (resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, options: any = {}): Promise<RequestArgs> => {
+        deleteAcls: async (resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/acls`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -133,7 +133,7 @@ export const AclsApiAxiosParamCreator = function (configuration?: Configuration)
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -148,7 +148,7 @@ export const AclsApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAclResourceOperations: async (options: any = {}): Promise<RequestArgs> => {
+        getAclResourceOperations: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/acls/resource-operations`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -167,7 +167,7 @@ export const AclsApiAxiosParamCreator = function (configuration?: Configuration)
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -192,7 +192,7 @@ export const AclsApiAxiosParamCreator = function (configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAcls: async (resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options: any = {}): Promise<RequestArgs> => {
+        getAcls: async (resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/acls`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -251,7 +251,7 @@ export const AclsApiAxiosParamCreator = function (configuration?: Configuration)
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -277,7 +277,7 @@ export const AclsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createAcl(aclBinding: AclBinding, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createAcl(aclBinding: AclBinding, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createAcl(aclBinding, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -293,7 +293,7 @@ export const AclsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AclBindingListPage>> {
+        async deleteAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AclBindingListPage>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteAcls(resourceType, resourceName, patternType, principal, operation, permission, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -303,7 +303,7 @@ export const AclsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAclResourceOperations(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{ [key: string]: Array<string>; }>> {
+        async getAclResourceOperations(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<{ [key: string]: Array<string>; }>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAclResourceOperations(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -323,7 +323,7 @@ export const AclsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AclBindingListPage>> {
+        async getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AclBindingListPage>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAcls(resourceType, resourceName, patternType, principal, operation, permission, page, size, order, orderKey, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -407,7 +407,7 @@ export interface AclsApiInterface {
      * @throws {RequiredError}
      * @memberof AclsApiInterface
      */
-    createAcl(aclBinding: AclBinding, options?: any): AxiosPromise<void>;
+    createAcl(aclBinding: AclBinding, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Deletes ACL bindings that match the query parameters.
@@ -422,7 +422,7 @@ export interface AclsApiInterface {
      * @throws {RequiredError}
      * @memberof AclsApiInterface
      */
-    deleteAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, options?: any): AxiosPromise<AclBindingListPage>;
+    deleteAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, options?: AxiosRequestConfig): AxiosPromise<AclBindingListPage>;
 
     /**
      * Retrieve the resources and associated operations that may have ACLs configured.
@@ -431,7 +431,7 @@ export interface AclsApiInterface {
      * @throws {RequiredError}
      * @memberof AclsApiInterface
      */
-    getAclResourceOperations(options?: any): AxiosPromise<{ [key: string]: Array<string>; }>;
+    getAclResourceOperations(options?: AxiosRequestConfig): AxiosPromise<{ [key: string]: Array<string>; }>;
 
     /**
      * Returns a list of all of the available ACL bindings, or the list of bindings that meet the users URL Query Parameters. If no parameters are specified, all ACL bindings known to the system will be returned (with paging).
@@ -450,7 +450,7 @@ export interface AclsApiInterface {
      * @throws {RequiredError}
      * @memberof AclsApiInterface
      */
-    getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options?: any): AxiosPromise<AclBindingListPage>;
+    getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options?: AxiosRequestConfig): AxiosPromise<AclBindingListPage>;
 
 }
 
@@ -469,7 +469,7 @@ export class AclsApi extends BaseAPI implements AclsApiInterface {
      * @throws {RequiredError}
      * @memberof AclsApi
      */
-    public createAcl(aclBinding: AclBinding, options?: any) {
+    public createAcl(aclBinding: AclBinding, options?: AxiosRequestConfig) {
         return AclsApiFp(this.configuration).createAcl(aclBinding, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -486,7 +486,7 @@ export class AclsApi extends BaseAPI implements AclsApiInterface {
      * @throws {RequiredError}
      * @memberof AclsApi
      */
-    public deleteAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, options?: any) {
+    public deleteAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, options?: AxiosRequestConfig) {
         return AclsApiFp(this.configuration).deleteAcls(resourceType, resourceName, patternType, principal, operation, permission, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -497,7 +497,7 @@ export class AclsApi extends BaseAPI implements AclsApiInterface {
      * @throws {RequiredError}
      * @memberof AclsApi
      */
-    public getAclResourceOperations(options?: any) {
+    public getAclResourceOperations(options?: AxiosRequestConfig) {
         return AclsApiFp(this.configuration).getAclResourceOperations(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -518,7 +518,7 @@ export class AclsApi extends BaseAPI implements AclsApiInterface {
      * @throws {RequiredError}
      * @memberof AclsApi
      */
-    public getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options?: any) {
+    public getAcls(resourceType?: AclResourceTypeFilter, resourceName?: string, patternType?: AclPatternTypeFilter, principal?: string, operation?: AclOperationFilter, permission?: AclPermissionTypeFilter, page?: number, size?: number, order?: 'asc' | 'desc', orderKey?: 'resourceType' | 'resourceName' | 'patternType' | 'principal' | 'operation' | 'permission', options?: AxiosRequestConfig) {
         return AclsApiFp(this.configuration).getAcls(resourceType, resourceName, patternType, principal, operation, permission, page, size, order, orderKey, options).then((request) => request(this.axios, this.basePath));
     }
 }

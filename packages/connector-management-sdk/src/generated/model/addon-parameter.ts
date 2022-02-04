@@ -25,13 +25,12 @@ export interface AddonParameter {
      * @type {string}
      * @memberof AddonParameter
      */
-    id?: string;
+    'id'?: string;
     /**
      * 
      * @type {string}
      * @memberof AddonParameter
      */
-    value?: string;
+    'value'?: string;
 }
-
 

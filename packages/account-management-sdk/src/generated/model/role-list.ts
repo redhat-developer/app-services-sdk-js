@@ -24,4 +24,3 @@ import { RoleListAllOf } from './role-list-all-of';
 export type RoleList = List & RoleListAllOf;
 
 
-

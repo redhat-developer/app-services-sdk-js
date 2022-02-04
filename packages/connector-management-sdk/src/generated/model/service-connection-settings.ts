@@ -25,13 +25,12 @@ export interface ServiceConnectionSettings {
      * @type {string}
      * @memberof ServiceConnectionSettings
      */
-    id: string;
+    'id': string;
     /**
      * 
      * @type {string}
      * @memberof ServiceConnectionSettings
      */
-    url: string;
+    'url': string;
 }
-
 

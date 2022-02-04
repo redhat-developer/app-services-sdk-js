@@ -25,13 +25,12 @@ export interface ClusterRegistrationRequest {
      * @type {string}
      * @memberof ClusterRegistrationRequest
      */
-    authorization_token?: string;
+    'authorization_token'?: string;
     /**
      * 
      * @type {string}
      * @memberof ClusterRegistrationRequest
      */
-    cluster_id?: string;
+    'cluster_id'?: string;
 }
-
 

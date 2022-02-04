@@ -25,37 +25,36 @@ export interface ServiceAccountListItemAllOf {
      * @type {string}
      * @memberof ServiceAccountListItemAllOf
      */
-    id?: string;
+    'id'?: string;
     /**
      * client id of the service account
      * @type {string}
      * @memberof ServiceAccountListItemAllOf
      */
-    client_id?: string;
+    'client_id'?: string;
     /**
      * name of the service account
      * @type {string}
      * @memberof ServiceAccountListItemAllOf
      */
-    name?: string;
+    'name'?: string;
     /**
      * owner of the service account
      * @type {string}
      * @memberof ServiceAccountListItemAllOf
      */
-    owner?: string;
+    'owner'?: string;
     /**
      * service account creation timestamp
      * @type {string}
      * @memberof ServiceAccountListItemAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * description of the service account
      * @type {string}
      * @memberof ServiceAccountListItemAllOf
      */
-    description?: string;
+    'description'?: string;
 }
-
 

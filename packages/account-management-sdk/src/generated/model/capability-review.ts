@@ -25,7 +25,6 @@ export interface CapabilityReview {
      * @type {string}
      * @memberof CapabilityReview
      */
-    result: string;
+    'result': string;
 }
-
 

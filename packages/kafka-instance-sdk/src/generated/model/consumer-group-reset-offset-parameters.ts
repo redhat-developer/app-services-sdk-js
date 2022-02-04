@@ -26,31 +26,28 @@ export interface ConsumerGroupResetOffsetParameters {
      * @type {string}
      * @memberof ConsumerGroupResetOffsetParameters
      */
-    value?: string;
+    'value'?: string;
     /**
      * 
      * @type {string}
      * @memberof ConsumerGroupResetOffsetParameters
      */
-    offset: ConsumerGroupResetOffsetParametersOffsetEnum;
+    'offset': ConsumerGroupResetOffsetParametersOffsetEnum;
     /**
      * 
      * @type {Array<TopicsToResetOffset>}
      * @memberof ConsumerGroupResetOffsetParameters
      */
-    topics?: Array<TopicsToResetOffset>;
+    'topics'?: Array<TopicsToResetOffset>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ConsumerGroupResetOffsetParametersOffsetEnum {
-    Timestamp = 'timestamp',
-    Absolute = 'absolute',
-    Latest = 'latest',
-    Earliest = 'earliest'
-}
+export const ConsumerGroupResetOffsetParametersOffsetEnum = {
+    Timestamp: 'timestamp',
+    Absolute: 'absolute',
+    Latest: 'latest',
+    Earliest: 'earliest'
+} as const;
 
+export type ConsumerGroupResetOffsetParametersOffsetEnum = typeof ConsumerGroupResetOffsetParametersOffsetEnum[keyof typeof ConsumerGroupResetOffsetParametersOffsetEnum];
 
 

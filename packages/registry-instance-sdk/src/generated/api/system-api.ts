@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -34,7 +34,7 @@ export const SystemApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getSystemInfo: async (options: any = {}): Promise<RequestArgs> => {
+        getSystemInfo: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/system/info`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -49,7 +49,7 @@ export const SystemApiAxiosParamCreator = function (configuration?: Configuratio
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -74,7 +74,7 @@ export const SystemApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getSystemInfo(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SystemInfo>> {
+        async getSystemInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SystemInfo>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSystemInfo(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -113,7 +113,7 @@ export interface SystemApiInterface {
      * @throws {RequiredError}
      * @memberof SystemApiInterface
      */
-    getSystemInfo(options?: any): AxiosPromise<SystemInfo>;
+    getSystemInfo(options?: AxiosRequestConfig): AxiosPromise<SystemInfo>;
 
 }
 
@@ -131,7 +131,7 @@ export class SystemApi extends BaseAPI implements SystemApiInterface {
      * @throws {RequiredError}
      * @memberof SystemApi
      */
-    public getSystemInfo(options?: any) {
+    public getSystemInfo(options?: AxiosRequestConfig) {
         return SystemApiFp(this.configuration).getSystemInfo(options).then((request) => request(this.axios, this.basePath));
     }
 }

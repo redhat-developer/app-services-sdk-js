@@ -26,49 +26,48 @@ export interface NotificationRequest {
      * @type {string}
      * @memberof NotificationRequest
      */
-    bcc_address?: string;
+    'bcc_address'?: string;
     /**
      * 
      * @type {string}
      * @memberof NotificationRequest
      */
-    cluster_id?: string;
+    'cluster_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof NotificationRequest
      */
-    cluster_uuid?: string;
+    'cluster_uuid'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof NotificationRequest
      */
-    include_red_hat_associates?: boolean;
+    'include_red_hat_associates'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof NotificationRequest
      */
-    subject?: string;
+    'subject'?: string;
     /**
      * 
      * @type {string}
      * @memberof NotificationRequest
      */
-    subscription_id?: string;
+    'subscription_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof NotificationRequest
      */
-    template_name: string;
+    'template_name': string;
     /**
      * 
      * @type {Array<TemplateParameter>}
      * @memberof NotificationRequest
      */
-    template_parameters?: Array<TemplateParameter>;
+    'template_parameters'?: Array<TemplateParameter>;
 }
-
 

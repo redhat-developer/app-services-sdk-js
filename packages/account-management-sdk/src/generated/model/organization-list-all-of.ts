@@ -26,7 +26,6 @@ export interface OrganizationListAllOf {
      * @type {Array<Organization>}
      * @memberof OrganizationListAllOf
      */
-    items?: Array<Organization>;
+    'items'?: Array<Organization>;
 }
-
 

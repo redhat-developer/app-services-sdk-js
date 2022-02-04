@@ -25,7 +25,6 @@ export interface ConnectorMetaAllOf {
      * @type {number}
      * @memberof ConnectorMetaAllOf
      */
-    resource_version?: number;
+    'resource_version'?: number;
 }
-
 

@@ -26,7 +26,6 @@ export interface ConnectorStatus {
      * @type {ConnectorStatusStatus}
      * @memberof ConnectorStatus
      */
-    status?: ConnectorStatusStatus;
+    'status'?: ConnectorStatusStatus;
 }
-
 

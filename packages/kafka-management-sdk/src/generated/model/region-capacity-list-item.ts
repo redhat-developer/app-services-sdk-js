@@ -25,13 +25,12 @@ export interface RegionCapacityListItem {
      * @type {string}
      * @memberof RegionCapacityListItem
      */
-    instance_type?: string;
+    'instance_type'?: string;
     /**
      * flag indicating whether the capacity for the instance type in the region is reached
      * @type {boolean}
      * @memberof RegionCapacityListItem
      */
-    max_capacity_reached: boolean;
+    'max_capacity_reached': boolean;
 }
-
 

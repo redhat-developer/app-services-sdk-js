@@ -24,4 +24,3 @@ import { PlanListAllOf } from './plan-list-all-of';
 export type PlanList = List & PlanListAllOf;
 
 
-

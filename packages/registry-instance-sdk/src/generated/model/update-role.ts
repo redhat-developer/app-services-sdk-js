@@ -26,7 +26,6 @@ export interface UpdateRole {
      * @type {RoleType}
      * @memberof UpdateRole
      */
-    role: RoleType;
+    'role': RoleType;
 }
-
 

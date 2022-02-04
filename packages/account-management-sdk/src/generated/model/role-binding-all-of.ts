@@ -26,60 +26,57 @@ export interface RoleBindingAllOf {
      * @type {ObjectReference}
      * @memberof RoleBindingAllOf
      */
-    account?: ObjectReference;
+    'account'?: ObjectReference;
     /**
      * 
      * @type {boolean}
      * @memberof RoleBindingAllOf
      */
-    config_managed?: boolean;
+    'config_managed'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof RoleBindingAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {ObjectReference}
      * @memberof RoleBindingAllOf
      */
-    organization?: ObjectReference;
+    'organization'?: ObjectReference;
     /**
      * 
      * @type {ObjectReference}
      * @memberof RoleBindingAllOf
      */
-    role?: ObjectReference;
+    'role'?: ObjectReference;
     /**
      * 
      * @type {ObjectReference}
      * @memberof RoleBindingAllOf
      */
-    subscription?: ObjectReference;
+    'subscription'?: ObjectReference;
     /**
      * 
      * @type {string}
      * @memberof RoleBindingAllOf
      */
-    type?: RoleBindingAllOfTypeEnum;
+    'type'?: RoleBindingAllOfTypeEnum;
     /**
      * 
      * @type {string}
      * @memberof RoleBindingAllOf
      */
-    updated_at?: string;
+    'updated_at'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum RoleBindingAllOfTypeEnum {
-    Application = 'Application',
-    Subscription = 'Subscription',
-    Organization = 'Organization'
-}
+export const RoleBindingAllOfTypeEnum = {
+    Application: 'Application',
+    Subscription: 'Subscription',
+    Organization: 'Organization'
+} as const;
 
+export type RoleBindingAllOfTypeEnum = typeof RoleBindingAllOfTypeEnum[keyof typeof RoleBindingAllOfTypeEnum];
 
 

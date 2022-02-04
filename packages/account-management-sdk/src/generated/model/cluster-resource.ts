@@ -26,19 +26,18 @@ export interface ClusterResource {
      * @type {ClusterResourceTotal}
      * @memberof ClusterResource
      */
-    total: ClusterResourceTotal;
+    'total': ClusterResourceTotal;
     /**
      * 
      * @type {string}
      * @memberof ClusterResource
      */
-    updated_timestamp: string;
+    'updated_timestamp': string;
     /**
      * 
      * @type {ClusterResourceTotal}
      * @memberof ClusterResource
      */
-    used: ClusterResourceTotal;
+    'used': ClusterResourceTotal;
 }
-
 

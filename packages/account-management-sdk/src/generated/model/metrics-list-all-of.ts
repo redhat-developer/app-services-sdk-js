@@ -26,7 +26,6 @@ export interface MetricsListAllOf {
      * @type {Array<Metric>}
      * @memberof MetricsListAllOf
      */
-    items?: Array<Metric>;
+    'items'?: Array<Metric>;
 }
-
 

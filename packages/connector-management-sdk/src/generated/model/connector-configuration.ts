@@ -28,25 +28,24 @@ export interface ConnectorConfiguration {
      * @type {KafkaConnectionSettings}
      * @memberof ConnectorConfiguration
      */
-    kafka: KafkaConnectionSettings;
+    'kafka': KafkaConnectionSettings;
     /**
      * 
      * @type {ServiceAccount}
      * @memberof ConnectorConfiguration
      */
-    service_account: ServiceAccount;
+    'service_account': ServiceAccount;
     /**
      * 
      * @type {SchemaRegistryConnectionSettings}
      * @memberof ConnectorConfiguration
      */
-    schema_registry?: SchemaRegistryConnectionSettings;
+    'schema_registry'?: SchemaRegistryConnectionSettings;
     /**
      * 
      * @type {object}
      * @memberof ConnectorConfiguration
      */
-    connector: object;
+    'connector': object;
 }
-
 

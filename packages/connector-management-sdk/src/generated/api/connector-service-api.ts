@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -34,7 +34,7 @@ export const ConnectorServiceApiAxiosParamCreator = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVersionMetadata: async (options: any = {}): Promise<RequestArgs> => {
+        getVersionMetadata: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/connector_mgmt/v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -49,7 +49,7 @@ export const ConnectorServiceApiAxiosParamCreator = function (configuration?: Co
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -74,7 +74,7 @@ export const ConnectorServiceApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getVersionMetadata(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionMetadata>> {
+        async getVersionMetadata(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionMetadata>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getVersionMetadata(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -113,7 +113,7 @@ export interface ConnectorServiceApiInterface {
      * @throws {RequiredError}
      * @memberof ConnectorServiceApiInterface
      */
-    getVersionMetadata(options?: any): AxiosPromise<VersionMetadata>;
+    getVersionMetadata(options?: AxiosRequestConfig): AxiosPromise<VersionMetadata>;
 
 }
 
@@ -131,7 +131,7 @@ export class ConnectorServiceApi extends BaseAPI implements ConnectorServiceApiI
      * @throws {RequiredError}
      * @memberof ConnectorServiceApi
      */
-    public getVersionMetadata(options?: any) {
+    public getVersionMetadata(options?: AxiosRequestConfig) {
         return ConnectorServiceApiFp(this.configuration).getVersionMetadata(options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -23,4 +23,3 @@ import { RegistryAllOf } from './registry-all-of';
 export type Registry = ObjectReference & RegistryAllOf;
 
 
-

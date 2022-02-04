@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -41,7 +41,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteConsumerGroupById: async (consumerGroupId: string, options: any = {}): Promise<RequestArgs> => {
+        deleteConsumerGroupById: async (consumerGroupId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'consumerGroupId' is not null or undefined
             assertParamExists('deleteConsumerGroupById', 'consumerGroupId', consumerGroupId)
             const localVarPath = `/consumer-groups/{consumerGroupId}`
@@ -63,7 +63,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -83,7 +83,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConsumerGroupById: async (consumerGroupId: string, order?: 'asc' | 'desc', orderKey?: 'offset' | 'endOffset' | 'lag' | 'partition', partitionFilter?: number, topic?: string, options: any = {}): Promise<RequestArgs> => {
+        getConsumerGroupById: async (consumerGroupId: string, order?: 'asc' | 'desc', orderKey?: 'offset' | 'endOffset' | 'lag' | 'partition', partitionFilter?: number, topic?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'consumerGroupId' is not null or undefined
             assertParamExists('getConsumerGroupById', 'consumerGroupId', consumerGroupId)
             const localVarPath = `/consumer-groups/{consumerGroupId}`
@@ -121,7 +121,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -144,7 +144,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConsumerGroups: async (offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options: any = {}): Promise<RequestArgs> => {
+        getConsumerGroups: async (offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/consumer-groups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -195,7 +195,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -212,7 +212,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resetConsumerGroupOffset: async (consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options: any = {}): Promise<RequestArgs> => {
+        resetConsumerGroupOffset: async (consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'consumerGroupId' is not null or undefined
             assertParamExists('resetConsumerGroupOffset', 'consumerGroupId', consumerGroupId)
             // verify required parameter 'consumerGroupResetOffsetParameters' is not null or undefined
@@ -238,7 +238,7 @@ export const GroupsApiAxiosParamCreator = function (configuration?: Configuratio
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(consumerGroupResetOffsetParameters, localVarRequestOptions, configuration)
@@ -265,7 +265,7 @@ export const GroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteConsumerGroupById(consumerGroupId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteConsumerGroupById(consumerGroupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteConsumerGroupById(consumerGroupId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -280,7 +280,7 @@ export const GroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getConsumerGroupById(consumerGroupId: string, order?: 'asc' | 'desc', orderKey?: 'offset' | 'endOffset' | 'lag' | 'partition', partitionFilter?: number, topic?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroup>> {
+        async getConsumerGroupById(consumerGroupId: string, order?: 'asc' | 'desc', orderKey?: 'offset' | 'endOffset' | 'lag' | 'partition', partitionFilter?: number, topic?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroup>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getConsumerGroupById(consumerGroupId, order, orderKey, partitionFilter, topic, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -298,7 +298,7 @@ export const GroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getConsumerGroups(offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroupList>> {
+        async getConsumerGroups(offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroupList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getConsumerGroups(offset, limit, size, page, topic, groupIdFilter, order, orderKey, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -310,7 +310,7 @@ export const GroupsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroupResetOffsetResult>> {
+        async resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConsumerGroupResetOffsetResult>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.resetConsumerGroupOffset(consumerGroupId, consumerGroupResetOffsetParameters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -393,7 +393,7 @@ export interface GroupsApiInterface {
      * @throws {RequiredError}
      * @memberof GroupsApiInterface
      */
-    deleteConsumerGroupById(consumerGroupId: string, options?: any): AxiosPromise<void>;
+    deleteConsumerGroupById(consumerGroupId: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * 
@@ -407,7 +407,7 @@ export interface GroupsApiInterface {
      * @throws {RequiredError}
      * @memberof GroupsApiInterface
      */
-    getConsumerGroupById(consumerGroupId: string, order?: 'asc' | 'desc', orderKey?: 'offset' | 'endOffset' | 'lag' | 'partition', partitionFilter?: number, topic?: string, options?: any): AxiosPromise<ConsumerGroup>;
+    getConsumerGroupById(consumerGroupId: string, order?: 'asc' | 'desc', orderKey?: 'offset' | 'endOffset' | 'lag' | 'partition', partitionFilter?: number, topic?: string, options?: AxiosRequestConfig): AxiosPromise<ConsumerGroup>;
 
     /**
      * Returns a list of all consumer groups for a particular Kafka instance. The consumer groups returned are limited to those records the requestor is authorized to view.
@@ -424,7 +424,7 @@ export interface GroupsApiInterface {
      * @throws {RequiredError}
      * @memberof GroupsApiInterface
      */
-    getConsumerGroups(offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options?: any): AxiosPromise<ConsumerGroupList>;
+    getConsumerGroups(offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options?: AxiosRequestConfig): AxiosPromise<ConsumerGroupList>;
 
     /**
      * Reset the offset for a particular consumer group.
@@ -435,7 +435,7 @@ export interface GroupsApiInterface {
      * @throws {RequiredError}
      * @memberof GroupsApiInterface
      */
-    resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any): AxiosPromise<ConsumerGroupResetOffsetResult>;
+    resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: AxiosRequestConfig): AxiosPromise<ConsumerGroupResetOffsetResult>;
 
 }
 
@@ -454,7 +454,7 @@ export class GroupsApi extends BaseAPI implements GroupsApiInterface {
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    public deleteConsumerGroupById(consumerGroupId: string, options?: any) {
+    public deleteConsumerGroupById(consumerGroupId: string, options?: AxiosRequestConfig) {
         return GroupsApiFp(this.configuration).deleteConsumerGroupById(consumerGroupId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -470,7 +470,7 @@ export class GroupsApi extends BaseAPI implements GroupsApiInterface {
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    public getConsumerGroupById(consumerGroupId: string, order?: 'asc' | 'desc', orderKey?: 'offset' | 'endOffset' | 'lag' | 'partition', partitionFilter?: number, topic?: string, options?: any) {
+    public getConsumerGroupById(consumerGroupId: string, order?: 'asc' | 'desc', orderKey?: 'offset' | 'endOffset' | 'lag' | 'partition', partitionFilter?: number, topic?: string, options?: AxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getConsumerGroupById(consumerGroupId, order, orderKey, partitionFilter, topic, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -489,7 +489,7 @@ export class GroupsApi extends BaseAPI implements GroupsApiInterface {
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    public getConsumerGroups(offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options?: any) {
+    public getConsumerGroups(offset?: number, limit?: number, size?: number, page?: number, topic?: string, groupIdFilter?: string, order?: 'asc' | 'desc', orderKey?: 'name', options?: AxiosRequestConfig) {
         return GroupsApiFp(this.configuration).getConsumerGroups(offset, limit, size, page, topic, groupIdFilter, order, orderKey, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -502,7 +502,7 @@ export class GroupsApi extends BaseAPI implements GroupsApiInterface {
      * @throws {RequiredError}
      * @memberof GroupsApi
      */
-    public resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: any) {
+    public resetConsumerGroupOffset(consumerGroupId: string, consumerGroupResetOffsetParameters: ConsumerGroupResetOffsetParameters, options?: AxiosRequestConfig) {
         return GroupsApiFp(this.configuration).resetConsumerGroupOffset(consumerGroupId, consumerGroupResetOffsetParameters, options).then((request) => request(this.axios, this.basePath));
     }
 }

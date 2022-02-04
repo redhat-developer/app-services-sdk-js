@@ -25,13 +25,12 @@ export interface Values {
      * @type {number}
      * @memberof Values
      */
-    timestamp?: number;
+    'timestamp'?: number;
     /**
      * 
      * @type {number}
      * @memberof Values
      */
-    value: number;
+    'value': number;
 }
-
 

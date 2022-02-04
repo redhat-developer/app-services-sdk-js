@@ -25,7 +25,6 @@ export interface ConnectorClusterRequestMeta {
      * @type {string}
      * @memberof ConnectorClusterRequestMeta
      */
-    name?: string;
+    'name'?: string;
 }
-
 

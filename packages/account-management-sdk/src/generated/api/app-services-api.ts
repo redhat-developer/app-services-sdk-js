@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -42,7 +42,7 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAccountsMgmtV1AccessTokenPost: async (options: any = {}): Promise<RequestArgs> => {
+        apiAccountsMgmtV1AccessTokenPost: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/accounts_mgmt/v1/access_token`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -61,7 +61,7 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -77,7 +77,7 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAccountsMgmtV1CurrentAccountGet: async (fetchLabels?: boolean, options: any = {}): Promise<RequestArgs> => {
+        apiAccountsMgmtV1CurrentAccountGet: async (fetchLabels?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/accounts_mgmt/v1/current_account`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -100,7 +100,7 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -118,7 +118,7 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet: async (orgId: string, search?: string, fetchRelatedResources?: boolean, options: any = {}): Promise<RequestArgs> => {
+        apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet: async (orgId: string, search?: string, fetchRelatedResources?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'orgId' is not null or undefined
             assertParamExists('apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet', 'orgId', orgId)
             const localVarPath = `/api/accounts_mgmt/v1/organizations/{orgId}/quota_cost`
@@ -148,7 +148,7 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -164,7 +164,7 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAuthorizationsV1SelfTermsReviewPost: async (selfTermsReview: SelfTermsReview, options: any = {}): Promise<RequestArgs> => {
+        apiAuthorizationsV1SelfTermsReviewPost: async (selfTermsReview: SelfTermsReview, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'selfTermsReview' is not null or undefined
             assertParamExists('apiAuthorizationsV1SelfTermsReviewPost', 'selfTermsReview', selfTermsReview)
             const localVarPath = `/api/authorizations/v1/self_terms_review`;
@@ -187,7 +187,7 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(selfTermsReview, localVarRequestOptions, configuration)
@@ -213,7 +213,7 @@ export const AppServicesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAccountsMgmtV1AccessTokenPost(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccessTokenCfg>> {
+        async apiAccountsMgmtV1AccessTokenPost(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AccessTokenCfg>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiAccountsMgmtV1AccessTokenPost(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -224,7 +224,7 @@ export const AppServicesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAccountsMgmtV1CurrentAccountGet(fetchLabels?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Account>> {
+        async apiAccountsMgmtV1CurrentAccountGet(fetchLabels?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Account>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiAccountsMgmtV1CurrentAccountGet(fetchLabels, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -237,7 +237,7 @@ export const AppServicesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuotaCostList>> {
+        async apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuotaCostList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId, search, fetchRelatedResources, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -248,7 +248,7 @@ export const AppServicesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview: SelfTermsReview, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TermsReviewResponse>> {
+        async apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview: SelfTermsReview, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TermsReviewResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -319,7 +319,7 @@ export interface AppServicesApiInterface {
      * @throws {RequiredError}
      * @memberof AppServicesApiInterface
      */
-    apiAccountsMgmtV1AccessTokenPost(options?: any): AxiosPromise<AccessTokenCfg>;
+    apiAccountsMgmtV1AccessTokenPost(options?: AxiosRequestConfig): AxiosPromise<AccessTokenCfg>;
 
     /**
      * 
@@ -329,7 +329,7 @@ export interface AppServicesApiInterface {
      * @throws {RequiredError}
      * @memberof AppServicesApiInterface
      */
-    apiAccountsMgmtV1CurrentAccountGet(fetchLabels?: boolean, options?: any): AxiosPromise<Account>;
+    apiAccountsMgmtV1CurrentAccountGet(fetchLabels?: boolean, options?: AxiosRequestConfig): AxiosPromise<Account>;
 
     /**
      * 
@@ -341,7 +341,7 @@ export interface AppServicesApiInterface {
      * @throws {RequiredError}
      * @memberof AppServicesApiInterface
      */
-    apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: any): AxiosPromise<QuotaCostList>;
+    apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: AxiosRequestConfig): AxiosPromise<QuotaCostList>;
 
     /**
      * 
@@ -351,7 +351,7 @@ export interface AppServicesApiInterface {
      * @throws {RequiredError}
      * @memberof AppServicesApiInterface
      */
-    apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview: SelfTermsReview, options?: any): AxiosPromise<TermsReviewResponse>;
+    apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview: SelfTermsReview, options?: AxiosRequestConfig): AxiosPromise<TermsReviewResponse>;
 
 }
 
@@ -369,7 +369,7 @@ export class AppServicesApi extends BaseAPI implements AppServicesApiInterface {
      * @throws {RequiredError}
      * @memberof AppServicesApi
      */
-    public apiAccountsMgmtV1AccessTokenPost(options?: any) {
+    public apiAccountsMgmtV1AccessTokenPost(options?: AxiosRequestConfig) {
         return AppServicesApiFp(this.configuration).apiAccountsMgmtV1AccessTokenPost(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -381,7 +381,7 @@ export class AppServicesApi extends BaseAPI implements AppServicesApiInterface {
      * @throws {RequiredError}
      * @memberof AppServicesApi
      */
-    public apiAccountsMgmtV1CurrentAccountGet(fetchLabels?: boolean, options?: any) {
+    public apiAccountsMgmtV1CurrentAccountGet(fetchLabels?: boolean, options?: AxiosRequestConfig) {
         return AppServicesApiFp(this.configuration).apiAccountsMgmtV1CurrentAccountGet(fetchLabels, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -395,7 +395,7 @@ export class AppServicesApi extends BaseAPI implements AppServicesApiInterface {
      * @throws {RequiredError}
      * @memberof AppServicesApi
      */
-    public apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: any) {
+    public apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: AxiosRequestConfig) {
         return AppServicesApiFp(this.configuration).apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId, search, fetchRelatedResources, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -407,7 +407,7 @@ export class AppServicesApi extends BaseAPI implements AppServicesApiInterface {
      * @throws {RequiredError}
      * @memberof AppServicesApi
      */
-    public apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview: SelfTermsReview, options?: any) {
+    public apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview: SelfTermsReview, options?: AxiosRequestConfig) {
         return AppServicesApiFp(this.configuration).apiAuthorizationsV1SelfTermsReviewPost(selfTermsReview, options).then((request) => request(this.axios, this.basePath));
     }
 }

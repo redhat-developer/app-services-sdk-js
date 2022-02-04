@@ -25,19 +25,18 @@ export interface CapabilityAllOf {
      * @type {boolean}
      * @memberof CapabilityAllOf
      */
-    inherited: boolean;
+    'inherited': boolean;
     /**
      * 
      * @type {string}
      * @memberof CapabilityAllOf
      */
-    name: string;
+    'name': string;
     /**
      * 
      * @type {string}
      * @memberof CapabilityAllOf
      */
-    value: string;
+    'value': string;
 }
-
 

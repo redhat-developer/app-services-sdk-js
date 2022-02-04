@@ -26,7 +26,6 @@ export interface QuotaCostListAllOf {
      * @type {Array<QuotaCost>}
      * @memberof QuotaCostListAllOf
      */
-    items?: Array<QuotaCost>;
+    'items'?: Array<QuotaCost>;
 }
-
 

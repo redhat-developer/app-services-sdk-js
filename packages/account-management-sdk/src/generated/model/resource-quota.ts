@@ -23,4 +23,3 @@ import { ResourceQuotaAllOf } from './resource-quota-all-of';
 export type ResourceQuota = ObjectReference & ResourceQuotaAllOf;
 
 
-

@@ -25,19 +25,18 @@ export interface PlanAllOf {
      * @type {string}
      * @memberof PlanAllOf
      */
-    category?: string;
+    'category'?: string;
     /**
      * 
      * @type {string}
      * @memberof PlanAllOf
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof PlanAllOf
      */
-    type?: string;
+    'type'?: string;
 }
-
 

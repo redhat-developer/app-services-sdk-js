@@ -25,32 +25,27 @@ export interface SelfResourceReviewRequest {
      * @type {string}
      * @memberof SelfResourceReviewRequest
      */
-    action?: SelfResourceReviewRequestActionEnum;
+    'action'?: SelfResourceReviewRequestActionEnum;
     /**
      * 
      * @type {string}
      * @memberof SelfResourceReviewRequest
      */
-    resource_type?: SelfResourceReviewRequestResourceTypeEnum;
+    'resource_type'?: SelfResourceReviewRequestResourceTypeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SelfResourceReviewRequestActionEnum {
-    Get = 'get',
-    Delete = 'delete',
-    Update = 'update'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SelfResourceReviewRequestResourceTypeEnum {
-    Cluster = 'Cluster',
-    Subscription = 'Subscription'
-}
+export const SelfResourceReviewRequestActionEnum = {
+    Get: 'get',
+    Delete: 'delete',
+    Update: 'update'
+} as const;
 
+export type SelfResourceReviewRequestActionEnum = typeof SelfResourceReviewRequestActionEnum[keyof typeof SelfResourceReviewRequestActionEnum];
+export const SelfResourceReviewRequestResourceTypeEnum = {
+    Cluster: 'Cluster',
+    Subscription: 'Subscription'
+} as const;
+
+export type SelfResourceReviewRequestResourceTypeEnum = typeof SelfResourceReviewRequestResourceTypeEnum[keyof typeof SelfResourceReviewRequestResourceTypeEnum];
 
 

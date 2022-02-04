@@ -20,10 +20,12 @@
  * @enum {string}
  */
 
-export enum SortBy {
-    Name = 'name',
-    CreatedOn = 'createdOn'
-}
+export const SortBy = {
+    Name: 'name',
+    CreatedOn: 'createdOn'
+} as const;
+
+export type SortBy = typeof SortBy[keyof typeof SortBy];
 
 
 

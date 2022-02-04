@@ -23,4 +23,3 @@ import { SummaryVector } from './summary-vector';
 export type SummaryMetrics = SummaryMetricsAllOf;
 
 
-

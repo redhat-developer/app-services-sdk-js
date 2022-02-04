@@ -25,25 +25,24 @@ export interface ClusterRegistrationResponse {
      * @type {string}
      * @memberof ClusterRegistrationResponse
      */
-    account_id?: string;
+    'account_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof ClusterRegistrationResponse
      */
-    authorization_token?: string;
+    'authorization_token'?: string;
     /**
      * 
      * @type {string}
      * @memberof ClusterRegistrationResponse
      */
-    cluster_id?: string;
+    'cluster_id'?: string;
     /**
      * Cluster Registration expiration in Unix time
      * @type {string}
      * @memberof ClusterRegistrationResponse
      */
-    expires_at?: string;
+    'expires_at'?: string;
 }
-
 

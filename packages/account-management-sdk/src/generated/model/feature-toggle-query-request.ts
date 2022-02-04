@@ -22,4 +22,3 @@ import { FeatureToggleQueryRequestAllOf } from './feature-toggle-query-request-a
 export type FeatureToggleQueryRequest = FeatureToggleQueryRequestAllOf;
 
 
-

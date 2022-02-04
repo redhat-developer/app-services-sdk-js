@@ -24,4 +24,3 @@ import { OrganizationListAllOf } from './organization-list-all-of';
 export type OrganizationList = List & OrganizationListAllOf;
 
 
-

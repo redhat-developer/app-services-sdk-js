@@ -26,7 +26,6 @@ export interface ResourceQuotaListAllOf {
      * @type {Array<ResourceQuota>}
      * @memberof ResourceQuotaListAllOf
      */
-    items?: Array<ResourceQuota>;
+    'items'?: Array<ResourceQuota>;
 }
-
 

@@ -20,10 +20,12 @@
  * @enum {string}
  */
 
-export enum RuleType {
-    Validity = 'VALIDITY',
-    Compatibility = 'COMPATIBILITY'
-}
+export const RuleType = {
+    Validity: 'VALIDITY',
+    Compatibility: 'COMPATIBILITY'
+} as const;
+
+export type RuleType = typeof RuleType[keyof typeof RuleType];
 
 
 

@@ -29,37 +29,36 @@ export interface AclBinding {
      * @type {AclResourceType}
      * @memberof AclBinding
      */
-    resourceType: AclResourceType;
+    'resourceType': AclResourceType;
     /**
      * 
      * @type {string}
      * @memberof AclBinding
      */
-    resourceName: string;
+    'resourceName': string;
     /**
      * 
      * @type {AclPatternType}
      * @memberof AclBinding
      */
-    patternType: AclPatternType;
+    'patternType': AclPatternType;
     /**
      * Identifies the user or service account to which an ACL entry is bound. The literal prefix value of `User:` is required. May be used to specify all users with value `User:*`.
      * @type {string}
      * @memberof AclBinding
      */
-    principal: string;
+    'principal': string;
     /**
      * 
      * @type {AclOperation}
      * @memberof AclBinding
      */
-    operation: AclOperation;
+    'operation': AclOperation;
     /**
      * 
      * @type {AclPermissionType}
      * @memberof AclBinding
      */
-    permission: AclPermissionType;
+    'permission': AclPermissionType;
 }
-
 

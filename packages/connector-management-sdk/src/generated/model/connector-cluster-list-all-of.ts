@@ -26,7 +26,6 @@ export interface ConnectorClusterListAllOf {
      * @type {Array<ConnectorCluster>}
      * @memberof ConnectorClusterListAllOf
      */
-    items?: Array<ConnectorCluster>;
+    'items'?: Array<ConnectorCluster>;
 }
-
 

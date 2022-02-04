@@ -25,37 +25,36 @@ export interface RegistryRequest {
      * @type {boolean}
      * @memberof RegistryRequest
      */
-    cloudAlias?: boolean;
+    'cloudAlias'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof RegistryRequest
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryRequest
      */
-    org_name?: string;
+    'org_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryRequest
      */
-    team_name?: string;
+    'team_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryRequest
      */
-    type?: string;
+    'type'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryRequest
      */
-    url?: string;
+    'url'?: string;
 }
-
 

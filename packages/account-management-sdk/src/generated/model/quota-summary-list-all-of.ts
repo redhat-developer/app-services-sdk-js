@@ -26,7 +26,6 @@ export interface QuotaSummaryListAllOf {
      * @type {Array<QuotaSummary>}
      * @memberof QuotaSummaryListAllOf
      */
-    items?: Array<QuotaSummary>;
+    'items'?: Array<QuotaSummary>;
 }
-
 

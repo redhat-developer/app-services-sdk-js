@@ -20,18 +20,20 @@
  * @enum {string}
  */
 
-export enum ArtifactType {
-    Avro = 'AVRO',
-    Protobuf = 'PROTOBUF',
-    Json = 'JSON',
-    Openapi = 'OPENAPI',
-    Asyncapi = 'ASYNCAPI',
-    Graphql = 'GRAPHQL',
-    Kconnect = 'KCONNECT',
-    Wsdl = 'WSDL',
-    Xsd = 'XSD',
-    Xml = 'XML'
-}
+export const ArtifactType = {
+    Avro: 'AVRO',
+    Protobuf: 'PROTOBUF',
+    Json: 'JSON',
+    Openapi: 'OPENAPI',
+    Asyncapi: 'ASYNCAPI',
+    Graphql: 'GRAPHQL',
+    Kconnect: 'KCONNECT',
+    Wsdl: 'WSDL',
+    Xsd: 'XSD',
+    Xml: 'XML'
+} as const;
+
+export type ArtifactType = typeof ArtifactType[keyof typeof ArtifactType];
 
 
 

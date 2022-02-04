@@ -29,4 +29,3 @@ import { SubscriptionAllOf } from './subscription-all-of';
 export type Subscription = ObjectReference & SubscriptionAllOf;
 
 
-

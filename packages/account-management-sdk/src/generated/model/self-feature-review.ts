@@ -25,7 +25,6 @@ export interface SelfFeatureReview {
      * @type {string}
      * @memberof SelfFeatureReview
      */
-    feature: string;
+    'feature': string;
 }
-
 

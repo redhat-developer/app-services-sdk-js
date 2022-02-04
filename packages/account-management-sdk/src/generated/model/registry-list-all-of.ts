@@ -26,7 +26,6 @@ export interface RegistryListAllOf {
      * @type {Array<Registry>}
      * @memberof RegistryListAllOf
      */
-    items?: Array<Registry>;
+    'items'?: Array<Registry>;
 }
-
 

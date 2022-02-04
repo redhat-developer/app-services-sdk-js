@@ -25,19 +25,18 @@ export interface ObjectMeta {
      * @type {string}
      * @memberof ObjectMeta
      */
-    owner?: string;
+    'owner'?: string;
     /**
      * 
      * @type {string}
      * @memberof ObjectMeta
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof ObjectMeta
      */
-    modified_at?: string;
+    'modified_at'?: string;
 }
-
 

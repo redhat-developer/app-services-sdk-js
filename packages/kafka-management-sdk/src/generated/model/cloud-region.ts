@@ -26,37 +26,36 @@ export interface CloudRegion {
      * @type {string}
      * @memberof CloudRegion
      */
-    kind?: string;
+    'kind'?: string;
     /**
      * Unique identifier of the object.
      * @type {string}
      * @memberof CloudRegion
      */
-    id?: string;
+    'id'?: string;
     /**
      * Name of the region for display purposes, for example `N. Virginia`.
      * @type {string}
      * @memberof CloudRegion
      */
-    display_name?: string;
+    'display_name'?: string;
     /**
      * Whether the region is enabled for deploying an OSD cluster.
      * @type {boolean}
      * @memberof CloudRegion
      */
-    enabled: boolean;
+    'enabled': boolean;
     /**
      * The Kafka instance types supported by this region.
      * @type {Array<string>}
      * @memberof CloudRegion
      */
-    supported_instance_types: Array<string>;
+    'supported_instance_types': Array<string>;
     /**
      * Indicates whether there is capacity left per instance type
      * @type {Array<RegionCapacityListItem>}
      * @memberof CloudRegion
      */
-    capacity: Array<RegionCapacityListItem>;
+    'capacity': Array<RegionCapacityListItem>;
 }
-
 

@@ -23,4 +23,3 @@ import { SkuRulesAllOf } from './sku-rules-all-of';
 export type SkuRules = ObjectReference & SkuRulesAllOf;
 
 
-

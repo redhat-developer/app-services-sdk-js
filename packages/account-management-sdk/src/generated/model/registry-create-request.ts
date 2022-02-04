@@ -22,4 +22,3 @@ import { RegistryRequest } from './registry-request';
 export type RegistryCreateRequest = RegistryRequest;
 
 
-

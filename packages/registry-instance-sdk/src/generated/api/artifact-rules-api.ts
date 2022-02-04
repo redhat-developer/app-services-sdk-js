@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -41,7 +41,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createArtifactRule: async (groupId: string, artifactId: string, rule: Rule, options: any = {}): Promise<RequestArgs> => {
+        createArtifactRule: async (groupId: string, artifactId: string, rule: Rule, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('createArtifactRule', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -66,7 +66,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(rule, localVarRequestOptions, configuration)
@@ -85,7 +85,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteArtifactRule: async (groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options: any = {}): Promise<RequestArgs> => {
+        deleteArtifactRule: async (groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('deleteArtifactRule', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -109,7 +109,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -126,7 +126,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteArtifactRules: async (groupId: string, artifactId: string, options: any = {}): Promise<RequestArgs> => {
+        deleteArtifactRules: async (groupId: string, artifactId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('deleteArtifactRules', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -147,7 +147,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -165,7 +165,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getArtifactRuleConfig: async (groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options: any = {}): Promise<RequestArgs> => {
+        getArtifactRuleConfig: async (groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('getArtifactRuleConfig', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -189,7 +189,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -206,7 +206,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listArtifactRules: async (groupId: string, artifactId: string, options: any = {}): Promise<RequestArgs> => {
+        listArtifactRules: async (groupId: string, artifactId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('listArtifactRules', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -227,7 +227,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -245,7 +245,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        testUpdateArtifact: async (groupId: string, artifactId: string, body: any, options: any = {}): Promise<RequestArgs> => {
+        testUpdateArtifact: async (groupId: string, artifactId: string, body: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('testUpdateArtifact', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -270,7 +270,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -290,7 +290,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateArtifactRuleConfig: async (groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', rule2: Rule, options: any = {}): Promise<RequestArgs> => {
+        updateArtifactRuleConfig: async (groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', rule2: Rule, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('updateArtifactRuleConfig', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -318,7 +318,7 @@ export const ArtifactRulesApiAxiosParamCreator = function (configuration?: Confi
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(rule2, localVarRequestOptions, configuration)
@@ -347,7 +347,7 @@ export const ArtifactRulesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createArtifactRule(groupId: string, artifactId: string, rule: Rule, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createArtifactRule(groupId: string, artifactId: string, rule: Rule, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createArtifactRule(groupId, artifactId, rule, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -360,7 +360,7 @@ export const ArtifactRulesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteArtifactRule(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteArtifactRule(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteArtifactRule(groupId, artifactId, rule, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -372,7 +372,7 @@ export const ArtifactRulesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteArtifactRules(groupId: string, artifactId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteArtifactRules(groupId: string, artifactId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteArtifactRules(groupId, artifactId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -385,7 +385,7 @@ export const ArtifactRulesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Rule>> {
+        async getArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Rule>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getArtifactRuleConfig(groupId, artifactId, rule, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -397,7 +397,7 @@ export const ArtifactRulesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listArtifactRules(groupId: string, artifactId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RuleType>>> {
+        async listArtifactRules(groupId: string, artifactId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RuleType>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listArtifactRules(groupId, artifactId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -410,7 +410,7 @@ export const ArtifactRulesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async testUpdateArtifact(groupId: string, artifactId: string, body: any, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async testUpdateArtifact(groupId: string, artifactId: string, body: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.testUpdateArtifact(groupId, artifactId, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -424,7 +424,7 @@ export const ArtifactRulesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', rule2: Rule, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Rule>> {
+        async updateArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', rule2: Rule, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Rule>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateArtifactRuleConfig(groupId, artifactId, rule, rule2, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -540,7 +540,7 @@ export interface ArtifactRulesApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactRulesApiInterface
      */
-    createArtifactRule(groupId: string, artifactId: string, rule: Rule, options?: any): AxiosPromise<void>;
+    createArtifactRule(groupId: string, artifactId: string, rule: Rule, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Deletes a rule from the artifact.  This results in the rule no longer applying for this artifact.  If this is the only rule configured for the artifact, this is the  same as deleting **all** rules, and the globally configured rules now apply to this artifact.  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * No rule with this name/type is configured for this artifact (HTTP error `404`) * Invalid rule type (HTTP error `400`) * A server error occurred (HTTP error `500`)
@@ -552,7 +552,7 @@ export interface ArtifactRulesApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactRulesApiInterface
      */
-    deleteArtifactRule(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: any): AxiosPromise<void>;
+    deleteArtifactRule(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Deletes all of the rules configured for the artifact.  After this is done, the global rules apply to the artifact again.  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * A server error occurred (HTTP error `500`)
@@ -563,7 +563,7 @@ export interface ArtifactRulesApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactRulesApiInterface
      */
-    deleteArtifactRules(groupId: string, artifactId: string, options?: any): AxiosPromise<void>;
+    deleteArtifactRules(groupId: string, artifactId: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Returns information about a single rule configured for an artifact.  This is useful when you want to know what the current configuration settings are for a specific rule.  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * No rule with this name/type is configured for this artifact (HTTP error `404`) * Invalid rule type (HTTP error `400`) * A server error occurred (HTTP error `500`)
@@ -575,7 +575,7 @@ export interface ArtifactRulesApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactRulesApiInterface
      */
-    getArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: any): AxiosPromise<Rule>;
+    getArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: AxiosRequestConfig): AxiosPromise<Rule>;
 
     /**
      * Returns a list of all rules configured for the artifact.  The set of rules determines how the content of an artifact can evolve over time.  If no rules are configured for an artifact, the set of globally configured rules are used.  If no global rules  are defined, there are no restrictions on content evolution.  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * A server error occurred (HTTP error `500`)
@@ -586,7 +586,7 @@ export interface ArtifactRulesApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactRulesApiInterface
      */
-    listArtifactRules(groupId: string, artifactId: string, options?: any): AxiosPromise<Array<RuleType>>;
+    listArtifactRules(groupId: string, artifactId: string, options?: AxiosRequestConfig): AxiosPromise<Array<RuleType>>;
 
     /**
      * Tests whether an update to the artifact\'s content *would* succeed for the provided content. Ultimately, this applies any rules configured for the artifact against the given content to determine whether the rules would pass or fail, but without actually updating the artifact content.  The body of the request should be the raw content of the artifact.  This is typically in  JSON format for *most* of the supported types, but may be in another format for a few  (for example, `PROTOBUF`).  The update could fail for a number of reasons including:  * Provided content (request body) was empty (HTTP error `400`) * No artifact with the `artifactId` exists (HTTP error `404`) * The new content violates one of the rules configured for the artifact (HTTP error `409`) * The provided artifact type is not recognized (HTTP error `404`) * A server error occurred (HTTP error `500`)  When successful, this operation simply returns a *No Content* response.  This response indicates that the content is valid against the configured content rules for the  artifact (or the global rules if no artifact rules are enabled).
@@ -598,7 +598,7 @@ export interface ArtifactRulesApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactRulesApiInterface
      */
-    testUpdateArtifact(groupId: string, artifactId: string, body: any, options?: any): AxiosPromise<void>;
+    testUpdateArtifact(groupId: string, artifactId: string, body: any, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Updates the configuration of a single rule for the artifact.  The configuration data is specific to each rule type, so the configuration of the `COMPATIBILITY` rule  is in a different format from the configuration of the `VALIDITY` rule.  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * No rule with this name/type is configured for this artifact (HTTP error `404`) * Invalid rule type (HTTP error `400`) * A server error occurred (HTTP error `500`) 
@@ -611,7 +611,7 @@ export interface ArtifactRulesApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactRulesApiInterface
      */
-    updateArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', rule2: Rule, options?: any): AxiosPromise<Rule>;
+    updateArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', rule2: Rule, options?: AxiosRequestConfig): AxiosPromise<Rule>;
 
 }
 
@@ -632,7 +632,7 @@ export class ArtifactRulesApi extends BaseAPI implements ArtifactRulesApiInterfa
      * @throws {RequiredError}
      * @memberof ArtifactRulesApi
      */
-    public createArtifactRule(groupId: string, artifactId: string, rule: Rule, options?: any) {
+    public createArtifactRule(groupId: string, artifactId: string, rule: Rule, options?: AxiosRequestConfig) {
         return ArtifactRulesApiFp(this.configuration).createArtifactRule(groupId, artifactId, rule, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -646,7 +646,7 @@ export class ArtifactRulesApi extends BaseAPI implements ArtifactRulesApiInterfa
      * @throws {RequiredError}
      * @memberof ArtifactRulesApi
      */
-    public deleteArtifactRule(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: any) {
+    public deleteArtifactRule(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: AxiosRequestConfig) {
         return ArtifactRulesApiFp(this.configuration).deleteArtifactRule(groupId, artifactId, rule, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -659,7 +659,7 @@ export class ArtifactRulesApi extends BaseAPI implements ArtifactRulesApiInterfa
      * @throws {RequiredError}
      * @memberof ArtifactRulesApi
      */
-    public deleteArtifactRules(groupId: string, artifactId: string, options?: any) {
+    public deleteArtifactRules(groupId: string, artifactId: string, options?: AxiosRequestConfig) {
         return ArtifactRulesApiFp(this.configuration).deleteArtifactRules(groupId, artifactId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -673,7 +673,7 @@ export class ArtifactRulesApi extends BaseAPI implements ArtifactRulesApiInterfa
      * @throws {RequiredError}
      * @memberof ArtifactRulesApi
      */
-    public getArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: any) {
+    public getArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', options?: AxiosRequestConfig) {
         return ArtifactRulesApiFp(this.configuration).getArtifactRuleConfig(groupId, artifactId, rule, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -686,7 +686,7 @@ export class ArtifactRulesApi extends BaseAPI implements ArtifactRulesApiInterfa
      * @throws {RequiredError}
      * @memberof ArtifactRulesApi
      */
-    public listArtifactRules(groupId: string, artifactId: string, options?: any) {
+    public listArtifactRules(groupId: string, artifactId: string, options?: AxiosRequestConfig) {
         return ArtifactRulesApiFp(this.configuration).listArtifactRules(groupId, artifactId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -700,7 +700,7 @@ export class ArtifactRulesApi extends BaseAPI implements ArtifactRulesApiInterfa
      * @throws {RequiredError}
      * @memberof ArtifactRulesApi
      */
-    public testUpdateArtifact(groupId: string, artifactId: string, body: any, options?: any) {
+    public testUpdateArtifact(groupId: string, artifactId: string, body: any, options?: AxiosRequestConfig) {
         return ArtifactRulesApiFp(this.configuration).testUpdateArtifact(groupId, artifactId, body, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -715,7 +715,7 @@ export class ArtifactRulesApi extends BaseAPI implements ArtifactRulesApiInterfa
      * @throws {RequiredError}
      * @memberof ArtifactRulesApi
      */
-    public updateArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', rule2: Rule, options?: any) {
+    public updateArtifactRuleConfig(groupId: string, artifactId: string, rule: 'VALIDITY' | 'COMPATIBILITY', rule2: Rule, options?: AxiosRequestConfig) {
         return ArtifactRulesApiFp(this.configuration).updateArtifactRuleConfig(groupId, artifactId, rule, rule2, options).then((request) => request(this.axios, this.basePath));
     }
 }

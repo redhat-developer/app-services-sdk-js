@@ -26,13 +26,12 @@ export interface RangeQuery {
      * @type {{ [key: string]: string; }}
      * @memberof RangeQuery
      */
-    metric?: { [key: string]: string; };
+    'metric'?: { [key: string]: string; };
     /**
      * 
      * @type {Array<Values>}
      * @memberof RangeQuery
      */
-    values?: Array<Values>;
+    'values'?: Array<Values>;
 }
-
 

@@ -25,7 +25,6 @@ export interface TokenAuthorizationRequest {
      * @type {string}
      * @memberof TokenAuthorizationRequest
      */
-    authorization_token?: string;
+    'authorization_token'?: string;
 }
-
 

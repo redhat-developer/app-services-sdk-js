@@ -25,37 +25,36 @@ export interface ExcessResourceAllOf {
      * @type {string}
      * @memberof ExcessResourceAllOf
      */
-    availability_zone_type?: string;
+    'availability_zone_type'?: string;
     /**
      * 
      * @type {string}
      * @memberof ExcessResourceAllOf
      */
-    billing_model?: string;
+    'billing_model'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof ExcessResourceAllOf
      */
-    byoc: boolean;
+    'byoc': boolean;
     /**
      * 
      * @type {number}
      * @memberof ExcessResourceAllOf
      */
-    count?: number;
+    'count'?: number;
     /**
      * 
      * @type {string}
      * @memberof ExcessResourceAllOf
      */
-    resource_name?: string;
+    'resource_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof ExcessResourceAllOf
      */
-    resource_type?: string;
+    'resource_type'?: string;
 }
-
 

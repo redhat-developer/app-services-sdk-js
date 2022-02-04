@@ -25,4 +25,3 @@ import { RuleViolationErrorAllOf } from './rule-violation-error-all-of';
 export type RuleViolationError = ModelError & RuleViolationErrorAllOf;
 
 
-

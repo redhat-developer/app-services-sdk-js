@@ -20,9 +20,11 @@
  * @enum {string}
  */
 
-export enum Channel {
-    Stable = 'stable'
-}
+export const Channel = {
+    Stable: 'stable'
+} as const;
+
+export type Channel = typeof Channel[keyof typeof Channel];
 
 
 

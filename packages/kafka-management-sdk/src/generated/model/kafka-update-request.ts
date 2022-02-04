@@ -25,13 +25,12 @@ export interface KafkaUpdateRequest {
      * @type {string}
      * @memberof KafkaUpdateRequest
      */
-    owner?: string | null;
+    'owner'?: string | null;
     /**
      * Whether connection reauthentication is enabled or not. If set to true, connection reauthentication on the Kafka instance will be required every 5 minutes.
      * @type {boolean}
      * @memberof KafkaUpdateRequest
      */
-    reauthentication_enabled?: boolean | null;
+    'reauthentication_enabled'?: boolean | null;
 }
-
 

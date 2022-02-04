@@ -24,4 +24,3 @@ import { ReservedResourceListAllOf } from './reserved-resource-list-all-of';
 export type ReservedResourceList = List & ReservedResourceListAllOf;
 
 
-

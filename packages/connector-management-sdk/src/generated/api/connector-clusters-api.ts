@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -42,7 +42,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createConnectorCluster: async (async: boolean, connectorClusterRequest: ConnectorClusterRequest, options: any = {}): Promise<RequestArgs> => {
+        createConnectorCluster: async (async: boolean, connectorClusterRequest: ConnectorClusterRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'async' is not null or undefined
             assertParamExists('createConnectorCluster', 'async', async)
             // verify required parameter 'connectorClusterRequest' is not null or undefined
@@ -71,7 +71,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(connectorClusterRequest, localVarRequestOptions, configuration)
@@ -88,7 +88,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteConnectorCluster: async (connectorClusterId: string, options: any = {}): Promise<RequestArgs> => {
+        deleteConnectorCluster: async (connectorClusterId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'connectorClusterId' is not null or undefined
             assertParamExists('deleteConnectorCluster', 'connectorClusterId', connectorClusterId)
             const localVarPath = `/api/connector_mgmt/v1/kafka_connector_clusters/{connector_cluster_id}`
@@ -110,7 +110,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -126,7 +126,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConnectorCluster: async (connectorClusterId: string, options: any = {}): Promise<RequestArgs> => {
+        getConnectorCluster: async (connectorClusterId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'connectorClusterId' is not null or undefined
             assertParamExists('getConnectorCluster', 'connectorClusterId', connectorClusterId)
             const localVarPath = `/api/connector_mgmt/v1/kafka_connector_clusters/{connector_cluster_id}`
@@ -148,7 +148,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -164,7 +164,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConnectorClusterAddonParameters: async (connectorClusterId: string, options: any = {}): Promise<RequestArgs> => {
+        getConnectorClusterAddonParameters: async (connectorClusterId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'connectorClusterId' is not null or undefined
             assertParamExists('getConnectorClusterAddonParameters', 'connectorClusterId', connectorClusterId)
             const localVarPath = `/api/connector_mgmt/v1/kafka_connector_clusters/{connector_cluster_id}/addon_parameters`
@@ -186,7 +186,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -203,7 +203,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listConnectorClusters: async (page?: string, size?: string, options: any = {}): Promise<RequestArgs> => {
+        listConnectorClusters: async (page?: string, size?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/connector_mgmt/v1/kafka_connector_clusters`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -230,7 +230,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -247,7 +247,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateConnectorClusterById: async (connectorClusterId: string, connectorClusterRequest: ConnectorClusterRequest, options: any = {}): Promise<RequestArgs> => {
+        updateConnectorClusterById: async (connectorClusterId: string, connectorClusterRequest: ConnectorClusterRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'connectorClusterId' is not null or undefined
             assertParamExists('updateConnectorClusterById', 'connectorClusterId', connectorClusterId)
             // verify required parameter 'connectorClusterRequest' is not null or undefined
@@ -273,7 +273,7 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(connectorClusterRequest, localVarRequestOptions, configuration)
@@ -301,7 +301,7 @@ export const ConnectorClustersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createConnectorCluster(async: boolean, connectorClusterRequest: ConnectorClusterRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorCluster>> {
+        async createConnectorCluster(async: boolean, connectorClusterRequest: ConnectorClusterRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorCluster>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createConnectorCluster(async, connectorClusterRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -312,7 +312,7 @@ export const ConnectorClustersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteConnectorCluster(connectorClusterId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
+        async deleteConnectorCluster(connectorClusterId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteConnectorCluster(connectorClusterId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -323,7 +323,7 @@ export const ConnectorClustersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getConnectorCluster(connectorClusterId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorCluster>> {
+        async getConnectorCluster(connectorClusterId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorCluster>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getConnectorCluster(connectorClusterId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -334,7 +334,7 @@ export const ConnectorClustersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getConnectorClusterAddonParameters(connectorClusterId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AddonParameter>>> {
+        async getConnectorClusterAddonParameters(connectorClusterId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AddonParameter>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getConnectorClusterAddonParameters(connectorClusterId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -346,7 +346,7 @@ export const ConnectorClustersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listConnectorClusters(page?: string, size?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorClusterList>> {
+        async listConnectorClusters(page?: string, size?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorClusterList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listConnectorClusters(page, size, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -358,7 +358,7 @@ export const ConnectorClustersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateConnectorClusterById(connectorClusterId: string, connectorClusterRequest: ConnectorClusterRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateConnectorClusterById(connectorClusterId: string, connectorClusterRequest: ConnectorClusterRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateConnectorClusterById(connectorClusterId, connectorClusterRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -453,7 +453,7 @@ export interface ConnectorClustersApiInterface {
      * @throws {RequiredError}
      * @memberof ConnectorClustersApiInterface
      */
-    createConnectorCluster(async: boolean, connectorClusterRequest: ConnectorClusterRequest, options?: any): AxiosPromise<ConnectorCluster>;
+    createConnectorCluster(async: boolean, connectorClusterRequest: ConnectorClusterRequest, options?: AxiosRequestConfig): AxiosPromise<ConnectorCluster>;
 
     /**
      * Delete a connector cluster
@@ -463,7 +463,7 @@ export interface ConnectorClustersApiInterface {
      * @throws {RequiredError}
      * @memberof ConnectorClustersApiInterface
      */
-    deleteConnectorCluster(connectorClusterId: string, options?: any): AxiosPromise<Error>;
+    deleteConnectorCluster(connectorClusterId: string, options?: AxiosRequestConfig): AxiosPromise<Error>;
 
     /**
      * Get a connector cluster
@@ -473,7 +473,7 @@ export interface ConnectorClustersApiInterface {
      * @throws {RequiredError}
      * @memberof ConnectorClustersApiInterface
      */
-    getConnectorCluster(connectorClusterId: string, options?: any): AxiosPromise<ConnectorCluster>;
+    getConnectorCluster(connectorClusterId: string, options?: AxiosRequestConfig): AxiosPromise<ConnectorCluster>;
 
     /**
      * Get a connector cluster\'s addon parameters
@@ -483,7 +483,7 @@ export interface ConnectorClustersApiInterface {
      * @throws {RequiredError}
      * @memberof ConnectorClustersApiInterface
      */
-    getConnectorClusterAddonParameters(connectorClusterId: string, options?: any): AxiosPromise<Array<AddonParameter>>;
+    getConnectorClusterAddonParameters(connectorClusterId: string, options?: AxiosRequestConfig): AxiosPromise<Array<AddonParameter>>;
 
     /**
      * Returns a list of connector clusters
@@ -494,7 +494,7 @@ export interface ConnectorClustersApiInterface {
      * @throws {RequiredError}
      * @memberof ConnectorClustersApiInterface
      */
-    listConnectorClusters(page?: string, size?: string, options?: any): AxiosPromise<ConnectorClusterList>;
+    listConnectorClusters(page?: string, size?: string, options?: AxiosRequestConfig): AxiosPromise<ConnectorClusterList>;
 
     /**
      * udpate a connector cluster
@@ -505,7 +505,7 @@ export interface ConnectorClustersApiInterface {
      * @throws {RequiredError}
      * @memberof ConnectorClustersApiInterface
      */
-    updateConnectorClusterById(connectorClusterId: string, connectorClusterRequest: ConnectorClusterRequest, options?: any): AxiosPromise<void>;
+    updateConnectorClusterById(connectorClusterId: string, connectorClusterRequest: ConnectorClusterRequest, options?: AxiosRequestConfig): AxiosPromise<void>;
 
 }
 
@@ -525,7 +525,7 @@ export class ConnectorClustersApi extends BaseAPI implements ConnectorClustersAp
      * @throws {RequiredError}
      * @memberof ConnectorClustersApi
      */
-    public createConnectorCluster(async: boolean, connectorClusterRequest: ConnectorClusterRequest, options?: any) {
+    public createConnectorCluster(async: boolean, connectorClusterRequest: ConnectorClusterRequest, options?: AxiosRequestConfig) {
         return ConnectorClustersApiFp(this.configuration).createConnectorCluster(async, connectorClusterRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -537,7 +537,7 @@ export class ConnectorClustersApi extends BaseAPI implements ConnectorClustersAp
      * @throws {RequiredError}
      * @memberof ConnectorClustersApi
      */
-    public deleteConnectorCluster(connectorClusterId: string, options?: any) {
+    public deleteConnectorCluster(connectorClusterId: string, options?: AxiosRequestConfig) {
         return ConnectorClustersApiFp(this.configuration).deleteConnectorCluster(connectorClusterId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -549,7 +549,7 @@ export class ConnectorClustersApi extends BaseAPI implements ConnectorClustersAp
      * @throws {RequiredError}
      * @memberof ConnectorClustersApi
      */
-    public getConnectorCluster(connectorClusterId: string, options?: any) {
+    public getConnectorCluster(connectorClusterId: string, options?: AxiosRequestConfig) {
         return ConnectorClustersApiFp(this.configuration).getConnectorCluster(connectorClusterId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -561,7 +561,7 @@ export class ConnectorClustersApi extends BaseAPI implements ConnectorClustersAp
      * @throws {RequiredError}
      * @memberof ConnectorClustersApi
      */
-    public getConnectorClusterAddonParameters(connectorClusterId: string, options?: any) {
+    public getConnectorClusterAddonParameters(connectorClusterId: string, options?: AxiosRequestConfig) {
         return ConnectorClustersApiFp(this.configuration).getConnectorClusterAddonParameters(connectorClusterId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -574,7 +574,7 @@ export class ConnectorClustersApi extends BaseAPI implements ConnectorClustersAp
      * @throws {RequiredError}
      * @memberof ConnectorClustersApi
      */
-    public listConnectorClusters(page?: string, size?: string, options?: any) {
+    public listConnectorClusters(page?: string, size?: string, options?: AxiosRequestConfig) {
         return ConnectorClustersApiFp(this.configuration).listConnectorClusters(page, size, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -587,7 +587,7 @@ export class ConnectorClustersApi extends BaseAPI implements ConnectorClustersAp
      * @throws {RequiredError}
      * @memberof ConnectorClustersApi
      */
-    public updateConnectorClusterById(connectorClusterId: string, connectorClusterRequest: ConnectorClusterRequest, options?: any) {
+    public updateConnectorClusterById(connectorClusterId: string, connectorClusterRequest: ConnectorClusterRequest, options?: AxiosRequestConfig) {
         return ConnectorClustersApiFp(this.configuration).updateConnectorClusterById(connectorClusterId, connectorClusterRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

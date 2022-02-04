@@ -26,13 +26,12 @@ export interface ConnectorStatusStatus {
      * @type {ConnectorState}
      * @memberof ConnectorStatusStatus
      */
-    state?: ConnectorState;
+    'state'?: ConnectorState;
     /**
      * 
      * @type {string}
      * @memberof ConnectorStatusStatus
      */
-    error?: string;
+    'error'?: string;
 }
-
 

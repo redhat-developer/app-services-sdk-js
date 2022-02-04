@@ -26,7 +26,6 @@ export interface SubscriptionListAllOf {
      * @type {Array<Subscription>}
      * @memberof SubscriptionListAllOf
      */
-    items?: Array<Subscription>;
+    'items'?: Array<Subscription>;
 }
-
 

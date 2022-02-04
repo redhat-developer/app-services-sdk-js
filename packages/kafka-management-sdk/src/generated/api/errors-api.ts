@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -35,7 +35,7 @@ export const ErrorsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getErrorById: async (id: string, options: any = {}): Promise<RequestArgs> => {
+        getErrorById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getErrorById', 'id', id)
             const localVarPath = `/api/kafkas_mgmt/v1/errors/{id}`
@@ -53,7 +53,7 @@ export const ErrorsApiAxiosParamCreator = function (configuration?: Configuratio
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -68,7 +68,7 @@ export const ErrorsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getErrors: async (options: any = {}): Promise<RequestArgs> => {
+        getErrors: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/kafkas_mgmt/v1/errors`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -83,7 +83,7 @@ export const ErrorsApiAxiosParamCreator = function (configuration?: Configuratio
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -109,7 +109,7 @@ export const ErrorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getErrorById(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
+        async getErrorById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getErrorById(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -119,7 +119,7 @@ export const ErrorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getErrors(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ErrorList>> {
+        async getErrors(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ErrorList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getErrors(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -169,7 +169,7 @@ export interface ErrorsApiInterface {
      * @throws {RequiredError}
      * @memberof ErrorsApiInterface
      */
-    getErrorById(id: string, options?: any): AxiosPromise<Error>;
+    getErrorById(id: string, options?: AxiosRequestConfig): AxiosPromise<Error>;
 
     /**
      * 
@@ -178,7 +178,7 @@ export interface ErrorsApiInterface {
      * @throws {RequiredError}
      * @memberof ErrorsApiInterface
      */
-    getErrors(options?: any): AxiosPromise<ErrorList>;
+    getErrors(options?: AxiosRequestConfig): AxiosPromise<ErrorList>;
 
 }
 
@@ -197,7 +197,7 @@ export class ErrorsApi extends BaseAPI implements ErrorsApiInterface {
      * @throws {RequiredError}
      * @memberof ErrorsApi
      */
-    public getErrorById(id: string, options?: any) {
+    public getErrorById(id: string, options?: AxiosRequestConfig) {
         return ErrorsApiFp(this.configuration).getErrorById(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -208,7 +208,7 @@ export class ErrorsApi extends BaseAPI implements ErrorsApiInterface {
      * @throws {RequiredError}
      * @memberof ErrorsApi
      */
-    public getErrors(options?: any) {
+    public getErrors(options?: AxiosRequestConfig) {
         return ErrorsApiFp(this.configuration).getErrors(options).then((request) => request(this.axios, this.basePath));
     }
 }

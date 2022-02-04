@@ -24,4 +24,3 @@ import { PermissionListAllOf } from './permission-list-all-of';
 export type PermissionList = List & PermissionListAllOf;
 
 
-

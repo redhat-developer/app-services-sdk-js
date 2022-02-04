@@ -25,7 +25,6 @@ export interface NamedLogConfigurationAllOf {
      * @type {string}
      * @memberof NamedLogConfigurationAllOf
      */
-    name: string;
+    'name': string;
 }
-
 

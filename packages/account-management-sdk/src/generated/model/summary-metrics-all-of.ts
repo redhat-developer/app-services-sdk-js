@@ -26,13 +26,12 @@ export interface SummaryMetricsAllOf {
      * @type {string}
      * @memberof SummaryMetricsAllOf
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {Array<SummaryVector>}
      * @memberof SummaryMetricsAllOf
      */
-    vector?: Array<SummaryVector>;
+    'vector'?: Array<SummaryVector>;
 }
-
 

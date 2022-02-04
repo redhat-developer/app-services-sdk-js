@@ -20,12 +20,14 @@
  * @enum {string}
  */
 
-export enum IfExists {
-    Fail = 'FAIL',
-    Update = 'UPDATE',
-    Return = 'RETURN',
-    ReturnOrUpdate = 'RETURN_OR_UPDATE'
-}
+export const IfExists = {
+    Fail: 'FAIL',
+    Update: 'UPDATE',
+    Return: 'RETURN',
+    ReturnOrUpdate: 'RETURN_OR_UPDATE'
+} as const;
+
+export type IfExists = typeof IfExists[keyof typeof IfExists];
 
 
 

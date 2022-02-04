@@ -24,4 +24,3 @@ import { ResultListPage } from './result-list-page';
 export type ConsumerGroupResetOffsetResult = ConsumerGroupResetOffsetResultItemList & ResultListPage;
 
 
-

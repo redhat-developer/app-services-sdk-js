@@ -24,4 +24,3 @@ import { QuotaSummaryListAllOf } from './quota-summary-list-all-of';
 export type QuotaSummaryList = List & QuotaSummaryListAllOf;
 
 
-

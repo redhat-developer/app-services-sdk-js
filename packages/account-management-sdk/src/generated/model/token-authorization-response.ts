@@ -26,7 +26,6 @@ export interface TokenAuthorizationResponse {
      * @type {Account}
      * @memberof TokenAuthorizationResponse
      */
-    account?: Account;
+    'account'?: Account;
 }
-
 

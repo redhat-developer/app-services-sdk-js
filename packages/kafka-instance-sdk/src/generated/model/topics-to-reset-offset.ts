@@ -25,13 +25,12 @@ export interface TopicsToResetOffset {
      * @type {string}
      * @memberof TopicsToResetOffset
      */
-    topic: string;
+    'topic': string;
     /**
      * 
      * @type {Array<number>}
      * @memberof TopicsToResetOffset
      */
-    partitions?: Array<number>;
+    'partitions'?: Array<number>;
 }
-
 

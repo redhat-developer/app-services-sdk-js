@@ -24,4 +24,3 @@ import { RelatedResource } from './related-resource';
 export type QuotaCost = ObjectReference & QuotaCostAllOf;
 
 
-

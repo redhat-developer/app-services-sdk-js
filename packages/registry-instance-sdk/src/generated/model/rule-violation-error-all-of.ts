@@ -26,7 +26,6 @@ export interface RuleViolationErrorAllOf {
      * @type {Array<RuleViolationCause>}
      * @memberof RuleViolationErrorAllOf
      */
-    causes: Array<RuleViolationCause>;
+    'causes': Array<RuleViolationCause>;
 }
-
 

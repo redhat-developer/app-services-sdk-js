@@ -26,46 +26,45 @@ export interface ConsumerGroupList {
      * @type {Array<ConsumerGroup>}
      * @memberof ConsumerGroupList
      */
-    items?: Array<ConsumerGroup>;
+    'items'?: Array<ConsumerGroup>;
     /**
      * The total number of consumer groups.
      * @type {number}
      * @memberof ConsumerGroupList
      */
-    total?: number;
+    'total'?: number;
     /**
      * The number of consumer groups per page.
      * @type {number}
      * @memberof ConsumerGroupList
      */
-    size?: number;
+    'size'?: number;
     /**
      * The page
      * @type {number}
      * @memberof ConsumerGroupList
      */
-    page?: number;
+    'page'?: number;
     /**
      * Offset of the topic list
      * @type {number}
      * @memberof ConsumerGroupList
      * @deprecated
      */
-    offset?: number;
+    'offset'?: number;
     /**
      * Maximum of returned topics
      * @type {number}
      * @memberof ConsumerGroupList
      * @deprecated
      */
-    limit?: number;
+    'limit'?: number;
     /**
      * The total number of consumer groups.
      * @type {number}
      * @memberof ConsumerGroupList
      * @deprecated
      */
-    count?: number;
+    'count'?: number;
 }
-
 

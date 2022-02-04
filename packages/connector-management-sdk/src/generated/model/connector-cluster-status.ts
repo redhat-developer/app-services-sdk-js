@@ -26,7 +26,6 @@ export interface ConnectorClusterStatus {
      * @type {ConnectorClusterStatusStatus}
      * @memberof ConnectorClusterStatus
      */
-    status?: ConnectorClusterStatusStatus;
+    'status'?: ConnectorClusterStatusStatus;
 }
-
 

@@ -28,31 +28,30 @@ export interface ConnectorRequestMeta {
      * @type {string}
      * @memberof ConnectorRequestMeta
      */
-    name: string;
+    'name': string;
     /**
      * 
      * @type {string}
      * @memberof ConnectorRequestMeta
      */
-    connector_type_id: string;
+    'connector_type_id': string;
     /**
      * 
      * @type {Channel}
      * @memberof ConnectorRequestMeta
      */
-    channel?: Channel;
+    'channel'?: Channel;
     /**
      * 
      * @type {DeploymentLocation}
      * @memberof ConnectorRequestMeta
      */
-    deployment_location: DeploymentLocation;
+    'deployment_location': DeploymentLocation;
     /**
      * 
      * @type {ConnectorDesiredState}
      * @memberof ConnectorRequestMeta
      */
-    desired_state: ConnectorDesiredState;
+    'desired_state': ConnectorDesiredState;
 }
-
 

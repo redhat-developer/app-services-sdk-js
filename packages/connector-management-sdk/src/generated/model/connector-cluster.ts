@@ -25,4 +25,3 @@ import { ObjectReference } from './object-reference';
 export type ConnectorCluster = ConnectorClusterMeta & ConnectorClusterStatus & ObjectReference;
 
 
-

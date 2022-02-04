@@ -25,7 +25,6 @@ export interface AccessTokenCfg {
      * @type {{ [key: string]: object; }}
      * @memberof AccessTokenCfg
      */
-    auths: { [key: string]: object; };
+    'auths': { [key: string]: object; };
 }
-
 

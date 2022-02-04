@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -41,7 +41,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTopic: async (newTopicInput: NewTopicInput, options: any = {}): Promise<RequestArgs> => {
+        createTopic: async (newTopicInput: NewTopicInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'newTopicInput' is not null or undefined
             assertParamExists('createTopic', 'newTopicInput', newTopicInput)
             const localVarPath = `/topics`;
@@ -64,7 +64,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(newTopicInput, localVarRequestOptions, configuration)
@@ -81,7 +81,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteTopic: async (topicName: string, options: any = {}): Promise<RequestArgs> => {
+        deleteTopic: async (topicName: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'topicName' is not null or undefined
             assertParamExists('deleteTopic', 'topicName', topicName)
             const localVarPath = `/topics/{topicName}`
@@ -103,7 +103,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -119,7 +119,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTopic: async (topicName: string, options: any = {}): Promise<RequestArgs> => {
+        getTopic: async (topicName: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'topicName' is not null or undefined
             assertParamExists('getTopic', 'topicName', topicName)
             const localVarPath = `/topics/{topicName}`
@@ -141,7 +141,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -163,7 +163,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTopics: async (offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options: any = {}): Promise<RequestArgs> => {
+        getTopics: async (offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/topics`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -210,7 +210,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -227,7 +227,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateTopic: async (topicName: string, updateTopicInput: UpdateTopicInput, options: any = {}): Promise<RequestArgs> => {
+        updateTopic: async (topicName: string, updateTopicInput: UpdateTopicInput, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'topicName' is not null or undefined
             assertParamExists('updateTopic', 'topicName', topicName)
             // verify required parameter 'updateTopicInput' is not null or undefined
@@ -253,7 +253,7 @@ export const TopicsApiAxiosParamCreator = function (configuration?: Configuratio
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(updateTopicInput, localVarRequestOptions, configuration)
@@ -280,7 +280,7 @@ export const TopicsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createTopic(newTopicInput: NewTopicInput, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Topic>> {
+        async createTopic(newTopicInput: NewTopicInput, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Topic>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createTopic(newTopicInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -291,7 +291,7 @@ export const TopicsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteTopic(topicName: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteTopic(topicName: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteTopic(topicName, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -302,7 +302,7 @@ export const TopicsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTopic(topicName: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Topic>> {
+        async getTopic(topicName: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Topic>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getTopic(topicName, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -319,7 +319,7 @@ export const TopicsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getTopics(offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TopicsList>> {
+        async getTopics(offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TopicsList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getTopics(offset, limit, size, filter, page, order, orderKey, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -331,7 +331,7 @@ export const TopicsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateTopic(topicName: string, updateTopicInput: UpdateTopicInput, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Topic>> {
+        async updateTopic(topicName: string, updateTopicInput: UpdateTopicInput, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Topic>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateTopic(topicName, updateTopicInput, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -419,7 +419,7 @@ export interface TopicsApiInterface {
      * @throws {RequiredError}
      * @memberof TopicsApiInterface
      */
-    createTopic(newTopicInput: NewTopicInput, options?: any): AxiosPromise<Topic>;
+    createTopic(newTopicInput: NewTopicInput, options?: AxiosRequestConfig): AxiosPromise<Topic>;
 
     /**
      * Deletes the topic with the specified name.
@@ -429,7 +429,7 @@ export interface TopicsApiInterface {
      * @throws {RequiredError}
      * @memberof TopicsApiInterface
      */
-    deleteTopic(topicName: string, options?: any): AxiosPromise<void>;
+    deleteTopic(topicName: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Topic
@@ -439,7 +439,7 @@ export interface TopicsApiInterface {
      * @throws {RequiredError}
      * @memberof TopicsApiInterface
      */
-    getTopic(topicName: string, options?: any): AxiosPromise<Topic>;
+    getTopic(topicName: string, options?: AxiosRequestConfig): AxiosPromise<Topic>;
 
     /**
      * Returns a list of all of the available topics, or the list of topics that meet the request query parameters. The topics returned are limited to those records the requestor is authorized to view.
@@ -455,7 +455,7 @@ export interface TopicsApiInterface {
      * @throws {RequiredError}
      * @memberof TopicsApiInterface
      */
-    getTopics(offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options?: any): AxiosPromise<TopicsList>;
+    getTopics(offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options?: AxiosRequestConfig): AxiosPromise<TopicsList>;
 
     /**
      * updates the topic with the new data.
@@ -466,7 +466,7 @@ export interface TopicsApiInterface {
      * @throws {RequiredError}
      * @memberof TopicsApiInterface
      */
-    updateTopic(topicName: string, updateTopicInput: UpdateTopicInput, options?: any): AxiosPromise<Topic>;
+    updateTopic(topicName: string, updateTopicInput: UpdateTopicInput, options?: AxiosRequestConfig): AxiosPromise<Topic>;
 
 }
 
@@ -485,7 +485,7 @@ export class TopicsApi extends BaseAPI implements TopicsApiInterface {
      * @throws {RequiredError}
      * @memberof TopicsApi
      */
-    public createTopic(newTopicInput: NewTopicInput, options?: any) {
+    public createTopic(newTopicInput: NewTopicInput, options?: AxiosRequestConfig) {
         return TopicsApiFp(this.configuration).createTopic(newTopicInput, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -497,7 +497,7 @@ export class TopicsApi extends BaseAPI implements TopicsApiInterface {
      * @throws {RequiredError}
      * @memberof TopicsApi
      */
-    public deleteTopic(topicName: string, options?: any) {
+    public deleteTopic(topicName: string, options?: AxiosRequestConfig) {
         return TopicsApiFp(this.configuration).deleteTopic(topicName, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -509,7 +509,7 @@ export class TopicsApi extends BaseAPI implements TopicsApiInterface {
      * @throws {RequiredError}
      * @memberof TopicsApi
      */
-    public getTopic(topicName: string, options?: any) {
+    public getTopic(topicName: string, options?: AxiosRequestConfig) {
         return TopicsApiFp(this.configuration).getTopic(topicName, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -527,7 +527,7 @@ export class TopicsApi extends BaseAPI implements TopicsApiInterface {
      * @throws {RequiredError}
      * @memberof TopicsApi
      */
-    public getTopics(offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options?: any) {
+    public getTopics(offset?: number, limit?: number, size?: number, filter?: string, page?: number, order?: 'asc' | 'desc', orderKey?: 'name' | 'partitions' | 'retention.ms' | 'retention.bytes', options?: AxiosRequestConfig) {
         return TopicsApiFp(this.configuration).getTopics(offset, limit, size, filter, page, order, orderKey, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -540,7 +540,7 @@ export class TopicsApi extends BaseAPI implements TopicsApiInterface {
      * @throws {RequiredError}
      * @memberof TopicsApi
      */
-    public updateTopic(topicName: string, updateTopicInput: UpdateTopicInput, options?: any) {
+    public updateTopic(topicName: string, updateTopicInput: UpdateTopicInput, options?: AxiosRequestConfig) {
         return TopicsApiFp(this.configuration).updateTopic(topicName, updateTopicInput, options).then((request) => request(this.axios, this.basePath));
     }
 }

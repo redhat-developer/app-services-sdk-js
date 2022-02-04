@@ -23,4 +23,3 @@ import { ObjectReference } from './object-reference';
 export type ExcessResource = ExcessResourceAllOf & ObjectReference;
 
 
-

@@ -20,11 +20,13 @@
  * @enum {string}
  */
 
-export enum AclPermissionTypeFilter {
-    Allow = 'ALLOW',
-    Deny = 'DENY',
-    Any = 'ANY'
-}
+export const AclPermissionTypeFilter = {
+    Allow: 'ALLOW',
+    Deny: 'DENY',
+    Any: 'ANY'
+} as const;
+
+export type AclPermissionTypeFilter = typeof AclPermissionTypeFilter[keyof typeof AclPermissionTypeFilter];
 
 
 

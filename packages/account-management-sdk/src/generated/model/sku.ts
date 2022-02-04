@@ -24,4 +24,3 @@ import { SKUAllOf } from './skuall-of';
 export type SKU = ObjectReference & SKUAllOf;
 
 
-

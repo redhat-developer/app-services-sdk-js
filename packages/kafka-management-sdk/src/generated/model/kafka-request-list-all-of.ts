@@ -26,7 +26,6 @@ export interface KafkaRequestListAllOf {
      * @type {Array<KafkaRequest>}
      * @memberof KafkaRequestListAllOf
      */
-    items?: Array<KafkaRequest>;
+    'items'?: Array<KafkaRequest>;
 }
-
 

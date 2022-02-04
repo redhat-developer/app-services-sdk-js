@@ -26,7 +26,6 @@ export interface SkuListAllOf {
      * @type {Array<SKU>}
      * @memberof SkuListAllOf
      */
-    items?: Array<SKU>;
+    'items'?: Array<SKU>;
 }
-
 

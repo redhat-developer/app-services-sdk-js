@@ -26,19 +26,18 @@ export interface MetricsInstantQueryListAllOf {
      * @type {string}
      * @memberof MetricsInstantQueryListAllOf
      */
-    kind?: string;
+    'kind'?: string;
     /**
      * 
      * @type {string}
      * @memberof MetricsInstantQueryListAllOf
      */
-    id?: string;
+    'id'?: string;
     /**
      * 
      * @type {Array<InstantQuery>}
      * @memberof MetricsInstantQueryListAllOf
      */
-    items?: Array<InstantQuery>;
+    'items'?: Array<InstantQuery>;
 }
-
 

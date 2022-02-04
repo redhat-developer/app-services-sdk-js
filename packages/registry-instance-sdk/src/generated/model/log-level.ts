@@ -20,19 +20,21 @@
  * @enum {string}
  */
 
-export enum LogLevel {
-    Debug = 'DEBUG',
-    Trace = 'TRACE',
-    Warn = 'WARN',
-    Error = 'ERROR',
-    Severe = 'SEVERE',
-    Warning = 'WARNING',
-    Info = 'INFO',
-    Config = 'CONFIG',
-    Fine = 'FINE',
-    Finer = 'FINER',
-    Finest = 'FINEST'
-}
+export const LogLevel = {
+    Debug: 'DEBUG',
+    Trace: 'TRACE',
+    Warn: 'WARN',
+    Error: 'ERROR',
+    Severe: 'SEVERE',
+    Warning: 'WARNING',
+    Info: 'INFO',
+    Config: 'CONFIG',
+    Fine: 'FINE',
+    Finer: 'FINER',
+    Finest: 'FINEST'
+} as const;
+
+export type LogLevel = typeof LogLevel[keyof typeof LogLevel];
 
 
 

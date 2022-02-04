@@ -23,4 +23,3 @@ import { MetricsInstantQueryListAllOf } from './metrics-instant-query-list-all-o
 export type MetricsInstantQueryList = MetricsInstantQueryListAllOf;
 
 
-

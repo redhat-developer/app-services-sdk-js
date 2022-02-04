@@ -26,7 +26,6 @@ export interface ReservedResourceListAllOf {
      * @type {Array<ReservedResource>}
      * @memberof ReservedResourceListAllOf
      */
-    items?: Array<ReservedResource>;
+    'items'?: Array<ReservedResource>;
 }
-
 

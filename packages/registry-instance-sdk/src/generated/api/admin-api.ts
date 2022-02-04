@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -45,7 +45,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createGlobalRule: async (rule: Rule, options: any = {}): Promise<RequestArgs> => {
+        createGlobalRule: async (rule: Rule, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'rule' is not null or undefined
             assertParamExists('createGlobalRule', 'rule', rule)
             const localVarPath = `/admin/rules`;
@@ -64,7 +64,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(rule, localVarRequestOptions, configuration)
@@ -81,7 +81,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRoleMapping: async (roleMapping: RoleMapping, options: any = {}): Promise<RequestArgs> => {
+        createRoleMapping: async (roleMapping: RoleMapping, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'roleMapping' is not null or undefined
             assertParamExists('createRoleMapping', 'roleMapping', roleMapping)
             const localVarPath = `/admin/roleMappings`;
@@ -100,7 +100,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(roleMapping, localVarRequestOptions, configuration)
@@ -116,7 +116,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteAllGlobalRules: async (options: any = {}): Promise<RequestArgs> => {
+        deleteAllGlobalRules: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/admin/rules`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -131,7 +131,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -147,7 +147,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteGlobalRule: async (rule: RuleType, options: any = {}): Promise<RequestArgs> => {
+        deleteGlobalRule: async (rule: RuleType, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'rule' is not null or undefined
             assertParamExists('deleteGlobalRule', 'rule', rule)
             const localVarPath = `/admin/rules/{rule}`
@@ -165,7 +165,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -181,7 +181,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteRoleMapping: async (principalId: string, options: any = {}): Promise<RequestArgs> => {
+        deleteRoleMapping: async (principalId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'principalId' is not null or undefined
             assertParamExists('deleteRoleMapping', 'principalId', principalId)
             const localVarPath = `/admin/roleMappings/{principalId}`
@@ -199,7 +199,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -214,7 +214,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exportData: async (options: any = {}): Promise<RequestArgs> => {
+        exportData: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/admin/export`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -229,7 +229,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -245,7 +245,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getGlobalRuleConfig: async (rule: RuleType, options: any = {}): Promise<RequestArgs> => {
+        getGlobalRuleConfig: async (rule: RuleType, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'rule' is not null or undefined
             assertParamExists('getGlobalRuleConfig', 'rule', rule)
             const localVarPath = `/admin/rules/{rule}`
@@ -263,7 +263,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -279,7 +279,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getLogConfiguration: async (logger: string, options: any = {}): Promise<RequestArgs> => {
+        getLogConfiguration: async (logger: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'logger' is not null or undefined
             assertParamExists('getLogConfiguration', 'logger', logger)
             const localVarPath = `/admin/loggers/{logger}`
@@ -297,7 +297,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -313,7 +313,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRoleMapping: async (principalId: string, options: any = {}): Promise<RequestArgs> => {
+        getRoleMapping: async (principalId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'principalId' is not null or undefined
             assertParamExists('getRoleMapping', 'principalId', principalId)
             const localVarPath = `/admin/roleMappings/{principalId}`
@@ -331,7 +331,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -347,7 +347,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        importData: async (body: any, options: any = {}): Promise<RequestArgs> => {
+        importData: async (body: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             assertParamExists('importData', 'body', body)
             const localVarPath = `/admin/import`;
@@ -366,7 +366,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'application/zip';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -382,7 +382,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listGlobalRules: async (options: any = {}): Promise<RequestArgs> => {
+        listGlobalRules: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/admin/rules`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -397,7 +397,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -412,7 +412,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listLogConfigurations: async (options: any = {}): Promise<RequestArgs> => {
+        listLogConfigurations: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/admin/loggers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -427,7 +427,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -442,7 +442,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listRoleMappings: async (options: any = {}): Promise<RequestArgs> => {
+        listRoleMappings: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/admin/roleMappings`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -457,7 +457,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -473,7 +473,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        removeLogConfiguration: async (logger: string, options: any = {}): Promise<RequestArgs> => {
+        removeLogConfiguration: async (logger: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'logger' is not null or undefined
             assertParamExists('removeLogConfiguration', 'logger', logger)
             const localVarPath = `/admin/loggers/{logger}`
@@ -491,7 +491,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -508,7 +508,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        setLogConfiguration: async (logger: string, logConfiguration: LogConfiguration, options: any = {}): Promise<RequestArgs> => {
+        setLogConfiguration: async (logger: string, logConfiguration: LogConfiguration, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'logger' is not null or undefined
             assertParamExists('setLogConfiguration', 'logger', logger)
             // verify required parameter 'logConfiguration' is not null or undefined
@@ -530,7 +530,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(logConfiguration, localVarRequestOptions, configuration)
@@ -548,7 +548,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateGlobalRuleConfig: async (rule: RuleType, rule2: Rule, options: any = {}): Promise<RequestArgs> => {
+        updateGlobalRuleConfig: async (rule: RuleType, rule2: Rule, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'rule' is not null or undefined
             assertParamExists('updateGlobalRuleConfig', 'rule', rule)
             // verify required parameter 'rule2' is not null or undefined
@@ -570,7 +570,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(rule2, localVarRequestOptions, configuration)
@@ -588,7 +588,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRoleMapping: async (principalId: string, updateRole: UpdateRole, options: any = {}): Promise<RequestArgs> => {
+        updateRoleMapping: async (principalId: string, updateRole: UpdateRole, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'principalId' is not null or undefined
             assertParamExists('updateRoleMapping', 'principalId', principalId)
             // verify required parameter 'updateRole' is not null or undefined
@@ -610,7 +610,7 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(updateRole, localVarRequestOptions, configuration)
@@ -637,7 +637,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createGlobalRule(rule: Rule, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createGlobalRule(rule: Rule, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createGlobalRule(rule, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -648,7 +648,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createRoleMapping(roleMapping: RoleMapping, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async createRoleMapping(roleMapping: RoleMapping, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createRoleMapping(roleMapping, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -658,7 +658,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteAllGlobalRules(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteAllGlobalRules(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteAllGlobalRules(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -669,7 +669,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteGlobalRule(rule: RuleType, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteGlobalRule(rule: RuleType, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteGlobalRule(rule, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -680,7 +680,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteRoleMapping(principalId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteRoleMapping(principalId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteRoleMapping(principalId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -690,7 +690,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async exportData(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async exportData(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.exportData(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -701,7 +701,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getGlobalRuleConfig(rule: RuleType, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Rule>> {
+        async getGlobalRuleConfig(rule: RuleType, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Rule>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getGlobalRuleConfig(rule, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -712,7 +712,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLogConfiguration(logger: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NamedLogConfiguration>> {
+        async getLogConfiguration(logger: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NamedLogConfiguration>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getLogConfiguration(logger, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -723,7 +723,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRoleMapping(principalId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleMapping>> {
+        async getRoleMapping(principalId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RoleMapping>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRoleMapping(principalId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -734,7 +734,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async importData(body: any, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async importData(body: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.importData(body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -744,7 +744,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listGlobalRules(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RuleType>>> {
+        async listGlobalRules(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RuleType>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listGlobalRules(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -754,7 +754,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listLogConfigurations(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<NamedLogConfiguration>>> {
+        async listLogConfigurations(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<NamedLogConfiguration>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listLogConfigurations(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -764,7 +764,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listRoleMappings(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleMapping>>> {
+        async listRoleMappings(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<RoleMapping>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listRoleMappings(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -775,7 +775,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async removeLogConfiguration(logger: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NamedLogConfiguration>> {
+        async removeLogConfiguration(logger: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NamedLogConfiguration>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.removeLogConfiguration(logger, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -787,7 +787,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async setLogConfiguration(logger: string, logConfiguration: LogConfiguration, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NamedLogConfiguration>> {
+        async setLogConfiguration(logger: string, logConfiguration: LogConfiguration, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NamedLogConfiguration>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.setLogConfiguration(logger, logConfiguration, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -799,7 +799,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateGlobalRuleConfig(rule: RuleType, rule2: Rule, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Rule>> {
+        async updateGlobalRuleConfig(rule: RuleType, rule2: Rule, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Rule>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateGlobalRuleConfig(rule, rule2, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -811,7 +811,7 @@ export const AdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateRoleMapping(principalId: string, updateRole: UpdateRole, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateRoleMapping(principalId: string, updateRole: UpdateRole, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateRoleMapping(principalId, updateRole, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1010,7 +1010,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    createGlobalRule(rule: Rule, options?: any): AxiosPromise<void>;
+    createGlobalRule(rule: Rule, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Creates a new mapping between a user/principal and a role.  This operation can fail for the following reasons:  * A server error occurred (HTTP error `500`)  
@@ -1020,7 +1020,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    createRoleMapping(roleMapping: RoleMapping, options?: any): AxiosPromise<void>;
+    createRoleMapping(roleMapping: RoleMapping, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Deletes all globally configured rules.  This operation can fail for the following reasons:  * A server error occurred (HTTP error `500`) 
@@ -1029,7 +1029,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    deleteAllGlobalRules(options?: any): AxiosPromise<void>;
+    deleteAllGlobalRules(options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Deletes a single global rule.  If this is the only rule configured, this is the same as deleting **all** rules.  This operation can fail for the following reasons:  * Invalid rule name/type (HTTP error `400`) * No rule with name/type `rule` exists (HTTP error `404`) * Rule cannot be deleted (HTTP error `409`) * A server error occurred (HTTP error `500`) 
@@ -1039,7 +1039,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    deleteGlobalRule(rule: RuleType, options?: any): AxiosPromise<void>;
+    deleteGlobalRule(rule: RuleType, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Deletes a single role mapping, effectively denying access to a user/principal.  This operation can fail for the following reasons:  * No role mapping for the principalId exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1049,7 +1049,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    deleteRoleMapping(principalId: string, options?: any): AxiosPromise<void>;
+    deleteRoleMapping(principalId: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Exports registry data as a ZIP archive.
@@ -1058,7 +1058,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    exportData(options?: any): AxiosPromise<any>;
+    exportData(options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Returns information about the named globally configured rule.  This operation can fail for the following reasons:  * Invalid rule name/type (HTTP error `400`) * No rule with name/type `rule` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1068,7 +1068,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    getGlobalRuleConfig(rule: RuleType, options?: any): AxiosPromise<Rule>;
+    getGlobalRuleConfig(rule: RuleType, options?: AxiosRequestConfig): AxiosPromise<Rule>;
 
     /**
      * Returns the configured logger configuration for the provided logger name, if no logger configuration is persisted it will return the current default log configuration in the system.
@@ -1078,7 +1078,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    getLogConfiguration(logger: string, options?: any): AxiosPromise<NamedLogConfiguration>;
+    getLogConfiguration(logger: string, options?: AxiosRequestConfig): AxiosPromise<NamedLogConfiguration>;
 
     /**
      * Gets the details of a single role mapping (by principalId).  This operation can fail for the following reasons:  * No role mapping for the principalId exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1088,7 +1088,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    getRoleMapping(principalId: string, options?: any): AxiosPromise<RoleMapping>;
+    getRoleMapping(principalId: string, options?: AxiosRequestConfig): AxiosPromise<RoleMapping>;
 
     /**
      * Imports registry data that was previously exported using the `/admin/export` operation.
@@ -1098,7 +1098,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    importData(body: any, options?: any): AxiosPromise<void>;
+    importData(body: any, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Gets a list of all the currently configured global rules (if any).  This operation can fail for the following reasons:  * A server error occurred (HTTP error `500`) 
@@ -1107,7 +1107,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    listGlobalRules(options?: any): AxiosPromise<Array<RuleType>>;
+    listGlobalRules(options?: AxiosRequestConfig): AxiosPromise<Array<RuleType>>;
 
     /**
      * List all of the configured logging levels.  These override the default logging configuration.
@@ -1116,7 +1116,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    listLogConfigurations(options?: any): AxiosPromise<Array<NamedLogConfiguration>>;
+    listLogConfigurations(options?: AxiosRequestConfig): AxiosPromise<Array<NamedLogConfiguration>>;
 
     /**
      * Gets a list of all role mappings configured in the registry (if any).  This operation can fail for the following reasons:  * A server error occurred (HTTP error `500`) 
@@ -1125,7 +1125,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    listRoleMappings(options?: any): AxiosPromise<Array<RoleMapping>>;
+    listRoleMappings(options?: AxiosRequestConfig): AxiosPromise<Array<RoleMapping>>;
 
     /**
      * Removes the configured logger configuration (if any) for the given logger.
@@ -1135,7 +1135,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    removeLogConfiguration(logger: string, options?: any): AxiosPromise<NamedLogConfiguration>;
+    removeLogConfiguration(logger: string, options?: AxiosRequestConfig): AxiosPromise<NamedLogConfiguration>;
 
     /**
      * Configures the logger referenced by the provided logger name with the given configuration.
@@ -1146,7 +1146,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    setLogConfiguration(logger: string, logConfiguration: LogConfiguration, options?: any): AxiosPromise<NamedLogConfiguration>;
+    setLogConfiguration(logger: string, logConfiguration: LogConfiguration, options?: AxiosRequestConfig): AxiosPromise<NamedLogConfiguration>;
 
     /**
      * Updates the configuration for a globally configured rule.  This operation can fail for the following reasons:  * Invalid rule name/type (HTTP error `400`) * No rule with name/type `rule` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1157,7 +1157,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    updateGlobalRuleConfig(rule: RuleType, rule2: Rule, options?: any): AxiosPromise<Rule>;
+    updateGlobalRuleConfig(rule: RuleType, rule2: Rule, options?: AxiosRequestConfig): AxiosPromise<Rule>;
 
     /**
      * Updates a single role mapping for one user/principal.  This operation can fail for the following reasons:  * No role mapping for the principalId exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1168,7 +1168,7 @@ export interface AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    updateRoleMapping(principalId: string, updateRole: UpdateRole, options?: any): AxiosPromise<void>;
+    updateRoleMapping(principalId: string, updateRole: UpdateRole, options?: AxiosRequestConfig): AxiosPromise<void>;
 
 }
 
@@ -1187,7 +1187,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public createGlobalRule(rule: Rule, options?: any) {
+    public createGlobalRule(rule: Rule, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).createGlobalRule(rule, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1199,7 +1199,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public createRoleMapping(roleMapping: RoleMapping, options?: any) {
+    public createRoleMapping(roleMapping: RoleMapping, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).createRoleMapping(roleMapping, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1210,7 +1210,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public deleteAllGlobalRules(options?: any) {
+    public deleteAllGlobalRules(options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).deleteAllGlobalRules(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1222,7 +1222,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public deleteGlobalRule(rule: RuleType, options?: any) {
+    public deleteGlobalRule(rule: RuleType, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).deleteGlobalRule(rule, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1234,7 +1234,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public deleteRoleMapping(principalId: string, options?: any) {
+    public deleteRoleMapping(principalId: string, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).deleteRoleMapping(principalId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1245,7 +1245,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public exportData(options?: any) {
+    public exportData(options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).exportData(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1257,7 +1257,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public getGlobalRuleConfig(rule: RuleType, options?: any) {
+    public getGlobalRuleConfig(rule: RuleType, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).getGlobalRuleConfig(rule, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1269,7 +1269,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public getLogConfiguration(logger: string, options?: any) {
+    public getLogConfiguration(logger: string, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).getLogConfiguration(logger, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1281,7 +1281,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public getRoleMapping(principalId: string, options?: any) {
+    public getRoleMapping(principalId: string, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).getRoleMapping(principalId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1293,7 +1293,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public importData(body: any, options?: any) {
+    public importData(body: any, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).importData(body, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1304,7 +1304,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public listGlobalRules(options?: any) {
+    public listGlobalRules(options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).listGlobalRules(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1315,7 +1315,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public listLogConfigurations(options?: any) {
+    public listLogConfigurations(options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).listLogConfigurations(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1326,7 +1326,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public listRoleMappings(options?: any) {
+    public listRoleMappings(options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).listRoleMappings(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1338,7 +1338,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public removeLogConfiguration(logger: string, options?: any) {
+    public removeLogConfiguration(logger: string, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).removeLogConfiguration(logger, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1351,7 +1351,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public setLogConfiguration(logger: string, logConfiguration: LogConfiguration, options?: any) {
+    public setLogConfiguration(logger: string, logConfiguration: LogConfiguration, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).setLogConfiguration(logger, logConfiguration, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1364,7 +1364,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public updateGlobalRuleConfig(rule: RuleType, rule2: Rule, options?: any) {
+    public updateGlobalRuleConfig(rule: RuleType, rule2: Rule, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).updateGlobalRuleConfig(rule, rule2, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1377,7 +1377,7 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public updateRoleMapping(principalId: string, updateRole: UpdateRole, options?: any) {
+    public updateRoleMapping(principalId: string, updateRole: UpdateRole, options?: AxiosRequestConfig) {
         return AdminApiFp(this.configuration).updateRoleMapping(principalId, updateRole, options).then((request) => request(this.axios, this.basePath));
     }
 }

@@ -25,19 +25,18 @@ export interface AccountReferenceAllOf {
      * @type {string}
      * @memberof AccountReferenceAllOf
      */
-    email?: string;
+    'email'?: string;
     /**
      * 
      * @type {string}
      * @memberof AccountReferenceAllOf
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof AccountReferenceAllOf
      */
-    username?: string;
+    'username'?: string;
 }
-
 

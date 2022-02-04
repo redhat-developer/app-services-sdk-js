@@ -20,10 +20,12 @@
  * @enum {string}
  */
 
-export enum ConnectorClusterState {
-    Disconnected = 'disconnected',
-    Ready = 'ready'
-}
+export const ConnectorClusterState = {
+    Disconnected: 'disconnected',
+    Ready: 'ready'
+} as const;
+
+export type ConnectorClusterState = typeof ConnectorClusterState[keyof typeof ConnectorClusterState];
 
 
 

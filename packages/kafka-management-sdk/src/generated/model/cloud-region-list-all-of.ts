@@ -26,7 +26,6 @@ export interface CloudRegionListAllOf {
      * @type {Array<CloudRegion>}
      * @memberof CloudRegionListAllOf
      */
-    items?: Array<CloudRegion>;
+    'items'?: Array<CloudRegion>;
 }
-
 

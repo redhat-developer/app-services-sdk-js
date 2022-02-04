@@ -24,4 +24,3 @@ import { MetricsListAllOf } from './metrics-list-all-of';
 export type MetricsList = List & MetricsListAllOf;
 
 
-

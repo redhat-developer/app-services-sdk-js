@@ -25,31 +25,30 @@ export interface MetricAllOf {
      * @type {string}
      * @memberof MetricAllOf
      */
-    external_id?: string;
+    'external_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof MetricAllOf
      */
-    health_state?: string;
+    'health_state'?: string;
     /**
      * 
      * @type {string}
      * @memberof MetricAllOf
      */
-    id?: string;
+    'id'?: string;
     /**
      * 
      * @type {string}
      * @memberof MetricAllOf
      */
-    metrics?: string;
+    'metrics'?: string;
     /**
      * 
      * @type {string}
      * @memberof MetricAllOf
      */
-    query_timestamp?: string;
+    'query_timestamp'?: string;
 }
-
 

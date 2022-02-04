@@ -25,19 +25,18 @@ export interface ErrorAllOf {
      * @type {string}
      * @memberof ErrorAllOf
      */
-    code?: string;
+    'code'?: string;
     /**
      * 
      * @type {string}
      * @memberof ErrorAllOf
      */
-    operation_id?: string;
+    'operation_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof ErrorAllOf
      */
-    reason?: string;
+    'reason'?: string;
 }
-
 

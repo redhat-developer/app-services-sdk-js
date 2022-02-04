@@ -26,7 +26,6 @@ export interface ServiceStatus {
      * @type {ServiceStatusKafkas}
      * @memberof ServiceStatus
      */
-    kafkas?: ServiceStatusKafkas;
+    'kafkas'?: ServiceStatusKafkas;
 }
-
 

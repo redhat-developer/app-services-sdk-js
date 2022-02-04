@@ -25,19 +25,18 @@ export interface InstantQuery {
      * @type {{ [key: string]: string; }}
      * @memberof InstantQuery
      */
-    metric?: { [key: string]: string; };
+    'metric'?: { [key: string]: string; };
     /**
      * 
      * @type {number}
      * @memberof InstantQuery
      */
-    timestamp?: number;
+    'timestamp'?: number;
     /**
      * 
      * @type {number}
      * @memberof InstantQuery
      */
-    value: number;
+    'value': number;
 }
-
 

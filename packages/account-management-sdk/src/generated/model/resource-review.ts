@@ -25,64 +25,59 @@ export interface ResourceReview {
      * @type {string}
      * @memberof ResourceReview
      */
-    account_username: string;
+    'account_username': string;
     /**
      * 
      * @type {string}
      * @memberof ResourceReview
      */
-    action: ResourceReviewActionEnum;
+    'action': ResourceReviewActionEnum;
     /**
      * 
      * @type {Array<string>}
      * @memberof ResourceReview
      */
-    cluster_ids: Array<string>;
+    'cluster_ids': Array<string>;
     /**
      * 
      * @type {Array<string>}
      * @memberof ResourceReview
      */
-    cluster_uuids: Array<string>;
+    'cluster_uuids': Array<string>;
     /**
      * 
      * @type {Array<string>}
      * @memberof ResourceReview
      */
-    organization_ids: Array<string>;
+    'organization_ids': Array<string>;
     /**
      * 
      * @type {string}
      * @memberof ResourceReview
      */
-    resource_type: ResourceReviewResourceTypeEnum;
+    'resource_type': ResourceReviewResourceTypeEnum;
     /**
      * 
      * @type {Array<string>}
      * @memberof ResourceReview
      */
-    subscription_ids: Array<string>;
+    'subscription_ids': Array<string>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ResourceReviewActionEnum {
-    Get = 'get',
-    List = 'list',
-    Create = 'create',
-    Delete = 'delete',
-    Update = 'update'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ResourceReviewResourceTypeEnum {
-    Cluster = 'Cluster',
-    Subscription = 'Subscription'
-}
+export const ResourceReviewActionEnum = {
+    Get: 'get',
+    List: 'list',
+    Create: 'create',
+    Delete: 'delete',
+    Update: 'update'
+} as const;
 
+export type ResourceReviewActionEnum = typeof ResourceReviewActionEnum[keyof typeof ResourceReviewActionEnum];
+export const ResourceReviewResourceTypeEnum = {
+    Cluster: 'Cluster',
+    Subscription: 'Subscription'
+} as const;
+
+export type ResourceReviewResourceTypeEnum = typeof ResourceReviewResourceTypeEnum[keyof typeof ResourceReviewResourceTypeEnum];
 
 

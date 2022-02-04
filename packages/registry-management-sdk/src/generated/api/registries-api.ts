@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -39,7 +39,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRegistry: async (registryCreate: RegistryCreate, options: any = {}): Promise<RequestArgs> => {
+        createRegistry: async (registryCreate: RegistryCreate, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'registryCreate' is not null or undefined
             assertParamExists('createRegistry', 'registryCreate', registryCreate)
             const localVarPath = `/api/serviceregistry_mgmt/v1/registries`;
@@ -62,7 +62,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(registryCreate, localVarRequestOptions, configuration)
@@ -79,7 +79,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteRegistry: async (id: string, options: any = {}): Promise<RequestArgs> => {
+        deleteRegistry: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteRegistry', 'id', id)
             const localVarPath = `/api/serviceregistry_mgmt/v1/registries/{id}`
@@ -101,7 +101,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -120,7 +120,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRegistries: async (page?: number, size?: number, orderBy?: string, search?: string, options: any = {}): Promise<RequestArgs> => {
+        getRegistries: async (page?: number, size?: number, orderBy?: string, search?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/serviceregistry_mgmt/v1/registries`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -155,7 +155,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -171,7 +171,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRegistry: async (id: string, options: any = {}): Promise<RequestArgs> => {
+        getRegistry: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getRegistry', 'id', id)
             const localVarPath = `/api/serviceregistry_mgmt/v1/registries/{id}`
@@ -193,7 +193,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -219,7 +219,7 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createRegistry(registryCreate: RegistryCreate, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Registry>> {
+        async createRegistry(registryCreate: RegistryCreate, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Registry>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createRegistry(registryCreate, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -230,7 +230,7 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteRegistry(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteRegistry(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteRegistry(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -244,7 +244,7 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRegistries(page?: number, size?: number, orderBy?: string, search?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RegistryList>> {
+        async getRegistries(page?: number, size?: number, orderBy?: string, search?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RegistryList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRegistries(page, size, orderBy, search, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -255,7 +255,7 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRegistry(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Registry>> {
+        async getRegistry(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Registry>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getRegistry(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -329,7 +329,7 @@ export interface RegistriesApiInterface {
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
      */
-    createRegistry(registryCreate: RegistryCreate, options?: any): AxiosPromise<Registry>;
+    createRegistry(registryCreate: RegistryCreate, options?: AxiosRequestConfig): AxiosPromise<Registry>;
 
     /**
      * Deletes an existing `Registry`.
@@ -339,7 +339,7 @@ export interface RegistriesApiInterface {
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
      */
-    deleteRegistry(id: string, options?: any): AxiosPromise<void>;
+    deleteRegistry(id: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * 
@@ -352,7 +352,7 @@ export interface RegistriesApiInterface {
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
      */
-    getRegistries(page?: number, size?: number, orderBy?: string, search?: string, options?: any): AxiosPromise<RegistryList>;
+    getRegistries(page?: number, size?: number, orderBy?: string, search?: string, options?: AxiosRequestConfig): AxiosPromise<RegistryList>;
 
     /**
      * Gets the details of a single instance of a `Registry`.
@@ -362,7 +362,7 @@ export interface RegistriesApiInterface {
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
      */
-    getRegistry(id: string, options?: any): AxiosPromise<Registry>;
+    getRegistry(id: string, options?: AxiosRequestConfig): AxiosPromise<Registry>;
 
 }
 
@@ -381,7 +381,7 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
      * @throws {RequiredError}
      * @memberof RegistriesApi
      */
-    public createRegistry(registryCreate: RegistryCreate, options?: any) {
+    public createRegistry(registryCreate: RegistryCreate, options?: AxiosRequestConfig) {
         return RegistriesApiFp(this.configuration).createRegistry(registryCreate, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -393,7 +393,7 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
      * @throws {RequiredError}
      * @memberof RegistriesApi
      */
-    public deleteRegistry(id: string, options?: any) {
+    public deleteRegistry(id: string, options?: AxiosRequestConfig) {
         return RegistriesApiFp(this.configuration).deleteRegistry(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -408,7 +408,7 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
      * @throws {RequiredError}
      * @memberof RegistriesApi
      */
-    public getRegistries(page?: number, size?: number, orderBy?: string, search?: string, options?: any) {
+    public getRegistries(page?: number, size?: number, orderBy?: string, search?: string, options?: AxiosRequestConfig) {
         return RegistriesApiFp(this.configuration).getRegistries(page, size, orderBy, search, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -420,7 +420,7 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
      * @throws {RequiredError}
      * @memberof RegistriesApi
      */
-    public getRegistry(id: string, options?: any) {
+    public getRegistry(id: string, options?: AxiosRequestConfig) {
         return RegistriesApiFp(this.configuration).getRegistry(id, options).then((request) => request(this.axios, this.basePath));
     }
 }

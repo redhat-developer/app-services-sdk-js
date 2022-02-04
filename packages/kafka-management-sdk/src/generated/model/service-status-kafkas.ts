@@ -25,7 +25,6 @@ export interface ServiceStatusKafkas {
      * @type {boolean}
      * @memberof ServiceStatusKafkas
      */
-    max_capacity_reached: boolean;
+    'max_capacity_reached': boolean;
 }
-
 

@@ -25,96 +25,91 @@ export interface SelfAccessReview {
      * @type {string}
      * @memberof SelfAccessReview
      */
-    action: SelfAccessReviewActionEnum;
+    'action': SelfAccessReviewActionEnum;
     /**
      * 
      * @type {string}
      * @memberof SelfAccessReview
      */
-    cluster_id?: string;
+    'cluster_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SelfAccessReview
      */
-    cluster_uuid?: string;
+    'cluster_uuid'?: string;
     /**
      * 
      * @type {string}
      * @memberof SelfAccessReview
      */
-    organization_id?: string;
+    'organization_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SelfAccessReview
      */
-    resource_type: SelfAccessReviewResourceTypeEnum;
+    'resource_type': SelfAccessReviewResourceTypeEnum;
     /**
      * 
      * @type {string}
      * @memberof SelfAccessReview
      */
-    subscription_id?: string;
+    'subscription_id'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SelfAccessReviewActionEnum {
-    Get = 'get',
-    List = 'list',
-    Create = 'create',
-    Delete = 'delete',
-    Update = 'update'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SelfAccessReviewResourceTypeEnum {
-    AddOn = 'AddOn',
-    Flavour = 'Flavour',
-    Account = 'Account',
-    AccountPool = 'AccountPool',
-    Cluster = 'Cluster',
-    Plan = 'Plan',
-    Subscription = 'Subscription',
-    Organization = 'Organization',
-    Role = 'Role',
-    Permission = 'Permission',
-    RoleBinding = 'RoleBinding',
-    Registry = 'Registry',
-    RegistryCredential = 'RegistryCredential',
-    CurrentAccount = 'CurrentAccount',
-    AccessReview = 'AccessReview',
-    SelfAcccessReview = 'SelfAcccessReview',
-    ResourceReview = 'ResourceReview',
-    SelfResourceReview = 'SelfResourceReview',
-    ClusterRegistration = 'ClusterRegistration',
-    AccessToken = 'AccessToken',
-    ClusterAuthorization = 'ClusterAuthorization',
-    SelfManagedCluster = 'SelfManagedCluster',
-    RedhatManagedCluster = 'RedhatManagedCluster',
-    ExportControlReview = 'ExportControlReview',
-    ClusterLog = 'ClusterLog',
-    ClusterCredential = 'ClusterCredential',
-    ClusterMetric = 'ClusterMetric',
-    ResourceQuota = 'ResourceQuota',
-    ReservedResource = 'ReservedResource',
-    Dashboard = 'Dashboard',
-    ClusterProviderAndRegion = 'ClusterProviderAndRegion',
-    ServiceLog = 'ServiceLog',
-    InternalServiceLog = 'InternalServiceLog',
-    CsLogs = 'CSLogs',
-    QuotaSummary = 'QuotaSummary',
-    SubscriptionLabel = 'SubscriptionLabel',
-    OrganizationLabel = 'OrganizationLabel',
-    SubscriptionLabelInternal = 'SubscriptionLabelInternal',
-    SelfAccessReview = 'SelfAccessReview',
-    SubscriptionInternal = 'SubscriptionInternal'
-}
+export const SelfAccessReviewActionEnum = {
+    Get: 'get',
+    List: 'list',
+    Create: 'create',
+    Delete: 'delete',
+    Update: 'update'
+} as const;
 
+export type SelfAccessReviewActionEnum = typeof SelfAccessReviewActionEnum[keyof typeof SelfAccessReviewActionEnum];
+export const SelfAccessReviewResourceTypeEnum = {
+    AddOn: 'AddOn',
+    Flavour: 'Flavour',
+    Account: 'Account',
+    AccountPool: 'AccountPool',
+    Cluster: 'Cluster',
+    Plan: 'Plan',
+    Subscription: 'Subscription',
+    Organization: 'Organization',
+    Role: 'Role',
+    Permission: 'Permission',
+    RoleBinding: 'RoleBinding',
+    Registry: 'Registry',
+    RegistryCredential: 'RegistryCredential',
+    CurrentAccount: 'CurrentAccount',
+    AccessReview: 'AccessReview',
+    SelfAcccessReview: 'SelfAcccessReview',
+    ResourceReview: 'ResourceReview',
+    SelfResourceReview: 'SelfResourceReview',
+    ClusterRegistration: 'ClusterRegistration',
+    AccessToken: 'AccessToken',
+    ClusterAuthorization: 'ClusterAuthorization',
+    SelfManagedCluster: 'SelfManagedCluster',
+    RedhatManagedCluster: 'RedhatManagedCluster',
+    ExportControlReview: 'ExportControlReview',
+    ClusterLog: 'ClusterLog',
+    ClusterCredential: 'ClusterCredential',
+    ClusterMetric: 'ClusterMetric',
+    ResourceQuota: 'ResourceQuota',
+    ReservedResource: 'ReservedResource',
+    Dashboard: 'Dashboard',
+    ClusterProviderAndRegion: 'ClusterProviderAndRegion',
+    ServiceLog: 'ServiceLog',
+    InternalServiceLog: 'InternalServiceLog',
+    CsLogs: 'CSLogs',
+    QuotaSummary: 'QuotaSummary',
+    SubscriptionLabel: 'SubscriptionLabel',
+    OrganizationLabel: 'OrganizationLabel',
+    SubscriptionLabelInternal: 'SubscriptionLabelInternal',
+    SelfAccessReview: 'SelfAccessReview',
+    SubscriptionInternal: 'SubscriptionInternal'
+} as const;
+
+export type SelfAccessReviewResourceTypeEnum = typeof SelfAccessReviewResourceTypeEnum[keyof typeof SelfAccessReviewResourceTypeEnum];
 
 

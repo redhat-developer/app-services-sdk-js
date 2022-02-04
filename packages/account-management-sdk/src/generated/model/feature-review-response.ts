@@ -25,13 +25,12 @@ export interface FeatureReviewResponse {
      * @type {boolean}
      * @memberof FeatureReviewResponse
      */
-    enabled: boolean;
+    'enabled': boolean;
     /**
      * 
      * @type {string}
      * @memberof FeatureReviewResponse
      */
-    feature_id: string;
+    'feature_id': string;
 }
-
 

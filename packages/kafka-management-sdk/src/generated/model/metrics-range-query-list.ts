@@ -23,4 +23,3 @@ import { RangeQuery } from './range-query';
 export type MetricsRangeQueryList = MetricsRangeQueryListAllOf;
 
 
-

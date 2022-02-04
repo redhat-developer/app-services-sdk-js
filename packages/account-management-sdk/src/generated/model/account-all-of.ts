@@ -28,85 +28,84 @@ export interface AccountAllOf {
      * @type {string}
      * @memberof AccountAllOf
      */
-    ban_code?: string;
+    'ban_code'?: string;
     /**
      * 
      * @type {string}
      * @memberof AccountAllOf
      */
-    ban_description?: string;
+    'ban_description'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof AccountAllOf
      */
-    banned?: boolean;
+    'banned'?: boolean;
     /**
      * 
      * @type {Array<Capability>}
      * @memberof AccountAllOf
      */
-    capabilities?: Array<Capability>;
+    'capabilities'?: Array<Capability>;
     /**
      * 
      * @type {string}
      * @memberof AccountAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof AccountAllOf
      */
-    email?: string;
+    'email'?: string;
     /**
      * 
      * @type {string}
      * @memberof AccountAllOf
      */
-    first_name?: string;
+    'first_name'?: string;
     /**
      * 
      * @type {Array<Label>}
      * @memberof AccountAllOf
      */
-    labels?: Array<Label>;
+    'labels'?: Array<Label>;
     /**
      * 
      * @type {string}
      * @memberof AccountAllOf
      */
-    last_name?: string;
+    'last_name'?: string;
     /**
      * 
      * @type {Organization}
      * @memberof AccountAllOf
      */
-    organization?: Organization;
+    'organization'?: Organization;
     /**
      * 
      * @type {string}
      * @memberof AccountAllOf
      */
-    organization_id?: string;
+    'organization_id'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof AccountAllOf
      */
-    service_account?: boolean;
+    'service_account'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof AccountAllOf
      */
-    updated_at?: string;
+    'updated_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof AccountAllOf
      */
-    username: string;
+    'username': string;
 }
-
 

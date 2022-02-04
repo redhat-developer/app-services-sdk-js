@@ -25,13 +25,12 @@ export interface TemplateParameter {
      * @type {string}
      * @memberof TemplateParameter
      */
-    content: string;
+    'content': string;
     /**
      * 
      * @type {string}
      * @memberof TemplateParameter
      */
-    name: string;
+    'name': string;
 }
-
 

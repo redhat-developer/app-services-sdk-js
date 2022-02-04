@@ -25,207 +25,194 @@ export interface SubscriptionPatchRequest {
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    billing_expiration_date?: string;
+    'billing_expiration_date'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    cloud_account_id?: string;
+    'cloud_account_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    cloud_provider_id?: string;
+    'cloud_provider_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    cluster_billing_model?: SubscriptionPatchRequestClusterBillingModelEnum;
+    'cluster_billing_model'?: SubscriptionPatchRequestClusterBillingModelEnum;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    cluster_id?: string;
+    'cluster_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    console_url?: string;
+    'console_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    consumer_uuid?: string;
+    'consumer_uuid'?: string;
     /**
      * 
      * @type {number}
      * @memberof SubscriptionPatchRequest
      */
-    cpu_total?: number;
+    'cpu_total'?: number;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    creator_id?: string;
+    'creator_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    display_name?: string;
+    'display_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    external_cluster_id?: string;
+    'external_cluster_id'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof SubscriptionPatchRequest
      */
-    managed?: boolean;
+    'managed'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    organization_id?: string;
+    'organization_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    plan_id?: string;
+    'plan_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    product_bundle?: SubscriptionPatchRequestProductBundleEnum;
+    'product_bundle'?: SubscriptionPatchRequestProductBundleEnum;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    provenance?: string;
+    'provenance'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    region_id?: string;
+    'region_id'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof SubscriptionPatchRequest
      */
-    released?: boolean;
+    'released'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    service_level?: SubscriptionPatchRequestServiceLevelEnum;
+    'service_level'?: SubscriptionPatchRequestServiceLevelEnum;
     /**
      * 
      * @type {number}
      * @memberof SubscriptionPatchRequest
      */
-    socket_total?: number;
+    'socket_total'?: number;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    status?: string;
+    'status'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    support_level?: SubscriptionPatchRequestSupportLevelEnum;
+    'support_level'?: SubscriptionPatchRequestSupportLevelEnum;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    system_units?: SubscriptionPatchRequestSystemUnitsEnum;
+    'system_units'?: SubscriptionPatchRequestSystemUnitsEnum;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    trial_end_date?: string;
+    'trial_end_date'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionPatchRequest
      */
-    usage?: SubscriptionPatchRequestUsageEnum;
+    'usage'?: SubscriptionPatchRequestUsageEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionPatchRequestClusterBillingModelEnum {
-    Standard = 'standard',
-    Marketplace = 'marketplace'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionPatchRequestProductBundleEnum {
-    Openshift = 'Openshift',
-    JBossMiddleware = 'JBoss-Middleware',
-    IbmCloudPak = 'IBM-CloudPak'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionPatchRequestServiceLevelEnum {
-    L1L3 = 'L1-L3',
-    L3Only = 'L3-only'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionPatchRequestSupportLevelEnum {
-    Eval = 'Eval',
-    Standard = 'Standard',
-    Premium = 'Premium',
-    SelfSupport = 'Self-Support',
-    None = 'None'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionPatchRequestSystemUnitsEnum {
-    CoresVCpu = 'Cores/vCPU',
-    Sockets = 'Sockets'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionPatchRequestUsageEnum {
-    Production = 'Production',
-    DevelopmentTest = 'Development/Test',
-    DisasterRecovery = 'Disaster Recovery',
-    Academic = 'Academic'
-}
+export const SubscriptionPatchRequestClusterBillingModelEnum = {
+    Standard: 'standard',
+    Marketplace: 'marketplace'
+} as const;
 
+export type SubscriptionPatchRequestClusterBillingModelEnum = typeof SubscriptionPatchRequestClusterBillingModelEnum[keyof typeof SubscriptionPatchRequestClusterBillingModelEnum];
+export const SubscriptionPatchRequestProductBundleEnum = {
+    Openshift: 'Openshift',
+    JBossMiddleware: 'JBoss-Middleware',
+    IbmCloudPak: 'IBM-CloudPak'
+} as const;
+
+export type SubscriptionPatchRequestProductBundleEnum = typeof SubscriptionPatchRequestProductBundleEnum[keyof typeof SubscriptionPatchRequestProductBundleEnum];
+export const SubscriptionPatchRequestServiceLevelEnum = {
+    L1L3: 'L1-L3',
+    L3Only: 'L3-only'
+} as const;
+
+export type SubscriptionPatchRequestServiceLevelEnum = typeof SubscriptionPatchRequestServiceLevelEnum[keyof typeof SubscriptionPatchRequestServiceLevelEnum];
+export const SubscriptionPatchRequestSupportLevelEnum = {
+    Eval: 'Eval',
+    Standard: 'Standard',
+    Premium: 'Premium',
+    SelfSupport: 'Self-Support',
+    None: 'None'
+} as const;
+
+export type SubscriptionPatchRequestSupportLevelEnum = typeof SubscriptionPatchRequestSupportLevelEnum[keyof typeof SubscriptionPatchRequestSupportLevelEnum];
+export const SubscriptionPatchRequestSystemUnitsEnum = {
+    CoresVCpu: 'Cores/vCPU',
+    Sockets: 'Sockets'
+} as const;
+
+export type SubscriptionPatchRequestSystemUnitsEnum = typeof SubscriptionPatchRequestSystemUnitsEnum[keyof typeof SubscriptionPatchRequestSystemUnitsEnum];
+export const SubscriptionPatchRequestUsageEnum = {
+    Production: 'Production',
+    DevelopmentTest: 'Development/Test',
+    DisasterRecovery: 'Disaster Recovery',
+    Academic: 'Academic'
+} as const;
+
+export type SubscriptionPatchRequestUsageEnum = typeof SubscriptionPatchRequestUsageEnum[keyof typeof SubscriptionPatchRequestUsageEnum];
 
 

@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -34,7 +34,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCurrentUserInfo: async (options: any = {}): Promise<RequestArgs> => {
+        getCurrentUserInfo: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/users/me`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -49,7 +49,7 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -74,7 +74,7 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCurrentUserInfo(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserInfo>> {
+        async getCurrentUserInfo(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserInfo>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getCurrentUserInfo(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -113,7 +113,7 @@ export interface UsersApiInterface {
      * @throws {RequiredError}
      * @memberof UsersApiInterface
      */
-    getCurrentUserInfo(options?: any): AxiosPromise<UserInfo>;
+    getCurrentUserInfo(options?: AxiosRequestConfig): AxiosPromise<UserInfo>;
 
 }
 
@@ -131,7 +131,7 @@ export class UsersApi extends BaseAPI implements UsersApiInterface {
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public getCurrentUserInfo(options?: any) {
+    public getCurrentUserInfo(options?: AxiosRequestConfig) {
         return UsersApiFp(this.configuration).getCurrentUserInfo(options).then((request) => request(this.axios, this.basePath));
     }
 }

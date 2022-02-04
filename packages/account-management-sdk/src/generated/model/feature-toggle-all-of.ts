@@ -25,7 +25,6 @@ export interface FeatureToggleAllOf {
      * @type {boolean}
      * @memberof FeatureToggleAllOf
      */
-    enabled: boolean;
+    'enabled': boolean;
 }
-
 

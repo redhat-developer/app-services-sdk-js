@@ -25,7 +25,6 @@ export interface NotificationContactCreateRequest {
      * @type {string}
      * @memberof NotificationContactCreateRequest
      */
-    account_identifier?: string;
+    'account_identifier'?: string;
 }
-
 

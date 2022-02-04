@@ -26,75 +26,72 @@ export interface ResourceQuotaAllOf {
      * @memberof ResourceQuotaAllOf
      * @deprecated
      */
-    availability_zone_type?: string;
+    'availability_zone_type'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof ResourceQuotaAllOf
      * @deprecated
      */
-    byoc: boolean;
+    'byoc': boolean;
     /**
      * 
      * @type {string}
      * @memberof ResourceQuotaAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof ResourceQuotaAllOf
      */
-    organization_id?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResourceQuotaAllOf
-     * @deprecated
-     */
-    resource_name: string;
+    'organization_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof ResourceQuotaAllOf
      * @deprecated
      */
-    resource_type: string;
+    'resource_name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ResourceQuotaAllOf
+     * @deprecated
+     */
+    'resource_type': string;
     /**
      * 
      * @type {string}
      * @memberof ResourceQuotaAllOf
      */
-    sku?: string;
+    'sku'?: string;
     /**
      * 
      * @type {number}
      * @memberof ResourceQuotaAllOf
      */
-    sku_count: number;
+    'sku_count': number;
     /**
      * 
      * @type {string}
      * @memberof ResourceQuotaAllOf
      */
-    type?: ResourceQuotaAllOfTypeEnum;
+    'type'?: ResourceQuotaAllOfTypeEnum;
     /**
      * 
      * @type {string}
      * @memberof ResourceQuotaAllOf
      */
-    updated_at?: string;
+    'updated_at'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ResourceQuotaAllOfTypeEnum {
-    Config = 'Config',
-    Manual = 'Manual',
-    Subscription = 'Subscription'
-}
+export const ResourceQuotaAllOfTypeEnum = {
+    Config: 'Config',
+    Manual: 'Manual',
+    Subscription: 'Subscription'
+} as const;
 
+export type ResourceQuotaAllOfTypeEnum = typeof ResourceQuotaAllOfTypeEnum[keyof typeof ResourceQuotaAllOfTypeEnum];
 
 
