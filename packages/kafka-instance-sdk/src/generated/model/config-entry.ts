@@ -25,13 +25,12 @@ export interface ConfigEntry {
      * @type {string}
      * @memberof ConfigEntry
      */
-    key?: string;
+    'key'?: string;
     /**
      * Value to indicate the setting on the topic configuration entry.
      * @type {string}
      * @memberof ConfigEntry
      */
-    value?: string;
+    'value'?: string;
 }
-
 

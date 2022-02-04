@@ -26,13 +26,12 @@ export interface Rule {
      * @type {string}
      * @memberof Rule
      */
-    config: string;
+    'config': string;
     /**
      * 
      * @type {RuleType}
      * @memberof Rule
      */
-    type?: RuleType;
+    'type'?: RuleType;
 }
-
 

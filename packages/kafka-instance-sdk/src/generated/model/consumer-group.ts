@@ -26,33 +26,30 @@ export interface ConsumerGroup {
      * @type {string}
      * @memberof ConsumerGroup
      */
-    groupId: string;
+    'groupId': string;
     /**
      * 
      * @type {string}
      * @memberof ConsumerGroup
      */
-    state?: ConsumerGroupStateEnum;
+    'state'?: ConsumerGroupStateEnum;
     /**
      * The list of consumers associated with this consumer group
      * @type {Array<Consumer>}
      * @memberof ConsumerGroup
      */
-    consumers: Array<Consumer>;
+    'consumers': Array<Consumer>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ConsumerGroupStateEnum {
-    Stable = 'STABLE',
-    Dead = 'DEAD',
-    Empty = 'EMPTY',
-    CompletingRebalance = 'COMPLETING_REBALANCE',
-    PreparingRebalance = 'PREPARING_REBALANCE',
-    Unknown = 'UNKNOWN'
-}
+export const ConsumerGroupStateEnum = {
+    Stable: 'STABLE',
+    Dead: 'DEAD',
+    Empty: 'EMPTY',
+    CompletingRebalance: 'COMPLETING_REBALANCE',
+    PreparingRebalance: 'PREPARING_REBALANCE',
+    Unknown: 'UNKNOWN'
+} as const;
 
+export type ConsumerGroupStateEnum = typeof ConsumerGroupStateEnum[keyof typeof ConsumerGroupStateEnum];
 
 

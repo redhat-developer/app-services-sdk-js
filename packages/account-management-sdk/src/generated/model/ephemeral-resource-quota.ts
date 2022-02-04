@@ -25,37 +25,36 @@ export interface EphemeralResourceQuota {
      * @type {string}
      * @memberof EphemeralResourceQuota
      */
-    availability_zone_type?: string;
+    'availability_zone_type'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof EphemeralResourceQuota
      */
-    byoc?: boolean;
+    'byoc'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof EphemeralResourceQuota
      */
-    resource_name?: string;
+    'resource_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof EphemeralResourceQuota
      */
-    resource_type?: string;
+    'resource_type'?: string;
     /**
      * 
      * @type {string}
      * @memberof EphemeralResourceQuota
      */
-    sku?: string;
+    'sku'?: string;
     /**
      * 
      * @type {number}
      * @memberof EphemeralResourceQuota
      */
-    sku_count?: number;
+    'sku_count'?: number;
 }
-
 

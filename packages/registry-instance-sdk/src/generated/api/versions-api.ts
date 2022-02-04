@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -48,7 +48,7 @@ export const VersionsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createArtifactVersion: async (groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryNameEncoded?: string, options: any = {}): Promise<RequestArgs> => {
+        createArtifactVersion: async (groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryNameEncoded?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('createArtifactVersion', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -93,7 +93,7 @@ export const VersionsApiAxiosParamCreator = function (configuration?: Configurat
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -112,7 +112,7 @@ export const VersionsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getArtifactVersion: async (groupId: string, artifactId: string, version: string, options: any = {}): Promise<RequestArgs> => {
+        getArtifactVersion: async (groupId: string, artifactId: string, version: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('getArtifactVersion', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -136,7 +136,7 @@ export const VersionsApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -155,7 +155,7 @@ export const VersionsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listArtifactVersions: async (groupId: string, artifactId: string, offset?: number, limit?: number, options: any = {}): Promise<RequestArgs> => {
+        listArtifactVersions: async (groupId: string, artifactId: string, offset?: number, limit?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('listArtifactVersions', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -184,7 +184,7 @@ export const VersionsApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -203,7 +203,7 @@ export const VersionsApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateArtifactVersionState: async (groupId: string, artifactId: string, version: string, updateState: UpdateState, options: any = {}): Promise<RequestArgs> => {
+        updateArtifactVersionState: async (groupId: string, artifactId: string, version: string, updateState: UpdateState, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('updateArtifactVersionState', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -231,7 +231,7 @@ export const VersionsApiAxiosParamCreator = function (configuration?: Configurat
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(updateState, localVarRequestOptions, configuration)
@@ -265,7 +265,7 @@ export const VersionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createArtifactVersion(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryNameEncoded?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionMetaData>> {
+        async createArtifactVersion(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryNameEncoded?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionMetaData>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createArtifactVersion(groupId, artifactId, body, xRegistryVersion, xRegistryName, xRegistryDescription, xRegistryDescriptionEncoded, xRegistryNameEncoded, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -278,7 +278,7 @@ export const VersionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getArtifactVersion(groupId: string, artifactId: string, version: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getArtifactVersion(groupId: string, artifactId: string, version: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getArtifactVersion(groupId, artifactId, version, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -292,7 +292,7 @@ export const VersionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listArtifactVersions(groupId: string, artifactId: string, offset?: number, limit?: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionSearchResults>> {
+        async listArtifactVersions(groupId: string, artifactId: string, offset?: number, limit?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionSearchResults>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listArtifactVersions(groupId, artifactId, offset, limit, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -306,7 +306,7 @@ export const VersionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateArtifactVersionState(groupId: string, artifactId: string, version: string, updateState: UpdateState, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateArtifactVersionState(groupId: string, artifactId: string, version: string, updateState: UpdateState, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateArtifactVersionState(groupId, artifactId, version, updateState, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -399,7 +399,7 @@ export interface VersionsApiInterface {
      * @throws {RequiredError}
      * @memberof VersionsApiInterface
      */
-    createArtifactVersion(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryNameEncoded?: string, options?: any): AxiosPromise<VersionMetaData>;
+    createArtifactVersion(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryNameEncoded?: string, options?: AxiosRequestConfig): AxiosPromise<VersionMetaData>;
 
     /**
      * Retrieves a single version of the artifact content.  Both the `artifactId` and the unique `version` number must be provided.  The `Content-Type` of the response depends  on the artifact type.  In most cases, this is `application/json`, but for some types  it may be different (for example, `PROTOBUF`).  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * No version with this `version` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -411,7 +411,7 @@ export interface VersionsApiInterface {
      * @throws {RequiredError}
      * @memberof VersionsApiInterface
      */
-    getArtifactVersion(groupId: string, artifactId: string, version: string, options?: any): AxiosPromise<any>;
+    getArtifactVersion(groupId: string, artifactId: string, version: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Returns a list of all versions of the artifact.  The result set is paged.  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -424,7 +424,7 @@ export interface VersionsApiInterface {
      * @throws {RequiredError}
      * @memberof VersionsApiInterface
      */
-    listArtifactVersions(groupId: string, artifactId: string, offset?: number, limit?: number, options?: any): AxiosPromise<VersionSearchResults>;
+    listArtifactVersions(groupId: string, artifactId: string, offset?: number, limit?: number, options?: AxiosRequestConfig): AxiosPromise<VersionSearchResults>;
 
     /**
      * Updates the state of a specific version of an artifact.  For example, you can use  this operation to disable a specific version.  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * No version with this `version` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -437,7 +437,7 @@ export interface VersionsApiInterface {
      * @throws {RequiredError}
      * @memberof VersionsApiInterface
      */
-    updateArtifactVersionState(groupId: string, artifactId: string, version: string, updateState: UpdateState, options?: any): AxiosPromise<void>;
+    updateArtifactVersionState(groupId: string, artifactId: string, version: string, updateState: UpdateState, options?: AxiosRequestConfig): AxiosPromise<void>;
 
 }
 
@@ -463,7 +463,7 @@ export class VersionsApi extends BaseAPI implements VersionsApiInterface {
      * @throws {RequiredError}
      * @memberof VersionsApi
      */
-    public createArtifactVersion(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryNameEncoded?: string, options?: any) {
+    public createArtifactVersion(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryNameEncoded?: string, options?: AxiosRequestConfig) {
         return VersionsApiFp(this.configuration).createArtifactVersion(groupId, artifactId, body, xRegistryVersion, xRegistryName, xRegistryDescription, xRegistryDescriptionEncoded, xRegistryNameEncoded, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -477,7 +477,7 @@ export class VersionsApi extends BaseAPI implements VersionsApiInterface {
      * @throws {RequiredError}
      * @memberof VersionsApi
      */
-    public getArtifactVersion(groupId: string, artifactId: string, version: string, options?: any) {
+    public getArtifactVersion(groupId: string, artifactId: string, version: string, options?: AxiosRequestConfig) {
         return VersionsApiFp(this.configuration).getArtifactVersion(groupId, artifactId, version, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -492,7 +492,7 @@ export class VersionsApi extends BaseAPI implements VersionsApiInterface {
      * @throws {RequiredError}
      * @memberof VersionsApi
      */
-    public listArtifactVersions(groupId: string, artifactId: string, offset?: number, limit?: number, options?: any) {
+    public listArtifactVersions(groupId: string, artifactId: string, offset?: number, limit?: number, options?: AxiosRequestConfig) {
         return VersionsApiFp(this.configuration).listArtifactVersions(groupId, artifactId, offset, limit, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -507,7 +507,7 @@ export class VersionsApi extends BaseAPI implements VersionsApiInterface {
      * @throws {RequiredError}
      * @memberof VersionsApi
      */
-    public updateArtifactVersionState(groupId: string, artifactId: string, version: string, updateState: UpdateState, options?: any) {
+    public updateArtifactVersionState(groupId: string, artifactId: string, version: string, updateState: UpdateState, options?: AxiosRequestConfig) {
         return VersionsApiFp(this.configuration).updateArtifactVersionState(groupId, artifactId, version, updateState, options).then((request) => request(this.axios, this.basePath));
     }
 }

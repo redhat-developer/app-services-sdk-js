@@ -26,13 +26,12 @@ export interface VersionSearchResults {
      * @type {number}
      * @memberof VersionSearchResults
      */
-    count: number;
+    'count': number;
     /**
      * The collection of artifact versions returned in the result set.
      * @type {Array<SearchedVersion>}
      * @memberof VersionSearchResults
      */
-    versions: Array<SearchedVersion>;
+    'versions': Array<SearchedVersion>;
 }
-
 

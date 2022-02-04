@@ -25,13 +25,12 @@ export interface ServiceAccount {
      * @type {string}
      * @memberof ServiceAccount
      */
-    client_id: string;
+    'client_id': string;
     /**
      * 
      * @type {string}
      * @memberof ServiceAccount
      */
-    client_secret: string;
+    'client_secret': string;
 }
-
 

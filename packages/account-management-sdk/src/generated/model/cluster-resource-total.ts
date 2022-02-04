@@ -25,13 +25,12 @@ export interface ClusterResourceTotal {
      * @type {string}
      * @memberof ClusterResourceTotal
      */
-    unit: string;
+    'unit': string;
     /**
      * 
      * @type {number}
      * @memberof ClusterResourceTotal
      */
-    value: number;
+    'value': number;
 }
-
 

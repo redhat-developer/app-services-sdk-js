@@ -25,25 +25,24 @@ export interface ModelError {
      * @type {string}
      * @memberof ModelError
      */
-    message?: string;
+    'message'?: string;
     /**
      * The server-side error code.
      * @type {number}
      * @memberof ModelError
      */
-    error_code?: number;
+    'error_code'?: number;
     /**
      * Full details about the error.  This might contain a server stack trace, for example.
      * @type {string}
      * @memberof ModelError
      */
-    detail?: string;
+    'detail'?: string;
     /**
      * The error name - typically the classname of the exception thrown by the server.
      * @type {string}
      * @memberof ModelError
      */
-    name?: string;
+    'name'?: string;
 }
-
 

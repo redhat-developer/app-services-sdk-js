@@ -24,4 +24,3 @@ import { QuotaCostListAllOf } from './quota-cost-list-all-of';
 export type QuotaCostList = List & QuotaCostListAllOf;
 
 
-

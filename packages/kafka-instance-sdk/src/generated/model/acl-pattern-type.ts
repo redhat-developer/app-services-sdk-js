@@ -20,10 +20,12 @@
  * @enum {string}
  */
 
-export enum AclPatternType {
-    Literal = 'LITERAL',
-    Prefixed = 'PREFIXED'
-}
+export const AclPatternType = {
+    Literal: 'LITERAL',
+    Prefixed: 'PREFIXED'
+} as const;
+
+export type AclPatternType = typeof AclPatternType[keyof typeof AclPatternType];
 
 
 

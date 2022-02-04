@@ -20,12 +20,14 @@
  * @enum {string}
  */
 
-export enum AclResourceType {
-    Group = 'GROUP',
-    Topic = 'TOPIC',
-    Cluster = 'CLUSTER',
-    TransactionalId = 'TRANSACTIONAL_ID'
-}
+export const AclResourceType = {
+    Group: 'GROUP',
+    Topic: 'TOPIC',
+    Cluster: 'CLUSTER',
+    TransactionalId: 'TRANSACTIONAL_ID'
+} as const;
+
+export type AclResourceType = typeof AclResourceType[keyof typeof AclResourceType];
 
 
 

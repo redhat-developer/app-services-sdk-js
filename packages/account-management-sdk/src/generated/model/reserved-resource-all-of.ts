@@ -26,61 +26,60 @@ export interface ReservedResourceAllOf {
      * @type {string}
      * @memberof ReservedResourceAllOf
      */
-    availability_zone_type?: string;
+    'availability_zone_type'?: string;
     /**
      * 
      * @type {string}
      * @memberof ReservedResourceAllOf
      */
-    billing_model?: string;
+    'billing_model'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof ReservedResourceAllOf
      */
-    byoc: boolean;
+    'byoc': boolean;
     /**
      * 
      * @type {boolean}
      * @memberof ReservedResourceAllOf
      */
-    cluster?: boolean;
+    'cluster'?: boolean;
     /**
      * 
      * @type {number}
      * @memberof ReservedResourceAllOf
      */
-    count?: number;
+    'count'?: number;
     /**
      * 
      * @type {string}
      * @memberof ReservedResourceAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof ReservedResourceAllOf
      */
-    resource_name?: string;
+    'resource_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof ReservedResourceAllOf
      */
-    resource_type?: string;
+    'resource_type'?: string;
     /**
      * 
      * @type {ObjectReference}
      * @memberof ReservedResourceAllOf
      */
-    subscription?: ObjectReference;
+    'subscription'?: ObjectReference;
     /**
      * 
      * @type {string}
      * @memberof ReservedResourceAllOf
      */
-    updated_at?: string;
+    'updated_at'?: string;
 }
-
 

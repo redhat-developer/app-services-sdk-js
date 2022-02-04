@@ -26,4 +26,3 @@ import { Organization } from './organization';
 export type Account = AccountAllOf & ObjectReference;
 
 
-

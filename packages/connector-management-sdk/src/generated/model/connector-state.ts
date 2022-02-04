@@ -20,13 +20,15 @@
  * @enum {string}
  */
 
-export enum ConnectorState {
-    Ready = 'ready',
-    Stopped = 'stopped',
-    Deleted = 'deleted',
-    Provisioning = 'provisioning',
-    Deprovisioning = 'deprovisioning'
-}
+export const ConnectorState = {
+    Ready: 'ready',
+    Stopped: 'stopped',
+    Deleted: 'deleted',
+    Provisioning: 'provisioning',
+    Deprovisioning: 'deprovisioning'
+} as const;
+
+export type ConnectorState = typeof ConnectorState[keyof typeof ConnectorState];
 
 
 

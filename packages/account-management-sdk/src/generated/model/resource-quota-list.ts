@@ -24,4 +24,3 @@ import { ResourceQuotaListAllOf } from './resource-quota-list-all-of';
 export type ResourceQuotaList = List & ResourceQuotaListAllOf;
 
 
-

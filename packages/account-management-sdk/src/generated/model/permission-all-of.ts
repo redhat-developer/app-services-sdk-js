@@ -25,26 +25,23 @@ export interface PermissionAllOf {
      * @type {string}
      * @memberof PermissionAllOf
      */
-    action?: PermissionAllOfActionEnum;
+    'action'?: PermissionAllOfActionEnum;
     /**
      * 
      * @type {string}
      * @memberof PermissionAllOf
      */
-    resource?: string;
+    'resource'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum PermissionAllOfActionEnum {
-    Get = 'get',
-    List = 'list',
-    Create = 'create',
-    Delete = 'delete',
-    Update = 'update'
-}
+export const PermissionAllOfActionEnum = {
+    Get: 'get',
+    List: 'list',
+    Create: 'create',
+    Delete: 'delete',
+    Update: 'update'
+} as const;
 
+export type PermissionAllOfActionEnum = typeof PermissionAllOfActionEnum[keyof typeof PermissionAllOfActionEnum];
 
 

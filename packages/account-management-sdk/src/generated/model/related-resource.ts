@@ -23,4 +23,3 @@ import { RelatedResourceAllOf } from './related-resource-all-of';
 export type RelatedResource = ObjectReference & RelatedResourceAllOf;
 
 
-

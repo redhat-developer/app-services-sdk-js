@@ -26,13 +26,12 @@ export interface RoleAllOf {
      * @type {string}
      * @memberof RoleAllOf
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {Array<Permission>}
      * @memberof RoleAllOf
      */
-    permissions?: Array<Permission>;
+    'permissions'?: Array<Permission>;
 }
-
 

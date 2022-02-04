@@ -24,4 +24,3 @@ import { SummaryMetrics } from './summary-metrics';
 export type Summary = ObjectReference & SummaryAllOf;
 
 
-

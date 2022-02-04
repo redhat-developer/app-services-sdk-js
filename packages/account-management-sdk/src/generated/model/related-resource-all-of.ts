@@ -25,55 +25,54 @@ export interface RelatedResourceAllOf {
      * @type {string}
      * @memberof RelatedResourceAllOf
      */
-    availability_zone_type: string;
+    'availability_zone_type': string;
     /**
      * 
      * @type {string}
      * @memberof RelatedResourceAllOf
      */
-    billing_model: string;
+    'billing_model': string;
     /**
      * 
      * @type {string}
      * @memberof RelatedResourceAllOf
      */
-    byoc: string;
+    'byoc': string;
     /**
      * 
      * @type {string}
      * @memberof RelatedResourceAllOf
      */
-    cloud_provider: string;
+    'cloud_provider': string;
     /**
      * 
      * @type {number}
      * @memberof RelatedResourceAllOf
      */
-    cost: number;
+    'cost': number;
     /**
      * 
      * @type {string}
      * @memberof RelatedResourceAllOf
      */
-    product: string;
+    'product': string;
     /**
      * 
      * @type {string}
      * @memberof RelatedResourceAllOf
      */
-    product_id?: string;
+    'product_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof RelatedResourceAllOf
      */
-    resource_name?: string;
+    'resource_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof RelatedResourceAllOf
      */
-    resource_type: string;
+    'resource_type': string;
 }
-
 

@@ -20,10 +20,12 @@
  * @enum {string}
  */
 
-export enum RegistryInstanceTypeValue {
-    Standard = 'standard',
-    Eval = 'eval'
-}
+export const RegistryInstanceTypeValue = {
+    Standard: 'standard',
+    Eval: 'eval'
+} as const;
+
+export type RegistryInstanceTypeValue = typeof RegistryInstanceTypeValue[keyof typeof RegistryInstanceTypeValue];
 
 
 

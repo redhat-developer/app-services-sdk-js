@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -37,7 +37,7 @@ export const ConnectorTypesApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConnectorTypeByID: async (connectorTypeId: string, options: any = {}): Promise<RequestArgs> => {
+        getConnectorTypeByID: async (connectorTypeId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'connectorTypeId' is not null or undefined
             assertParamExists('getConnectorTypeByID', 'connectorTypeId', connectorTypeId)
             const localVarPath = `/api/connector_mgmt/v1/kafka_connector_types/{connector_type_id}`
@@ -59,7 +59,7 @@ export const ConnectorTypesApiAxiosParamCreator = function (configuration?: Conf
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -78,7 +78,7 @@ export const ConnectorTypesApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConnectorTypes: async (page?: string, size?: string, orderBy?: string, search?: string, options: any = {}): Promise<RequestArgs> => {
+        getConnectorTypes: async (page?: string, size?: string, orderBy?: string, search?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/connector_mgmt/v1/kafka_connector_types`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -113,7 +113,7 @@ export const ConnectorTypesApiAxiosParamCreator = function (configuration?: Conf
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -139,7 +139,7 @@ export const ConnectorTypesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getConnectorTypeByID(connectorTypeId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorType>> {
+        async getConnectorTypeByID(connectorTypeId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorType>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getConnectorTypeByID(connectorTypeId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -153,7 +153,7 @@ export const ConnectorTypesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getConnectorTypes(page?: string, size?: string, orderBy?: string, search?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorTypeList>> {
+        async getConnectorTypes(page?: string, size?: string, orderBy?: string, search?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorTypeList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getConnectorTypes(page, size, orderBy, search, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -207,7 +207,7 @@ export interface ConnectorTypesApiInterface {
      * @throws {RequiredError}
      * @memberof ConnectorTypesApiInterface
      */
-    getConnectorTypeByID(connectorTypeId: string, options?: any): AxiosPromise<ConnectorType>;
+    getConnectorTypeByID(connectorTypeId: string, options?: AxiosRequestConfig): AxiosPromise<ConnectorType>;
 
     /**
      * Returns a list of connector types
@@ -220,7 +220,7 @@ export interface ConnectorTypesApiInterface {
      * @throws {RequiredError}
      * @memberof ConnectorTypesApiInterface
      */
-    getConnectorTypes(page?: string, size?: string, orderBy?: string, search?: string, options?: any): AxiosPromise<ConnectorTypeList>;
+    getConnectorTypes(page?: string, size?: string, orderBy?: string, search?: string, options?: AxiosRequestConfig): AxiosPromise<ConnectorTypeList>;
 
 }
 
@@ -239,7 +239,7 @@ export class ConnectorTypesApi extends BaseAPI implements ConnectorTypesApiInter
      * @throws {RequiredError}
      * @memberof ConnectorTypesApi
      */
-    public getConnectorTypeByID(connectorTypeId: string, options?: any) {
+    public getConnectorTypeByID(connectorTypeId: string, options?: AxiosRequestConfig) {
         return ConnectorTypesApiFp(this.configuration).getConnectorTypeByID(connectorTypeId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -254,7 +254,7 @@ export class ConnectorTypesApi extends BaseAPI implements ConnectorTypesApiInter
      * @throws {RequiredError}
      * @memberof ConnectorTypesApi
      */
-    public getConnectorTypes(page?: string, size?: string, orderBy?: string, search?: string, options?: any) {
+    public getConnectorTypes(page?: string, size?: string, orderBy?: string, search?: string, options?: AxiosRequestConfig) {
         return ConnectorTypesApiFp(this.configuration).getConnectorTypes(page, size, orderBy, search, options).then((request) => request(this.axios, this.basePath));
     }
 }

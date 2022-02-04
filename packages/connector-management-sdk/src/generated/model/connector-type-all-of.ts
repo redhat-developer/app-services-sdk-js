@@ -26,55 +26,54 @@ export interface ConnectorTypeAllOf {
      * @type {string}
      * @memberof ConnectorTypeAllOf
      */
-    name?: string;
+    'name'?: string;
     /**
      * Version of the connector type.
      * @type {string}
      * @memberof ConnectorTypeAllOf
      */
-    version?: string;
+    'version'?: string;
     /**
      * Channels of the connector type.
      * @type {Array<Channel>}
      * @memberof ConnectorTypeAllOf
      */
-    channels?: Array<Channel>;
+    'channels'?: Array<Channel>;
     /**
      * A description of the connector.
      * @type {string}
      * @memberof ConnectorTypeAllOf
      */
-    description?: string;
+    'description'?: string;
     /**
      * URL to an icon of the connector.
      * @type {string}
      * @memberof ConnectorTypeAllOf
      */
-    icon_href?: string;
+    'icon_href'?: string;
     /**
      * Labels used to categorize the connector
      * @type {Array<string>}
      * @memberof ConnectorTypeAllOf
      */
-    labels?: Array<string>;
+    'labels'?: Array<string>;
     /**
      * The capabilities supported by the conenctor
      * @type {Array<string>}
      * @memberof ConnectorTypeAllOf
      */
-    capabilities?: Array<string>;
+    'capabilities'?: Array<string>;
     /**
      * A json schema that can be used to validate a ConnectorRequest connector field.
      * @type {object}
      * @memberof ConnectorTypeAllOf
      */
-    schema?: object;
+    'schema'?: object;
     /**
      * A json schema that can be used to validate a ConnectorRequest connector field.
      * @type {object}
      * @memberof ConnectorTypeAllOf
      */
-    json_schema?: object;
+    'json_schema'?: object;
 }
-
 

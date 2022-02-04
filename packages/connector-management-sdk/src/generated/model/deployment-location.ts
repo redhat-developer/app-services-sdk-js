@@ -22,4 +22,3 @@ import { ConnectorClusterTarget } from './connector-cluster-target';
 export type DeploymentLocation = ConnectorClusterTarget;
 
 
-

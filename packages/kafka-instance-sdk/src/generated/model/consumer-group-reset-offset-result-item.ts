@@ -25,19 +25,18 @@ export interface ConsumerGroupResetOffsetResultItem {
      * @type {string}
      * @memberof ConsumerGroupResetOffsetResultItem
      */
-    topic?: string;
+    'topic'?: string;
     /**
      * 
      * @type {number}
      * @memberof ConsumerGroupResetOffsetResultItem
      */
-    partition?: number;
+    'partition'?: number;
     /**
      * 
      * @type {number}
      * @memberof ConsumerGroupResetOffsetResultItem
      */
-    offset?: number;
+    'offset'?: number;
 }
-
 

@@ -25,43 +25,42 @@ export interface QuotaSummaryAllOf {
      * @type {number}
      * @memberof QuotaSummaryAllOf
      */
-    allowed: number;
+    'allowed': number;
     /**
      * 
      * @type {string}
      * @memberof QuotaSummaryAllOf
      */
-    availability_zone_type: string;
+    'availability_zone_type': string;
     /**
      * 
      * @type {boolean}
      * @memberof QuotaSummaryAllOf
      */
-    byoc: boolean;
+    'byoc': boolean;
     /**
      * 
      * @type {string}
      * @memberof QuotaSummaryAllOf
      */
-    organization_id?: string;
+    'organization_id'?: string;
     /**
      * 
      * @type {number}
      * @memberof QuotaSummaryAllOf
      */
-    reserved: number;
+    'reserved': number;
     /**
      * 
      * @type {string}
      * @memberof QuotaSummaryAllOf
      */
-    resource_name: string;
+    'resource_name': string;
     /**
      * 
      * @type {string}
      * @memberof QuotaSummaryAllOf
      */
-    resource_type: string;
+    'resource_type': string;
 }
-
 

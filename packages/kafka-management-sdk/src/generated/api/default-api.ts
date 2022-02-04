@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -54,7 +54,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createKafka: async (async: boolean, kafkaRequestPayload: KafkaRequestPayload, options: any = {}): Promise<RequestArgs> => {
+        createKafka: async (async: boolean, kafkaRequestPayload: KafkaRequestPayload, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'async' is not null or undefined
             assertParamExists('createKafka', 'async', async)
             // verify required parameter 'kafkaRequestPayload' is not null or undefined
@@ -83,7 +83,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(kafkaRequestPayload, localVarRequestOptions, configuration)
@@ -101,7 +101,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteKafkaById: async (id: string, async: boolean, options: any = {}): Promise<RequestArgs> => {
+        deleteKafkaById: async (id: string, async: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteKafkaById', 'id', id)
             // verify required parameter 'async' is not null or undefined
@@ -129,7 +129,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -145,7 +145,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        federateMetrics: async (id: string, options: any = {}): Promise<RequestArgs> => {
+        federateMetrics: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('federateMetrics', 'id', id)
             const localVarPath = `/api/kafkas_mgmt/v1/kafkas/{id}/metrics/federate`
@@ -167,7 +167,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -186,7 +186,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCloudProviderRegions: async (id: string, page?: string, size?: string, instanceType?: string, options: any = {}): Promise<RequestArgs> => {
+        getCloudProviderRegions: async (id: string, page?: string, size?: string, instanceType?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getCloudProviderRegions', 'id', id)
             const localVarPath = `/api/kafkas_mgmt/v1/cloud_providers/{id}/regions`
@@ -220,7 +220,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -237,7 +237,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCloudProviders: async (page?: string, size?: string, options: any = {}): Promise<RequestArgs> => {
+        getCloudProviders: async (page?: string, size?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/kafkas_mgmt/v1/cloud_providers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -264,7 +264,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -280,7 +280,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getKafkaById: async (id: string, options: any = {}): Promise<RequestArgs> => {
+        getKafkaById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getKafkaById', 'id', id)
             const localVarPath = `/api/kafkas_mgmt/v1/kafkas/{id}`
@@ -302,7 +302,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -321,7 +321,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getKafkas: async (page?: string, size?: string, orderBy?: string, search?: string, options: any = {}): Promise<RequestArgs> => {
+        getKafkas: async (page?: string, size?: string, orderBy?: string, search?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/kafkas_mgmt/v1/kafkas`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -356,7 +356,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -373,7 +373,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMetricsByInstantQuery: async (id: string, filters?: Array<string>, options: any = {}): Promise<RequestArgs> => {
+        getMetricsByInstantQuery: async (id: string, filters?: Array<string>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getMetricsByInstantQuery', 'id', id)
             const localVarPath = `/api/kafkas_mgmt/v1/kafkas/{id}/metrics/query`
@@ -399,7 +399,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -418,7 +418,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMetricsByRangeQuery: async (id: string, duration: number, interval: number, filters?: Array<string>, options: any = {}): Promise<RequestArgs> => {
+        getMetricsByRangeQuery: async (id: string, duration: number, interval: number, filters?: Array<string>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getMetricsByRangeQuery', 'id', id)
             // verify required parameter 'duration' is not null or undefined
@@ -456,7 +456,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -472,7 +472,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @deprecated
          * @throws {RequiredError}
          */
-        getServiceStatus: async (options: any = {}): Promise<RequestArgs> => {
+        getServiceStatus: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/kafkas_mgmt/v1/status`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -491,7 +491,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -506,7 +506,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getVersionMetadata: async (options: any = {}): Promise<RequestArgs> => {
+        getVersionMetadata: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/kafkas_mgmt/v1`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -521,7 +521,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -538,7 +538,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateKafkaById: async (id: string, kafkaUpdateRequest: KafkaUpdateRequest, options: any = {}): Promise<RequestArgs> => {
+        updateKafkaById: async (id: string, kafkaUpdateRequest: KafkaUpdateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('updateKafkaById', 'id', id)
             // verify required parameter 'kafkaUpdateRequest' is not null or undefined
@@ -564,7 +564,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(kafkaUpdateRequest, localVarRequestOptions, configuration)
@@ -592,7 +592,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createKafka(async: boolean, kafkaRequestPayload: KafkaRequestPayload, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<KafkaRequest>> {
+        async createKafka(async: boolean, kafkaRequestPayload: KafkaRequestPayload, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<KafkaRequest>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createKafka(async, kafkaRequestPayload, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -604,7 +604,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteKafkaById(id: string, async: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
+        async deleteKafkaById(id: string, async: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteKafkaById(id, async, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -615,7 +615,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async federateMetrics(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+        async federateMetrics(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.federateMetrics(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -629,7 +629,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCloudProviderRegions(id: string, page?: string, size?: string, instanceType?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudRegionList>> {
+        async getCloudProviderRegions(id: string, page?: string, size?: string, instanceType?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudRegionList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getCloudProviderRegions(id, page, size, instanceType, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -641,7 +641,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCloudProviders(page?: string, size?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudProviderList>> {
+        async getCloudProviders(page?: string, size?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudProviderList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getCloudProviders(page, size, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -652,7 +652,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getKafkaById(id: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<KafkaRequest>> {
+        async getKafkaById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<KafkaRequest>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getKafkaById(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -666,7 +666,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getKafkas(page?: string, size?: string, orderBy?: string, search?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<KafkaRequestList>> {
+        async getKafkas(page?: string, size?: string, orderBy?: string, search?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<KafkaRequestList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getKafkas(page, size, orderBy, search, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -678,7 +678,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMetricsByInstantQuery(id: string, filters?: Array<string>, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetricsInstantQueryList>> {
+        async getMetricsByInstantQuery(id: string, filters?: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetricsInstantQueryList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMetricsByInstantQuery(id, filters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -692,7 +692,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMetricsByRangeQuery(id: string, duration: number, interval: number, filters?: Array<string>, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetricsRangeQueryList>> {
+        async getMetricsByRangeQuery(id: string, duration: number, interval: number, filters?: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetricsRangeQueryList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMetricsByRangeQuery(id, duration, interval, filters, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -703,7 +703,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-        async getServiceStatus(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceStatus>> {
+        async getServiceStatus(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceStatus>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceStatus(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -713,7 +713,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getVersionMetadata(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionMetadata>> {
+        async getVersionMetadata(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionMetadata>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getVersionMetadata(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -725,7 +725,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateKafkaById(id: string, kafkaUpdateRequest: KafkaUpdateRequest, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<KafkaRequest>> {
+        async updateKafkaById(id: string, kafkaUpdateRequest: KafkaUpdateRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<KafkaRequest>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateKafkaById(id, kafkaUpdateRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -890,7 +890,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    createKafka(async: boolean, kafkaRequestPayload: KafkaRequestPayload, options?: any): AxiosPromise<KafkaRequest>;
+    createKafka(async: boolean, kafkaRequestPayload: KafkaRequestPayload, options?: AxiosRequestConfig): AxiosPromise<KafkaRequest>;
 
     /**
      * 
@@ -901,7 +901,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    deleteKafkaById(id: string, async: boolean, options?: any): AxiosPromise<Error>;
+    deleteKafkaById(id: string, async: boolean, options?: AxiosRequestConfig): AxiosPromise<Error>;
 
     /**
      * 
@@ -911,7 +911,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    federateMetrics(id: string, options?: any): AxiosPromise<string>;
+    federateMetrics(id: string, options?: AxiosRequestConfig): AxiosPromise<string>;
 
     /**
      * 
@@ -924,7 +924,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getCloudProviderRegions(id: string, page?: string, size?: string, instanceType?: string, options?: any): AxiosPromise<CloudRegionList>;
+    getCloudProviderRegions(id: string, page?: string, size?: string, instanceType?: string, options?: AxiosRequestConfig): AxiosPromise<CloudRegionList>;
 
     /**
      * 
@@ -935,7 +935,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getCloudProviders(page?: string, size?: string, options?: any): AxiosPromise<CloudProviderList>;
+    getCloudProviders(page?: string, size?: string, options?: AxiosRequestConfig): AxiosPromise<CloudProviderList>;
 
     /**
      * 
@@ -945,7 +945,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getKafkaById(id: string, options?: any): AxiosPromise<KafkaRequest>;
+    getKafkaById(id: string, options?: AxiosRequestConfig): AxiosPromise<KafkaRequest>;
 
     /**
      * 
@@ -958,7 +958,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getKafkas(page?: string, size?: string, orderBy?: string, search?: string, options?: any): AxiosPromise<KafkaRequestList>;
+    getKafkas(page?: string, size?: string, orderBy?: string, search?: string, options?: AxiosRequestConfig): AxiosPromise<KafkaRequestList>;
 
     /**
      * 
@@ -969,7 +969,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getMetricsByInstantQuery(id: string, filters?: Array<string>, options?: any): AxiosPromise<MetricsInstantQueryList>;
+    getMetricsByInstantQuery(id: string, filters?: Array<string>, options?: AxiosRequestConfig): AxiosPromise<MetricsInstantQueryList>;
 
     /**
      * 
@@ -982,7 +982,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getMetricsByRangeQuery(id: string, duration: number, interval: number, filters?: Array<string>, options?: any): AxiosPromise<MetricsRangeQueryList>;
+    getMetricsByRangeQuery(id: string, duration: number, interval: number, filters?: Array<string>, options?: AxiosRequestConfig): AxiosPromise<MetricsRangeQueryList>;
 
     /**
      * [DEPRECATED] The service capacity status is now reported per cloud provider region and Kafka instance type in the /api/kafkas_mgmt/v1/cloud_providers/{id}/regions endpoint. Please use this endpoint instead.
@@ -992,7 +992,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getServiceStatus(options?: any): AxiosPromise<ServiceStatus>;
+    getServiceStatus(options?: AxiosRequestConfig): AxiosPromise<ServiceStatus>;
 
     /**
      * 
@@ -1001,7 +1001,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getVersionMetadata(options?: any): AxiosPromise<VersionMetadata>;
+    getVersionMetadata(options?: AxiosRequestConfig): AxiosPromise<VersionMetadata>;
 
     /**
      * 
@@ -1012,7 +1012,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    updateKafkaById(id: string, kafkaUpdateRequest: KafkaUpdateRequest, options?: any): AxiosPromise<KafkaRequest>;
+    updateKafkaById(id: string, kafkaUpdateRequest: KafkaUpdateRequest, options?: AxiosRequestConfig): AxiosPromise<KafkaRequest>;
 
 }
 
@@ -1032,7 +1032,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public createKafka(async: boolean, kafkaRequestPayload: KafkaRequestPayload, options?: any) {
+    public createKafka(async: boolean, kafkaRequestPayload: KafkaRequestPayload, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).createKafka(async, kafkaRequestPayload, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1045,7 +1045,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public deleteKafkaById(id: string, async: boolean, options?: any) {
+    public deleteKafkaById(id: string, async: boolean, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).deleteKafkaById(id, async, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1057,7 +1057,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public federateMetrics(id: string, options?: any) {
+    public federateMetrics(id: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).federateMetrics(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1072,7 +1072,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getCloudProviderRegions(id: string, page?: string, size?: string, instanceType?: string, options?: any) {
+    public getCloudProviderRegions(id: string, page?: string, size?: string, instanceType?: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getCloudProviderRegions(id, page, size, instanceType, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1085,7 +1085,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getCloudProviders(page?: string, size?: string, options?: any) {
+    public getCloudProviders(page?: string, size?: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getCloudProviders(page, size, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1097,7 +1097,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getKafkaById(id: string, options?: any) {
+    public getKafkaById(id: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getKafkaById(id, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1112,7 +1112,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getKafkas(page?: string, size?: string, orderBy?: string, search?: string, options?: any) {
+    public getKafkas(page?: string, size?: string, orderBy?: string, search?: string, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getKafkas(page, size, orderBy, search, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1125,7 +1125,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getMetricsByInstantQuery(id: string, filters?: Array<string>, options?: any) {
+    public getMetricsByInstantQuery(id: string, filters?: Array<string>, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getMetricsByInstantQuery(id, filters, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1140,7 +1140,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getMetricsByRangeQuery(id: string, duration: number, interval: number, filters?: Array<string>, options?: any) {
+    public getMetricsByRangeQuery(id: string, duration: number, interval: number, filters?: Array<string>, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getMetricsByRangeQuery(id, duration, interval, filters, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1152,7 +1152,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getServiceStatus(options?: any) {
+    public getServiceStatus(options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getServiceStatus(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1163,7 +1163,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getVersionMetadata(options?: any) {
+    public getVersionMetadata(options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getVersionMetadata(options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1176,7 +1176,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public updateKafkaById(id: string, kafkaUpdateRequest: KafkaUpdateRequest, options?: any) {
+    public updateKafkaById(id: string, kafkaUpdateRequest: KafkaUpdateRequest, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).updateKafkaById(id, kafkaUpdateRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

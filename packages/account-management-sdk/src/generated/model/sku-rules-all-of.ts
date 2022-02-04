@@ -25,19 +25,18 @@ export interface SkuRulesAllOf {
      * @type {number}
      * @memberof SkuRulesAllOf
      */
-    allowed?: number;
+    'allowed'?: number;
     /**
      * 
      * @type {string}
      * @memberof SkuRulesAllOf
      */
-    quota_id?: string;
+    'quota_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SkuRulesAllOf
      */
-    sku?: string;
+    'sku'?: string;
 }
-
 

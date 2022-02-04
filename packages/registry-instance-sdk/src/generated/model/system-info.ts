@@ -25,25 +25,24 @@ export interface SystemInfo {
      * @type {string}
      * @memberof SystemInfo
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof SystemInfo
      */
-    description?: string;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof SystemInfo
      */
-    version?: string;
+    'version'?: string;
     /**
      * 
      * @type {string}
      * @memberof SystemInfo
      */
-    builtOn?: string;
+    'builtOn'?: string;
 }
-
 

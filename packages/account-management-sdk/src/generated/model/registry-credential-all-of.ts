@@ -26,43 +26,42 @@ export interface RegistryCredentialAllOf {
      * @type {ObjectReference}
      * @memberof RegistryCredentialAllOf
      */
-    account?: ObjectReference;
+    'account'?: ObjectReference;
     /**
      * 
      * @type {string}
      * @memberof RegistryCredentialAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryCredentialAllOf
      */
-    external_resource_id?: string;
+    'external_resource_id'?: string;
     /**
      * 
      * @type {ObjectReference}
      * @memberof RegistryCredentialAllOf
      */
-    registry?: ObjectReference;
+    'registry'?: ObjectReference;
     /**
      * 
      * @type {string}
      * @memberof RegistryCredentialAllOf
      */
-    token?: string;
+    'token'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryCredentialAllOf
      */
-    updated_at?: string;
+    'updated_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryCredentialAllOf
      */
-    username?: string;
+    'username'?: string;
 }
-
 

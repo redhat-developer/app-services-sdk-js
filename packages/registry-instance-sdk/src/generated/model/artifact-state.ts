@@ -20,11 +20,13 @@
  * @enum {string}
  */
 
-export enum ArtifactState {
-    Enabled = 'ENABLED',
-    Disabled = 'DISABLED',
-    Deprecated = 'DEPRECATED'
-}
+export const ArtifactState = {
+    Enabled: 'ENABLED',
+    Disabled: 'DISABLED',
+    Deprecated: 'DEPRECATED'
+} as const;
+
+export type ArtifactState = typeof ArtifactState[keyof typeof ArtifactState];
 
 
 

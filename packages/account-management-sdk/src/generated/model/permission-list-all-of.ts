@@ -26,7 +26,6 @@ export interface PermissionListAllOf {
      * @type {Array<Permission>}
      * @memberof PermissionListAllOf
      */
-    items?: Array<Permission>;
+    'items'?: Array<Permission>;
 }
-
 

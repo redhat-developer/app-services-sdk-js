@@ -26,7 +26,6 @@ export interface RegistryCredentialListAllOf {
      * @type {Array<RegistryCredential>}
      * @memberof RegistryCredentialListAllOf
      */
-    items?: Array<RegistryCredential>;
+    'items'?: Array<RegistryCredential>;
 }
-
 

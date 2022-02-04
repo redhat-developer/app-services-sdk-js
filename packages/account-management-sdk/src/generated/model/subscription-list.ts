@@ -24,4 +24,3 @@ import { SubscriptionListAllOf } from './subscription-list-all-of';
 export type SubscriptionList = List & SubscriptionListAllOf;
 
 
-

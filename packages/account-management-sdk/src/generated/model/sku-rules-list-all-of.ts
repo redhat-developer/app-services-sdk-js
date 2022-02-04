@@ -26,7 +26,6 @@ export interface SkuRulesListAllOf {
      * @type {Array<SkuRules>}
      * @memberof SkuRulesListAllOf
      */
-    items?: Array<SkuRules>;
+    'items'?: Array<SkuRules>;
 }
-
 

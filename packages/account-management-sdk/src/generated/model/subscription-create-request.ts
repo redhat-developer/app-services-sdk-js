@@ -25,47 +25,42 @@ export interface SubscriptionCreateRequest {
      * @type {string}
      * @memberof SubscriptionCreateRequest
      */
-    cluster_uuid: string;
+    'cluster_uuid': string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionCreateRequest
      */
-    console_url?: string;
+    'console_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionCreateRequest
      */
-    display_name?: string;
+    'display_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionCreateRequest
      */
-    plan_id: SubscriptionCreateRequestPlanIdEnum;
+    'plan_id': SubscriptionCreateRequestPlanIdEnum;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionCreateRequest
      */
-    status: SubscriptionCreateRequestStatusEnum;
+    'status': SubscriptionCreateRequestStatusEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionCreateRequestPlanIdEnum {
-    Ocp = 'OCP'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionCreateRequestStatusEnum {
-    Disconnected = 'Disconnected'
-}
+export const SubscriptionCreateRequestPlanIdEnum = {
+    Ocp: 'OCP'
+} as const;
 
+export type SubscriptionCreateRequestPlanIdEnum = typeof SubscriptionCreateRequestPlanIdEnum[keyof typeof SubscriptionCreateRequestPlanIdEnum];
+export const SubscriptionCreateRequestStatusEnum = {
+    Disconnected: 'Disconnected'
+} as const;
+
+export type SubscriptionCreateRequestStatusEnum = typeof SubscriptionCreateRequestStatusEnum[keyof typeof SubscriptionCreateRequestStatusEnum];
 
 

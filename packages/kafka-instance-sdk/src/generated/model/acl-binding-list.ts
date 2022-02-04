@@ -26,7 +26,6 @@ export interface AclBindingList {
      * @type {Array<AclBinding>}
      * @memberof AclBindingList
      */
-    items?: Array<AclBinding>;
+    'items'?: Array<AclBinding>;
 }
-
 

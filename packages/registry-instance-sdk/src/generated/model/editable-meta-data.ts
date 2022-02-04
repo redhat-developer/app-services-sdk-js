@@ -25,25 +25,24 @@ export interface EditableMetaData {
      * @type {string}
      * @memberof EditableMetaData
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof EditableMetaData
      */
-    description?: string;
+    'description'?: string;
     /**
      * 
      * @type {Array<string>}
      * @memberof EditableMetaData
      */
-    labels?: Array<string>;
+    'labels'?: Array<string>;
     /**
      * User-defined name-value pairs. Name and value must be strings.
      * @type {{ [key: string]: string; }}
      * @memberof EditableMetaData
      */
-    properties?: { [key: string]: string; };
+    'properties'?: { [key: string]: string; };
 }
-
 

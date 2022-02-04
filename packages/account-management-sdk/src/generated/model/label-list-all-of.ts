@@ -26,7 +26,6 @@ export interface LabelListAllOf {
      * @type {Array<Label>}
      * @memberof LabelListAllOf
      */
-    items?: Array<Label>;
+    'items'?: Array<Label>;
 }
-
 

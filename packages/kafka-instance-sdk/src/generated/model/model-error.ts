@@ -25,19 +25,18 @@ export interface ModelError {
      * @type {number}
      * @memberof ModelError
      */
-    code?: number;
+    'code'?: number;
     /**
      * 
      * @type {string}
      * @memberof ModelError
      */
-    error_message?: string;
+    'error_message'?: string;
     /**
      * 
      * @type {string}
      * @memberof ModelError
      */
-    _class?: string;
+    'class'?: string;
 }
-
 

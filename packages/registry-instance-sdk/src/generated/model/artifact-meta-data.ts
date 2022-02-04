@@ -27,91 +27,90 @@ export interface ArtifactMetaData {
      * @type {string}
      * @memberof ArtifactMetaData
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof ArtifactMetaData
      */
-    description?: string;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof ArtifactMetaData
      */
-    createdBy: string;
+    'createdBy': string;
     /**
      * 
      * @type {string}
      * @memberof ArtifactMetaData
      */
-    createdOn: string;
+    'createdOn': string;
     /**
      * 
      * @type {string}
      * @memberof ArtifactMetaData
      */
-    modifiedBy: string;
+    'modifiedBy': string;
     /**
      * 
      * @type {string}
      * @memberof ArtifactMetaData
      */
-    modifiedOn: string;
+    'modifiedOn': string;
     /**
      * The ID of a single artifact.
      * @type {string}
      * @memberof ArtifactMetaData
      */
-    id: string;
+    'id': string;
     /**
      * 
      * @type {string}
      * @memberof ArtifactMetaData
      */
-    version: string;
+    'version': string;
     /**
      * 
      * @type {ArtifactType}
      * @memberof ArtifactMetaData
      */
-    type: ArtifactType;
+    'type': ArtifactType;
     /**
      * 
      * @type {number}
      * @memberof ArtifactMetaData
      */
-    globalId: number;
+    'globalId': number;
     /**
      * 
      * @type {ArtifactState}
      * @memberof ArtifactMetaData
      */
-    state: ArtifactState;
+    'state': ArtifactState;
     /**
      * 
      * @type {Array<string>}
      * @memberof ArtifactMetaData
      */
-    labels?: Array<string>;
+    'labels'?: Array<string>;
     /**
      * User-defined name-value pairs. Name and value must be strings.
      * @type {{ [key: string]: string; }}
      * @memberof ArtifactMetaData
      */
-    properties?: { [key: string]: string; };
+    'properties'?: { [key: string]: string; };
     /**
      * An ID of a single artifact group.
      * @type {string}
      * @memberof ArtifactMetaData
      */
-    groupId?: string;
+    'groupId'?: string;
     /**
      * 
      * @type {number}
      * @memberof ArtifactMetaData
      */
-    contentId: number;
+    'contentId': number;
 }
-
 

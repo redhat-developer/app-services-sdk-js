@@ -25,4 +25,3 @@ import { RootTypeForRegistry } from './root-type-for-registry';
 export type Registry = ObjectReference & RootTypeForRegistry;
 
 
-

@@ -23,4 +23,3 @@ import { RoleBindingAllOf } from './role-binding-all-of';
 export type RoleBinding = ObjectReference & RoleBindingAllOf;
 
 
-

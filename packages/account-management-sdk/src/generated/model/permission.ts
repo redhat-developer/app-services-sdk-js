@@ -22,4 +22,3 @@ import { PermissionAllOf } from './permission-all-of';
 export type Permission = PermissionAllOf;
 
 
-

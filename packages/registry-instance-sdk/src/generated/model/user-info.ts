@@ -25,31 +25,30 @@ export interface UserInfo {
      * @type {string}
      * @memberof UserInfo
      */
-    username?: string;
+    'username'?: string;
     /**
      * 
      * @type {string}
      * @memberof UserInfo
      */
-    displayName?: string;
+    'displayName'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof UserInfo
      */
-    admin?: boolean;
+    'admin'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserInfo
      */
-    developer?: boolean;
+    'developer'?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserInfo
      */
-    viewer?: boolean;
+    'viewer'?: boolean;
 }
-
 

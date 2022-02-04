@@ -11,7 +11,7 @@ const apiConfig = new Configuration({
 
 const connectorsApi = new ConnectorsApi(apiConfig)
 
-connectorsApi.getConnector("id", "kafka-id").then((data) => {
+connectorsApi.getConnector("id").then((data) => {
     console.log(data?.data)
 }).catch((err) => {
     if (isServiceApiError(err)) {

@@ -29,4 +29,3 @@ import { ServiceAccount } from './service-account';
 export type ConnectorRequest = ConnectorConfiguration & ConnectorRequestMeta;
 
 
-

@@ -25,30 +25,27 @@ export interface ResourceQuotaRequest {
      * @type {string}
      * @memberof ResourceQuotaRequest
      */
-    sku: string;
+    'sku': string;
     /**
      * 
      * @type {number}
      * @memberof ResourceQuotaRequest
      */
-    sku_count: number;
+    'sku_count': number;
     /**
      * 
      * @type {string}
      * @memberof ResourceQuotaRequest
      */
-    type?: ResourceQuotaRequestTypeEnum;
+    'type'?: ResourceQuotaRequestTypeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ResourceQuotaRequestTypeEnum {
-    Config = 'Config',
-    Manual = 'Manual',
-    Subscription = 'Subscription'
-}
+export const ResourceQuotaRequestTypeEnum = {
+    Config: 'Config',
+    Manual: 'Manual',
+    Subscription: 'Subscription'
+} as const;
 
+export type ResourceQuotaRequestTypeEnum = typeof ResourceQuotaRequestTypeEnum[keyof typeof ResourceQuotaRequestTypeEnum];
 
 

@@ -22,4 +22,3 @@ import { SummaryVectorAllOf } from './summary-vector-all-of';
 export type SummaryVector = SummaryVectorAllOf;
 
 
-

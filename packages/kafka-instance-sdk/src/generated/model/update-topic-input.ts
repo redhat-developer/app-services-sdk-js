@@ -26,13 +26,12 @@ export interface UpdateTopicInput {
      * @type {Array<ConfigEntry>}
      * @memberof UpdateTopicInput
      */
-    config?: Array<ConfigEntry>;
+    'config'?: Array<ConfigEntry>;
     /**
      * Number of partitions (only increasing supported)
      * @type {number}
      * @memberof UpdateTopicInput
      */
-    numPartitions?: number;
+    'numPartitions'?: number;
 }
-
 

@@ -26,13 +26,12 @@ export interface RoleMapping {
      * @type {string}
      * @memberof RoleMapping
      */
-    principalId: string;
+    'principalId': string;
     /**
      * 
      * @type {RoleType}
      * @memberof RoleMapping
      */
-    role: RoleType;
+    'role': RoleType;
 }
-
 

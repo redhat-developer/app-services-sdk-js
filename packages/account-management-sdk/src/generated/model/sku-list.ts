@@ -24,4 +24,3 @@ import { SkuListAllOf } from './sku-list-all-of';
 export type SkuList = List & SkuListAllOf;
 
 
-

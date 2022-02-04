@@ -31,253 +31,242 @@ export interface SubscriptionAllOf {
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    billing_expiration_date?: string;
+    'billing_expiration_date'?: string;
     /**
      * 
      * @type {Array<Capability>}
      * @memberof SubscriptionAllOf
      */
-    capabilities?: Array<Capability>;
+    'capabilities'?: Array<Capability>;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    cloud_account_id?: string;
+    'cloud_account_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    cloud_provider_id?: string;
+    'cloud_provider_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    cluster_billing_model?: string;
+    'cluster_billing_model'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    cluster_id?: string;
+    'cluster_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    console_url?: string;
+    'console_url'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    consumer_uuid?: string;
+    'consumer_uuid'?: string;
     /**
      * 
      * @type {number}
      * @memberof SubscriptionAllOf
      */
-    cpu_total?: number;
+    'cpu_total'?: number;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {AccountReference}
      * @memberof SubscriptionAllOf
      */
-    creator?: AccountReference;
+    'creator'?: AccountReference;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    display_name?: string;
+    'display_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    external_cluster_id?: string;
+    'external_cluster_id'?: string;
     /**
      * 
      * @type {Array<Label>}
      * @memberof SubscriptionAllOf
      */
-    labels?: Array<Label>;
+    'labels'?: Array<Label>;
     /**
      * Last time this subscription were reconciled about cluster usage
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    last_reconcile_date?: string;
+    'last_reconcile_date'?: string;
     /**
      * Last time status was set to Released for this cluster/subscription in Unix time
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    last_released_at?: string;
+    'last_released_at'?: string;
     /**
      * Last telemetry authorization request for this cluster/subscription in Unix time
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    last_telemetry_date?: string;
+    'last_telemetry_date'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof SubscriptionAllOf
      */
-    managed: boolean;
+    'managed': boolean;
     /**
      * 
      * @type {Array<OneMetric>}
      * @memberof SubscriptionAllOf
      */
-    metrics?: Array<OneMetric>;
+    'metrics'?: Array<OneMetric>;
     /**
      * 
      * @type {Array<Account>}
      * @memberof SubscriptionAllOf
      */
-    notification_contacts?: Array<Account>;
+    'notification_contacts'?: Array<Account>;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    organization_id?: string;
+    'organization_id'?: string;
     /**
      * 
      * @type {Plan}
      * @memberof SubscriptionAllOf
      */
-    plan?: Plan;
+    'plan'?: Plan;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    product_bundle?: SubscriptionAllOfProductBundleEnum;
+    'product_bundle'?: SubscriptionAllOfProductBundleEnum;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    provenance?: string;
+    'provenance'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    region_id?: string;
+    'region_id'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof SubscriptionAllOf
      */
-    released?: boolean;
+    'released'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    service_level?: SubscriptionAllOfServiceLevelEnum;
+    'service_level'?: SubscriptionAllOfServiceLevelEnum;
     /**
      * 
      * @type {number}
      * @memberof SubscriptionAllOf
      */
-    socket_total?: number;
+    'socket_total'?: number;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    status?: string;
+    'status'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    support_level?: SubscriptionAllOfSupportLevelEnum;
+    'support_level'?: SubscriptionAllOfSupportLevelEnum;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    system_units?: SubscriptionAllOfSystemUnitsEnum;
+    'system_units'?: SubscriptionAllOfSystemUnitsEnum;
     /**
      * If the subscription is a trial, date the trial ends
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    trial_end_date?: string;
+    'trial_end_date'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    updated_at?: string;
+    'updated_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof SubscriptionAllOf
      */
-    usage?: SubscriptionAllOfUsageEnum;
+    'usage'?: SubscriptionAllOfUsageEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionAllOfProductBundleEnum {
-    Openshift = 'Openshift',
-    JBossMiddleware = 'JBoss-Middleware',
-    IbmCloudPak = 'IBM-CloudPak'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionAllOfServiceLevelEnum {
-    L1L3 = 'L1-L3',
-    L3Only = 'L3-only'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionAllOfSupportLevelEnum {
-    Eval = 'Eval',
-    Standard = 'Standard',
-    Premium = 'Premium',
-    SelfSupport = 'Self-Support',
-    None = 'None'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionAllOfSystemUnitsEnum {
-    CoresVCpu = 'Cores/vCPU',
-    Sockets = 'Sockets'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SubscriptionAllOfUsageEnum {
-    Production = 'Production',
-    DevelopmentTest = 'Development/Test',
-    DisasterRecovery = 'Disaster Recovery',
-    Academic = 'Academic'
-}
+export const SubscriptionAllOfProductBundleEnum = {
+    Openshift: 'Openshift',
+    JBossMiddleware: 'JBoss-Middleware',
+    IbmCloudPak: 'IBM-CloudPak'
+} as const;
 
+export type SubscriptionAllOfProductBundleEnum = typeof SubscriptionAllOfProductBundleEnum[keyof typeof SubscriptionAllOfProductBundleEnum];
+export const SubscriptionAllOfServiceLevelEnum = {
+    L1L3: 'L1-L3',
+    L3Only: 'L3-only'
+} as const;
+
+export type SubscriptionAllOfServiceLevelEnum = typeof SubscriptionAllOfServiceLevelEnum[keyof typeof SubscriptionAllOfServiceLevelEnum];
+export const SubscriptionAllOfSupportLevelEnum = {
+    Eval: 'Eval',
+    Standard: 'Standard',
+    Premium: 'Premium',
+    SelfSupport: 'Self-Support',
+    None: 'None'
+} as const;
+
+export type SubscriptionAllOfSupportLevelEnum = typeof SubscriptionAllOfSupportLevelEnum[keyof typeof SubscriptionAllOfSupportLevelEnum];
+export const SubscriptionAllOfSystemUnitsEnum = {
+    CoresVCpu: 'Cores/vCPU',
+    Sockets: 'Sockets'
+} as const;
+
+export type SubscriptionAllOfSystemUnitsEnum = typeof SubscriptionAllOfSystemUnitsEnum[keyof typeof SubscriptionAllOfSystemUnitsEnum];
+export const SubscriptionAllOfUsageEnum = {
+    Production: 'Production',
+    DevelopmentTest: 'Development/Test',
+    DisasterRecovery: 'Disaster Recovery',
+    Academic: 'Academic'
+} as const;
+
+export type SubscriptionAllOfUsageEnum = typeof SubscriptionAllOfUsageEnum[keyof typeof SubscriptionAllOfUsageEnum];
 
 

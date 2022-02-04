@@ -25,25 +25,24 @@ export interface List {
      * @type {string}
      * @memberof List
      */
-    kind: string;
+    'kind': string;
     /**
      * 
      * @type {number}
      * @memberof List
      */
-    page: number;
+    'page': number;
     /**
      * 
      * @type {number}
      * @memberof List
      */
-    size: number;
+    'size': number;
     /**
      * 
      * @type {number}
      * @memberof List
      */
-    total: number;
+    'total': number;
 }
-
 

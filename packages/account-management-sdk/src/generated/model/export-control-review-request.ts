@@ -25,13 +25,12 @@ export interface ExportControlReviewRequest {
      * @type {string}
      * @memberof ExportControlReviewRequest
      */
-    account_username: string;
+    'account_username': string;
     /**
      * 
      * @type {boolean}
      * @memberof ExportControlReviewRequest
      */
-    ignore_cache?: boolean;
+    'ignore_cache'?: boolean;
 }
-
 

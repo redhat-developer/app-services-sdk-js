@@ -26,13 +26,12 @@ export interface ConnectorClusterStatusStatus {
      * @type {ConnectorClusterState}
      * @memberof ConnectorClusterStatusStatus
      */
-    state?: ConnectorClusterState;
+    'state'?: ConnectorClusterState;
     /**
      * 
      * @type {string}
      * @memberof ConnectorClusterStatusStatus
      */
-    error?: string;
+    'error'?: string;
 }
-
 

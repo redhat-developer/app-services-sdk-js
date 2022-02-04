@@ -24,4 +24,3 @@ import { RoleAllOf } from './role-all-of';
 export type Role = ObjectReference & RoleAllOf;
 
 
-

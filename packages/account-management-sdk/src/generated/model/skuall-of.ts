@@ -26,37 +26,36 @@ export interface SKUAllOf {
      * @type {string}
      * @memberof SKUAllOf
      */
-    availability_zone_type?: string;
+    'availability_zone_type'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof SKUAllOf
      */
-    byoc: boolean;
+    'byoc': boolean;
     /**
      * 
      * @type {string}
      * @memberof SKUAllOf
      */
-    id?: string;
+    'id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SKUAllOf
      */
-    resource_name?: string;
+    'resource_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof SKUAllOf
      */
-    resource_type?: string;
+    'resource_type'?: string;
     /**
      * 
      * @type {Array<EphemeralResourceQuota>}
      * @memberof SKUAllOf
      */
-    resources?: Array<EphemeralResourceQuota>;
+    'resources'?: Array<EphemeralResourceQuota>;
 }
-
 

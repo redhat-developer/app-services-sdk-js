@@ -32,4 +32,3 @@ import { ServiceAccount } from './service-account';
 export type Connector = ConnectorConfiguration & ConnectorMeta & ConnectorStatus & ObjectReference;
 
 
-

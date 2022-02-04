@@ -23,4 +23,3 @@ import { QuotaSummaryAllOf } from './quota-summary-all-of';
 export type QuotaSummary = ObjectReference & QuotaSummaryAllOf;
 
 
-

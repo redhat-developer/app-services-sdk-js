@@ -25,13 +25,12 @@ export interface RuleViolationCause {
      * @type {string}
      * @memberof RuleViolationCause
      */
-    description?: string;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof RuleViolationCause
      */
-    context?: string;
+    'context'?: string;
 }
-
 

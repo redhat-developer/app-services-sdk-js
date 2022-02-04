@@ -25,13 +25,12 @@ export interface ServiceAccountRequest {
      * @type {string}
      * @memberof ServiceAccountRequest
      */
-    name: string;
+    'name': string;
     /**
      * A description for the service account
      * @type {string}
      * @memberof ServiceAccountRequest
      */
-    description?: string;
+    'description'?: string;
 }
-
 

@@ -26,13 +26,12 @@ export interface NewTopicInput {
      * @type {string}
      * @memberof NewTopicInput
      */
-    name: string;
+    'name': string;
     /**
      * 
      * @type {TopicSettings}
      * @memberof NewTopicInput
      */
-    settings: TopicSettings;
+    'settings': TopicSettings;
 }
-
 

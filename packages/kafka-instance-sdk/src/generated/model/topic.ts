@@ -27,19 +27,18 @@ export interface Topic {
      * @type {string}
      * @memberof Topic
      */
-    name?: string;
+    'name'?: string;
     /**
      * Topic configuration entry.
      * @type {Array<ConfigEntry>}
      * @memberof Topic
      */
-    config?: Array<ConfigEntry>;
+    'config'?: Array<ConfigEntry>;
     /**
      * Partitions for this topic.
      * @type {Array<Partition>}
      * @memberof Topic
      */
-    partitions?: Array<Partition>;
+    'partitions'?: Array<Partition>;
 }
-
 

@@ -23,4 +23,3 @@ import { ObjectMeta } from './object-meta';
 export type ConnectorClusterMeta = ConnectorClusterRequestMeta & ObjectMeta;
 
 
-

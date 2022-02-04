@@ -24,4 +24,3 @@ import { List } from './list';
 export type ConnectorClusterList = ConnectorClusterListAllOf & List;
 
 
-

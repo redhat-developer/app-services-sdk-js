@@ -26,13 +26,12 @@ export interface ArtifactSearchResults {
      * @type {Array<SearchedArtifact>}
      * @memberof ArtifactSearchResults
      */
-    artifacts: Array<SearchedArtifact>;
+    'artifacts': Array<SearchedArtifact>;
     /**
      * The total number of artifacts that matched the query that produced the result set (may be  more than the number of artifacts in the result set).
      * @type {number}
      * @memberof ArtifactSearchResults
      */
-    count: number;
+    'count': number;
 }
-
 

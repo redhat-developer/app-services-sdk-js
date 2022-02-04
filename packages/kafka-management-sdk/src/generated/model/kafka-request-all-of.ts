@@ -25,79 +25,78 @@ export interface KafkaRequestAllOf {
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    status?: string;
+    'status'?: string;
     /**
      * Name of Cloud used to deploy. For example AWS
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    cloud_provider?: string;
+    'cloud_provider'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof KafkaRequestAllOf
      */
-    multi_az: boolean;
+    'multi_az': boolean;
     /**
      * Values will be regions of specific cloud provider. For example: us-east-1 for AWS
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    region?: string;
+    'region'?: string;
     /**
      * 
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    owner?: string;
+    'owner'?: string;
     /**
      * 
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    bootstrap_server_host?: string;
+    'bootstrap_server_host'?: string;
     /**
      * 
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    updated_at?: string;
+    'updated_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    failed_reason?: string;
+    'failed_reason'?: string;
     /**
      * 
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    version?: string;
+    'version'?: string;
     /**
      * 
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
-    instance_type?: string;
+    'instance_type'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof KafkaRequestAllOf
      */
-    reauthentication_enabled: boolean;
+    'reauthentication_enabled': boolean;
 }
-
 

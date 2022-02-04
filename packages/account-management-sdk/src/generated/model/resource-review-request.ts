@@ -25,38 +25,33 @@ export interface ResourceReviewRequest {
      * @type {string}
      * @memberof ResourceReviewRequest
      */
-    account_username?: string;
+    'account_username'?: string;
     /**
      * 
      * @type {string}
      * @memberof ResourceReviewRequest
      */
-    action?: ResourceReviewRequestActionEnum;
+    'action'?: ResourceReviewRequestActionEnum;
     /**
      * 
      * @type {string}
      * @memberof ResourceReviewRequest
      */
-    resource_type?: ResourceReviewRequestResourceTypeEnum;
+    'resource_type'?: ResourceReviewRequestResourceTypeEnum;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ResourceReviewRequestActionEnum {
-    Get = 'get',
-    Delete = 'delete',
-    Update = 'update'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ResourceReviewRequestResourceTypeEnum {
-    Cluster = 'Cluster',
-    Subscription = 'Subscription'
-}
+export const ResourceReviewRequestActionEnum = {
+    Get: 'get',
+    Delete: 'delete',
+    Update: 'update'
+} as const;
 
+export type ResourceReviewRequestActionEnum = typeof ResourceReviewRequestActionEnum[keyof typeof ResourceReviewRequestActionEnum];
+export const ResourceReviewRequestResourceTypeEnum = {
+    Cluster: 'Cluster',
+    Subscription: 'Subscription'
+} as const;
+
+export type ResourceReviewRequestResourceTypeEnum = typeof ResourceReviewRequestResourceTypeEnum[keyof typeof ResourceReviewRequestResourceTypeEnum];
 
 

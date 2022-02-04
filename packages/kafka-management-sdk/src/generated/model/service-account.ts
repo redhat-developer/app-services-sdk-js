@@ -24,4 +24,3 @@ import { ServiceAccountAllOf } from './service-account-all-of';
 export type ServiceAccount = ObjectReference & ServiceAccountAllOf;
 
 
-

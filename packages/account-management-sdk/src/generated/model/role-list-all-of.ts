@@ -26,7 +26,6 @@ export interface RoleListAllOf {
      * @type {Array<Role>}
      * @memberof RoleListAllOf
      */
-    items?: Array<Role>;
+    'items'?: Array<Role>;
 }
-
 

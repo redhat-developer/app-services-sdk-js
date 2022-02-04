@@ -25,49 +25,48 @@ export interface RegistryAllOf {
      * @type {boolean}
      * @memberof RegistryAllOf
      */
-    cloudAlias?: boolean;
+    'cloudAlias'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof RegistryAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryAllOf
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryAllOf
      */
-    org_name?: string;
+    'org_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryAllOf
      */
-    team_name?: string;
+    'team_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryAllOf
      */
-    type?: string;
+    'type'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryAllOf
      */
-    updated_at?: string;
+    'updated_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryAllOf
      */
-    url?: string;
+    'url'?: string;
 }
-
 

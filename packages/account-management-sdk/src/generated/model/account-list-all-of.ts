@@ -26,7 +26,6 @@ export interface AccountListAllOf {
      * @type {Array<Account>}
      * @memberof AccountListAllOf
      */
-    items?: Array<Account>;
+    'items'?: Array<Account>;
 }
-
 

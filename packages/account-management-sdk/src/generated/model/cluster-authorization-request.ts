@@ -26,105 +26,100 @@ export interface ClusterAuthorizationRequest {
      * @type {string}
      * @memberof ClusterAuthorizationRequest
      */
-    account_username: string;
+    'account_username': string;
     /**
      * 
      * @type {string}
      * @memberof ClusterAuthorizationRequest
      */
-    availability_zone?: string;
+    'availability_zone'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof ClusterAuthorizationRequest
      */
-    byoc?: boolean;
+    'byoc'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof ClusterAuthorizationRequest
      */
-    cloud_account_id?: string;
+    'cloud_account_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof ClusterAuthorizationRequest
      */
-    cloud_provider_id?: string;
+    'cloud_provider_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof ClusterAuthorizationRequest
      */
-    cluster_id: string;
+    'cluster_id': string;
     /**
      * 
      * @type {boolean}
      * @memberof ClusterAuthorizationRequest
      */
-    disconnected?: boolean;
+    'disconnected'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof ClusterAuthorizationRequest
      */
-    display_name?: string;
+    'display_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof ClusterAuthorizationRequest
      */
-    external_cluster_id?: string;
+    'external_cluster_id'?: string;
     /**
      * 
      * @type {boolean}
      * @memberof ClusterAuthorizationRequest
      */
-    managed?: boolean;
+    'managed'?: boolean;
     /**
      * 
      * @type {string}
      * @memberof ClusterAuthorizationRequest
      */
-    product_category?: ClusterAuthorizationRequestProductCategoryEnum;
+    'product_category'?: ClusterAuthorizationRequestProductCategoryEnum;
     /**
      * 
      * @type {string}
      * @memberof ClusterAuthorizationRequest
      */
-    product_id?: ClusterAuthorizationRequestProductIdEnum;
+    'product_id'?: ClusterAuthorizationRequestProductIdEnum;
     /**
      * 
      * @type {boolean}
      * @memberof ClusterAuthorizationRequest
      */
-    reserve?: boolean;
+    'reserve'?: boolean;
     /**
      * 
      * @type {Array<ReservedResource>}
      * @memberof ClusterAuthorizationRequest
      */
-    resources?: Array<ReservedResource>;
+    'resources'?: Array<ReservedResource>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ClusterAuthorizationRequestProductCategoryEnum {
-    AssistedInstall = 'assistedInstall'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum ClusterAuthorizationRequestProductIdEnum {
-    Ocp = 'ocp',
-    Osd = 'osd',
-    Osdtrial = 'osdtrial',
-    Moa = 'moa',
-    Rhmi = 'rhmi'
-}
+export const ClusterAuthorizationRequestProductCategoryEnum = {
+    AssistedInstall: 'assistedInstall'
+} as const;
 
+export type ClusterAuthorizationRequestProductCategoryEnum = typeof ClusterAuthorizationRequestProductCategoryEnum[keyof typeof ClusterAuthorizationRequestProductCategoryEnum];
+export const ClusterAuthorizationRequestProductIdEnum = {
+    Ocp: 'ocp',
+    Osd: 'osd',
+    Osdtrial: 'osdtrial',
+    Moa: 'moa',
+    Rhmi: 'rhmi'
+} as const;
+
+export type ClusterAuthorizationRequestProductIdEnum = typeof ClusterAuthorizationRequestProductIdEnum[keyof typeof ClusterAuthorizationRequestProductIdEnum];
 
 

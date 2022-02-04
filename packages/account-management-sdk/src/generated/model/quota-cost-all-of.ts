@@ -26,31 +26,30 @@ export interface QuotaCostAllOf {
      * @type {number}
      * @memberof QuotaCostAllOf
      */
-    allowed: number;
+    'allowed': number;
     /**
      * 
      * @type {number}
      * @memberof QuotaCostAllOf
      */
-    consumed: number;
+    'consumed': number;
     /**
      * 
      * @type {string}
      * @memberof QuotaCostAllOf
      */
-    organization_id?: string;
+    'organization_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof QuotaCostAllOf
      */
-    quota_id: string;
+    'quota_id': string;
     /**
      * 
      * @type {Array<RelatedResource>}
      * @memberof QuotaCostAllOf
      */
-    related_resources?: Array<RelatedResource>;
+    'related_resources'?: Array<RelatedResource>;
 }
-
 

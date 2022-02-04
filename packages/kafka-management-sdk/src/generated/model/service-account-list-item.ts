@@ -23,4 +23,3 @@ import { ServiceAccountListItemAllOf } from './service-account-list-item-all-of'
 export type ServiceAccountListItem = ObjectReference & ServiceAccountListItemAllOf;
 
 
-

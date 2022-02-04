@@ -20,12 +20,14 @@
  * @enum {string}
  */
 
-export enum AclPatternTypeFilter {
-    Literal = 'LITERAL',
-    Prefixed = 'PREFIXED',
-    Any = 'ANY',
-    Match = 'MATCH'
-}
+export const AclPatternTypeFilter = {
+    Literal: 'LITERAL',
+    Prefixed: 'PREFIXED',
+    Any: 'ANY',
+    Match: 'MATCH'
+} as const;
+
+export type AclPatternTypeFilter = typeof AclPatternTypeFilter[keyof typeof AclPatternTypeFilter];
 
 
 

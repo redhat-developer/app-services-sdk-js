@@ -27,67 +27,66 @@ export interface SearchedArtifact {
      * @type {string}
      * @memberof SearchedArtifact
      */
-    id: string;
+    'id': string;
     /**
      * 
      * @type {string}
      * @memberof SearchedArtifact
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof SearchedArtifact
      */
-    description?: string;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof SearchedArtifact
      */
-    createdOn: string;
+    'createdOn': string;
     /**
      * 
      * @type {string}
      * @memberof SearchedArtifact
      */
-    createdBy: string;
+    'createdBy': string;
     /**
      * 
      * @type {ArtifactType}
      * @memberof SearchedArtifact
      */
-    type: ArtifactType;
+    'type': ArtifactType;
     /**
      * 
      * @type {Array<string>}
      * @memberof SearchedArtifact
      */
-    labels?: Array<string>;
+    'labels'?: Array<string>;
     /**
      * 
      * @type {ArtifactState}
      * @memberof SearchedArtifact
      */
-    state: ArtifactState;
+    'state': ArtifactState;
     /**
      * 
      * @type {string}
      * @memberof SearchedArtifact
      */
-    modifiedOn?: string;
+    'modifiedOn'?: string;
     /**
      * 
      * @type {string}
      * @memberof SearchedArtifact
      */
-    modifiedBy?: string;
+    'modifiedBy'?: string;
     /**
      * An ID of a single artifact group.
      * @type {string}
      * @memberof SearchedArtifact
      */
-    groupId?: string;
+    'groupId'?: string;
 }
-
 

@@ -25,19 +25,18 @@ export interface ResultListPage {
      * @type {number}
      * @memberof ResultListPage
      */
-    total: number;
+    'total': number;
     /**
      * Current page number (returned for fetch requests)
      * @type {number}
      * @memberof ResultListPage
      */
-    page?: number;
+    'page'?: number;
     /**
      * Number of entries per page (returned for fetch requests)
      * @type {number}
      * @memberof ResultListPage
      */
-    size?: number;
+    'size'?: number;
 }
-
 

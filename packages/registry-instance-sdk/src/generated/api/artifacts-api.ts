@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -59,7 +59,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createArtifact: async (groupId: string, body: any, xRegistryArtifactType?: ArtifactType, xRegistryArtifactId?: string, xRegistryVersion?: string, ifExists?: IfExists, canonical?: boolean, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryName?: string, xRegistryNameEncoded?: string, options: any = {}): Promise<RequestArgs> => {
+        createArtifact: async (groupId: string, body: any, xRegistryArtifactType?: ArtifactType, xRegistryArtifactId?: string, xRegistryVersion?: string, ifExists?: IfExists, canonical?: boolean, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryName?: string, xRegistryNameEncoded?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('createArtifact', 'groupId', groupId)
             // verify required parameter 'body' is not null or undefined
@@ -117,7 +117,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -135,7 +135,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteArtifact: async (groupId: string, artifactId: string, options: any = {}): Promise<RequestArgs> => {
+        deleteArtifact: async (groupId: string, artifactId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('deleteArtifact', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -156,7 +156,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -172,7 +172,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteArtifactsInGroup: async (groupId: string, options: any = {}): Promise<RequestArgs> => {
+        deleteArtifactsInGroup: async (groupId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('deleteArtifactsInGroup', 'groupId', groupId)
             const localVarPath = `/groups/{groupId}/artifacts`
@@ -190,7 +190,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -206,7 +206,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContentByGlobalId: async (globalId: number, options: any = {}): Promise<RequestArgs> => {
+        getContentByGlobalId: async (globalId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'globalId' is not null or undefined
             assertParamExists('getContentByGlobalId', 'globalId', globalId)
             const localVarPath = `/ids/globalIds/{globalId}`
@@ -224,7 +224,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -240,7 +240,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContentByHash: async (contentHash: string, options: any = {}): Promise<RequestArgs> => {
+        getContentByHash: async (contentHash: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'contentHash' is not null or undefined
             assertParamExists('getContentByHash', 'contentHash', contentHash)
             const localVarPath = `/ids/contentHashes/{contentHash}/`
@@ -258,7 +258,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -274,7 +274,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getContentById: async (contentId: number, options: any = {}): Promise<RequestArgs> => {
+        getContentById: async (contentId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'contentId' is not null or undefined
             assertParamExists('getContentById', 'contentId', contentId)
             const localVarPath = `/ids/contentIds/{contentId}/`
@@ -292,7 +292,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -309,7 +309,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getLatestArtifact: async (groupId: string, artifactId: string, options: any = {}): Promise<RequestArgs> => {
+        getLatestArtifact: async (groupId: string, artifactId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('getLatestArtifact', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -330,7 +330,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -350,7 +350,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listArtifactsInGroup: async (groupId: string, limit?: number, offset?: number, order?: SortOrder, orderby?: SortBy, options: any = {}): Promise<RequestArgs> => {
+        listArtifactsInGroup: async (groupId: string, limit?: number, offset?: number, order?: SortOrder, orderby?: SortBy, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('listArtifactsInGroup', 'groupId', groupId)
             const localVarPath = `/groups/{groupId}/artifacts`
@@ -384,7 +384,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -408,7 +408,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchArtifacts: async (name?: string, offset?: number, limit?: number, order?: SortOrder, orderby?: SortBy, labels?: Array<string>, properties?: Array<string>, description?: string, group?: string, options: any = {}): Promise<RequestArgs> => {
+        searchArtifacts: async (name?: string, offset?: number, limit?: number, order?: SortOrder, orderby?: SortBy, labels?: Array<string>, properties?: Array<string>, description?: string, group?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/search/artifacts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -459,7 +459,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -481,7 +481,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchArtifactsByContent: async (body: any, canonical?: boolean, artifactType?: ArtifactType, offset?: number, limit?: number, order?: 'asc' | 'desc', orderby?: 'name' | 'createdOn', options: any = {}): Promise<RequestArgs> => {
+        searchArtifactsByContent: async (body: any, canonical?: boolean, artifactType?: ArtifactType, offset?: number, limit?: number, order?: 'asc' | 'desc', orderby?: 'name' | 'createdOn', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             assertParamExists('searchArtifactsByContent', 'body', body)
             const localVarPath = `/search/artifacts`;
@@ -524,7 +524,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -548,7 +548,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateArtifact: async (groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryNameEncoded?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, options: any = {}): Promise<RequestArgs> => {
+        updateArtifact: async (groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryNameEncoded?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('updateArtifact', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -593,7 +593,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -612,7 +612,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateArtifactState: async (groupId: string, artifactId: string, updateState: UpdateState, options: any = {}): Promise<RequestArgs> => {
+        updateArtifactState: async (groupId: string, artifactId: string, updateState: UpdateState, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('updateArtifactState', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -637,7 +637,7 @@ export const ArtifactsApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(updateState, localVarRequestOptions, configuration)
@@ -674,7 +674,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createArtifact(groupId: string, body: any, xRegistryArtifactType?: ArtifactType, xRegistryArtifactId?: string, xRegistryVersion?: string, ifExists?: IfExists, canonical?: boolean, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryName?: string, xRegistryNameEncoded?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactMetaData>> {
+        async createArtifact(groupId: string, body: any, xRegistryArtifactType?: ArtifactType, xRegistryArtifactId?: string, xRegistryVersion?: string, ifExists?: IfExists, canonical?: boolean, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryName?: string, xRegistryNameEncoded?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactMetaData>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createArtifact(groupId, body, xRegistryArtifactType, xRegistryArtifactId, xRegistryVersion, ifExists, canonical, xRegistryDescription, xRegistryDescriptionEncoded, xRegistryName, xRegistryNameEncoded, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -686,7 +686,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteArtifact(groupId: string, artifactId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteArtifact(groupId: string, artifactId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteArtifact(groupId, artifactId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -697,7 +697,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteArtifactsInGroup(groupId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteArtifactsInGroup(groupId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteArtifactsInGroup(groupId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -708,7 +708,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getContentByGlobalId(globalId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getContentByGlobalId(globalId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getContentByGlobalId(globalId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -719,7 +719,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getContentByHash(contentHash: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getContentByHash(contentHash: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getContentByHash(contentHash, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -730,7 +730,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getContentById(contentId: number, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getContentById(contentId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getContentById(contentId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -742,7 +742,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getLatestArtifact(groupId: string, artifactId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+        async getLatestArtifact(groupId: string, artifactId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getLatestArtifact(groupId, artifactId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -757,7 +757,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listArtifactsInGroup(groupId: string, limit?: number, offset?: number, order?: SortOrder, orderby?: SortBy, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactSearchResults>> {
+        async listArtifactsInGroup(groupId: string, limit?: number, offset?: number, order?: SortOrder, orderby?: SortBy, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactSearchResults>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listArtifactsInGroup(groupId, limit, offset, order, orderby, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -776,7 +776,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async searchArtifacts(name?: string, offset?: number, limit?: number, order?: SortOrder, orderby?: SortBy, labels?: Array<string>, properties?: Array<string>, description?: string, group?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactSearchResults>> {
+        async searchArtifacts(name?: string, offset?: number, limit?: number, order?: SortOrder, orderby?: SortBy, labels?: Array<string>, properties?: Array<string>, description?: string, group?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactSearchResults>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.searchArtifacts(name, offset, limit, order, orderby, labels, properties, description, group, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -793,7 +793,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async searchArtifactsByContent(body: any, canonical?: boolean, artifactType?: ArtifactType, offset?: number, limit?: number, order?: 'asc' | 'desc', orderby?: 'name' | 'createdOn', options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactSearchResults>> {
+        async searchArtifactsByContent(body: any, canonical?: boolean, artifactType?: ArtifactType, offset?: number, limit?: number, order?: 'asc' | 'desc', orderby?: 'name' | 'createdOn', options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactSearchResults>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.searchArtifactsByContent(body, canonical, artifactType, offset, limit, order, orderby, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -811,7 +811,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateArtifact(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryNameEncoded?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactMetaData>> {
+        async updateArtifact(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryNameEncoded?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactMetaData>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateArtifact(groupId, artifactId, body, xRegistryVersion, xRegistryName, xRegistryNameEncoded, xRegistryDescription, xRegistryDescriptionEncoded, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -824,7 +824,7 @@ export const ArtifactsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateArtifactState(groupId: string, artifactId: string, updateState: UpdateState, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateArtifactState(groupId: string, artifactId: string, updateState: UpdateState, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateArtifactState(groupId, artifactId, updateState, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1024,7 +1024,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    createArtifact(groupId: string, body: any, xRegistryArtifactType?: ArtifactType, xRegistryArtifactId?: string, xRegistryVersion?: string, ifExists?: IfExists, canonical?: boolean, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryName?: string, xRegistryNameEncoded?: string, options?: any): AxiosPromise<ArtifactMetaData>;
+    createArtifact(groupId: string, body: any, xRegistryArtifactType?: ArtifactType, xRegistryArtifactId?: string, xRegistryVersion?: string, ifExists?: IfExists, canonical?: boolean, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryName?: string, xRegistryNameEncoded?: string, options?: AxiosRequestConfig): AxiosPromise<ArtifactMetaData>;
 
     /**
      * Deletes an artifact completely, resulting in all versions of the artifact also being deleted.  This may fail for one of the following reasons:  * No artifact with the `artifactId` exists (HTTP error `404`) * A server error occurred (HTTP error `500`)
@@ -1035,7 +1035,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    deleteArtifact(groupId: string, artifactId: string, options?: any): AxiosPromise<void>;
+    deleteArtifact(groupId: string, artifactId: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Deletes all of the artifacts that exist in a given group.
@@ -1045,7 +1045,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    deleteArtifactsInGroup(groupId: string, options?: any): AxiosPromise<void>;
+    deleteArtifactsInGroup(groupId: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Gets the content for an artifact version in the registry using its globally unique identifier.  This operation may fail for one of the following reasons:  * No artifact version with this `globalId` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1055,7 +1055,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    getContentByGlobalId(globalId: number, options?: any): AxiosPromise<any>;
+    getContentByGlobalId(globalId: number, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Gets the content for an artifact version in the registry using the  SHA-256 hash of the content.  This content hash may be shared by multiple artifact versions in the case where the artifact versions have identical content.  This operation may fail for one of the following reasons:  * No content with this `contentHash` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1065,7 +1065,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    getContentByHash(contentHash: string, options?: any): AxiosPromise<any>;
+    getContentByHash(contentHash: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Gets the content for an artifact version in the registry using the unique content identifier for that content.  This content ID may be shared by multiple artifact versions in the case where the artifact versions are identical.  This operation may fail for one of the following reasons:  * No content with this `contentId` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1075,7 +1075,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    getContentById(contentId: number, options?: any): AxiosPromise<any>;
+    getContentById(contentId: number, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Returns the latest version of the artifact in its raw form.  The `Content-Type` of the response depends on the artifact type.  In most cases, this is `application/json`, but  for some types it may be different (for example, `PROTOBUF`).  This operation may fail for one of the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1086,7 +1086,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    getLatestArtifact(groupId: string, artifactId: string, options?: any): AxiosPromise<any>;
+    getLatestArtifact(groupId: string, artifactId: string, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Returns a list of all artifacts in the group.  This list is paged.
@@ -1100,7 +1100,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    listArtifactsInGroup(groupId: string, limit?: number, offset?: number, order?: SortOrder, orderby?: SortBy, options?: any): AxiosPromise<ArtifactSearchResults>;
+    listArtifactsInGroup(groupId: string, limit?: number, offset?: number, order?: SortOrder, orderby?: SortBy, options?: AxiosRequestConfig): AxiosPromise<ArtifactSearchResults>;
 
     /**
      * Returns a paginated list of all artifacts that match the provided filter criteria. 
@@ -1118,7 +1118,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    searchArtifacts(name?: string, offset?: number, limit?: number, order?: SortOrder, orderby?: SortBy, labels?: Array<string>, properties?: Array<string>, description?: string, group?: string, options?: any): AxiosPromise<ArtifactSearchResults>;
+    searchArtifacts(name?: string, offset?: number, limit?: number, order?: SortOrder, orderby?: SortBy, labels?: Array<string>, properties?: Array<string>, description?: string, group?: string, options?: AxiosRequestConfig): AxiosPromise<ArtifactSearchResults>;
 
     /**
      * Returns a paginated list of all artifacts with at least one version that matches the posted content. 
@@ -1134,7 +1134,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    searchArtifactsByContent(body: any, canonical?: boolean, artifactType?: ArtifactType, offset?: number, limit?: number, order?: 'asc' | 'desc', orderby?: 'name' | 'createdOn', options?: any): AxiosPromise<ArtifactSearchResults>;
+    searchArtifactsByContent(body: any, canonical?: boolean, artifactType?: ArtifactType, offset?: number, limit?: number, order?: 'asc' | 'desc', orderby?: 'name' | 'createdOn', options?: AxiosRequestConfig): AxiosPromise<ArtifactSearchResults>;
 
     /**
      * Updates an artifact by uploading new content.  The body of the request should be the raw content of the artifact.  This is typically in JSON format for *most* of the supported types, but may be in another format for a few (for example, `PROTOBUF`). The type of the content should be compatible with the artifact\'s type (it would be an error to update an `AVRO` artifact with new `OPENAPI` content, for example).  The update could fail for a number of reasons including:  * Provided content (request body) was empty (HTTP error `400`) * No artifact with the `artifactId` exists (HTTP error `404`) * The new content violates one of the rules configured for the artifact (HTTP error `409`) * A server error occurred (HTTP error `500`)  When successful, this creates a new version of the artifact, making it the most recent (and therefore official) version of the artifact.
@@ -1151,7 +1151,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    updateArtifact(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryNameEncoded?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, options?: any): AxiosPromise<ArtifactMetaData>;
+    updateArtifact(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryNameEncoded?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, options?: AxiosRequestConfig): AxiosPromise<ArtifactMetaData>;
 
     /**
      * Updates the state of the artifact.  For example, you can use this to mark the latest version of an artifact as `DEPRECATED`.  The operation changes the state of the latest  version of the artifact.  If multiple versions exist, only the most recent is changed.  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1163,7 +1163,7 @@ export interface ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApiInterface
      */
-    updateArtifactState(groupId: string, artifactId: string, updateState: UpdateState, options?: any): AxiosPromise<void>;
+    updateArtifactState(groupId: string, artifactId: string, updateState: UpdateState, options?: AxiosRequestConfig): AxiosPromise<void>;
 
 }
 
@@ -1192,7 +1192,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public createArtifact(groupId: string, body: any, xRegistryArtifactType?: ArtifactType, xRegistryArtifactId?: string, xRegistryVersion?: string, ifExists?: IfExists, canonical?: boolean, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryName?: string, xRegistryNameEncoded?: string, options?: any) {
+    public createArtifact(groupId: string, body: any, xRegistryArtifactType?: ArtifactType, xRegistryArtifactId?: string, xRegistryVersion?: string, ifExists?: IfExists, canonical?: boolean, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, xRegistryName?: string, xRegistryNameEncoded?: string, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).createArtifact(groupId, body, xRegistryArtifactType, xRegistryArtifactId, xRegistryVersion, ifExists, canonical, xRegistryDescription, xRegistryDescriptionEncoded, xRegistryName, xRegistryNameEncoded, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1205,7 +1205,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public deleteArtifact(groupId: string, artifactId: string, options?: any) {
+    public deleteArtifact(groupId: string, artifactId: string, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).deleteArtifact(groupId, artifactId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1217,7 +1217,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public deleteArtifactsInGroup(groupId: string, options?: any) {
+    public deleteArtifactsInGroup(groupId: string, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).deleteArtifactsInGroup(groupId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1229,7 +1229,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public getContentByGlobalId(globalId: number, options?: any) {
+    public getContentByGlobalId(globalId: number, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).getContentByGlobalId(globalId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1241,7 +1241,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public getContentByHash(contentHash: string, options?: any) {
+    public getContentByHash(contentHash: string, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).getContentByHash(contentHash, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1253,7 +1253,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public getContentById(contentId: number, options?: any) {
+    public getContentById(contentId: number, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).getContentById(contentId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1266,7 +1266,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public getLatestArtifact(groupId: string, artifactId: string, options?: any) {
+    public getLatestArtifact(groupId: string, artifactId: string, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).getLatestArtifact(groupId, artifactId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1282,7 +1282,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public listArtifactsInGroup(groupId: string, limit?: number, offset?: number, order?: SortOrder, orderby?: SortBy, options?: any) {
+    public listArtifactsInGroup(groupId: string, limit?: number, offset?: number, order?: SortOrder, orderby?: SortBy, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).listArtifactsInGroup(groupId, limit, offset, order, orderby, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1302,7 +1302,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public searchArtifacts(name?: string, offset?: number, limit?: number, order?: SortOrder, orderby?: SortBy, labels?: Array<string>, properties?: Array<string>, description?: string, group?: string, options?: any) {
+    public searchArtifacts(name?: string, offset?: number, limit?: number, order?: SortOrder, orderby?: SortBy, labels?: Array<string>, properties?: Array<string>, description?: string, group?: string, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).searchArtifacts(name, offset, limit, order, orderby, labels, properties, description, group, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1320,7 +1320,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public searchArtifactsByContent(body: any, canonical?: boolean, artifactType?: ArtifactType, offset?: number, limit?: number, order?: 'asc' | 'desc', orderby?: 'name' | 'createdOn', options?: any) {
+    public searchArtifactsByContent(body: any, canonical?: boolean, artifactType?: ArtifactType, offset?: number, limit?: number, order?: 'asc' | 'desc', orderby?: 'name' | 'createdOn', options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).searchArtifactsByContent(body, canonical, artifactType, offset, limit, order, orderby, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1339,7 +1339,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public updateArtifact(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryNameEncoded?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, options?: any) {
+    public updateArtifact(groupId: string, artifactId: string, body: any, xRegistryVersion?: string, xRegistryName?: string, xRegistryNameEncoded?: string, xRegistryDescription?: string, xRegistryDescriptionEncoded?: string, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).updateArtifact(groupId, artifactId, body, xRegistryVersion, xRegistryName, xRegistryNameEncoded, xRegistryDescription, xRegistryDescriptionEncoded, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -1353,7 +1353,7 @@ export class ArtifactsApi extends BaseAPI implements ArtifactsApiInterface {
      * @throws {RequiredError}
      * @memberof ArtifactsApi
      */
-    public updateArtifactState(groupId: string, artifactId: string, updateState: UpdateState, options?: any) {
+    public updateArtifactState(groupId: string, artifactId: string, updateState: UpdateState, options?: AxiosRequestConfig) {
         return ArtifactsApiFp(this.configuration).updateArtifactState(groupId, artifactId, updateState, options).then((request) => request(this.axios, this.basePath));
     }
 }

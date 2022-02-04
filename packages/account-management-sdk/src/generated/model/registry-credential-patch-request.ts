@@ -25,31 +25,30 @@ export interface RegistryCredentialPatchRequest {
      * @type {string}
      * @memberof RegistryCredentialPatchRequest
      */
-    account_id?: string;
+    'account_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryCredentialPatchRequest
      */
-    external_resource_id?: string;
+    'external_resource_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryCredentialPatchRequest
      */
-    registry_id?: string;
+    'registry_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryCredentialPatchRequest
      */
-    token?: string;
+    'token'?: string;
     /**
      * 
      * @type {string}
      * @memberof RegistryCredentialPatchRequest
      */
-    username?: string;
+    'username'?: string;
 }
-
 

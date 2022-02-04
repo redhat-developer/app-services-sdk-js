@@ -26,7 +26,6 @@ export interface LogConfiguration {
      * @type {LogLevel}
      * @memberof LogConfiguration
      */
-    level: LogLevel;
+    'level': LogLevel;
 }
-
 

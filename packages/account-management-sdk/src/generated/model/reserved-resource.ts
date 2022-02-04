@@ -23,4 +23,3 @@ import { ReservedResourceAllOf } from './reserved-resource-all-of';
 export type ReservedResource = ObjectReference & ReservedResourceAllOf;
 
 
-

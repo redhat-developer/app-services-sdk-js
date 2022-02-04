@@ -27,4 +27,3 @@ import { ObjectMeta } from './object-meta';
 export type ConnectorMeta = ConnectorMetaAllOf & ConnectorRequestMeta & ObjectMeta;
 
 
-

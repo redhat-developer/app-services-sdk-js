@@ -25,7 +25,6 @@ export interface ServiceStatus {
      * @type {boolean}
      * @memberof ServiceStatus
      */
-    max_instances_reached?: boolean;
+    'max_instances_reached'?: boolean;
 }
-
 

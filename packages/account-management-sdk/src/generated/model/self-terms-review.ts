@@ -25,13 +25,12 @@ export interface SelfTermsReview {
      * @type {string}
      * @memberof SelfTermsReview
      */
-    event_code?: string;
+    'event_code'?: string;
     /**
      * 
      * @type {string}
      * @memberof SelfTermsReview
      */
-    site_code?: string;
+    'site_code'?: string;
 }
-
 

@@ -26,19 +26,18 @@ export interface MetricsRangeQueryListAllOf {
      * @type {string}
      * @memberof MetricsRangeQueryListAllOf
      */
-    kind?: string;
+    'kind'?: string;
     /**
      * 
      * @type {string}
      * @memberof MetricsRangeQueryListAllOf
      */
-    id?: string;
+    'id'?: string;
     /**
      * 
      * @type {Array<RangeQuery>}
      * @memberof MetricsRangeQueryListAllOf
      */
-    items?: Array<RangeQuery>;
+    'items'?: Array<RangeQuery>;
 }
-
 

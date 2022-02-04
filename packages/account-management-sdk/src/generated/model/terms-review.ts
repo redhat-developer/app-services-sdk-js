@@ -25,19 +25,18 @@ export interface TermsReview {
      * @type {string}
      * @memberof TermsReview
      */
-    account_username: string;
+    'account_username': string;
     /**
      * 
      * @type {string}
      * @memberof TermsReview
      */
-    event_code?: string;
+    'event_code'?: string;
     /**
      * 
      * @type {string}
      * @memberof TermsReview
      */
-    site_code?: string;
+    'site_code'?: string;
 }
-
 

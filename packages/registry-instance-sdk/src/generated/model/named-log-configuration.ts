@@ -24,4 +24,3 @@ import { NamedLogConfigurationAllOf } from './named-log-configuration-all-of';
 export type NamedLogConfiguration = LogConfiguration & NamedLogConfigurationAllOf;
 
 
-

@@ -26,7 +26,6 @@ export interface CloudProviderListAllOf {
      * @type {Array<CloudProvider>}
      * @memberof CloudProviderListAllOf
      */
-    items?: Array<CloudProvider>;
+    'items'?: Array<CloudProvider>;
 }
-
 

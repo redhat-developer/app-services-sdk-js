@@ -27,43 +27,42 @@ export interface OrganizationAllOf {
      * @type {Array<Capability>}
      * @memberof OrganizationAllOf
      */
-    capabilities?: Array<Capability>;
+    'capabilities'?: Array<Capability>;
     /**
      * 
      * @type {string}
      * @memberof OrganizationAllOf
      */
-    created_at?: string;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof OrganizationAllOf
      */
-    ebs_account_id?: string;
+    'ebs_account_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof OrganizationAllOf
      */
-    external_id?: string;
+    'external_id'?: string;
     /**
      * 
      * @type {Array<Label>}
      * @memberof OrganizationAllOf
      */
-    labels?: Array<Label>;
+    'labels'?: Array<Label>;
     /**
      * 
      * @type {string}
      * @memberof OrganizationAllOf
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof OrganizationAllOf
      */
-    updated_at?: string;
+    'updated_at'?: string;
 }
-
 

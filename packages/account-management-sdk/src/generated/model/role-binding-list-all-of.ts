@@ -26,7 +26,6 @@ export interface RoleBindingListAllOf {
      * @type {Array<RoleBinding>}
      * @memberof RoleBindingListAllOf
      */
-    items?: Array<RoleBinding>;
+    'items'?: Array<RoleBinding>;
 }
-
 

@@ -24,4 +24,3 @@ import { RoleBindingListAllOf } from './role-binding-list-all-of';
 export type RoleBindingList = List & RoleBindingListAllOf;
 
 
-

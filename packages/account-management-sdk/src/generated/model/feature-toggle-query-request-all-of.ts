@@ -25,7 +25,6 @@ export interface FeatureToggleQueryRequestAllOf {
      * @type {string}
      * @memberof FeatureToggleQueryRequestAllOf
      */
-    organization_id: string;
+    'organization_id': string;
 }
-
 

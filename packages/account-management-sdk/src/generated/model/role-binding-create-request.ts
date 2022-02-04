@@ -22,4 +22,3 @@ import { RoleBindingRequest } from './role-binding-request';
 export type RoleBindingCreateRequest = RoleBindingRequest;
 
 
-

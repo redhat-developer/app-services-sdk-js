@@ -26,7 +26,6 @@ export interface UpdateState {
      * @type {ArtifactState}
      * @memberof UpdateState
      */
-    state: ArtifactState;
+    'state': ArtifactState;
 }
-
 

@@ -25,4 +25,3 @@ import { ResultListPage } from './result-list-page';
 export type AclBindingListPage = AclBindingList & ResultListPage;
 
 
-

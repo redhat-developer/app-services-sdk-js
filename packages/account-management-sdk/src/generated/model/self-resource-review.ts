@@ -25,58 +25,53 @@ export interface SelfResourceReview {
      * @type {string}
      * @memberof SelfResourceReview
      */
-    action: SelfResourceReviewActionEnum;
+    'action': SelfResourceReviewActionEnum;
     /**
      * 
      * @type {Array<string>}
      * @memberof SelfResourceReview
      */
-    cluster_ids: Array<string>;
+    'cluster_ids': Array<string>;
     /**
      * 
      * @type {Array<string>}
      * @memberof SelfResourceReview
      */
-    cluster_uuids: Array<string>;
+    'cluster_uuids': Array<string>;
     /**
      * 
      * @type {Array<string>}
      * @memberof SelfResourceReview
      */
-    organization_ids: Array<string>;
+    'organization_ids': Array<string>;
     /**
      * 
      * @type {string}
      * @memberof SelfResourceReview
      */
-    resource_type: SelfResourceReviewResourceTypeEnum;
+    'resource_type': SelfResourceReviewResourceTypeEnum;
     /**
      * 
      * @type {Array<string>}
      * @memberof SelfResourceReview
      */
-    subscription_ids: Array<string>;
+    'subscription_ids': Array<string>;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SelfResourceReviewActionEnum {
-    Get = 'get',
-    List = 'list',
-    Create = 'create',
-    Delete = 'delete',
-    Update = 'update'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SelfResourceReviewResourceTypeEnum {
-    Cluster = 'Cluster',
-    Subscription = 'Subscription'
-}
+export const SelfResourceReviewActionEnum = {
+    Get: 'get',
+    List: 'list',
+    Create: 'create',
+    Delete: 'delete',
+    Update: 'update'
+} as const;
 
+export type SelfResourceReviewActionEnum = typeof SelfResourceReviewActionEnum[keyof typeof SelfResourceReviewActionEnum];
+export const SelfResourceReviewResourceTypeEnum = {
+    Cluster: 'Cluster',
+    Subscription: 'Subscription'
+} as const;
+
+export type SelfResourceReviewResourceTypeEnum = typeof SelfResourceReviewResourceTypeEnum[keyof typeof SelfResourceReviewResourceTypeEnum];
 
 

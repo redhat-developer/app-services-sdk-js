@@ -23,4 +23,3 @@ import { RegistryCredentialAllOf } from './registry-credential-all-of';
 export type RegistryCredential = ObjectReference & RegistryCredentialAllOf;
 
 
-

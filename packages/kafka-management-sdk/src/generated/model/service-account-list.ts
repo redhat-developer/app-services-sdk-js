@@ -23,4 +23,3 @@ import { ServiceAccountListItem } from './service-account-list-item';
 export type ServiceAccountList = ServiceAccountListAllOf;
 
 
-

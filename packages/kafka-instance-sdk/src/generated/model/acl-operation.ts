@@ -20,17 +20,19 @@
  * @enum {string}
  */
 
-export enum AclOperation {
-    All = 'ALL',
-    Read = 'READ',
-    Write = 'WRITE',
-    Create = 'CREATE',
-    Delete = 'DELETE',
-    Alter = 'ALTER',
-    Describe = 'DESCRIBE',
-    DescribeConfigs = 'DESCRIBE_CONFIGS',
-    AlterConfigs = 'ALTER_CONFIGS'
-}
+export const AclOperation = {
+    All: 'ALL',
+    Read: 'READ',
+    Write: 'WRITE',
+    Create: 'CREATE',
+    Delete: 'DELETE',
+    Alter: 'ALTER',
+    Describe: 'DESCRIBE',
+    DescribeConfigs: 'DESCRIBE_CONFIGS',
+    AlterConfigs: 'ALTER_CONFIGS'
+} as const;
+
+export type AclOperation = typeof AclOperation[keyof typeof AclOperation];
 
 
 

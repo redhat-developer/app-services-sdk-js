@@ -25,7 +25,6 @@ export interface ExportControlReview {
      * @type {boolean}
      * @memberof ExportControlReview
      */
-    restricted: boolean;
+    'restricted': boolean;
 }
-
 

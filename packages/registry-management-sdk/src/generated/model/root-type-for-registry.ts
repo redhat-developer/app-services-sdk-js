@@ -27,67 +27,66 @@ export interface RootTypeForRegistry {
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    id: string;
+    'id': string;
     /**
      * 
      * @type {RegistryStatusValue}
      * @memberof RootTypeForRegistry
      */
-    status: RegistryStatusValue;
+    'status': RegistryStatusValue;
     /**
      * 
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    registryUrl?: string;
+    'registryUrl'?: string;
     /**
      * 
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    browserUrl?: string;
+    'browserUrl'?: string;
     /**
      * User-defined Registry name. Does not have to be unique.
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    name?: string;
+    'name'?: string;
     /**
      * Identifier of a multi-tenant deployment, where this Service Registry instance resides.
      * @type {number}
      * @memberof RootTypeForRegistry
      */
-    registryDeploymentId?: number;
+    'registryDeploymentId'?: number;
     /**
      * Registry instance owner
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    owner?: string;
+    'owner'?: string;
     /**
      * Description of the Registry instance.
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    description?: string;
+    'description'?: string;
     /**
      * ISO 8601 UTC timestamp.
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    created_at: string;
+    'created_at': string;
     /**
      * ISO 8601 UTC timestamp.
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    updated_at: string;
+    'updated_at': string;
     /**
      * 
      * @type {RegistryInstanceTypeValue}
      * @memberof RootTypeForRegistry
      */
-    instance_type: RegistryInstanceTypeValue;
+    'instance_type': RegistryInstanceTypeValue;
 }
-
 

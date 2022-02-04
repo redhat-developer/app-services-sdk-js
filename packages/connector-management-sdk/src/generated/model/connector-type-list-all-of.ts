@@ -26,7 +26,6 @@ export interface ConnectorTypeListAllOf {
      * @type {Array<ConnectorType>}
      * @memberof ConnectorTypeListAllOf
      */
-    items?: Array<ConnectorType>;
+    'items'?: Array<ConnectorType>;
 }
-
 

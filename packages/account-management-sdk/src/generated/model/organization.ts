@@ -25,4 +25,3 @@ import { OrganizationAllOf } from './organization-all-of';
 export type Organization = ObjectReference & OrganizationAllOf;
 
 
-

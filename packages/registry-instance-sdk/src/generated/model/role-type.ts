@@ -20,11 +20,13 @@
  * @enum {string}
  */
 
-export enum RoleType {
-    ReadOnly = 'READ_ONLY',
-    Developer = 'DEVELOPER',
-    Admin = 'ADMIN'
-}
+export const RoleType = {
+    ReadOnly: 'READ_ONLY',
+    Developer: 'DEVELOPER',
+    Admin: 'ADMIN'
+} as const;
+
+export type RoleType = typeof RoleType[keyof typeof RoleType];
 
 
 

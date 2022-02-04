@@ -25,13 +25,12 @@ export interface RegistryCreate {
      * @type {string}
      * @memberof RegistryCreate
      */
-    name?: string;
+    'name'?: string;
     /**
      * User-provided description of the new Registry instance. Not required.
      * @type {string}
      * @memberof RegistryCreate
      */
-    description?: string;
+    'description'?: string;
 }
-
 

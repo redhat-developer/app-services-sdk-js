@@ -25,31 +25,30 @@ export interface CloudProvider {
      * @type {string}
      * @memberof CloudProvider
      */
-    kind?: string;
+    'kind'?: string;
     /**
      * Unique identifier of the object.
      * @type {string}
      * @memberof CloudProvider
      */
-    id?: string;
+    'id'?: string;
     /**
      * Name of the cloud provider for display purposes.
      * @type {string}
      * @memberof CloudProvider
      */
-    display_name?: string;
+    'display_name'?: string;
     /**
      * Human friendly identifier of the cloud provider, for example `aws`.
      * @type {string}
      * @memberof CloudProvider
      */
-    name?: string;
+    'name'?: string;
     /**
      * Whether the cloud provider is enabled for deploying an OSD cluster.
      * @type {boolean}
      * @memberof CloudProvider
      */
-    enabled: boolean;
+    'enabled': boolean;
 }
-
 

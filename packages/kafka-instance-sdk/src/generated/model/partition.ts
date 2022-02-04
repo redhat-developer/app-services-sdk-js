@@ -25,32 +25,31 @@ export interface Partition {
      * @type {number}
      * @memberof Partition
      */
-    partition: number;
+    'partition': number;
     /**
      * Unique id for the partition (deprecated, use `partition` instead)
      * @type {number}
      * @memberof Partition
      * @deprecated
      */
-    id?: number;
+    'id'?: number;
     /**
      * List of replicas for the partition
      * @type {Array<object>}
      * @memberof Partition
      */
-    replicas?: Array<object>;
+    'replicas'?: Array<object>;
     /**
      * List in-sync replicas for this partition.
      * @type {Array<object>}
      * @memberof Partition
      */
-    isr?: Array<object>;
+    'isr'?: Array<object>;
     /**
      * Kafka server / broker.
      * @type {object}
      * @memberof Partition
      */
-    leader?: object;
+    'leader'?: object;
 }
-
 

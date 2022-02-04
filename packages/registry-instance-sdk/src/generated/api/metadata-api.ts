@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -41,7 +41,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteArtifactVersionMetaData: async (groupId: string, artifactId: string, version: string, options: any = {}): Promise<RequestArgs> => {
+        deleteArtifactVersionMetaData: async (groupId: string, artifactId: string, version: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('deleteArtifactVersionMetaData', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -65,7 +65,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -82,7 +82,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getArtifactMetaData: async (groupId: string, artifactId: string, options: any = {}): Promise<RequestArgs> => {
+        getArtifactMetaData: async (groupId: string, artifactId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('getArtifactMetaData', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -103,7 +103,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -121,7 +121,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getArtifactVersionMetaData: async (groupId: string, artifactId: string, version: string, options: any = {}): Promise<RequestArgs> => {
+        getArtifactVersionMetaData: async (groupId: string, artifactId: string, version: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('getArtifactVersionMetaData', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -145,7 +145,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -164,7 +164,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getArtifactVersionMetaDataByContent: async (groupId: string, artifactId: string, body: any, canonical?: boolean, options: any = {}): Promise<RequestArgs> => {
+        getArtifactVersionMetaDataByContent: async (groupId: string, artifactId: string, body: any, canonical?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('getArtifactVersionMetaDataByContent', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -193,7 +193,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(body, localVarRequestOptions, configuration)
@@ -212,7 +212,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateArtifactMetaData: async (groupId: string, artifactId: string, editableMetaData: EditableMetaData, options: any = {}): Promise<RequestArgs> => {
+        updateArtifactMetaData: async (groupId: string, artifactId: string, editableMetaData: EditableMetaData, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('updateArtifactMetaData', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -237,7 +237,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(editableMetaData, localVarRequestOptions, configuration)
@@ -257,7 +257,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateArtifactVersionMetaData: async (groupId: string, artifactId: string, version: string, editableMetaData: EditableMetaData, options: any = {}): Promise<RequestArgs> => {
+        updateArtifactVersionMetaData: async (groupId: string, artifactId: string, version: string, editableMetaData: EditableMetaData, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'groupId' is not null or undefined
             assertParamExists('updateArtifactVersionMetaData', 'groupId', groupId)
             // verify required parameter 'artifactId' is not null or undefined
@@ -285,7 +285,7 @@ export const MetadataApiAxiosParamCreator = function (configuration?: Configurat
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(editableMetaData, localVarRequestOptions, configuration)
@@ -314,7 +314,7 @@ export const MetadataApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async deleteArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteArtifactVersionMetaData(groupId, artifactId, version, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -326,7 +326,7 @@ export const MetadataApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getArtifactMetaData(groupId: string, artifactId: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactMetaData>> {
+        async getArtifactMetaData(groupId: string, artifactId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ArtifactMetaData>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getArtifactMetaData(groupId, artifactId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -339,7 +339,7 @@ export const MetadataApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionMetaData>> {
+        async getArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionMetaData>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getArtifactVersionMetaData(groupId, artifactId, version, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -353,7 +353,7 @@ export const MetadataApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getArtifactVersionMetaDataByContent(groupId: string, artifactId: string, body: any, canonical?: boolean, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionMetaData>> {
+        async getArtifactVersionMetaDataByContent(groupId: string, artifactId: string, body: any, canonical?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VersionMetaData>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getArtifactVersionMetaDataByContent(groupId, artifactId, body, canonical, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -366,7 +366,7 @@ export const MetadataApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateArtifactMetaData(groupId: string, artifactId: string, editableMetaData: EditableMetaData, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateArtifactMetaData(groupId: string, artifactId: string, editableMetaData: EditableMetaData, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateArtifactMetaData(groupId, artifactId, editableMetaData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -380,7 +380,7 @@ export const MetadataApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateArtifactVersionMetaData(groupId: string, artifactId: string, version: string, editableMetaData: EditableMetaData, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async updateArtifactVersionMetaData(groupId: string, artifactId: string, version: string, editableMetaData: EditableMetaData, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateArtifactVersionMetaData(groupId, artifactId, version, editableMetaData, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -486,7 +486,7 @@ export interface MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApiInterface
      */
-    deleteArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: any): AxiosPromise<void>;
+    deleteArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Gets the metadata for an artifact in the registry.  The returned metadata includes both generated (read-only) and editable metadata (such as name and description).  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * A server error occurred (HTTP error `500`)
@@ -497,7 +497,7 @@ export interface MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApiInterface
      */
-    getArtifactMetaData(groupId: string, artifactId: string, options?: any): AxiosPromise<ArtifactMetaData>;
+    getArtifactMetaData(groupId: string, artifactId: string, options?: AxiosRequestConfig): AxiosPromise<ArtifactMetaData>;
 
     /**
      * Retrieves the metadata for a single version of the artifact.  The version metadata is  a subset of the artifact metadata and only includes the metadata that is specific to the version (for example, this doesn\'t include `modifiedOn`).  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * No version with this `version` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -509,7 +509,7 @@ export interface MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApiInterface
      */
-    getArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: any): AxiosPromise<VersionMetaData>;
+    getArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: AxiosRequestConfig): AxiosPromise<VersionMetaData>;
 
     /**
      * Gets the metadata for an artifact that matches the raw content.  Searches the registry for a version of the given artifact matching the content provided in the body of the POST.  This operation can fail for the following reasons:  * Provided content (request body) was empty (HTTP error `400`) * No artifact with the `artifactId` exists (HTTP error `404`) * No artifact version matching the provided content exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -522,7 +522,7 @@ export interface MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApiInterface
      */
-    getArtifactVersionMetaDataByContent(groupId: string, artifactId: string, body: any, canonical?: boolean, options?: any): AxiosPromise<VersionMetaData>;
+    getArtifactVersionMetaDataByContent(groupId: string, artifactId: string, body: any, canonical?: boolean, options?: AxiosRequestConfig): AxiosPromise<VersionMetaData>;
 
     /**
      * Updates the editable parts of the artifact\'s metadata.  Not all metadata fields can be updated.  For example, `createdOn` and `createdBy` are both read-only properties.  This operation can fail for the following reasons:  * No artifact with the `artifactId` exists (HTTP error `404`) * A server error occurred (HTTP error `500`)
@@ -534,7 +534,7 @@ export interface MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApiInterface
      */
-    updateArtifactMetaData(groupId: string, artifactId: string, editableMetaData: EditableMetaData, options?: any): AxiosPromise<void>;
+    updateArtifactMetaData(groupId: string, artifactId: string, editableMetaData: EditableMetaData, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Updates the user-editable portion of the artifact version\'s metadata.  Only some of  the metadata fields are editable by the user.  For example, `description` is editable,  but `createdOn` is not.  This operation can fail for the following reasons:  * No artifact with this `artifactId` exists (HTTP error `404`) * No version with this `version` exists (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -547,7 +547,7 @@ export interface MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApiInterface
      */
-    updateArtifactVersionMetaData(groupId: string, artifactId: string, version: string, editableMetaData: EditableMetaData, options?: any): AxiosPromise<void>;
+    updateArtifactVersionMetaData(groupId: string, artifactId: string, version: string, editableMetaData: EditableMetaData, options?: AxiosRequestConfig): AxiosPromise<void>;
 
 }
 
@@ -568,7 +568,7 @@ export class MetadataApi extends BaseAPI implements MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApi
      */
-    public deleteArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: any) {
+    public deleteArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: AxiosRequestConfig) {
         return MetadataApiFp(this.configuration).deleteArtifactVersionMetaData(groupId, artifactId, version, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -581,7 +581,7 @@ export class MetadataApi extends BaseAPI implements MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApi
      */
-    public getArtifactMetaData(groupId: string, artifactId: string, options?: any) {
+    public getArtifactMetaData(groupId: string, artifactId: string, options?: AxiosRequestConfig) {
         return MetadataApiFp(this.configuration).getArtifactMetaData(groupId, artifactId, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -595,7 +595,7 @@ export class MetadataApi extends BaseAPI implements MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApi
      */
-    public getArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: any) {
+    public getArtifactVersionMetaData(groupId: string, artifactId: string, version: string, options?: AxiosRequestConfig) {
         return MetadataApiFp(this.configuration).getArtifactVersionMetaData(groupId, artifactId, version, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -610,7 +610,7 @@ export class MetadataApi extends BaseAPI implements MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApi
      */
-    public getArtifactVersionMetaDataByContent(groupId: string, artifactId: string, body: any, canonical?: boolean, options?: any) {
+    public getArtifactVersionMetaDataByContent(groupId: string, artifactId: string, body: any, canonical?: boolean, options?: AxiosRequestConfig) {
         return MetadataApiFp(this.configuration).getArtifactVersionMetaDataByContent(groupId, artifactId, body, canonical, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -624,7 +624,7 @@ export class MetadataApi extends BaseAPI implements MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApi
      */
-    public updateArtifactMetaData(groupId: string, artifactId: string, editableMetaData: EditableMetaData, options?: any) {
+    public updateArtifactMetaData(groupId: string, artifactId: string, editableMetaData: EditableMetaData, options?: AxiosRequestConfig) {
         return MetadataApiFp(this.configuration).updateArtifactMetaData(groupId, artifactId, editableMetaData, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -639,7 +639,7 @@ export class MetadataApi extends BaseAPI implements MetadataApiInterface {
      * @throws {RequiredError}
      * @memberof MetadataApi
      */
-    public updateArtifactVersionMetaData(groupId: string, artifactId: string, version: string, editableMetaData: EditableMetaData, options?: any) {
+    public updateArtifactVersionMetaData(groupId: string, artifactId: string, version: string, editableMetaData: EditableMetaData, options?: AxiosRequestConfig) {
         return MetadataApiFp(this.configuration).updateArtifactVersionMetaData(groupId, artifactId, version, editableMetaData, options).then((request) => request(this.axios, this.basePath));
     }
 }

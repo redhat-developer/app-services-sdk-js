@@ -26,39 +26,38 @@ export interface TopicsList {
      * @type {number}
      * @memberof TopicsList
      */
-    page?: number;
+    'page'?: number;
     /**
      * number of entries per page
      * @type {number}
      * @memberof TopicsList
      */
-    size?: number;
+    'size'?: number;
     /**
      * Offset of the topic list
      * @type {number}
      * @memberof TopicsList
      * @deprecated
      */
-    offset?: number;
+    'offset'?: number;
     /**
      * Maximum of returned topics
      * @type {number}
      * @memberof TopicsList
      * @deprecated
      */
-    limit?: number;
+    'limit'?: number;
     /**
      * Total number of topics
      * @type {number}
      * @memberof TopicsList
      */
-    total?: number;
+    'total'?: number;
     /**
      * List of topics
      * @type {Array<Topic>}
      * @memberof TopicsList
      */
-    items?: Array<Topic>;
+    'items'?: Array<Topic>;
 }
-
 

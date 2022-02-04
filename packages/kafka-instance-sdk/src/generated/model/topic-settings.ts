@@ -26,13 +26,12 @@ export interface TopicSettings {
      * @type {number}
      * @memberof TopicSettings
      */
-    numPartitions: number;
+    'numPartitions': number;
     /**
      * Topic configuration entry.
      * @type {Array<ConfigEntry>}
      * @memberof TopicSettings
      */
-    config?: Array<ConfigEntry>;
+    'config'?: Array<ConfigEntry>;
 }
-
 

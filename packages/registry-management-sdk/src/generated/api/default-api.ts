@@ -13,7 +13,7 @@
  */
 
 
-import globalAxios, { AxiosPromise, AxiosInstance } from 'axios';
+import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
@@ -33,7 +33,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceStatus: async (options: any = {}): Promise<RequestArgs> => {
+        getServiceStatus: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/serviceregistry_mgmt/v1/status`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -52,7 +52,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 
     
-            setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
@@ -76,7 +76,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getServiceStatus(options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceStatus>> {
+        async getServiceStatus(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceStatus>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceStatus(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -113,7 +113,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getServiceStatus(options?: any): AxiosPromise<ServiceStatus>;
+    getServiceStatus(options?: AxiosRequestConfig): AxiosPromise<ServiceStatus>;
 
 }
 
@@ -130,7 +130,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getServiceStatus(options?: any) {
+    public getServiceStatus(options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getServiceStatus(options).then((request) => request(this.axios, this.basePath));
     }
 }

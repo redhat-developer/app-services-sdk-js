@@ -25,25 +25,24 @@ export interface ClusterMetricsNodes {
      * @type {number}
      * @memberof ClusterMetricsNodes
      */
-    compute?: number;
+    'compute'?: number;
     /**
      * 
      * @type {number}
      * @memberof ClusterMetricsNodes
      */
-    infra?: number;
+    'infra'?: number;
     /**
      * 
      * @type {number}
      * @memberof ClusterMetricsNodes
      */
-    master?: number;
+    'master'?: number;
     /**
      * 
      * @type {number}
      * @memberof ClusterMetricsNodes
      */
-    total?: number;
+    'total'?: number;
 }
-
 

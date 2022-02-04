@@ -27,67 +27,66 @@ export interface SearchedVersion {
      * @type {string}
      * @memberof SearchedVersion
      */
-    name?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
      * @memberof SearchedVersion
      */
-    description?: string;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof SearchedVersion
      */
-    createdOn: string;
+    'createdOn': string;
     /**
      * 
      * @type {string}
      * @memberof SearchedVersion
      */
-    createdBy: string;
+    'createdBy': string;
     /**
      * 
      * @type {ArtifactType}
      * @memberof SearchedVersion
      */
-    type: ArtifactType;
+    'type': ArtifactType;
     /**
      * 
      * @type {Array<string>}
      * @memberof SearchedVersion
      */
-    labels?: Array<string>;
+    'labels'?: Array<string>;
     /**
      * 
      * @type {ArtifactState}
      * @memberof SearchedVersion
      */
-    state: ArtifactState;
+    'state': ArtifactState;
     /**
      * 
      * @type {number}
      * @memberof SearchedVersion
      */
-    globalId: number;
+    'globalId': number;
     /**
      * 
      * @type {string}
      * @memberof SearchedVersion
      */
-    version: string;
+    'version': string;
     /**
      * User-defined name-value pairs. Name and value must be strings.
      * @type {{ [key: string]: string; }}
      * @memberof SearchedVersion
      */
-    properties?: { [key: string]: string; };
+    'properties'?: { [key: string]: string; };
     /**
      * 
      * @type {number}
      * @memberof SearchedVersion
      */
-    contentId: number;
+    'contentId': number;
 }
-
 

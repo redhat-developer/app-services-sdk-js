@@ -25,13 +25,12 @@ export interface ConnectorClusterTarget {
      * @type {string}
      * @memberof ConnectorClusterTarget
      */
-    kind: string;
+    'kind': string;
     /**
      * 
      * @type {string}
      * @memberof ConnectorClusterTarget
      */
-    cluster_id?: string;
+    'cluster_id'?: string;
 }
-
 

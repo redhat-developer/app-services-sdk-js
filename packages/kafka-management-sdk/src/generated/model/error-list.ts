@@ -23,4 +23,3 @@ import { List } from './list';
 export type ErrorList = ErrorListAllOf & List;
 
 
-

@@ -25,4 +25,3 @@ import { ObjectReference } from './object-reference';
 export type ConnectorType = ConnectorTypeAllOf | ObjectReference;
 
 
-

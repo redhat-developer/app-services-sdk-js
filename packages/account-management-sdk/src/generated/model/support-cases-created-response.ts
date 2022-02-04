@@ -25,55 +25,54 @@ export interface SupportCasesCreatedResponse {
      * @type {string}
      * @memberof SupportCasesCreatedResponse
      */
-    caseNumber?: string;
+    'caseNumber'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesCreatedResponse
      */
-    cluster_id?: string;
+    'cluster_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesCreatedResponse
      */
-    cluster_uuid?: string;
+    'cluster_uuid'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesCreatedResponse
      */
-    description?: string;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesCreatedResponse
      */
-    severity?: string;
+    'severity'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesCreatedResponse
      */
-    status?: string;
+    'status'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesCreatedResponse
      */
-    subscription_id?: string;
+    'subscription_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesCreatedResponse
      */
-    summary?: string;
+    'summary'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesCreatedResponse
      */
-    uri?: string;
+    'uri'?: string;
 }
-
 

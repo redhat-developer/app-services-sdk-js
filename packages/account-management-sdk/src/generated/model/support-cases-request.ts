@@ -25,91 +25,88 @@ export interface SupportCasesRequest {
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    account_number?: string;
+    'account_number'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    case_language?: string;
+    'case_language'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    cluster_id?: string;
+    'cluster_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    cluster_uuid?: string;
+    'cluster_uuid'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    contact_sso_name?: string;
+    'contact_sso_name'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    description: string;
+    'description': string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    event_stream_id?: string;
+    'event_stream_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    openshift_cluster_id?: string;
+    'openshift_cluster_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    product?: string;
+    'product'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    severity: SupportCasesRequestSeverityEnum;
+    'severity': SupportCasesRequestSeverityEnum;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    subscription_id?: string;
+    'subscription_id'?: string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    summary: string;
+    'summary': string;
     /**
      * 
      * @type {string}
      * @memberof SupportCasesRequest
      */
-    version?: string;
+    'version'?: string;
 }
 
-/**
-    * @export
-    * @enum {string}
-    */
-export enum SupportCasesRequestSeverityEnum {
-    _1Urgent = '1 (Urgent)',
-    _2High = '2 (High)',
-    _3Normal = '3 (Normal)',
-    _4Low = '4 (Low)'
-}
+export const SupportCasesRequestSeverityEnum = {
+    _1Urgent: '1 (Urgent)',
+    _2High: '2 (High)',
+    _3Normal: '3 (Normal)',
+    _4Low: '4 (Low)'
+} as const;
 
+export type SupportCasesRequestSeverityEnum = typeof SupportCasesRequestSeverityEnum[keyof typeof SupportCasesRequestSeverityEnum];
 
 
