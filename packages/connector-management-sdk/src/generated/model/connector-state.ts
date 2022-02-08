@@ -21,8 +21,13 @@
  */
 
 export const ConnectorState = {
+    Assigning: 'assigning',
+    Assigned: 'assigned',
+    Updating: 'updating',
     Ready: 'ready',
     Stopped: 'stopped',
+    Failed: 'failed',
+    Deleting: 'deleting',
     Deleted: 'deleted',
     Provisioning: 'provisioning',
     Deprovisioning: 'deprovisioning'
