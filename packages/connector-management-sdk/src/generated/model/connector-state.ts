@@ -21,6 +21,7 @@
  */
 
 export const ConnectorState = {
+    Assigning: 'assigning',
     Ready: 'ready',
     Stopped: 'stopped',
     Deleted: 'deleted',
