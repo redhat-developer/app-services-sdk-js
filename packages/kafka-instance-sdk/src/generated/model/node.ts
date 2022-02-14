@@ -15,19 +15,16 @@
 
 
 /**
- * Use value \'MATCH\' to perform pattern matching.
+ * Identifier for a Kafka server / broker.
  * @export
- * @enum {string}
+ * @interface Node
  */
-
-export const AclPatternTypeFilter = {
-    Any: 'ANY',
-    Literal: 'LITERAL',
-    Match: 'MATCH',
-    Prefixed: 'PREFIXED'
-} as const;
-
-export type AclPatternTypeFilter = typeof AclPatternTypeFilter[keyof typeof AclPatternTypeFilter];
-
-
+export interface Node {
+    /**
+     * 
+     * @type {number}
+     * @memberof Node
+     */
+    'id'?: number;
+}
 

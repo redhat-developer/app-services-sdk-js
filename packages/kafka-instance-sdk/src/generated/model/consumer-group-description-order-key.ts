@@ -15,19 +15,19 @@
 
 
 /**
- * Use value \'MATCH\' to perform pattern matching.
+ * 
  * @export
  * @enum {string}
  */
 
-export const AclPatternTypeFilter = {
-    Any: 'ANY',
-    Literal: 'LITERAL',
-    Match: 'MATCH',
-    Prefixed: 'PREFIXED'
+export const ConsumerGroupDescriptionOrderKey = {
+    Offset: 'offset',
+    EndOffset: 'endOffset',
+    Lag: 'lag',
+    Partition: 'partition'
 } as const;
 
-export type AclPatternTypeFilter = typeof AclPatternTypeFilter[keyof typeof AclPatternTypeFilter];
+export type ConsumerGroupDescriptionOrderKey = typeof ConsumerGroupDescriptionOrderKey[keyof typeof ConsumerGroupDescriptionOrderKey];
 
 
 

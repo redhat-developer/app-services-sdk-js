@@ -15,19 +15,19 @@
 
 
 /**
- * Use value \'MATCH\' to perform pattern matching.
+ * 
  * @export
  * @enum {string}
  */
 
-export const AclPatternTypeFilter = {
-    Any: 'ANY',
-    Literal: 'LITERAL',
-    Match: 'MATCH',
-    Prefixed: 'PREFIXED'
+export const ResetOffsetType = {
+    Timestamp: 'timestamp',
+    Absolute: 'absolute',
+    Latest: 'latest',
+    Earliest: 'earliest'
 } as const;
 
-export type AclPatternTypeFilter = typeof AclPatternTypeFilter[keyof typeof AclPatternTypeFilter];
+export type ResetOffsetType = typeof ResetOffsetType[keyof typeof ResetOffsetType];
 
 
 
