@@ -6,7 +6,7 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
-  version: ""
+  version: 0.7.1-SNAPSHOT
 servers:
 - url: /
   description: Kafka Admin REST API
@@ -30,93 +30,6 @@ paths:
         \ specified, all ACL bindings known to the system will be returned (with paging)."
       operationId: getAcls
       parameters:
-      - name: operation
-        in: query
-        description: "ACL Operation Filter. The ACL binding operation provided should\
-          \ be valid for the resource type in the request, if not `ANY`."
-        schema:
-          allOf:
-          - $ref: '#/components/schemas/AclOperationFilter'
-          - default: ANY
-        examples:
-          anything:
-            summary: Match any ACL binding operation
-            value: ANY
-      - name: order
-        in: query
-        description: Order items are sorted
-        required: false
-        schema:
-          $ref: '#/components/schemas/SortDirection'
-      - name: orderKey
-        in: query
-        schema:
-          allOf:
-          - $ref: '#/components/schemas/AclBindingOrderKey'
-          - default: permission
-      - name: page
-        in: query
-        description: Page number
-        schema:
-          format: int32
-          default: "1"
-          minimum: 1
-          type: integer
-      - name: patternType
-        in: query
-        description: ACL Pattern Type Filter
-        schema:
-          allOf:
-          - $ref: '#/components/schemas/AclPatternTypeFilter'
-          - default: ANY
-        examples:
-          anything:
-            summary: Match any ACL binding pattern type
-            value: ANY
-          literal:
-            summary: Match a literal resource name or `*`
-            value: LITERAL
-          prefixed:
-            summary: Match a prefixed resource name
-            value: PREFIXED
-      - name: permission
-        in: query
-        description: ACL Permission Type Filter
-        schema:
-          allOf:
-          - $ref: '#/components/schemas/AclPermissionTypeFilter'
-          - default: ANY
-        examples:
-          anything:
-            summary: Match any ACL binding permission type
-            value: ANY
-          allow:
-            summary: Match only ACL bindings allowing access
-            value: ALLOW
-          deny:
-            summary: Match only ACL bindings denying access
-            value: DENY
-      - name: principal
-        in: query
-        description: |-
-          ACL Principal Filter. Either a specific user or the wildcard user `User:*` may be provided.
-          - When fetching by a specific user, the results will also include ACL bindings that apply to all users.
-          - When deleting, ACL bindings to be delete must match the provided `principal` exactly.
-        schema:
-          default: ""
-          type: string
-        examples:
-          wildcard:
-            summary: Match ACL entries that apply to all users
-            value: User:*
-          specific:
-            summary: Match ACL entries for a specific user
-            value: User:admin-5a1-0c1
-      - name: resourceName
-        in: query
-        description: ACL Resource Name Filter
-        schema:
-          type: string
       - name: resourceType
         in: query
         description: ACL Resource Type Filter
@@ -140,6 +53,67 @@ paths:
           transactional_id:
             summary: Match ACL bindings for transactional IDs
             value: TRANSACTIONAL_ID
+      - name: resourceName
+        in: query
+        description: ACL Resource Name Filter
+        schema:
+          type: string
+      - name: patternType
+        in: query
+        description: ACL Pattern Type Filter
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/AclPatternTypeFilter'
+          - default: ANY
+        examples:
+          anything:
+            summary: Match any ACL binding pattern type
+            value: ANY
+          literal:
+            summary: Match a literal resource name or `*`
+            value: LITERAL
+          prefixed:
+            summary: Match a prefixed resource name
+            value: PREFIXED
+      - name: principal
+        in: query
+        description: |-
+          ACL Principal Filter. Either a specific user or the wildcard user `User:*` may be provided.
+          - When fetching by a specific user, the results will also include ACL bindings that apply to all users.
+          - When deleting, ACL bindings to be delete must match the provided `principal` exactly.
+        schema:
+          default: ""
+          type: string
+        examples:
+          wildcard:
+            summary: Match ACL entries that apply to all users
+            value: User:*
+          specific:
+            summary: Match ACL entries for a specific user
+            value: User:admin-5a1-0c1
+      - name: operation
+        in: query
+        description: "ACL Operation Filter. The ACL binding operation provided should\
+          \ be valid for the resource type in the request, if not `ANY`."
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/AclOperationFilter'
+          - default: ANY
+        examples:
+          anything:
+            summary: Match any ACL binding operation
+            value: ANY
+      - name: permissionType
+        in: query
+        schema: {}
+      - name: page
+        in: query
+        description: Page number
+        schema:
+          format: int32
+          default: "1"
+          minimum: 1
+          type: integer
       - name: size
         in: query
         description: Number of records per page
@@ -148,6 +122,35 @@ paths:
           default: "10"
           minimum: 1
           type: integer
+      - name: order
+        in: query
+        description: Order items are sorted
+        required: false
+        schema:
+          $ref: '#/components/schemas/SortDirection'
+      - name: orderKey
+        in: query
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/AclBindingOrderKey'
+          - default: permission
+      - name: permission
+        in: query
+        description: ACL Permission Type Filter
+        schema:
+          allOf:
+          - $ref: '#/components/schemas/AclPermissionTypeFilter'
+          - default: ANY
+        examples:
+          anything:
+            summary: Match any ACL binding permission type
+            value: ANY
+          allow:
+            summary: Match only ACL bindings allowing access
+            value: ALLOW
+          deny:
+            summary: Match only ACL bindings denying access
+            value: DENY
       responses:
         "400":
           $ref: '#/components/responses/BadRequest'
@@ -352,19 +355,6 @@ paths:
         authorized to view.
       operationId: getConsumerGroups
       parameters:
-      - name: group-id-filter
-        in: query
-        description: Return the consumer groups where the ID contains with this value
-        schema:
-          type: string
-      - name: limit
-        in: query
-        description: Maximum number of records to return
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        deprecated: true
       - name: offset
         in: query
         description: "Offset of the first record to return, zero-based"
@@ -373,6 +363,41 @@ paths:
           minimum: 0
           type: integer
         deprecated: true
+      - name: limit
+        in: query
+        description: Maximum number of records to return
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        deprecated: true
+      - name: size
+        in: query
+        description: Number of records per page
+        schema:
+          format: int32
+          default: "10"
+          minimum: 1
+          type: integer
+      - name: page
+        in: query
+        description: Page number
+        schema:
+          format: int32
+          default: "1"
+          minimum: 1
+          type: integer
+      - name: topic
+        in: query
+        description: Return consumer groups where the topic name contains with this
+          value
+        schema:
+          type: string
+      - name: group-id-filter
+        in: query
+        description: Return the consumer groups where the ID contains with this value
+        schema:
+          type: string
       - name: order
         in: query
         description: Order items are sorted
@@ -385,28 +410,6 @@ paths:
           allOf:
           - $ref: '#/components/schemas/ConsumerGroupOrderKey'
           - default: name
-      - name: page
-        in: query
-        description: Page number
-        schema:
-          format: int32
-          default: "1"
-          minimum: 1
-          type: integer
-      - name: size
-        in: query
-        description: Number of records per page
-        schema:
-          format: int32
-          default: "10"
-          minimum: 1
-          type: integer
-      - name: topic
-        in: query
-        description: Return consumer groups where the topic name contains with this
-          value
-        schema:
-          type: string
       responses:
         "200":
           description: List of consumer groups matching the request parameters. The
@@ -461,12 +464,6 @@ paths:
       summary: Get a single consumer group by its unique ID.
       operationId: getConsumerGroupById
       parameters:
-      - name: topic
-        in: query
-        description: Filter consumer groups for a specific topic
-        required: false
-        schema:
-          type: string
       - name: consumerGroupId
         in: path
         description: Consumer group identifier
@@ -492,6 +489,9 @@ paths:
         schema:
           format: int32
           type: integer
+      - name: topic
+        in: query
+        schema: {}
       responses:
         "200":
           description: Consumer group details.
@@ -500,31 +500,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ConsumerGroup'
               examples:
-                Consumer group:
-                  value:
-                    groupId: consumer_group_1
-                    consumers:
-                    - groupId: consumer_group_1
-                      topic: topic-1
-                      partition: 0
-                      memberId: consumer_group_member1
-                      offset: 5
-                      lag: 0
-                      logEndOffset: 5
-                    - groupId: consumer_group_1
-                      topic: topic-1
-                      partition: 1
-                      memberId: consumer_group_member2
-                      offset: 3
-                      lag: 0
-                      logEndOffset: 3
-                    - groupId: consumer_group_1
-                      topic: topic-1
-                      partition: 2
-                      memberId: consumer_group_member3
-                      offset: 6
-                      lag: 1
-                      logEndOffset: 5
+                ConsumerGroupExample:
+                  $ref: '#/components/examples/ConsumerGroupExample'
         "401":
           $ref: '#/components/responses/NotAuthorized'
         "403":
@@ -588,13 +565,7 @@ paths:
               $ref: '#/components/schemas/ConsumerGroupResetOffsetParameters'
             examples:
               ConsumerGroupOffsetResetExample:
-                value:
-                  topics:
-                  - topic: my-topic
-                    partitions:
-                    - 0
-                  offset: absolute
-                  value: "4"
+                $ref: '#/components/examples/ConsumerGroupOffsetResetExample'
         required: true
       responses:
         "400":
@@ -625,19 +596,6 @@ paths:
         \ to those records the requestor is authorized to view."
       operationId: getTopics
       parameters:
-      - name: filter
-        in: query
-        description: Filter to apply when returning the list of topics
-        schema:
-          type: string
-      - name: limit
-        in: query
-        description: Maximum number of records to return
-        schema:
-          format: int32
-          minimum: 1
-          type: integer
-        deprecated: true
       - name: offset
         in: query
         description: "Offset of the first record to return, zero-based"
@@ -646,6 +604,35 @@ paths:
           minimum: 0
           type: integer
         deprecated: true
+      - name: limit
+        in: query
+        description: Maximum number of records to return
+        schema:
+          format: int32
+          minimum: 1
+          type: integer
+        deprecated: true
+      - name: size
+        in: query
+        description: Number of records per page
+        schema:
+          format: int32
+          default: "10"
+          minimum: 1
+          type: integer
+      - name: filter
+        in: query
+        description: Filter to apply when returning the list of topics
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Page number
+        schema:
+          format: int32
+          default: "1"
+          minimum: 1
+          type: integer
       - name: order
         in: query
         description: Order items are sorted
@@ -660,22 +647,6 @@ paths:
           allOf:
           - $ref: '#/components/schemas/TopicOrderKey'
           - default: name
-      - name: page
-        in: query
-        description: Page number
-        schema:
-          format: int32
-          default: "1"
-          minimum: 1
-          type: integer
-      - name: size
-        in: query
-        description: Number of records per page
-        schema:
-          format: int32
-          default: "10"
-          minimum: 1
-          type: integer
       responses:
         "400":
           $ref: '#/components/responses/BadRequest'
@@ -705,17 +676,8 @@ paths:
             schema:
               $ref: '#/components/schemas/NewTopicInput'
             examples:
-              NewTopicInput:
-                value:
-                  name: my-topic
-                  settings:
-                    numPartitions: 3
-                    replicationFactor: 4
-                    config:
-                    - key: min.insync.replicas
-                      value: "1"
-                    - key: max.message.bytes
-                      value: "1050000"
+              NewTopicExample:
+                $ref: '#/components/examples/NewTopicExample'
         required: true
       responses:
         "400":
@@ -1087,30 +1049,6 @@ components:
           nullable: false
         state:
           $ref: '#/components/schemas/ConsumerGroupState'
-      example:
-        id: consumer_group_1
-        consumers:
-        - groupId: consumer_group_1
-          topic: topic-1
-          partition: 0
-          memberId: consumer_group_member1
-          offset: 5
-          lag: 0
-          logEndOffset: 5
-        - groupId: consumer_group_1
-          topic: topic-1
-          partition: 1
-          memberId: consumer_group_member2
-          offset: 3
-          lag: 0
-          logEndOffset: 3
-        - groupId: consumer_group_1
-          topic: topic-1
-          partition: 2
-          memberId: consumer_group_member3
-          offset: 6
-          lag: 1
-          logEndOffset: 5
     ConsumerGroupDescriptionOrderKey:
       enum:
       - offset
@@ -1211,13 +1149,6 @@ components:
             consumer group. When `offset` is `absolute` then `value` must be the integer
             offset to which the consumer group will be reset.
           type: string
-      example:
-        topics:
-        - topic: my-topic
-          partitions:
-          - 0
-        offset: absolute
-        value: "4"
     ConsumerGroupResetOffsetResult:
       title: Root Type for ConsumerGroupResetOffsetResult
       required:
@@ -1540,12 +1471,6 @@ components:
         topic:
           type: string
           nullable: false
-      example:
-        topic: foo
-        partitions:
-        - 0
-        - 1
-        - 2
   responses:
     BadRequest:
       description: |-
@@ -1597,6 +1522,55 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  examples:
+    ConsumerGroupOffsetResetExample:
+      description: Sample request to reset partition `0` of topic `my-topic` to offset
+        `4`
+      value:
+        offset: absolute
+        value: "4"
+        topics:
+        - topic: my-topic
+          partitions:
+          - 0
+    NewTopicExample:
+      description: Sample new topic with 3 partitions
+      value:
+        name: my-topic
+        settings:
+          numPartitions: 3
+          config:
+          - key: min.insync.replicas
+            value: "1"
+          - key: max.message.bytes
+            value: "1050000"
+    ConsumerGroupExample:
+      description: Sample consumer group with 3 partitions and consumers
+      value:
+        groupId: consumer_group_1
+        consumers:
+        - memberId: consumer_group_member1
+          groupId: consumer_group_1
+          topic: topic-1
+          partition: 0
+          offset: 5
+          lag: 0
+          logEndOffset: 5
+        - memberId: consumer_group_member2
+          groupId: consumer_group_1
+          topic: topic-1
+          partition: 1
+          offset: 3
+          lag: 0
+          logEndOffset: 3
+        - memberId: consumer_group_member3
+          groupId: consumer_group_1
+          topic: topic-1
+          partition: 2
+          offset: 5
+          lag: 1
+          logEndOffset: 6
+        state: STABLE
   securitySchemes:
     BasicAuth:
       type: http
