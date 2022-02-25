@@ -151,10 +151,11 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @summary Returns a list of service accounts
+         * @param {string} [clientId] client_id of the service account to be retrieved
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceAccounts: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getServiceAccounts: async (clientId?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/kafkas_mgmt/v1/service_accounts`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -170,6 +171,10 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
             // authentication Bearer required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (clientId !== undefined) {
+                localVarQueryParameter['client_id'] = clientId;
+            }
 
 
     
@@ -266,11 +271,12 @@ export const SecurityApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Returns a list of service accounts
+         * @param {string} [clientId] client_id of the service account to be retrieved
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getServiceAccounts(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceAccountList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceAccounts(options);
+        async getServiceAccounts(clientId?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceAccountList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceAccounts(clientId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -327,11 +333,12 @@ export const SecurityApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * @summary Returns a list of service accounts
+         * @param {string} [clientId] client_id of the service account to be retrieved
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getServiceAccounts(options?: any): AxiosPromise<ServiceAccountList> {
-            return localVarFp.getServiceAccounts(options).then((request) => request(axios, basePath));
+        getServiceAccounts(clientId?: string, options?: any): AxiosPromise<ServiceAccountList> {
+            return localVarFp.getServiceAccounts(clientId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -385,11 +392,12 @@ export interface SecurityApiInterface {
     /**
      * 
      * @summary Returns a list of service accounts
+     * @param {string} [clientId] client_id of the service account to be retrieved
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApiInterface
      */
-    getServiceAccounts(options?: AxiosRequestConfig): AxiosPromise<ServiceAccountList>;
+    getServiceAccounts(clientId?: string, options?: AxiosRequestConfig): AxiosPromise<ServiceAccountList>;
 
     /**
      * 
@@ -449,12 +457,13 @@ export class SecurityApi extends BaseAPI implements SecurityApiInterface {
     /**
      * 
      * @summary Returns a list of service accounts
+     * @param {string} [clientId] client_id of the service account to be retrieved
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SecurityApi
      */
-    public getServiceAccounts(options?: AxiosRequestConfig) {
-        return SecurityApiFp(this.configuration).getServiceAccounts(options).then((request) => request(this.axios, this.basePath));
+    public getServiceAccounts(clientId?: string, options?: AxiosRequestConfig) {
+        return SecurityApiFp(this.configuration).getServiceAccounts(clientId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
