@@ -26,6 +26,7 @@ You can view all SDK packages directly in [npm](https://www.npmjs.com/search?q=k
 | Name             | Package name                        | Status | Version            | NPM                 | Docs                |
 | ---------------- | :---------------------------------- | :----- | ------------------ | ------------------- | ------------------- |
 | kafka            | **@rhoas/kafka-management-sdk**     | beta   | ![kafkashield]     | [npm][kafkanpm]     | [doc][kafkagit]     |
+| service-accounts            | **@rhoas/service-accounts-sdk**     | alpha   | ![sashield]     | [npm][sanpm]     | [doc][sagit]     
 | connector        | **@rhoas/connector-management-sdk** | alpha  | ![connectorshield] | [npm][connectornpm] | [doc][connectorgit] |
 | service registry | **@rhoas/registry-management-sdk**  | alpha  | ![registryshield]  | [npm][registrynpm]  | [doc][registrygit]  |
 | service accounts | **@rhoas/kafka-management-sdk**     | alpha  | ![kafkashield]     | [npm][kafkanpm]     | [doc][kafkagit]     |
@@ -81,6 +82,9 @@ asapi
 [kafkagit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/kafka-management-sdk 
 [kafkanpm]: https://www.npmjs.com/package/@rhoas/kafka-management-sdk
 [kafkashield]: https://img.shields.io/npm/v/@rhoas/kafka-management-sdk
+[sagit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/service-accounts-sdk 
+[sanpm]: https://www.npmjs.com/package/@rhoas/service-accounts-sdk
+[sashield]: https://img.shields.io/npm/v/@rhoas/service-accounts-sdk
 [kinstancegit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/kafka-instance-sdk 
 [kinstancenpm]: https://www.npmjs.com/package/@rhoas/kafka-instance-sdk
 [kinstanceshield]: https://img.shields.io/npm/v/@rhoas/kafka-instance-sdk
