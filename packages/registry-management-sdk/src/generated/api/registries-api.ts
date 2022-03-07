@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Service Registry Fleet Manager
- * Managed Service Registry cloud.redhat.com API Management API that lets you create new registry instances. Registry is a datastore for standard event schemas and API designs. Service Registry enables developers to manage and share the structure of their data using a REST interface. For example, client applications can dynamically push or pull the latest updates to or from the registry without needing to redeploy. Registry is an Managed version of upstream project called Apicurio Registry. Apicurio Registry also enables developers to create rules that govern how registry content can evolve over time. For example, this includes rules for content validation and version compatibility.
+ * Service Registry Fleet Manager is a REST API for managing Service Registry instances. Service Registry is a datastore for event schemas and API designs, which is based on the open source Apicurio Registry project.
  *
  * The version of the OpenAPI document: 0.0.6
  * Contact: rhosak-eval-support@redhat.com
@@ -35,7 +35,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
         /**
          * 
          * @summary Create a new Registry instance
-         * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; to be created.
+         * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; instance to be created.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -73,9 +73,9 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         * Deletes an existing `Registry`.
-         * @summary Delete a Registry
-         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
+         * Deletes an existing `Registry` instance and all of the data that it stores. Important: Users should export the registry data before deleting the instance, e.g., using the Service Registry web console, core REST API, or `rhoas` CLI.
+         * @summary Delete a Registry instance
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60; instance.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -112,11 +112,11 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * 
-         * @summary Get the list of all registries.
-         * @param {number} [page] Page index
-         * @param {number} [size] Number of items in each page
-         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the kafkaRequests fields. For example, in order to retrieve all kafkas ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or in order to retrieve all kafkas ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results will be ordered by name.
-         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: name, status. Allowed comparators are &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve request with name equal &#x60;my-registry&#x60;  the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-registry  &#x60;&#x60;&#x60;  To retrieve kafka request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the kafkas that the user has permission to see will be returned.  Note. If the query is invalid, an error will be returned 
+         * @summary Get the list of all Registry instances
+         * @param {number} [page] Page index.
+         * @param {number} [size] Number of items in each page.
+         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the request fields. For example, to retrieve all Registry instances ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or to retrieve all Registry instances ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty,  the results are ordered by name.
+         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: &#x60;name&#x60;, &#x60;status&#x60;. Allowed comparators are &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve a request with name equal &#x60;my-registry&#x60;, the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-registry  &#x60;&#x60;&#x60;  To retrieve a request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, all the Registry instances that the user has permission to see are returned.  Note: If the query is invalid, an error is returned. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -166,8 +166,8 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
         },
         /**
          * Gets the details of a single instance of a `Registry`.
-         * @summary Get a Registry
-         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
+         * @summary Get a Registry instance
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60; instance.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -215,7 +215,7 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Create a new Registry instance
-         * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; to be created.
+         * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; instance to be created.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -224,9 +224,9 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Deletes an existing `Registry`.
-         * @summary Delete a Registry
-         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
+         * Deletes an existing `Registry` instance and all of the data that it stores. Important: Users should export the registry data before deleting the instance, e.g., using the Service Registry web console, core REST API, or `rhoas` CLI.
+         * @summary Delete a Registry instance
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60; instance.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -236,11 +236,11 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get the list of all registries.
-         * @param {number} [page] Page index
-         * @param {number} [size] Number of items in each page
-         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the kafkaRequests fields. For example, in order to retrieve all kafkas ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or in order to retrieve all kafkas ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results will be ordered by name.
-         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: name, status. Allowed comparators are &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve request with name equal &#x60;my-registry&#x60;  the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-registry  &#x60;&#x60;&#x60;  To retrieve kafka request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the kafkas that the user has permission to see will be returned.  Note. If the query is invalid, an error will be returned 
+         * @summary Get the list of all Registry instances
+         * @param {number} [page] Page index.
+         * @param {number} [size] Number of items in each page.
+         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the request fields. For example, to retrieve all Registry instances ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or to retrieve all Registry instances ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty,  the results are ordered by name.
+         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: &#x60;name&#x60;, &#x60;status&#x60;. Allowed comparators are &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve a request with name equal &#x60;my-registry&#x60;, the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-registry  &#x60;&#x60;&#x60;  To retrieve a request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, all the Registry instances that the user has permission to see are returned.  Note: If the query is invalid, an error is returned. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -250,8 +250,8 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
         },
         /**
          * Gets the details of a single instance of a `Registry`.
-         * @summary Get a Registry
-         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
+         * @summary Get a Registry instance
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60; instance.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -272,7 +272,7 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
         /**
          * 
          * @summary Create a new Registry instance
-         * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; to be created.
+         * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; instance to be created.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -280,9 +280,9 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
             return localVarFp.createRegistry(registryCreate, options).then((request) => request(axios, basePath));
         },
         /**
-         * Deletes an existing `Registry`.
-         * @summary Delete a Registry
-         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
+         * Deletes an existing `Registry` instance and all of the data that it stores. Important: Users should export the registry data before deleting the instance, e.g., using the Service Registry web console, core REST API, or `rhoas` CLI.
+         * @summary Delete a Registry instance
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60; instance.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -291,11 +291,11 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * 
-         * @summary Get the list of all registries.
-         * @param {number} [page] Page index
-         * @param {number} [size] Number of items in each page
-         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the kafkaRequests fields. For example, in order to retrieve all kafkas ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or in order to retrieve all kafkas ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results will be ordered by name.
-         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: name, status. Allowed comparators are &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve request with name equal &#x60;my-registry&#x60;  the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-registry  &#x60;&#x60;&#x60;  To retrieve kafka request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the kafkas that the user has permission to see will be returned.  Note. If the query is invalid, an error will be returned 
+         * @summary Get the list of all Registry instances
+         * @param {number} [page] Page index.
+         * @param {number} [size] Number of items in each page.
+         * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the request fields. For example, to retrieve all Registry instances ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or to retrieve all Registry instances ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty,  the results are ordered by name.
+         * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: &#x60;name&#x60;, &#x60;status&#x60;. Allowed comparators are &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve a request with name equal &#x60;my-registry&#x60;, the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-registry  &#x60;&#x60;&#x60;  To retrieve a request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, all the Registry instances that the user has permission to see are returned.  Note: If the query is invalid, an error is returned. 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -304,8 +304,8 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
         },
         /**
          * Gets the details of a single instance of a `Registry`.
-         * @summary Get a Registry
-         * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
+         * @summary Get a Registry instance
+         * @param {string} id A unique identifier for a &#x60;Registry&#x60; instance.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -324,7 +324,7 @@ export interface RegistriesApiInterface {
     /**
      * 
      * @summary Create a new Registry instance
-     * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; to be created.
+     * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; instance to be created.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
@@ -332,9 +332,9 @@ export interface RegistriesApiInterface {
     createRegistry(registryCreate: RegistryCreate, options?: AxiosRequestConfig): AxiosPromise<Registry>;
 
     /**
-     * Deletes an existing `Registry`.
-     * @summary Delete a Registry
-     * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
+     * Deletes an existing `Registry` instance and all of the data that it stores. Important: Users should export the registry data before deleting the instance, e.g., using the Service Registry web console, core REST API, or `rhoas` CLI.
+     * @summary Delete a Registry instance
+     * @param {string} id A unique identifier for a &#x60;Registry&#x60; instance.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
@@ -343,11 +343,11 @@ export interface RegistriesApiInterface {
 
     /**
      * 
-     * @summary Get the list of all registries.
-     * @param {number} [page] Page index
-     * @param {number} [size] Number of items in each page
-     * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the kafkaRequests fields. For example, in order to retrieve all kafkas ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or in order to retrieve all kafkas ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results will be ordered by name.
-     * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: name, status. Allowed comparators are &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve request with name equal &#x60;my-registry&#x60;  the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-registry  &#x60;&#x60;&#x60;  To retrieve kafka request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the kafkas that the user has permission to see will be returned.  Note. If the query is invalid, an error will be returned 
+     * @summary Get the list of all Registry instances
+     * @param {number} [page] Page index.
+     * @param {number} [size] Number of items in each page.
+     * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the request fields. For example, to retrieve all Registry instances ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or to retrieve all Registry instances ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty,  the results are ordered by name.
+     * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: &#x60;name&#x60;, &#x60;status&#x60;. Allowed comparators are &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve a request with name equal &#x60;my-registry&#x60;, the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-registry  &#x60;&#x60;&#x60;  To retrieve a request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, all the Registry instances that the user has permission to see are returned.  Note: If the query is invalid, an error is returned. 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
@@ -356,8 +356,8 @@ export interface RegistriesApiInterface {
 
     /**
      * Gets the details of a single instance of a `Registry`.
-     * @summary Get a Registry
-     * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
+     * @summary Get a Registry instance
+     * @param {string} id A unique identifier for a &#x60;Registry&#x60; instance.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApiInterface
@@ -376,7 +376,7 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
     /**
      * 
      * @summary Create a new Registry instance
-     * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; to be created.
+     * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; instance to be created.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApi
@@ -386,9 +386,9 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
     }
 
     /**
-     * Deletes an existing `Registry`.
-     * @summary Delete a Registry
-     * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
+     * Deletes an existing `Registry` instance and all of the data that it stores. Important: Users should export the registry data before deleting the instance, e.g., using the Service Registry web console, core REST API, or `rhoas` CLI.
+     * @summary Delete a Registry instance
+     * @param {string} id A unique identifier for a &#x60;Registry&#x60; instance.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApi
@@ -399,11 +399,11 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
 
     /**
      * 
-     * @summary Get the list of all registries.
-     * @param {number} [page] Page index
-     * @param {number} [size] Number of items in each page
-     * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the kafkaRequests fields. For example, in order to retrieve all kafkas ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or in order to retrieve all kafkas ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then the results will be ordered by name.
-     * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: name, status. Allowed comparators are &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve request with name equal &#x60;my-registry&#x60;  the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-registry  &#x60;&#x60;&#x60;  To retrieve kafka request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the kafkas that the user has permission to see will be returned.  Note. If the query is invalid, an error will be returned 
+     * @summary Get the list of all Registry instances
+     * @param {number} [page] Page index.
+     * @param {number} [size] Number of items in each page.
+     * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the request fields. For example, to retrieve all Registry instances ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or to retrieve all Registry instances ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty,  the results are ordered by name.
+     * @param {string} [search] Search criteria.  The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement. Allowed fields in the search are: &#x60;name&#x60;, &#x60;status&#x60;. Allowed comparators are &#x60;&#x3D;&#x60; or &#x60;LIKE&#x60;. Allowed joins are &#x60;AND&#x60; and &#x60;OR&#x60;, however there is a limit of max 10 joins in the search query.  Examples:  To retrieve a request with name equal &#x60;my-registry&#x60;, the value should be:  &#x60;&#x60;&#x60; name &#x3D; my-registry  &#x60;&#x60;&#x60;  To retrieve a request with its name starting with &#x60;my&#x60;, the value should be:  &#x60;&#x60;&#x60; name like my%25 &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, all the Registry instances that the user has permission to see are returned.  Note: If the query is invalid, an error is returned. 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApi
@@ -414,8 +414,8 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
 
     /**
      * Gets the details of a single instance of a `Registry`.
-     * @summary Get a Registry
-     * @param {string} id A unique identifier for a &#x60;Registry&#x60;.
+     * @summary Get a Registry instance
+     * @param {string} id A unique identifier for a &#x60;Registry&#x60; instance.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RegistriesApi
