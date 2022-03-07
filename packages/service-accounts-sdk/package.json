@@ -1,0 +1,33 @@
+{
+  "name": "@rhoas/service-accounts-sdk",
+  "version": "0.0.0-dev",
+  "description": "RHOAS Service Accounts SDK",
+  "author": "Red Hat Developers",
+  "keywords": [
+    "rhoas",
+    "kafka",
+    "redhat",
+    "@rhoas/registry-management-sdk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redhat-developer/app-services-sdk-js"
+  },
+  "license": "Apache-2.0",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc --outDir dist/",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "axios": "0.26.0"
+  },
+  "devDependencies": {
+    "@types/node": "16.11.26",
+    "typescript": "4.6.2"
+  }
+}

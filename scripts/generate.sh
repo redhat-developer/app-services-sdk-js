@@ -104,3 +104,10 @@ PACKAGE_NAME="@rhoas/registry-instance-sdk"
 OUTPUT_PATH="packages/registry-instance-sdk/src/generated"
 
 generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+
+
+OPENAPI_FILENAME=".openapi/service-accounts.yaml"
+PACKAGE_NAME="@rhoas/service-accounts-sdk"
+OUTPUT_PATH="packages/service-accounts-sdk/src/generated"
+
+generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
