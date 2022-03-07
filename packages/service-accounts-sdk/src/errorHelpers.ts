@@ -8,7 +8,7 @@ import { ModelError } from "./generated";
  * @returns true if error originated from the API
  */
 export const isServiceApiError = (error: unknown): error is AxiosError<ModelError> => {
-    return (error as AxiosError<ModelError>).response?.data.code !== undefined;
+    return (error as AxiosError<ModelError>).response?.data.error !== undefined;
 };
 
 /**
@@ -18,5 +18,5 @@ export const isServiceApiError = (error: unknown): error is AxiosError<ModelErro
  * @returns error code (one of fields of APIErrorCodes)
  */
 export const getErrorCode = (error: unknown): string | undefined => {
-    return (error as AxiosError<ModelError>).response?.data?.code;
+    return (error as AxiosError<ModelError>).response?.data?.error;
 };
