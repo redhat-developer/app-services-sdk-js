@@ -37,8 +37,6 @@ import { MetricsInstantQueryList } from '../model';
 // @ts-ignore
 import { MetricsRangeQueryList } from '../model';
 // @ts-ignore
-import { ServiceStatus } from '../model';
-// @ts-ignore
 import { VersionMetadata } from '../model';
 /**
  * DefaultApi - axios parameter creator
@@ -466,41 +464,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * [DEPRECATED] The service capacity status is now reported per cloud provider region and Kafka instance type in the /api/kafkas_mgmt/v1/cloud_providers/{id}/regions endpoint. Please use this endpoint instead.
-         * @summary Returns the status of resources, such as whether maximum service capacity has been reached
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        getServiceStatus: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/kafkas_mgmt/v1/status`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * 
          * @summary Returns the version metadata
          * @param {*} [options] Override http request option.
@@ -697,17 +660,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * [DEPRECATED] The service capacity status is now reported per cloud provider region and Kafka instance type in the /api/kafkas_mgmt/v1/cloud_providers/{id}/regions endpoint. Please use this endpoint instead.
-         * @summary Returns the status of resources, such as whether maximum service capacity has been reached
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        async getServiceStatus(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ServiceStatus>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getServiceStatus(options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * 
          * @summary Returns the version metadata
          * @param {*} [options] Override http request option.
@@ -843,16 +795,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getMetricsByRangeQuery(id, duration, interval, filters, options).then((request) => request(axios, basePath));
         },
         /**
-         * [DEPRECATED] The service capacity status is now reported per cloud provider region and Kafka instance type in the /api/kafkas_mgmt/v1/cloud_providers/{id}/regions endpoint. Please use this endpoint instead.
-         * @summary Returns the status of resources, such as whether maximum service capacity has been reached
-         * @param {*} [options] Override http request option.
-         * @deprecated
-         * @throws {RequiredError}
-         */
-        getServiceStatus(options?: any): AxiosPromise<ServiceStatus> {
-            return localVarFp.getServiceStatus(options).then((request) => request(axios, basePath));
-        },
-        /**
          * 
          * @summary Returns the version metadata
          * @param {*} [options] Override http request option.
@@ -983,16 +925,6 @@ export interface DefaultApiInterface {
      * @memberof DefaultApiInterface
      */
     getMetricsByRangeQuery(id: string, duration: number, interval: number, filters?: Array<string>, options?: AxiosRequestConfig): AxiosPromise<MetricsRangeQueryList>;
-
-    /**
-     * [DEPRECATED] The service capacity status is now reported per cloud provider region and Kafka instance type in the /api/kafkas_mgmt/v1/cloud_providers/{id}/regions endpoint. Please use this endpoint instead.
-     * @summary Returns the status of resources, such as whether maximum service capacity has been reached
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     * @memberof DefaultApiInterface
-     */
-    getServiceStatus(options?: AxiosRequestConfig): AxiosPromise<ServiceStatus>;
 
     /**
      * 
@@ -1142,18 +1074,6 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      */
     public getMetricsByRangeQuery(id: string, duration: number, interval: number, filters?: Array<string>, options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getMetricsByRangeQuery(id, duration, interval, filters, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * [DEPRECATED] The service capacity status is now reported per cloud provider region and Kafka instance type in the /api/kafkas_mgmt/v1/cloud_providers/{id}/regions endpoint. Please use this endpoint instead.
-     * @summary Returns the status of resources, such as whether maximum service capacity has been reached
-     * @param {*} [options] Override http request option.
-     * @deprecated
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public getServiceStatus(options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getServiceStatus(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

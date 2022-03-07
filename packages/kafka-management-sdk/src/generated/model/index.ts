@@ -30,8 +30,6 @@ export * from './service-account-list-all-of';
 export * from './service-account-list-item';
 export * from './service-account-list-item-all-of';
 export * from './service-account-request';
-export * from './service-status';
-export * from './service-status-kafkas';
 export * from './values';
 export * from './version-metadata';
 export * from './version-metadata-all-of';
