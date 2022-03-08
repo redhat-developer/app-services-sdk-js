@@ -13,6 +13,18 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ConsumerGroupOrderKey = {
+    Name: 'name'
+} as const;
+
+export type ConsumerGroupOrderKey = typeof ConsumerGroupOrderKey[keyof typeof ConsumerGroupOrderKey];
+
+
+

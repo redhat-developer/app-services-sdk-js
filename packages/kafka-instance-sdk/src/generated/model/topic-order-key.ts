@@ -13,6 +13,21 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const TopicOrderKey = {
+    Name: 'name',
+    Partitions: 'partitions',
+    RetentionMs: 'retention.ms',
+    RetentionBytes: 'retention.bytes'
+} as const;
+
+export type TopicOrderKey = typeof TopicOrderKey[keyof typeof TopicOrderKey];
+
+
+

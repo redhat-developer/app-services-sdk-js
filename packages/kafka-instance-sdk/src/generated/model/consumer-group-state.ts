@@ -13,6 +13,23 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ConsumerGroupState = {
+    Unknown: 'UNKNOWN',
+    PreparingRebalance: 'PREPARING_REBALANCE',
+    CompletingRebalance: 'COMPLETING_REBALANCE',
+    Stable: 'STABLE',
+    Dead: 'DEAD',
+    Empty: 'EMPTY'
+} as const;
+
+export type ConsumerGroupState = typeof ConsumerGroupState[keyof typeof ConsumerGroupState];
+
+
+
