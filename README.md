@@ -29,7 +29,6 @@ You can view all SDK packages directly in [npm](https://www.npmjs.com/search?q=k
 | service-accounts            | **@rhoas/service-accounts-sdk**     | alpha   | ![sashield]     | [npm][sanpm]     | [doc][sagit]     
 | connector        | **@rhoas/connector-management-sdk** | alpha  | ![connectorshield] | [npm][connectornpm] | [doc][connectorgit] |
 | service registry | **@rhoas/registry-management-sdk**  | alpha  | ![registryshield]  | [npm][registrynpm]  | [doc][registrygit]  |
-| service accounts | **@rhoas/kafka-management-sdk**     | alpha  | ![kafkashield]     | [npm][kafkanpm]     | [doc][kafkagit]     |
 
 ## Instances SDK's
 
