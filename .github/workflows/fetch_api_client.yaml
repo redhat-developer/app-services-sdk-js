@@ -26,7 +26,7 @@ jobs:
           branch: add-${{ github.event.client_payload.id }}-openapi
           branch-suffix: timestamp
           delete-branch: true
-          reviewers: craicoverflow, wtrocki
+          reviewers: "@redhat-developer/app-services-sdk-maintainers"
           body: |
             _This pull request was auto-generated_
 
