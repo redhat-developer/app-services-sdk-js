@@ -13,6 +13,23 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const AclBindingOrderKey = {
+    ResourceType: 'resourceType',
+    ResourceName: 'resourceName',
+    PatternType: 'patternType',
+    Principal: 'principal',
+    Operation: 'operation',
+    Permission: 'permission'
+} as const;
+
+export type AclBindingOrderKey = typeof AclBindingOrderKey[keyof typeof AclBindingOrderKey];
+
+
+

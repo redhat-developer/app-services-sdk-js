@@ -13,6 +13,21 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ConsumerGroupDescriptionOrderKey = {
+    Offset: 'offset',
+    EndOffset: 'endOffset',
+    Lag: 'lag',
+    Partition: 'partition'
+} as const;
+
+export type ConsumerGroupDescriptionOrderKey = typeof ConsumerGroupDescriptionOrderKey[keyof typeof ConsumerGroupDescriptionOrderKey];
+
+
+

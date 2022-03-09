@@ -13,6 +13,18 @@
  */
 
 
-export * from "./api";
-export * from "./configuration";
-export * from "./model";
+
+/**
+ * Identifier for a Kafka server / broker.
+ * @export
+ * @interface Node
+ */
+export interface Node {
+    /**
+     * 
+     * @type {number}
+     * @memberof Node
+     */
+    'id'?: number;
+}
+
