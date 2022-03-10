@@ -56,8 +56,6 @@ CUSTOM_PORT - custom port number used default is 8000
 CUSTOM_HOST - custom url used in returned data. default http://localhost
 RESOURCE_OWNER - provide custom owner value as we do not have ability to detect it in mock. For example: `RESOURCE_OWNER=wtrocki_kafka_devexp yarn start`
 
-TODO - provide arguments in CLI to override those values
-
 ## Build container
 
 ```
