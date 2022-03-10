@@ -14,6 +14,7 @@ const express = require("express");
 const createKafkaHandlers = require("./handlers/kafka-manager");
 const createRegistryHandlers = require("./handlers/registry-manager");
 const srsDataHandlers = require("./handlers/registry-data");
+const cosHandlers = require("./handlers/cos-manager");
 const topicHandlers = require("./handlers/kafka-admin");
 const ams = require("./handlers/ams");
 
@@ -29,23 +30,34 @@ api.use(cors());
 // define api
 const kafkaAPI = new OpenAPIBackend({
   definition: path.join(__dirname, "../openapi/kas-fleet-manager.yaml"),
+  validate: false
 });
+
 const srsControlApi = new OpenAPIBackend({
   definition: path.join(__dirname, "../openapi/srs-fleet-manager.yaml"),
+  validate: false
 });
 const topicAPI = new OpenAPIBackend({
   definition: path.join(__dirname, "../openapi/kafka-admin-rest.yaml"),
+  validate: false
 });
 
 const srsDataApi = new OpenAPIBackend({
   definition: path.join(__dirname, "../openapi/registry-instance-rest.yaml"),
+  validate: false
 });
 
+const cosAPI = new OpenAPIBackend({
+  definition: path.join(__dirname, "../openapi/connector_mgmt.yaml"),
+  validate: false
+});
+ 
 // register handlers
 kafkaAPI.register(createKafkaHandlers(preSeed));
 topicAPI.register(topicHandlers);
 srsControlApi.register(createRegistryHandlers(preSeed));
 srsDataApi.register(srsDataHandlers);
+cosAPI.register(cosHandlers);
 
 // register security handler
 kafkaAPI.registerSecurityHandler("Bearer", (c, req, res) => {
@@ -60,17 +72,24 @@ srsControlApi.registerSecurityHandler("Bearer", (c, req, res) => {
   return true;
 });
 
+cosAPI.registerSecurityHandler("Bearer", (c, req, res) => {
+  return true;
+});
+
 // Skipping validation of the schema
 // validation fails on this schema definition
 // even though it is valid through other validation forms like Swagger.io
-topicAPI.validateDefinition = () => {};
 srsDataApi.validateDefinition = () => {};
 srsControlApi.validateDefinition = () => {};
+cosAPI.validateDefinition = () => {};
+kafkaAPI.validateDefinition = () => {};
+topicAPI.validateDefinition = () => {};
 
 kafkaAPI.init();
 topicAPI.init();
 srsControlApi.init();
 srsDataApi.init();
+cosAPI.init();
 
 api.use((req, res) => {
   if (req.url.startsWith("/api/kafkas_mgmt/v1")) {
@@ -100,12 +119,18 @@ api.use((req, res) => {
     return ams.termsReview(req, req, res);
   }
 
+  if (req.url.startsWith("/api/connector_mgmt/v1")) {
+    console.info("Calling connector_mgmt ");
+    return cosAPI.handleRequest(req, req, res);
+  }
+
   if (req.url.startsWith("/")) {
     console.info("Front page");
     return res.send(
       "<h1>RHOAS API Mock</h1> <a href='https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/api-mock'>Documentation</a>"
     );
   }
+
 
   res.status(405).status({ err: "Method not allowed" });
 });
