@@ -169,7 +169,7 @@ function createKafkaHandlers(preSeed) {
       });
     },
 
-    deleteServiceAccount: async (c, req, res) => {
+    deleteServiceAccountById: async (c, req, res) => {
       res.status(200).json({
         id: "1",
         kind: "ServiceAccount",
@@ -180,10 +180,6 @@ function createKafkaHandlers(preSeed) {
         owner: "test-user",
         created_at: "2021-04-07T16:24:01+05:30",
       });
-    },
-
-    getServiceStatus: async (c, req, res) => {
-      res.status(200).json({});
     },
 
     // Handling auth

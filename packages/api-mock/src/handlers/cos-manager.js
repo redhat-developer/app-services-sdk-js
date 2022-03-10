@@ -2,10 +2,6 @@
 // jq '.. | .operationId?' openapi/cos.json  | grep -v null
 
 module.exports = {
-  operationId: async (c, req, res) => {
-    res.status(200).json({});
-  },
-
   getVersionMetadata: async (c, req, res) => {
     res.status(200).json({});
   },
