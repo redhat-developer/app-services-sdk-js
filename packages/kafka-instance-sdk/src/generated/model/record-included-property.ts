@@ -14,8 +14,23 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const RecordIncludedProperty = {
+    Partition: 'partition',
+    Offset: 'offset',
+    Timestamp: 'timestamp',
+    TimestampType: 'timestampType',
+    Headers: 'headers',
+    Key: 'key',
+    Value: 'value'
+} as const;
+
+export type RecordIncludedProperty = typeof RecordIncludedProperty[keyof typeof RecordIncludedProperty];
+
+
 
