@@ -1,0 +1,255 @@
+{
+  "kind": "ConnectorList",
+  "page": 1,
+  "size": 7,
+  "total": 7,
+  "items": [
+    {
+      "id": "c8b3h6ldsp2m5g2vmlug",
+      "kind": "Connector",
+      "href": "/api/connector_mgmt/v1/kafka_connectors/c8b3h6ldsp2m5g2vmlug",
+      "owner": "mock-user",
+      "created_at": "2022-02-23T13:37:30.240914Z",
+      "modified_at": "2022-03-11T13:43:42.847719Z",
+      "name": "mongodb_sink",
+      "connector_type_id": "mongodb_sink_0.1",
+      "channel": "stable",
+      "deployment_location": {
+        "kind": "addon",
+        "cluster_id": "c818ca4alharh4tcb7m0"
+      },
+      "desired_state": "deleted",
+      "resource_version": 407,
+      "kafka": {
+        "id": "c8b308vrvd7dl597mp4g",
+        "url": "asmigala-t-c-b---vrvd-dl---mp-g.bf2.kafka.rhcloud.com:443"
+      },
+      "service_account": {
+        "client_id": "srvc-acct-8d53b9f0-4d6e-43f0-bbf5-b0eb27ea7110",
+        "client_secret": ""
+      },
+      "schema_registry": { "id": "", "url": "" },
+      "connector": {
+        "data_shape": { "consumes": { "format": "application/json" } },
+        "error_handler": { "dead_letter_queue": { "topic": "dlq" } },
+        "kafka_topic": "test new",
+        "mongodb_collection": "rhocqe",
+        "mongodb_create_collection": true,
+        "mongodb_database": "sampledb",
+        "mongodb_hosts": "mongodb.asmigala.svc.cluster.local",
+        "mongodb_password": {},
+        "mongodb_username": "root"
+      },
+      "status": { "state": "updating" }
+    },
+    {
+      "id": "c837al3ihpm73aludtug",
+      "kind": "Connector",
+      "href": "/api/connector_mgmt/v1/kafka_connectors/c837al3ihpm73aludtug",
+      "owner": "mock-user",
+      "created_at": "2022-02-11T14:40:20.761778Z",
+      "modified_at": "2022-03-08T10:20:24.103294Z",
+      "name": "AWS Kinesis Source",
+      "connector_type_id": "aws_kinesis_sink_0.1",
+      "channel": "stable",
+      "deployment_location": {
+        "kind": "addon",
+        "cluster_id": "c818ca4alharh4tcb7m0"
+      },
+      "desired_state": "deleted",
+      "resource_version": 272,
+      "kafka": {
+        "id": "c81vl3slvnauoahslu90",
+        "url": "shivamgu-k-c--vl-slvnauoahslu-a.bf2.kafka.rhcloud.com:443"
+      },
+      "service_account": {
+        "client_id": "srvc-acct-5bb611b1-837c-4fe6-820a-af3bc4c0aa09",
+        "client_secret": ""
+      },
+      "schema_registry": { "id": "", "url": "" },
+      "connector": {
+        "aws_access_key": {},
+        "aws_region": "AWS",
+        "aws_secret_key": {},
+        "aws_stream": "Stream",
+        "error_handling": {
+          "dead_letter_queue": { "topic": "Dead Letter Topic Name" }
+        },
+        "kafka_registry_url": "Topic Service Registry URL",
+        "kafka_topic": "Topic Names "
+      },
+      "status": { "state": "updating" }
+    },
+    {
+      "id": "c8bo9dftfa9sdsrfgppg",
+      "kind": "Connector",
+      "href": "/api/connector_mgmt/v1/kafka_connectors/c8bo9dftfa9sdsrfgppg",
+      "owner": "mock-user",
+      "created_at": "2022-02-24T13:14:29.93717Z",
+      "modified_at": "2022-02-25T09:48:47.09852Z",
+      "name": "AWS Cloudwatch Sink",
+      "connector_type_id": "aws_cloudwatch_sink_0.1",
+      "channel": "stable",
+      "deployment_location": { "kind": "addon" },
+      "desired_state": "ready",
+      "resource_version": 51,
+      "kafka": {
+        "id": "c8b308vrvd7dl597mp4g",
+        "url": "asmigala-t-c-b---vrvd-dl---mp-g.bf2.kafka.rhcloud.com:443"
+      },
+      "service_account": {
+        "client_id": "srvc-acct-96e27a0e-6306-48ca-ab5e-240ccd459218",
+        "client_secret": ""
+      },
+      "schema_registry": { "id": "", "url": "" },
+      "connector": {
+        "aws_access_key": {},
+        "aws_cw_namespace": "Cloud Watch Namespace",
+        "aws_region": "AWS Region",
+        "aws_secret_key": {},
+        "error_handler": { "log": {} },
+        "kafka_registry_url": "Topic Service Registry URL",
+        "kafka_topic": "Topic Names "
+      },
+      "status": { "state": "assigning" }
+    },
+    {
+      "id": "c8au7rqk5s1jujjq7rmg",
+      "kind": "Connector",
+      "href": "/api/connector_mgmt/v1/kafka_connectors/c8au7rqk5s1jujjq7rmg",
+      "owner": "mock-user",
+      "created_at": "2022-02-23T07:36:15.533105Z",
+      "modified_at": "2022-02-23T16:59:02.515842Z",
+      "name": "AWS SQS Sink",
+      "connector_type_id": "aws_sqs_sink_0.1",
+      "channel": "stable",
+      "deployment_location": {
+        "kind": "addon",
+        "cluster_id": "c818ca4alharh4tcb7m0"
+      },
+      "desired_state": "deleted",
+      "resource_version": 45,
+      "kafka": {
+        "id": "c89lvbn1j0qnbnktuko0",
+        "url": "asmigala-k-c--lvbn-j-qnbnktukoa.bf2.kafka.rhcloud.com:443"
+      },
+      "service_account": {
+        "client_id": "srvc-acct-623f3b7e-0f9d-4e56-8d1a-e3514e5a4b16",
+        "client_secret": ""
+      },
+      "schema_registry": { "id": "", "url": "" },
+      "connector": {
+        "aws_access_key": {},
+        "aws_amazon_a_w_s_host": "localhost",
+        "aws_auto_create_queue": true,
+        "aws_queue_name_or_arn": "Queue Name",
+        "aws_region": "US East",
+        "aws_secret_key": {},
+        "aws_use_default_credentials_provider": true,
+        "error_handling": { "log": {} },
+        "kafka_registry_url": "example.avro",
+        "kafka_topic": "MyTopic"
+      },
+      "status": { "state": "failed" }
+    },
+    {
+      "id": "c8f5j1vtfa9sdsrj3vdg",
+      "kind": "Connector",
+      "href": "/api/connector_mgmt/v1/kafka_connectors/c8f5j1vtfa9sdsrj3vdg",
+      "owner": "mock-user",
+      "created_at": "2022-03-01T17:36:07.988059Z",
+      "modified_at": "2022-03-04T16:11:29.740203Z",
+      "name": "debezium mongodb",
+      "connector_type_id": "debezium-mongodb-1.9.0.Alpha2",
+      "channel": "stable",
+      "deployment_location": {
+        "kind": "addon",
+        "cluster_id": "c818ca4alharh4tcb7m0"
+      },
+      "desired_state": "ready",
+      "resource_version": 170,
+      "kafka": {
+        "id": "c8eag87rvd7dl59afs1g",
+        "url": "lb-cos-c-eag--rvd-dl--afs-g.bf2.kafka.rhcloud.com:443"
+      },
+      "service_account": {
+        "client_id": "srvc-acct-aa843e82-3d0d-4b01-a468-d3a19c2220e9",
+        "client_secret": ""
+      },
+      "schema_registry": { "id": "", "url": "" },
+      "connector": {
+        "mongodb.hosts": "cluster0.m54xo.mongodb.net",
+        "mongodb.name": "test",
+        "mongodb.password": {},
+        "mongodb.user": "test"
+      },
+      "status": { "state": "provisioning" }
+    },
+    {
+      "id": "c8jmecftfa9sdsrqdiqg",
+      "kind": "Connector",
+      "href": "/api/connector_mgmt/v1/kafka_connectors/c8jmecftfa9sdsrqdiqg",
+      "owner": "mock-user",
+      "created_at": "2022-03-08T14:24:49.212312Z",
+      "modified_at": "2022-03-11T08:53:38.480885Z",
+      "name": "log sink",
+      "connector_type_id": "log_sink_0.1",
+      "channel": "stable",
+      "deployment_location": {
+        "kind": "addon",
+        "cluster_id": "c818ca4alharh4tcb7m0"
+      },
+      "desired_state": "ready",
+      "resource_version": 373,
+      "kafka": {
+        "id": "c8is1ts45rpbkjl4k4dg",
+        "url": "btison-con-c-is-ts--rpbkjl-k-dg.bf2.kafka.rhcloud.com:443"
+      },
+      "service_account": {
+        "client_id": "srvc-acct-2f9eab78-3160-4f30-ae43-0d01c77255fd",
+        "client_secret": ""
+      },
+      "schema_registry": { "id": "", "url": "" },
+      "connector": {
+        "data_shape": { "consumes": { "format": "application/octet-stream" } },
+        "error_handler": { "stop": {} },
+        "kafka_topic": "some_topics2",
+        "log_multi_line": true,
+        "log_show_all": true
+      },
+      "status": { "state": "updating" }
+    },
+    {
+      "id": "c8fkegvtfa9sdsrjjsk0",
+      "kind": "Connector",
+      "href": "/api/connector_mgmt/v1/kafka_connectors/c8fkegvtfa9sdsrjjsk0",
+      "owner": "mock-user",
+      "created_at": "2022-03-02T10:30:27.726074Z",
+      "modified_at": "2022-03-09T07:00:37.257358Z",
+      "name": "slack sink",
+      "connector_type_id": "slack_sink_0.1",
+      "channel": "stable",
+      "deployment_location": {
+        "kind": "addon",
+        "cluster_id": "c818ca4alharh4tcb7m0"
+      },
+      "desired_state": "ready",
+      "resource_version": 310,
+      "kafka": {
+        "id": "kafkaId-ignored",
+        "url": "https://openbridge-c--ajhf-ek--ri--ifea.bf2.kafka.rhcloud.com:443"
+      },
+      "service_account": {
+        "client_id": "srvc-acct-35219453-7a88-485c-8b9a-bcdeb3de694e",
+        "client_secret": ""
+      },
+      "schema_registry": { "id": "", "url": "" },
+      "connector": {
+        "kafka_topic": "ob-1caabd74-cad7-4fd7-8f38-f26874edde90",
+        "slack_channel": "mc",
+        "slack_webhook_url": {}
+      },
+      "status": { "state": "ready" }
+    }
+  ]
+}
