@@ -1,0 +1,38 @@
+{
+  "kind": "ConnectorClusterList",
+  "page": 1,
+  "size": 3,
+  "total": 3,
+  "items": [
+    {
+      "id": "c8kssjroqs0t3bbcohl0",
+      "kind": "ConnectorCluster",
+      "href": "/api/connector_mgmt/v1/kafka_connector_clusters/c8kssjroqs0t3bbcohl0",
+      "owner": "mock-user",
+      "created_at": "2022-03-10T10:09:19.859921Z",
+      "modified_at": "2022-03-10T10:12:30.293656Z",
+      "name": "connector-cluster-1",
+      "status": { "state": "ready" }
+    },
+    {
+      "id": "c8nhhjfih07jt7jv6480",
+      "kind": "ConnectorCluster",
+      "href": "/api/connector_mgmt/v1/kafka_connector_clusters/c8nhhjfih07jt7jv6480",
+      "owner": "mock-user",
+      "created_at": "2022-03-14T10:28:29.549184Z",
+      "modified_at": "2022-03-14T10:54:52.74668Z",
+      "name": "connector-cluster-2",
+      "status": { "state": "disconnected" }
+    },
+    {
+      "id": "c818ca4alharh4tcb7m0",
+      "kind": "ConnectorCluster",
+      "href": "/api/connector_mgmt/v1/kafka_connector_clusters/c818ca4alharh4tcb7m0",
+      "owner": "mock-user",
+      "created_at": "2022-02-08T15:03:04.00474Z",
+      "modified_at": "2022-03-11T16:05:01.280693Z",
+      "name": "connector-cluster-3",
+      "status": { "state": "ready" }
+    }
+  ]
+}
