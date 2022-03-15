@@ -50,5 +50,11 @@ export interface KafkaRequestPayload {
      * @memberof KafkaRequestPayload
      */
     'reauthentication_enabled'?: boolean | null;
+    /**
+     * kafka plan in a format of <instance_type>.<size_id>
+     * @type {string}
+     * @memberof KafkaRequestPayload
+     */
+    'plan'?: string;
 }
 

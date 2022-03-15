@@ -104,5 +104,11 @@ export interface KafkaRequestAllOf {
      * @memberof KafkaRequestAllOf
      */
     'kafka_storage_size'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof KafkaRequestAllOf
+     */
+    'size_id'?: string;
 }
 

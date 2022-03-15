@@ -25,12 +25,19 @@ export interface RegionCapacityListItem {
      * @type {string}
      * @memberof RegionCapacityListItem
      */
-    'instance_type'?: string;
+    'instance_type': string;
     /**
      * flag indicating whether the capacity for the instance type in the region is reached
      * @type {boolean}
      * @memberof RegionCapacityListItem
+     * @deprecated
      */
     'max_capacity_reached': boolean;
+    /**
+     * list of available Kafka instance sizes that can be created in this region when taking account current capacity and regional limits
+     * @type {Array<string>}
+     * @memberof RegionCapacityListItem
+     */
+    'available_sizes': Array<string>;
 }
 
