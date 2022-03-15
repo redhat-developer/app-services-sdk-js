@@ -1,0 +1,21 @@
+{
+    "items": [
+      {
+        "partition": 0,
+        "offset": 78,
+        "timestamp": "2022-03-15T14:11:57.102Z",
+        "timestampType": "CREATE_TIME",
+        "headers": {},
+        "value": "{'user': 'user1', 'message': 'message1'}"
+      },
+      {
+        "partition": 0,
+        "offset": 79,
+        "timestamp": "2022-03-15T14:11:57.103Z",
+        "timestampType": "CREATE_TIME",
+        "headers": {},
+        "value": "{'user': 'user2', 'message': 'message2'}"
+      }
+    ],
+    "total": 2
+  }
