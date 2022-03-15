@@ -182,6 +182,36 @@ function createKafkaHandlers(preSeed) {
       });
     },
 
+    getInstanceTypesByCloudProviderAndRegion: async (c, req, res) => {
+      res.status(200).json({
+        "kind": "SupportedKafkaInstanceTypesList",
+        "page": "1",
+        "size": "1",
+        "total": "1",
+        "item": {
+          "value": {
+            "kind": "SupportedKafkaInstanceType",
+            "id": "eval",
+            "sizes": [
+              {
+                "id": "x1",
+                "ingress_throughput_per_sec": "30Mi",
+                "egress_throughput_per_sec": "30Mi",
+                "total_max_connections": 3000,
+                "max_data_retention_size": "1000Gi",
+                "max_partitions": 1000,
+                "max_data_retention_period": "P14D",
+                "max_connection_attempts_per_sec": 100,
+                "quota_consumed": 1,
+                "quota_type": "rhosak",
+                "capacity_consumed": 1
+              }
+            ]
+          }
+        }
+      });
+    },
+
     // Handling auth
     notFound: async (c, req, res) => res.status(404).json({ err: "not found" }),
     unauthorizedHandler: async (c, req, res) =>
