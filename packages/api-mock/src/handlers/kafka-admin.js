@@ -221,6 +221,14 @@ module.exports = {
     return res.status(200).json({ message: 'deleted' });
   },
 
+  consumeRecords: async (c, _, res) => {
+    return res.status(200).json(require("../../_data_/topicProduce.json"));
+  },
+
+  produceRecord: async (c, _, res) => {
+    return res.status(200).json(require("../../_data_/topicConsume.json"));
+  },
+
   updateTopic: async (c, _, res) => {
     const topicName = c.request.params.topicName;
     const topicBody = c.request.body;
@@ -327,6 +335,8 @@ const createPartitions = (numberOfPartitions, numberOfReplicas) => {
 
   return partitions;
 };
+
+
 
 const createPartition = (id, numberOfReplicas) => {
   const replicas = [];
