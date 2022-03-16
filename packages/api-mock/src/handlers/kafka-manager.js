@@ -118,20 +118,7 @@ function createKafkaHandlers(preSeed) {
     },
 
     getCloudProviderRegions: async (_c, _req, res) => {
-      return res.status(200).json({
-        kind: "CloudRegionList",
-        page: 1,
-        size: 17,
-        total: 17,
-        items: [
-          {
-            kind: "CloudRegion",
-            id: "eu-west-2",
-            display_name: "EU, London",
-            enabled: true,
-          },
-        ],
-      });
+      return res.status(200).json(require("../../_data_/kas-cloud-regions.json"));
     },
 
     getVersionMetadata: async (c, req, res) =>

@@ -1,0 +1,203 @@
+{
+    "kind": "CloudRegionList",
+    "page": 1,
+    "size": 22,
+    "total": 22,
+    "items": [
+        {
+            "kind": "CloudRegion",
+            "id": "af-south-1",
+            "display_name": "Africa (Cape Town)",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "ap-east-1",
+            "display_name": "Asia Pacific (Hong Kong)",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "ap-northeast-1",
+            "display_name": "Asia Pacific, Tokyo",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "ap-northeast-2",
+            "display_name": "Asia Pacific, Seoul",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "ap-northeast-3",
+            "display_name": "Asia Pacific (Osaka)",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "ap-south-1",
+            "display_name": "Asia Pacific, Mumbai",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "ap-southeast-1",
+            "display_name": "Asia Pacific, Singapore",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "ap-southeast-2",
+            "display_name": "Asia Pacific, Sydney",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "ap-southeast-3",
+            "display_name": "Asia Pacific, Jakarta",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "ca-central-1",
+            "display_name": "Canada, Central",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "eu-central-1",
+            "display_name": "EU, Frankfurt",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "eu-north-1",
+            "display_name": "EU, Stockholm",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "eu-south-1",
+            "display_name": "Europe (Milan)",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "eu-west-1",
+            "display_name": "EU, Ireland",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "eu-west-2",
+            "display_name": "EU, London",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "eu-west-3",
+            "display_name": "EU, Paris",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "me-south-1",
+            "display_name": "Middle East, Bahrain",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "sa-east-1",
+            "display_name": "South America, São Paulo",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "us-east-1",
+            "display_name": "US East, N. Virginia",
+            "enabled": true,
+            "supported_instance_types": [
+                "standard",
+                "eval",
+            ],
+            "capacity": [
+                {
+                    "instance_type": "standard",
+                    "max_capacity_reached": false,
+                    "available_sizes": [
+                        "x1",
+                        "x2"
+                    ]
+                },
+                {
+                    "instance_type": "eval",
+                    "max_capacity_reached": false,
+                    "available_sizes": [
+                        "x1"
+                    ]
+                }
+            ]
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "us-east-2",
+            "display_name": "US East, Ohio",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "us-west-1",
+            "display_name": "US West, N. California",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        },
+        {
+            "kind": "CloudRegion",
+            "id": "us-west-2",
+            "display_name": "US West, Oregon",
+            "enabled": false,
+            "supported_instance_types": [],
+            "capacity": []
+        }
+    ]
+}
