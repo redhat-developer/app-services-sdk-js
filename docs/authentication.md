@@ -1,7 +1,20 @@
+# Authentication
+
+Authentication for SDK is divided between two types of sdks:
+
+
+- Management SDKs - authentication using sso.redhat.com (redhat accounts)
+- Inatance SDK - typically require service accounts
+that can be created using KafkaSDK service account API
+
+Authentication is done using OAuth Protocol
+
+
+
 ## Authentication for Management SDK's
 
-Management SDKs are used to created instances. 
-For those instances we can use OAuth.
+Management SDKs are used to created instances of services.
+For those instances we can use OAuth protocol
 
 All Management SDK's are working with Red Hat Single Sign On (sso.redhat.com) server.
 Authentication to services can be done using Keycloak.js library.
@@ -18,7 +31,7 @@ When authenticating please use following keycloak client configuration:
 }
 ```
 
-Valid redirect urls: 
+This client allows only following redirect urls: 
 
 `.openshift.com/*, https://prod.foo.redhat.com/*, https://prod.food.redhat.com:1337/*`
 
@@ -30,7 +43,7 @@ For more information about how to use Keycloak.js please refer to [official docu
 
 To authenticate to the Instance SDK's we need to create service account
 Service account can be created using [RHOAS CLI](https://github.com/redhat-developer/app-services-cli/blob/main/docs/commands/rhoas_serviceaccount_create.adoc) or
-by UI (https://cloud.redhat.com)
+by UI (https://cloud.redhat.com) or by using Kafka Management SDK.
 
 For code based access you can also create service account using [ServiceAccount SDK](https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/kafka-management-sdk )
 
