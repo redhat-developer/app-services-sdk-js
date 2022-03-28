@@ -46,9 +46,10 @@ export interface CloudRegion {
      */
     'enabled': boolean;
     /**
-     * The Kafka instance types supported by this region.
+     * The Kafka instance types supported by this region.  DEPRECATION NOTICE - instance_type will be deprecated
      * @type {Array<string>}
      * @memberof CloudRegion
+     * @deprecated
      */
     'supported_instance_types': Array<string>;
     /**
