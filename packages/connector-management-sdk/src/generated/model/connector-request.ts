@@ -17,7 +17,6 @@ import { Channel } from './channel';
 import { ConnectorConfiguration } from './connector-configuration';
 import { ConnectorDesiredState } from './connector-desired-state';
 import { ConnectorRequestMeta } from './connector-request-meta';
-import { DeploymentLocation } from './deployment-location';
 import { KafkaConnectionSettings } from './kafka-connection-settings';
 import { SchemaRegistryConnectionSettings } from './schema-registry-connection-settings';
 import { ServiceAccount } from './service-account';

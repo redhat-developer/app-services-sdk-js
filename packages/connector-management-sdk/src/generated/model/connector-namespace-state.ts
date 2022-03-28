@@ -14,9 +14,19 @@
 
 
 
-export * from './api/connector-clusters-api';
-export * from './api/connector-namespaces-api';
-export * from './api/connector-service-api';
-export * from './api/connector-types-api';
-export * from './api/connectors-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ConnectorNamespaceState = {
+    Disconnected: 'disconnected',
+    Ready: 'ready',
+    Deleting: 'deleting'
+} as const;
+
+export type ConnectorNamespaceState = typeof ConnectorNamespaceState[keyof typeof ConnectorNamespaceState];
+
+
 

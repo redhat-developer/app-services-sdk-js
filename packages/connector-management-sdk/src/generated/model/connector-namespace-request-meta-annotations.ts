@@ -13,12 +13,24 @@
  */
 
 
-import { ConnectorClusterTarget } from './connector-cluster-target';
 
 /**
- * @type DeploymentLocation
+ * 
  * @export
+ * @interface ConnectorNamespaceRequestMetaAnnotations
  */
-export type DeploymentLocation = ConnectorClusterTarget;
-
+export interface ConnectorNamespaceRequestMetaAnnotations {
+    /**
+     * 
+     * @type {string}
+     * @memberof ConnectorNamespaceRequestMetaAnnotations
+     */
+    'key': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConnectorNamespaceRequestMetaAnnotations
+     */
+    'value': string;
+}
 

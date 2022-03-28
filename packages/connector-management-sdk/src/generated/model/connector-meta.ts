@@ -17,7 +17,6 @@ import { Channel } from './channel';
 import { ConnectorDesiredState } from './connector-desired-state';
 import { ConnectorMetaAllOf } from './connector-meta-all-of';
 import { ConnectorRequestMeta } from './connector-request-meta';
-import { DeploymentLocation } from './deployment-location';
 import { ObjectMeta } from './object-meta';
 
 /**

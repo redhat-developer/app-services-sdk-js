@@ -17,7 +17,7 @@ import { ConnectorClusterRequestMeta } from './connector-cluster-request-meta';
 
 /**
  * @type ConnectorClusterRequest
- * Schema for the request to update a data plane cluster\'s status
+ * Schema for the request to update a data plane cluster\'s name
  * @export
  */
 export type ConnectorClusterRequest = ConnectorClusterRequestMeta;

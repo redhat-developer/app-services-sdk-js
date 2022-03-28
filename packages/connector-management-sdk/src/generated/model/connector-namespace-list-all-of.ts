@@ -13,24 +13,19 @@
  */
 
 
+import { ConnectorNamespace } from './connector-namespace';
 
 /**
- * Targets workloads to an addon cluster
+ * 
  * @export
- * @interface ConnectorClusterTarget
+ * @interface ConnectorNamespaceListAllOf
  */
-export interface ConnectorClusterTarget {
+export interface ConnectorNamespaceListAllOf {
     /**
      * 
-     * @type {string}
-     * @memberof ConnectorClusterTarget
+     * @type {Array<ConnectorNamespace>}
+     * @memberof ConnectorNamespaceListAllOf
      */
-    'kind': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ConnectorClusterTarget
-     */
-    'cluster_id'?: string;
+    'items'?: Array<ConnectorNamespace>;
 }
 

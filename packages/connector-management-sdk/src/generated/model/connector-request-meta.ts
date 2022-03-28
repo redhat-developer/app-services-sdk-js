@@ -15,7 +15,6 @@
 
 import { Channel } from './channel';
 import { ConnectorDesiredState } from './connector-desired-state';
-import { DeploymentLocation } from './deployment-location';
 
 /**
  * 
@@ -37,16 +36,16 @@ export interface ConnectorRequestMeta {
     'connector_type_id': string;
     /**
      * 
+     * @type {string}
+     * @memberof ConnectorRequestMeta
+     */
+    'namespace_id'?: string;
+    /**
+     * 
      * @type {Channel}
      * @memberof ConnectorRequestMeta
      */
     'channel'?: Channel;
-    /**
-     * 
-     * @type {DeploymentLocation}
-     * @memberof ConnectorRequestMeta
-     */
-    'deployment_location': DeploymentLocation;
     /**
      * 
      * @type {ConnectorDesiredState}

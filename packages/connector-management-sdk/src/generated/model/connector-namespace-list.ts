@@ -13,10 +13,14 @@
  */
 
 
+import { ConnectorNamespace } from './connector-namespace';
+import { ConnectorNamespaceListAllOf } from './connector-namespace-list-all-of';
+import { List } from './list';
 
-export * from './api/connector-clusters-api';
-export * from './api/connector-namespaces-api';
-export * from './api/connector-service-api';
-export * from './api/connector-types-api';
-export * from './api/connectors-api';
+/**
+ * @type ConnectorNamespaceList
+ * @export
+ */
+export type ConnectorNamespaceList = ConnectorNamespaceListAllOf & List;
+
 
