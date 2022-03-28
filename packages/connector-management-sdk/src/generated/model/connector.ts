@@ -19,7 +19,6 @@ import { ConnectorDesiredState } from './connector-desired-state';
 import { ConnectorMeta } from './connector-meta';
 import { ConnectorStatus } from './connector-status';
 import { ConnectorStatusStatus } from './connector-status-status';
-import { DeploymentLocation } from './deployment-location';
 import { KafkaConnectionSettings } from './kafka-connection-settings';
 import { ObjectReference } from './object-reference';
 import { SchemaRegistryConnectionSettings } from './schema-registry-connection-settings';

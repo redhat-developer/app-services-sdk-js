@@ -13,10 +13,14 @@
  */
 
 
+import { ConnectorNamespaceRequestMeta } from './connector-namespace-request-meta';
+import { ConnectorNamespaceRequestMetaAnnotations } from './connector-namespace-request-meta-annotations';
 
-export * from './api/connector-clusters-api';
-export * from './api/connector-namespaces-api';
-export * from './api/connector-service-api';
-export * from './api/connector-types-api';
-export * from './api/connectors-api';
+/**
+ * @type ConnectorNamespaceEvalRequest
+ * An evaluation connector namespace create request
+ * @export
+ */
+export type ConnectorNamespaceEvalRequest = ConnectorNamespaceRequestMeta;
+
 

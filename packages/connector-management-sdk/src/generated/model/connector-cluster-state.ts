@@ -22,7 +22,8 @@
 
 export const ConnectorClusterState = {
     Disconnected: 'disconnected',
-    Ready: 'ready'
+    Ready: 'ready',
+    Deleting: 'deleting'
 } as const;
 
 export type ConnectorClusterState = typeof ConnectorClusterState[keyof typeof ConnectorClusterState];

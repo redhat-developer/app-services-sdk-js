@@ -14,9 +14,18 @@
 
 
 
-export * from './api/connector-clusters-api';
-export * from './api/connector-namespaces-api';
-export * from './api/connector-service-api';
-export * from './api/connector-types-api';
-export * from './api/connectors-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ConnectorNamespaceTenantKind = {
+    User: 'user',
+    Organisation: 'organisation'
+} as const;
+
+export type ConnectorNamespaceTenantKind = typeof ConnectorNamespaceTenantKind[keyof typeof ConnectorNamespaceTenantKind];
+
+
 

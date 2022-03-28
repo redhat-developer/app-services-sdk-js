@@ -21,6 +21,7 @@
  */
 
 export const ConnectorDesiredState = {
+    Unassigned: 'unassigned',
     Ready: 'ready',
     Stopped: 'stopped',
     Deleted: 'deleted'
