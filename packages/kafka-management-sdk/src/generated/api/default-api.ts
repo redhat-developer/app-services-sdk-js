@@ -180,7 +180,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} id The ID of record
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
-         * @param {string} [instanceType] The Kafka instance type to filter the results by
+         * @param {string} [instanceType] The Kafka instance type to filter the results by  DEPRECATION NOTICE - instance_type will be deprecated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -588,7 +588,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} id The ID of record
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
-         * @param {string} [instanceType] The Kafka instance type to filter the results by
+         * @param {string} [instanceType] The Kafka instance type to filter the results by  DEPRECATION NOTICE - instance_type will be deprecated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -729,7 +729,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {string} id The ID of record
          * @param {string} [page] Page index
          * @param {string} [size] Number of items in each page
-         * @param {string} [instanceType] The Kafka instance type to filter the results by
+         * @param {string} [instanceType] The Kafka instance type to filter the results by  DEPRECATION NOTICE - instance_type will be deprecated
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -861,7 +861,7 @@ export interface DefaultApiInterface {
      * @param {string} id The ID of record
      * @param {string} [page] Page index
      * @param {string} [size] Number of items in each page
-     * @param {string} [instanceType] The Kafka instance type to filter the results by
+     * @param {string} [instanceType] The Kafka instance type to filter the results by  DEPRECATION NOTICE - instance_type will be deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
@@ -999,7 +999,7 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      * @param {string} id The ID of record
      * @param {string} [page] Page index
      * @param {string} [size] Number of items in each page
-     * @param {string} [instanceType] The Kafka instance type to filter the results by
+     * @param {string} [instanceType] The Kafka instance type to filter the results by  DEPRECATION NOTICE - instance_type will be deprecated
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
