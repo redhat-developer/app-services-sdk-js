@@ -30,6 +30,8 @@ export * from './service-account-list-all-of';
 export * from './service-account-list-item';
 export * from './service-account-list-item-all-of';
 export * from './service-account-request';
+export * from './sso-provider';
+export * from './sso-provider-all-of';
 export * from './values';
 export * from './version-metadata';
 export * from './version-metadata-all-of';
