@@ -155,7 +155,7 @@
             "enabled": true,
             "supported_instance_types": [
                 "standard",
-                "eval",
+                "eval"
             ],
             "capacity": [
                 {
