@@ -26,6 +26,6 @@ export interface SupportedKafkaInstanceTypesListAllOf {
      * @type {Array<SupportedKafkaInstanceType>}
      * @memberof SupportedKafkaInstanceTypesListAllOf
      */
-    'items'?: Array<SupportedKafkaInstanceType>;
+    'instance_types'?: Array<SupportedKafkaInstanceType>;
 }
 

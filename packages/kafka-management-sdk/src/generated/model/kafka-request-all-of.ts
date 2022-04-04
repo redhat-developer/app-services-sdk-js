@@ -94,6 +94,12 @@ export interface KafkaRequestAllOf {
     'instance_type'?: string;
     /**
      * 
+     * @type {string}
+     * @memberof KafkaRequestAllOf
+     */
+    'instance_type_name'?: string;
+    /**
+     * 
      * @type {boolean}
      * @memberof KafkaRequestAllOf
      */
@@ -110,5 +116,41 @@ export interface KafkaRequestAllOf {
      * @memberof KafkaRequestAllOf
      */
     'size_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof KafkaRequestAllOf
+     */
+    'ingress_throughput_per_sec'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof KafkaRequestAllOf
+     */
+    'egress_throughput_per_sec'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof KafkaRequestAllOf
+     */
+    'total_max_connections'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof KafkaRequestAllOf
+     */
+    'max_partitions'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof KafkaRequestAllOf
+     */
+    'max_data_retention_period'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof KafkaRequestAllOf
+     */
+    'max_connection_attempts_per_sec'?: number;
 }
 

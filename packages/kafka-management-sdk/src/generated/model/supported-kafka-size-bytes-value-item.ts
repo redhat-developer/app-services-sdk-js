@@ -13,13 +13,18 @@
  */
 
 
-import { SupportedKafkaInstanceType } from './supported-kafka-instance-type';
-import { SupportedKafkaInstanceTypesListAllOf } from './supported-kafka-instance-types-list-all-of';
 
 /**
- * @type SupportedKafkaInstanceTypesList
+ * 
  * @export
+ * @interface SupportedKafkaSizeBytesValueItem
  */
-export type SupportedKafkaInstanceTypesList = SupportedKafkaInstanceTypesListAllOf;
-
+export interface SupportedKafkaSizeBytesValueItem {
+    /**
+     * 
+     * @type {number}
+     * @memberof SupportedKafkaSizeBytesValueItem
+     */
+    'bytes'?: number;
+}
 

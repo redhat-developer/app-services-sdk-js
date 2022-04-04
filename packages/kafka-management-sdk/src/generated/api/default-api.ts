@@ -276,18 +276,18 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Returns the list of supported Kafka instance types and sizes filtered by cloud provider and region
-         * @param {string} cloudId ID of the supported cloud provider
+         * @param {string} cloudProvider ID of the supported cloud provider
          * @param {string} cloudRegion Name of the supported cloud provider region
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceTypesByCloudProviderAndRegion: async (cloudId: string, cloudRegion: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'cloudId' is not null or undefined
-            assertParamExists('getInstanceTypesByCloudProviderAndRegion', 'cloudId', cloudId)
+        getInstanceTypesByCloudProviderAndRegion: async (cloudProvider: string, cloudRegion: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'cloudProvider' is not null or undefined
+            assertParamExists('getInstanceTypesByCloudProviderAndRegion', 'cloudProvider', cloudProvider)
             // verify required parameter 'cloudRegion' is not null or undefined
             assertParamExists('getInstanceTypesByCloudProviderAndRegion', 'cloudRegion', cloudRegion)
-            const localVarPath = `/api/kafkas_mgmt/v1/instance_types/{cloud_id}/{cloud_region}`
-                .replace(`{${"cloud_id"}}`, encodeURIComponent(String(cloudId)))
+            const localVarPath = `/api/kafkas_mgmt/v1/instance_types/{cloud_provider}/{cloud_region}`
+                .replace(`{${"cloud_provider"}}`, encodeURIComponent(String(cloudProvider)))
                 .replace(`{${"cloud_region"}}`, encodeURIComponent(String(cloudRegion)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -655,13 +655,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Returns the list of supported Kafka instance types and sizes filtered by cloud provider and region
-         * @param {string} cloudId ID of the supported cloud provider
+         * @param {string} cloudProvider ID of the supported cloud provider
          * @param {string} cloudRegion Name of the supported cloud provider region
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInstanceTypesByCloudProviderAndRegion(cloudId: string, cloudRegion: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SupportedKafkaInstanceTypesList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstanceTypesByCloudProviderAndRegion(cloudId, cloudRegion, options);
+        async getInstanceTypesByCloudProviderAndRegion(cloudProvider: string, cloudRegion: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SupportedKafkaInstanceTypesList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstanceTypesByCloudProviderAndRegion(cloudProvider, cloudRegion, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -806,13 +806,13 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Returns the list of supported Kafka instance types and sizes filtered by cloud provider and region
-         * @param {string} cloudId ID of the supported cloud provider
+         * @param {string} cloudProvider ID of the supported cloud provider
          * @param {string} cloudRegion Name of the supported cloud provider region
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstanceTypesByCloudProviderAndRegion(cloudId: string, cloudRegion: string, options?: any): AxiosPromise<SupportedKafkaInstanceTypesList> {
-            return localVarFp.getInstanceTypesByCloudProviderAndRegion(cloudId, cloudRegion, options).then((request) => request(axios, basePath));
+        getInstanceTypesByCloudProviderAndRegion(cloudProvider: string, cloudRegion: string, options?: any): AxiosPromise<SupportedKafkaInstanceTypesList> {
+            return localVarFp.getInstanceTypesByCloudProviderAndRegion(cloudProvider, cloudRegion, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -949,13 +949,13 @@ export interface DefaultApiInterface {
     /**
      * 
      * @summary Returns the list of supported Kafka instance types and sizes filtered by cloud provider and region
-     * @param {string} cloudId ID of the supported cloud provider
+     * @param {string} cloudProvider ID of the supported cloud provider
      * @param {string} cloudRegion Name of the supported cloud provider region
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    getInstanceTypesByCloudProviderAndRegion(cloudId: string, cloudRegion: string, options?: AxiosRequestConfig): AxiosPromise<SupportedKafkaInstanceTypesList>;
+    getInstanceTypesByCloudProviderAndRegion(cloudProvider: string, cloudRegion: string, options?: AxiosRequestConfig): AxiosPromise<SupportedKafkaInstanceTypesList>;
 
     /**
      * 
@@ -1102,14 +1102,14 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
     /**
      * 
      * @summary Returns the list of supported Kafka instance types and sizes filtered by cloud provider and region
-     * @param {string} cloudId ID of the supported cloud provider
+     * @param {string} cloudProvider ID of the supported cloud provider
      * @param {string} cloudRegion Name of the supported cloud provider region
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getInstanceTypesByCloudProviderAndRegion(cloudId: string, cloudRegion: string, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getInstanceTypesByCloudProviderAndRegion(cloudId, cloudRegion, options).then((request) => request(this.axios, this.basePath));
+    public getInstanceTypesByCloudProviderAndRegion(cloudProvider: string, cloudRegion: string, options?: AxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getInstanceTypesByCloudProviderAndRegion(cloudProvider, cloudRegion, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

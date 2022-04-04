@@ -13,6 +13,7 @@
  */
 
 
+import { SupportedKafkaSizeBytesValueItem } from './supported-kafka-size-bytes-value-item';
 
 /**
  * Supported Kafka Size
@@ -21,43 +22,37 @@
  */
 export interface SupportedKafkaSize {
     /**
-     * Indicates the type of this object. Will be \'SupportedKafkaSize\' link.
-     * @type {string}
-     * @memberof SupportedKafkaSize
-     */
-    'kind'?: string;
-    /**
      * Unique identifier of this Kafka instance size.
      * @type {string}
      * @memberof SupportedKafkaSize
      */
     'id'?: string;
     /**
-     * Ingress throughput per second available to this Kafka instance size.
-     * @type {string}
+     * 
+     * @type {SupportedKafkaSizeBytesValueItem}
      * @memberof SupportedKafkaSize
      */
-    'ingress_throughput_per_sec'?: string;
+    'ingress_throughput_per_sec'?: SupportedKafkaSizeBytesValueItem;
     /**
-     * Egress throughput per second available to this Kafka instance size.
-     * @type {string}
+     * 
+     * @type {SupportedKafkaSizeBytesValueItem}
      * @memberof SupportedKafkaSize
      */
-    'egress_throughput_per_sec'?: string;
+    'egress_throughput_per_sec'?: SupportedKafkaSizeBytesValueItem;
     /**
-     * Total amount of connections available to this Kafka instance size.
+     * Maximum amount of total connections available to this Kafka instance size.
      * @type {number}
      * @memberof SupportedKafkaSize
      */
     'total_max_connections'?: number;
     /**
-     * Maximum data storage available to this Kafka instance size.
-     * @type {string}
+     * 
+     * @type {SupportedKafkaSizeBytesValueItem}
      * @memberof SupportedKafkaSize
      */
-    'max_data_retention_size'?: string;
+    'max_data_retention_size'?: SupportedKafkaSizeBytesValueItem;
     /**
-     * Total amount of partitions available to this Kafka instance size.
+     * Maximum amount of total partitions available to this Kafka instance size.
      * @type {number}
      * @memberof SupportedKafkaSize
      */

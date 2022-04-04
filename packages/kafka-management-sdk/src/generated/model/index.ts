@@ -34,6 +34,7 @@ export * from './supported-kafka-instance-type';
 export * from './supported-kafka-instance-types-list';
 export * from './supported-kafka-instance-types-list-all-of';
 export * from './supported-kafka-size';
+export * from './supported-kafka-size-bytes-value-item';
 export * from './values';
 export * from './version-metadata';
 export * from './version-metadata-all-of';

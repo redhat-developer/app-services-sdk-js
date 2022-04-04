@@ -22,12 +22,6 @@ import { SupportedKafkaSize } from './supported-kafka-size';
  */
 export interface SupportedKafkaInstanceType {
     /**
-     * Indicates the type of this object. Will be \'SupportedKafkaInstanceType\' link.
-     * @type {string}
-     * @memberof SupportedKafkaInstanceType
-     */
-    'kind'?: string;
-    /**
      * Unique identifier of the Kafka instance type.
      * @type {string}
      * @memberof SupportedKafkaInstanceType
