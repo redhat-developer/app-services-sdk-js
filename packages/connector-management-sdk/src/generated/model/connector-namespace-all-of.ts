@@ -35,7 +35,7 @@ export interface ConnectorNamespaceAllOf {
      */
     'cluster_id': string;
     /**
-     * 
+     * Namespace expiration timestamp in RFC 3339 format
      * @type {string}
      * @memberof ConnectorNamespaceAllOf
      */
