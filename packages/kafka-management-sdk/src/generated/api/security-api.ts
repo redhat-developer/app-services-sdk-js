@@ -26,6 +26,8 @@ import { ServiceAccount } from '../model';
 import { ServiceAccountList } from '../model';
 // @ts-ignore
 import { ServiceAccountRequest } from '../model';
+// @ts-ignore
+import { SsoProvider } from '../model';
 /**
  * SecurityApi - axios parameter creator
  * @export
@@ -189,6 +191,40 @@ export const SecurityApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
+         * @summary Return sso provider info
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSsoProviders: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/kafkas_mgmt/v1/sso_providers`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Resets the credentials for a service account by ID
          * @param {string} id The ID of record
          * @param {*} [options] Override http request option.
@@ -281,6 +317,16 @@ export const SecurityApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Return sso provider info
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSsoProviders(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SsoProvider>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSsoProviders(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Resets the credentials for a service account by ID
          * @param {string} id The ID of record
          * @param {*} [options] Override http request option.
@@ -342,6 +388,15 @@ export const SecurityApiFactory = function (configuration?: Configuration, baseP
         },
         /**
          * 
+         * @summary Return sso provider info
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSsoProviders(options?: any): AxiosPromise<SsoProvider> {
+            return localVarFp.getSsoProviders(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Resets the credentials for a service account by ID
          * @param {string} id The ID of record
          * @param {*} [options] Override http request option.
@@ -398,6 +453,15 @@ export interface SecurityApiInterface {
      * @memberof SecurityApiInterface
      */
     getServiceAccounts(clientId?: string, options?: AxiosRequestConfig): AxiosPromise<ServiceAccountList>;
+
+    /**
+     * 
+     * @summary Return sso provider info
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SecurityApiInterface
+     */
+    getSsoProviders(options?: AxiosRequestConfig): AxiosPromise<SsoProvider>;
 
     /**
      * 
@@ -464,6 +528,17 @@ export class SecurityApi extends BaseAPI implements SecurityApiInterface {
      */
     public getServiceAccounts(clientId?: string, options?: AxiosRequestConfig) {
         return SecurityApiFp(this.configuration).getServiceAccounts(clientId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Return sso provider info
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SecurityApi
+     */
+    public getSsoProviders(options?: AxiosRequestConfig) {
+        return SecurityApiFp(this.configuration).getSsoProviders(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
