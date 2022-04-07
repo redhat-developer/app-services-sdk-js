@@ -2,7 +2,7 @@ openapi: 3.0.0 # need this as first line to allow some IDEs to know this is an o
 # All endpoints defined here will be discoverable by all users. If there is a need to keep some endpoints "private", add them to the "managed-services-api-private.yaml" file
 info:
   title: Kafka Service Fleet Manager
-  version: 1.3.0
+  version: 1.4.0
   description: Kafka Service Fleet Manager is a Rest API to manage Kafka instances.
 servers:
   - url: https://api.openshift.com
@@ -460,7 +460,22 @@ paths:
         - $ref: "#/components/parameters/id"
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/size'
-        - $ref: '#/components/parameters/instance_type'
+        - in: query
+          deprecated: true
+          name: instance_type
+          description: |-
+            The Kafka instance type to filter the results by
+
+            DEPRECATION NOTICE - instance_type will be deprecated
+
+          schema:
+            type: string
+          required: false
+          examples:
+            eval_instance_type:
+              value: "eval"
+            standard_instance_type:
+              value: "standard"
   /api/kafkas_mgmt/v1/service_accounts:
     get:
       parameters:
@@ -925,6 +940,8 @@ components:
             reauthentication_enabled:
               type: boolean
             kafka_storage_size:
+              type: string
+            browser_url:
               type: string
           example:
             $ref: "#/components/examples/KafkaRequestExample"
@@ -1429,22 +1446,7 @@ components:
       schema:
         type: string
       style: form
-    instance_type:
-      deprecated: true
-      name: instance_type
-      description: |-
-        The Kafka instance type to filter the results by
 
-        DEPRECATION NOTICE - instance_type will be deprecated
-      in: query
-      schema:
-        type: string
-      required: false
-      examples:
-        eval_instance_type:
-          value: "eval"
-        standard_instance_type:
-          value: "standard"
   securitySchemes:
     Bearer:
       scheme: bearer
@@ -1477,6 +1479,7 @@ components:
         updated_at: "2020-10-05T12:56:36.362208Z"
         version: "2.6.0"
         instance_type: standard
+        browser_url: "https://console.redhat.com/application-services/streams/kafkas/1isy6rq3jki8q0otmjqfd3ocfrg/dashboard"
         reauthentication_enabled: true
     KafkaRequestFailedCreationStatusExample:
       value:
