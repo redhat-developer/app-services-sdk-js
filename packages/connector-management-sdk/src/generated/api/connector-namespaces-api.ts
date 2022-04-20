@@ -26,56 +26,12 @@ import { ConnectorNamespace } from '../model';
 import { ConnectorNamespaceEvalRequest } from '../model';
 // @ts-ignore
 import { ConnectorNamespaceList } from '../model';
-// @ts-ignore
-import { ConnectorNamespacePatchRequest } from '../model';
-// @ts-ignore
-import { ConnectorNamespaceRequest } from '../model';
 /**
  * ConnectorNamespacesApi - axios parameter creator
  * @export
  */
 export const ConnectorNamespacesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
-        /**
-         * Create a new connector namespace
-         * @summary Create a new connector namespace
-         * @param {ConnectorNamespaceRequest} connectorNamespaceRequest Connector namespace data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createConnectorNamespace: async (connectorNamespaceRequest: ConnectorNamespaceRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'connectorNamespaceRequest' is not null or undefined
-            assertParamExists('createConnectorNamespace', 'connectorNamespaceRequest', connectorNamespaceRequest)
-            const localVarPath = `/api/connector_mgmt/v1/kafka_connector_namespaces`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(connectorNamespaceRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
         /**
          * Create a new evaluation connector namespace
          * @summary Create a new short lived evaluation connector namespace
@@ -110,44 +66,6 @@ export const ConnectorNamespacesApiAxiosParamCreator = function (configuration?:
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(connectorNamespaceEvalRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Delete a connector namespace
-         * @summary Delete a connector namespace
-         * @param {string} connectorNamespaceId The id of the connector namespace
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteConnectorNamespace: async (connectorNamespaceId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'connectorNamespaceId' is not null or undefined
-            assertParamExists('deleteConnectorNamespace', 'connectorNamespaceId', connectorNamespaceId)
-            const localVarPath = `/api/connector_mgmt/v1/kafka_connector_namespaces/{connector_namespace_id}`
-                .replace(`{${"connector_namespace_id"}}`, encodeURIComponent(String(connectorNamespaceId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -246,50 +164,6 @@ export const ConnectorNamespacesApiAxiosParamCreator = function (configuration?:
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * udpate a connector namespace
-         * @summary udpate a connector namespace
-         * @param {string} connectorNamespaceId The id of the connector namespace
-         * @param {ConnectorNamespacePatchRequest} connectorNamespacePatchRequest Data to update namespace with
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateConnectorNamespaceById: async (connectorNamespaceId: string, connectorNamespacePatchRequest: ConnectorNamespacePatchRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'connectorNamespaceId' is not null or undefined
-            assertParamExists('updateConnectorNamespaceById', 'connectorNamespaceId', connectorNamespaceId)
-            // verify required parameter 'connectorNamespacePatchRequest' is not null or undefined
-            assertParamExists('updateConnectorNamespaceById', 'connectorNamespacePatchRequest', connectorNamespacePatchRequest)
-            const localVarPath = `/api/connector_mgmt/v1/kafka_connector_namespaces/{connector_namespace_id}`
-                .replace(`{${"connector_namespace_id"}}`, encodeURIComponent(String(connectorNamespaceId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(connectorNamespacePatchRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -301,17 +175,6 @@ export const ConnectorNamespacesApiFp = function(configuration?: Configuration) 
     const localVarAxiosParamCreator = ConnectorNamespacesApiAxiosParamCreator(configuration)
     return {
         /**
-         * Create a new connector namespace
-         * @summary Create a new connector namespace
-         * @param {ConnectorNamespaceRequest} connectorNamespaceRequest Connector namespace data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async createConnectorNamespace(connectorNamespaceRequest: ConnectorNamespaceRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorNamespace>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createConnectorNamespace(connectorNamespaceRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * Create a new evaluation connector namespace
          * @summary Create a new short lived evaluation connector namespace
          * @param {ConnectorNamespaceEvalRequest} connectorNamespaceEvalRequest Connector namespace data
@@ -320,17 +183,6 @@ export const ConnectorNamespacesApiFp = function(configuration?: Configuration) 
          */
         async createEvaluationNamespace(connectorNamespaceEvalRequest: ConnectorNamespaceEvalRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ConnectorNamespace>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.createEvaluationNamespace(connectorNamespaceEvalRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Delete a connector namespace
-         * @summary Delete a connector namespace
-         * @param {string} connectorNamespaceId The id of the connector namespace
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteConnectorNamespace(connectorNamespaceId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteConnectorNamespace(connectorNamespaceId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -358,18 +210,6 @@ export const ConnectorNamespacesApiFp = function(configuration?: Configuration) 
             const localVarAxiosArgs = await localVarAxiosParamCreator.listConnectorNamespaces(page, size, orderBy, search, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
-        /**
-         * udpate a connector namespace
-         * @summary udpate a connector namespace
-         * @param {string} connectorNamespaceId The id of the connector namespace
-         * @param {ConnectorNamespacePatchRequest} connectorNamespacePatchRequest Data to update namespace with
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async updateConnectorNamespaceById(connectorNamespaceId: string, connectorNamespacePatchRequest: ConnectorNamespacePatchRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateConnectorNamespaceById(connectorNamespaceId, connectorNamespacePatchRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
     }
 };
 
@@ -381,16 +221,6 @@ export const ConnectorNamespacesApiFactory = function (configuration?: Configura
     const localVarFp = ConnectorNamespacesApiFp(configuration)
     return {
         /**
-         * Create a new connector namespace
-         * @summary Create a new connector namespace
-         * @param {ConnectorNamespaceRequest} connectorNamespaceRequest Connector namespace data
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        createConnectorNamespace(connectorNamespaceRequest: ConnectorNamespaceRequest, options?: any): AxiosPromise<ConnectorNamespace> {
-            return localVarFp.createConnectorNamespace(connectorNamespaceRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Create a new evaluation connector namespace
          * @summary Create a new short lived evaluation connector namespace
          * @param {ConnectorNamespaceEvalRequest} connectorNamespaceEvalRequest Connector namespace data
@@ -399,16 +229,6 @@ export const ConnectorNamespacesApiFactory = function (configuration?: Configura
          */
         createEvaluationNamespace(connectorNamespaceEvalRequest: ConnectorNamespaceEvalRequest, options?: any): AxiosPromise<ConnectorNamespace> {
             return localVarFp.createEvaluationNamespace(connectorNamespaceEvalRequest, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Delete a connector namespace
-         * @summary Delete a connector namespace
-         * @param {string} connectorNamespaceId The id of the connector namespace
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteConnectorNamespace(connectorNamespaceId: string, options?: any): AxiosPromise<Error> {
-            return localVarFp.deleteConnectorNamespace(connectorNamespaceId, options).then((request) => request(axios, basePath));
         },
         /**
          * Get a connector namespace
@@ -433,17 +253,6 @@ export const ConnectorNamespacesApiFactory = function (configuration?: Configura
         listConnectorNamespaces(page?: string, size?: string, orderBy?: string, search?: string, options?: any): AxiosPromise<ConnectorNamespaceList> {
             return localVarFp.listConnectorNamespaces(page, size, orderBy, search, options).then((request) => request(axios, basePath));
         },
-        /**
-         * udpate a connector namespace
-         * @summary udpate a connector namespace
-         * @param {string} connectorNamespaceId The id of the connector namespace
-         * @param {ConnectorNamespacePatchRequest} connectorNamespacePatchRequest Data to update namespace with
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateConnectorNamespaceById(connectorNamespaceId: string, connectorNamespacePatchRequest: ConnectorNamespacePatchRequest, options?: any): AxiosPromise<void> {
-            return localVarFp.updateConnectorNamespaceById(connectorNamespaceId, connectorNamespacePatchRequest, options).then((request) => request(axios, basePath));
-        },
     };
 };
 
@@ -454,16 +263,6 @@ export const ConnectorNamespacesApiFactory = function (configuration?: Configura
  */
 export interface ConnectorNamespacesApiInterface {
     /**
-     * Create a new connector namespace
-     * @summary Create a new connector namespace
-     * @param {ConnectorNamespaceRequest} connectorNamespaceRequest Connector namespace data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ConnectorNamespacesApiInterface
-     */
-    createConnectorNamespace(connectorNamespaceRequest: ConnectorNamespaceRequest, options?: AxiosRequestConfig): AxiosPromise<ConnectorNamespace>;
-
-    /**
      * Create a new evaluation connector namespace
      * @summary Create a new short lived evaluation connector namespace
      * @param {ConnectorNamespaceEvalRequest} connectorNamespaceEvalRequest Connector namespace data
@@ -472,16 +271,6 @@ export interface ConnectorNamespacesApiInterface {
      * @memberof ConnectorNamespacesApiInterface
      */
     createEvaluationNamespace(connectorNamespaceEvalRequest: ConnectorNamespaceEvalRequest, options?: AxiosRequestConfig): AxiosPromise<ConnectorNamespace>;
-
-    /**
-     * Delete a connector namespace
-     * @summary Delete a connector namespace
-     * @param {string} connectorNamespaceId The id of the connector namespace
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ConnectorNamespacesApiInterface
-     */
-    deleteConnectorNamespace(connectorNamespaceId: string, options?: AxiosRequestConfig): AxiosPromise<Error>;
 
     /**
      * Get a connector namespace
@@ -506,17 +295,6 @@ export interface ConnectorNamespacesApiInterface {
      */
     listConnectorNamespaces(page?: string, size?: string, orderBy?: string, search?: string, options?: AxiosRequestConfig): AxiosPromise<ConnectorNamespaceList>;
 
-    /**
-     * udpate a connector namespace
-     * @summary udpate a connector namespace
-     * @param {string} connectorNamespaceId The id of the connector namespace
-     * @param {ConnectorNamespacePatchRequest} connectorNamespacePatchRequest Data to update namespace with
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ConnectorNamespacesApiInterface
-     */
-    updateConnectorNamespaceById(connectorNamespaceId: string, connectorNamespacePatchRequest: ConnectorNamespacePatchRequest, options?: AxiosRequestConfig): AxiosPromise<void>;
-
 }
 
 /**
@@ -527,18 +305,6 @@ export interface ConnectorNamespacesApiInterface {
  */
 export class ConnectorNamespacesApi extends BaseAPI implements ConnectorNamespacesApiInterface {
     /**
-     * Create a new connector namespace
-     * @summary Create a new connector namespace
-     * @param {ConnectorNamespaceRequest} connectorNamespaceRequest Connector namespace data
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ConnectorNamespacesApi
-     */
-    public createConnectorNamespace(connectorNamespaceRequest: ConnectorNamespaceRequest, options?: AxiosRequestConfig) {
-        return ConnectorNamespacesApiFp(this.configuration).createConnectorNamespace(connectorNamespaceRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Create a new evaluation connector namespace
      * @summary Create a new short lived evaluation connector namespace
      * @param {ConnectorNamespaceEvalRequest} connectorNamespaceEvalRequest Connector namespace data
@@ -548,18 +314,6 @@ export class ConnectorNamespacesApi extends BaseAPI implements ConnectorNamespac
      */
     public createEvaluationNamespace(connectorNamespaceEvalRequest: ConnectorNamespaceEvalRequest, options?: AxiosRequestConfig) {
         return ConnectorNamespacesApiFp(this.configuration).createEvaluationNamespace(connectorNamespaceEvalRequest, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Delete a connector namespace
-     * @summary Delete a connector namespace
-     * @param {string} connectorNamespaceId The id of the connector namespace
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ConnectorNamespacesApi
-     */
-    public deleteConnectorNamespace(connectorNamespaceId: string, options?: AxiosRequestConfig) {
-        return ConnectorNamespacesApiFp(this.configuration).deleteConnectorNamespace(connectorNamespaceId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -587,18 +341,5 @@ export class ConnectorNamespacesApi extends BaseAPI implements ConnectorNamespac
      */
     public listConnectorNamespaces(page?: string, size?: string, orderBy?: string, search?: string, options?: AxiosRequestConfig) {
         return ConnectorNamespacesApiFp(this.configuration).listConnectorNamespaces(page, size, orderBy, search, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * udpate a connector namespace
-     * @summary udpate a connector namespace
-     * @param {string} connectorNamespaceId The id of the connector namespace
-     * @param {ConnectorNamespacePatchRequest} connectorNamespacePatchRequest Data to update namespace with
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ConnectorNamespacesApi
-     */
-    public updateConnectorNamespaceById(connectorNamespaceId: string, connectorNamespacePatchRequest: ConnectorNamespacePatchRequest, options?: AxiosRequestConfig) {
-        return ConnectorNamespacesApiFp(this.configuration).updateConnectorNamespaceById(connectorNamespaceId, connectorNamespacePatchRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

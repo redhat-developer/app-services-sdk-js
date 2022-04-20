@@ -39,7 +39,7 @@ export interface ConnectorRequestMeta {
      * @type {string}
      * @memberof ConnectorRequestMeta
      */
-    'namespace_id'?: string;
+    'namespace_id': string;
     /**
      * 
      * @type {Channel}
