@@ -23,7 +23,8 @@
 export const ConnectorNamespaceState = {
     Disconnected: 'disconnected',
     Ready: 'ready',
-    Deleting: 'deleting'
+    Deleting: 'deleting',
+    Deleted: 'deleted'
 } as const;
 
 export type ConnectorNamespaceState = typeof ConnectorNamespaceState[keyof typeof ConnectorNamespaceState];
