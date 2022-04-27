@@ -1,8 +1,8 @@
 {
   "kind": "ErrorList",
   "page": 1,
-  "size": 41,
-  "total": 41,
+  "size": 43,
+  "total": 43,
   "items": [
     {
       "id": "4",
@@ -192,6 +192,20 @@
       "href": "/api/kafkas_mgmt/v1/errors/41",
       "code": "KAFKAS-MGMT-41",
       "reason": "Instance Type not supported"
+    },
+    {
+      "id": "42",
+      "kind": "Error",
+      "href": "/api/kafkas_mgmt/v1/errors/42",
+      "code": "KAFKAS-MGMT-42",
+      "reason": "Instance plan not supported"
+    },
+    {
+      "id": "43",
+      "kind": "Error",
+      "href": "/api/kafkas_mgmt/v1/errors/43",
+      "code": "KAFKAS-MGMT-43",
+      "reason": "Only Single-AZ Kafkas of this type are supported, use multi_az=false"
     },
     {
       "id": "103",
