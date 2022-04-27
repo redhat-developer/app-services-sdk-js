@@ -94,6 +94,12 @@ export const APIErrorCodes = {
   /** Instance Type not supported*/
   ERROR_41 : "KAFKAS-MGMT-41", 
 
+  /** Instance plan not supported*/
+  ERROR_42 : "KAFKAS-MGMT-42", 
+
+  /** Only Single-AZ Kafkas of this type are supported, use multi_az=false*/
+  ERROR_43 : "KAFKAS-MGMT-43", 
+
   /** Synchronous action is not supported, use async=true parameter*/
   ERROR_103 : "KAFKAS-MGMT-103", 
 
