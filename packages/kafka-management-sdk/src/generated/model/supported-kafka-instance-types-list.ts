@@ -13,8 +13,13 @@
  */
 
 
+import { SupportedKafkaInstanceType } from './supported-kafka-instance-type';
+import { SupportedKafkaInstanceTypesListAllOf } from './supported-kafka-instance-types-list-all-of';
 
-export * from './api/default-api';
-export * from './api/errors-api';
-export * from './api/security-api';
+/**
+ * @type SupportedKafkaInstanceTypesList
+ * @export
+ */
+export type SupportedKafkaInstanceTypesList = SupportedKafkaInstanceTypesListAllOf;
+
 

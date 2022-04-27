@@ -13,19 +13,19 @@
  */
 
 
-import { CloudRegion } from './cloud-region';
+import { SupportedKafkaInstanceType } from './supported-kafka-instance-type';
 
 /**
  * 
  * @export
- * @interface CloudRegionListAllOf
+ * @interface SupportedKafkaInstanceTypesListAllOf
  */
-export interface CloudRegionListAllOf {
+export interface SupportedKafkaInstanceTypesListAllOf {
     /**
      * 
-     * @type {Array<CloudRegion>}
-     * @memberof CloudRegionListAllOf
+     * @type {Array<SupportedKafkaInstanceType>}
+     * @memberof SupportedKafkaInstanceTypesListAllOf
      */
-    'items'?: Array<CloudRegion>;
+    'instance_types'?: Array<SupportedKafkaInstanceType>;
 }
 
