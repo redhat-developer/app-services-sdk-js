@@ -14,7 +14,17 @@
 
 
 
-export * from './api/default-api';
-export * from './api/errors-api';
-export * from './api/security-api';
+/**
+ * 
+ * @export
+ * @interface SupportedKafkaSizeBytesValueItem
+ */
+export interface SupportedKafkaSizeBytesValueItem {
+    /**
+     * 
+     * @type {number}
+     * @memberof SupportedKafkaSizeBytesValueItem
+     */
+    'bytes'?: number;
+}
 
