@@ -73,9 +73,6 @@ export const APIErrorCodes = {
   /** Maximum field length has been depassed*/
   ERROR_34 : "KAFKAS-MGMT-34", 
 
-  /** Only multiAZ Kafkas are supported, use multi_az=true*/
-  ERROR_35 : "KAFKAS-MGMT-35", 
-
   /** Kafka cluster name is already used*/
   ERROR_36 : "KAFKAS-MGMT-36", 
 
@@ -96,9 +93,6 @@ export const APIErrorCodes = {
 
   /** Instance plan not supported*/
   ERROR_42 : "KAFKAS-MGMT-42", 
-
-  /** Only Single-AZ Kafkas of this type are supported, use multi_az=false*/
-  ERROR_43 : "KAFKAS-MGMT-43", 
 
   /** Synchronous action is not supported, use async=true parameter*/
   ERROR_103 : "KAFKAS-MGMT-103", 
