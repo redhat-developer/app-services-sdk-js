@@ -163,10 +163,11 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
          * Get a connector cluster\'s addon parameters
          * @summary Get a connector cluster\'s addon parameters
          * @param {string} connectorClusterId The id of the connector cluster
+         * @param {boolean} [resetCredentials] Resets cluster service account credentials when true
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConnectorClusterAddonParameters: async (connectorClusterId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getConnectorClusterAddonParameters: async (connectorClusterId: string, resetCredentials?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'connectorClusterId' is not null or undefined
             assertParamExists('getConnectorClusterAddonParameters', 'connectorClusterId', connectorClusterId)
             const localVarPath = `/api/connector_mgmt/v1/kafka_connector_clusters/{connector_cluster_id}/addon_parameters`
@@ -185,6 +186,10 @@ export const ConnectorClustersApiAxiosParamCreator = function (configuration?: C
             // authentication Bearer required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (resetCredentials !== undefined) {
+                localVarQueryParameter['reset_credentials'] = resetCredentials;
+            }
 
 
     
@@ -391,11 +396,12 @@ export const ConnectorClustersApiFp = function(configuration?: Configuration) {
          * Get a connector cluster\'s addon parameters
          * @summary Get a connector cluster\'s addon parameters
          * @param {string} connectorClusterId The id of the connector cluster
+         * @param {boolean} [resetCredentials] Resets cluster service account credentials when true
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getConnectorClusterAddonParameters(connectorClusterId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AddonParameter>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getConnectorClusterAddonParameters(connectorClusterId, options);
+        async getConnectorClusterAddonParameters(connectorClusterId: string, resetCredentials?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<AddonParameter>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getConnectorClusterAddonParameters(connectorClusterId, resetCredentials, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -482,11 +488,12 @@ export const ConnectorClustersApiFactory = function (configuration?: Configurati
          * Get a connector cluster\'s addon parameters
          * @summary Get a connector cluster\'s addon parameters
          * @param {string} connectorClusterId The id of the connector cluster
+         * @param {boolean} [resetCredentials] Resets cluster service account credentials when true
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getConnectorClusterAddonParameters(connectorClusterId: string, options?: any): AxiosPromise<Array<AddonParameter>> {
-            return localVarFp.getConnectorClusterAddonParameters(connectorClusterId, options).then((request) => request(axios, basePath));
+        getConnectorClusterAddonParameters(connectorClusterId: string, resetCredentials?: boolean, options?: any): AxiosPromise<Array<AddonParameter>> {
+            return localVarFp.getConnectorClusterAddonParameters(connectorClusterId, resetCredentials, options).then((request) => request(axios, basePath));
         },
         /**
          * Get a connector cluster\'s namespaces
@@ -568,11 +575,12 @@ export interface ConnectorClustersApiInterface {
      * Get a connector cluster\'s addon parameters
      * @summary Get a connector cluster\'s addon parameters
      * @param {string} connectorClusterId The id of the connector cluster
+     * @param {boolean} [resetCredentials] Resets cluster service account credentials when true
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ConnectorClustersApiInterface
      */
-    getConnectorClusterAddonParameters(connectorClusterId: string, options?: AxiosRequestConfig): AxiosPromise<Array<AddonParameter>>;
+    getConnectorClusterAddonParameters(connectorClusterId: string, resetCredentials?: boolean, options?: AxiosRequestConfig): AxiosPromise<Array<AddonParameter>>;
 
     /**
      * Get a connector cluster\'s namespaces
@@ -660,12 +668,13 @@ export class ConnectorClustersApi extends BaseAPI implements ConnectorClustersAp
      * Get a connector cluster\'s addon parameters
      * @summary Get a connector cluster\'s addon parameters
      * @param {string} connectorClusterId The id of the connector cluster
+     * @param {boolean} [resetCredentials] Resets cluster service account credentials when true
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ConnectorClustersApi
      */
-    public getConnectorClusterAddonParameters(connectorClusterId: string, options?: AxiosRequestConfig) {
-        return ConnectorClustersApiFp(this.configuration).getConnectorClusterAddonParameters(connectorClusterId, options).then((request) => request(this.axios, this.basePath));
+    public getConnectorClusterAddonParameters(connectorClusterId: string, resetCredentials?: boolean, options?: AxiosRequestConfig) {
+        return ConnectorClustersApiFp(this.configuration).getConnectorClusterAddonParameters(connectorClusterId, resetCredentials, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
