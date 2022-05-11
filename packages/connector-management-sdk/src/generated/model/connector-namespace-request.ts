@@ -15,7 +15,6 @@
 
 import { ConnectorNamespaceRequestAllOf } from './connector-namespace-request-all-of';
 import { ConnectorNamespaceRequestMeta } from './connector-namespace-request-meta';
-import { ConnectorNamespaceRequestMetaAnnotations } from './connector-namespace-request-meta-annotations';
 import { ConnectorNamespaceTenantKind } from './connector-namespace-tenant-kind';
 
 /**

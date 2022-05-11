@@ -14,7 +14,6 @@
 
 
 import { ConnectorNamespaceRequestMeta } from './connector-namespace-request-meta';
-import { ConnectorNamespaceRequestMetaAnnotations } from './connector-namespace-request-meta-annotations';
 
 /**
  * @type ConnectorNamespacePatchRequest
