@@ -16,7 +16,6 @@
 import { ConnectorNamespaceMetaAllOf } from './connector-namespace-meta-all-of';
 import { ConnectorNamespaceQuota } from './connector-namespace-quota';
 import { ConnectorNamespaceRequestMeta } from './connector-namespace-request-meta';
-import { ConnectorNamespaceRequestMetaAnnotations } from './connector-namespace-request-meta-annotations';
 import { ObjectMeta } from './object-meta';
 
 /**

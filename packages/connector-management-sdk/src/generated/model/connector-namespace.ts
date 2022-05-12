@@ -16,7 +16,6 @@
 import { ConnectorNamespaceAllOf } from './connector-namespace-all-of';
 import { ConnectorNamespaceMeta } from './connector-namespace-meta';
 import { ConnectorNamespaceQuota } from './connector-namespace-quota';
-import { ConnectorNamespaceRequestMetaAnnotations } from './connector-namespace-request-meta-annotations';
 import { ConnectorNamespaceStatus } from './connector-namespace-status';
 import { ConnectorNamespaceTenant } from './connector-namespace-tenant';
 import { ObjectReference } from './object-reference';
