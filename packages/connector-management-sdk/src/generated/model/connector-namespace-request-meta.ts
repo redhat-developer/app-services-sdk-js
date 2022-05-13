@@ -13,7 +13,6 @@
  */
 
 
-import { ConnectorNamespaceRequestMetaAnnotations } from './connector-namespace-request-meta-annotations';
 
 /**
  * 
@@ -29,9 +28,9 @@ export interface ConnectorNamespaceRequestMeta {
     'name'?: string;
     /**
      * 
-     * @type {Array<ConnectorNamespaceRequestMetaAnnotations>}
+     * @type {{ [key: string]: string; }}
      * @memberof ConnectorNamespaceRequestMeta
      */
-    'annotations'?: Array<ConnectorNamespaceRequestMetaAnnotations>;
+    'annotations'?: { [key: string]: string; };
 }
 

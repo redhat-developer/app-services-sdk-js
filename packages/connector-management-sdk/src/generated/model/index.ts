@@ -28,7 +28,6 @@ export * from './connector-namespace-quota';
 export * from './connector-namespace-request';
 export * from './connector-namespace-request-all-of';
 export * from './connector-namespace-request-meta';
-export * from './connector-namespace-request-meta-annotations';
 export * from './connector-namespace-state';
 export * from './connector-namespace-status';
 export * from './connector-namespace-tenant';
