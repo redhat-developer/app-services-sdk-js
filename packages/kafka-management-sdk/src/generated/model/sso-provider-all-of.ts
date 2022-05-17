@@ -21,6 +21,12 @@
  */
 export interface SsoProviderAllOf {
     /**
+     * name of the sso provider
+     * @type {string}
+     * @memberof SsoProviderAllOf
+     */
+    'name'?: string;
+    /**
      * base url
      * @type {string}
      * @memberof SsoProviderAllOf
