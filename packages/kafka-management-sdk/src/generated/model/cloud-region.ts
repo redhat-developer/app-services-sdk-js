@@ -51,7 +51,7 @@ export interface CloudRegion {
      * @memberof CloudRegion
      * @deprecated
      */
-    'supported_instance_types': Array<string>;
+    'supported_instance_types'?: Array<string>;
     /**
      * Indicates whether there is capacity left per instance type
      * @type {Array<RegionCapacityListItem>}
