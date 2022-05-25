@@ -30,7 +30,7 @@ jobs:
           branch: chore/generate-api-clients
           branch-suffix: timestamp
           reviewers: '@redhat-developer/app-services-sdk-maintainers'
-          delete-branch: suffix
+          delete-branch: true
           body: |
             _This pull request was auto-generated_
 
