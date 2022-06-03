@@ -14,13 +14,18 @@
 
 
 import { ConsumerGroupResetOffsetResultItem } from './consumer-group-reset-offset-result-item';
-import { List } from './list';
-import { RootTypeForConsumerGroupResetOffsetResult } from './root-type-for-consumer-group-reset-offset-result';
 
 /**
- * @type ConsumerGroupResetOffsetResult
+ * 
  * @export
+ * @interface RootTypeForConsumerGroupResetOffsetResult
  */
-export type ConsumerGroupResetOffsetResult = List & RootTypeForConsumerGroupResetOffsetResult;
-
+export interface RootTypeForConsumerGroupResetOffsetResult {
+    /**
+     * 
+     * @type {Array<ConsumerGroupResetOffsetResultItem>}
+     * @memberof RootTypeForConsumerGroupResetOffsetResult
+     */
+    'items'?: Array<ConsumerGroupResetOffsetResultItem>;
+}
 

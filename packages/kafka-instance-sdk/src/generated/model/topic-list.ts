@@ -13,16 +13,19 @@
  */
 
 
-import { Consumer } from './consumer';
-import { ConsumerGroupAllOf } from './consumer-group-all-of';
-import { ConsumerGroupMetrics } from './consumer-group-metrics';
-import { ConsumerGroupState } from './consumer-group-state';
-import { ObjectReference } from './object-reference';
+import { Topic } from './topic';
 
 /**
- * @type ConsumerGroup
+ * A list of topics.
  * @export
+ * @interface TopicList
  */
-export type ConsumerGroup = ConsumerGroupAllOf & ObjectReference;
-
+export interface TopicList {
+    /**
+     * 
+     * @type {Array<Topic>}
+     * @memberof TopicList
+     */
+    'items'?: Array<Topic>;
+}
 

@@ -13,16 +13,19 @@
  */
 
 
-import { Consumer } from './consumer';
-import { ConsumerGroupAllOf } from './consumer-group-all-of';
-import { ConsumerGroupMetrics } from './consumer-group-metrics';
-import { ConsumerGroupState } from './consumer-group-state';
-import { ObjectReference } from './object-reference';
+import { AclBinding } from './acl-binding';
 
 /**
- * @type ConsumerGroup
+ * A page of ACL binding entries
  * @export
+ * @interface ACLBindingList
  */
-export type ConsumerGroup = ConsumerGroupAllOf & ObjectReference;
-
+export interface ACLBindingList {
+    /**
+     * 
+     * @type {Array<AclBinding>}
+     * @memberof ACLBindingList
+     */
+    'items'?: Array<AclBinding>;
+}
 

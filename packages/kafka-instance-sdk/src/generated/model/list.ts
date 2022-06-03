@@ -17,26 +17,38 @@
 /**
  * 
  * @export
- * @interface ConsumerGroupResetOffsetResultItem
+ * @interface List
  */
-export interface ConsumerGroupResetOffsetResultItem {
+export interface List {
     /**
      * 
      * @type {string}
-     * @memberof ConsumerGroupResetOffsetResultItem
+     * @memberof List
      */
-    'topic'?: string;
+    'kind'?: string;
     /**
      * 
-     * @type {number}
-     * @memberof ConsumerGroupResetOffsetResultItem
+     * @type {Array<object>}
+     * @memberof List
      */
-    'partition'?: number;
+    'items': Array<object>;
     /**
-     * 
+     * Total number of entries in the full result set
      * @type {number}
-     * @memberof ConsumerGroupResetOffsetResultItem
+     * @memberof List
      */
-    'offset'?: number;
+    'total': number;
+    /**
+     * Number of entries per page (returned for fetch requests)
+     * @type {number}
+     * @memberof List
+     */
+    'size'?: number;
+    /**
+     * Current page number (returned for fetch requests)
+     * @type {number}
+     * @memberof List
+     */
+    'page'?: number;
 }
 

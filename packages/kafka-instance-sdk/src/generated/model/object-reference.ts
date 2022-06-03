@@ -17,20 +17,26 @@
 /**
  * 
  * @export
- * @interface TopicsToResetOffset
+ * @interface ObjectReference
  */
-export interface TopicsToResetOffset {
+export interface ObjectReference {
+    /**
+     * Unique identifier for the object. Not supported for all object kinds.
+     * @type {string}
+     * @memberof ObjectReference
+     */
+    'id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof TopicsToResetOffset
+     * @memberof ObjectReference
      */
-    'topic': string;
+    'kind': string;
     /**
-     * 
-     * @type {Array<number>}
-     * @memberof TopicsToResetOffset
+     * Link path to request the object. Not supported for all object kinds.
+     * @type {string}
+     * @memberof ObjectReference
      */
-    'partitions'?: Array<number>;
+    'href'?: string;
 }
 

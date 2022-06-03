@@ -13,16 +13,24 @@
  */
 
 
-import { Consumer } from './consumer';
-import { ConsumerGroupAllOf } from './consumer-group-all-of';
-import { ConsumerGroupMetrics } from './consumer-group-metrics';
-import { ConsumerGroupState } from './consumer-group-state';
-import { ObjectReference } from './object-reference';
 
 /**
- * @type ConsumerGroup
+ * List of errors
  * @export
+ * @interface ErrorList
  */
-export type ConsumerGroup = ConsumerGroupAllOf & ObjectReference;
-
+export interface ErrorList {
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof ErrorList
+     */
+    'items'?: Array<Error>;
+    /**
+     * Total number of errors returned in this request
+     * @type {any}
+     * @memberof ErrorList
+     */
+    'total'?: any;
+}
 

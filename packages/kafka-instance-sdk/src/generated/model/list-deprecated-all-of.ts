@@ -17,26 +17,29 @@
 /**
  * 
  * @export
- * @interface ConsumerGroupMetrics
+ * @interface ListDeprecatedAllOf
  */
-export interface ConsumerGroupMetrics {
+export interface ListDeprecatedAllOf {
     /**
-     * 
+     * Offset of the first record returned, zero-based
      * @type {number}
-     * @memberof ConsumerGroupMetrics
+     * @memberof ListDeprecatedAllOf
+     * @deprecated
      */
-    'laggingPartitions'?: number;
+    'offset'?: number;
     /**
-     * 
+     * Maximum number of records to return, from request
      * @type {number}
-     * @memberof ConsumerGroupMetrics
+     * @memberof ListDeprecatedAllOf
+     * @deprecated
      */
-    'activeConsumers'?: number;
+    'limit'?: number;
     /**
-     * 
+     * Total number of entries in the full result set
      * @type {number}
-     * @memberof ConsumerGroupMetrics
+     * @memberof ListDeprecatedAllOf
+     * @deprecated
      */
-    'unassignedPartitions'?: number;
+    'count'?: number;
 }
 

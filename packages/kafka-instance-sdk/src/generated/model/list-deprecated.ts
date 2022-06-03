@@ -13,16 +13,13 @@
  */
 
 
-import { Consumer } from './consumer';
-import { ConsumerGroupAllOf } from './consumer-group-all-of';
-import { ConsumerGroupMetrics } from './consumer-group-metrics';
-import { ConsumerGroupState } from './consumer-group-state';
-import { ObjectReference } from './object-reference';
+import { List } from './list';
+import { ListDeprecatedAllOf } from './list-deprecated-all-of';
 
 /**
- * @type ConsumerGroup
+ * @type ListDeprecated
  * @export
  */
-export type ConsumerGroup = ConsumerGroupAllOf & ObjectReference;
+export type ListDeprecated = List & ListDeprecatedAllOf;
 
 
