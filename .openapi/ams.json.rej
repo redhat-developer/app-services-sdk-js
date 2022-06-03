@@ -1,0 +1,10 @@
+--- ams.json	2022-01-05 13:05:14.000000000 +0000
++++ ams_patched.json	2022-01-05 13:05:08.000000000 +0000
+@@ -2491,6 +2492,7 @@
+     },
+     "/api/accounts_mgmt/v1/current_account": {
+       "get": {
++        "tags": ["AppServices"],
+         "parameters": [{ "$ref": "#/components/parameters/fetchLabels" }],
+         "responses": {
+           "200": {
