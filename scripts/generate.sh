@@ -111,3 +111,9 @@ PACKAGE_NAME="@rhoas/service-accounts-sdk"
 OUTPUT_PATH="packages/service-accounts-sdk/src/generated"
 
 generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+
+OPENAPI_FILENAME=".openapi/rhose-api.yaml"
+PACKAGE_NAME="@rhoas/smart-events-management-sdk"
+OUTPUT_PATH="packages/smart-events-management-sdk/src/generated"
+
+generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
