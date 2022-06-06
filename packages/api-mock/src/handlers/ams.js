@@ -8,6 +8,32 @@ module.exports = {
       TermsRequired: false,
     });
   },
+  // Simulate a user account
+  currentAccount: async (c, req, res) => {
+    return res.json({
+      "created_at": "2021-02-16T11:51:39.462171Z",
+      "email": "jdoe@xyz.com",
+      "first_name": "John",
+      "href": "/api/accounts_mgmt/v1/accounts/1oYvNfyVsFGYkbMnDkox1cgEGJH",
+      "id": "1oVvNfyVsFGYkbMpDkox1dhEGJC",
+      "kind": "Account",
+      "last_name": "Doe",
+      "organization": {
+        "created_at": "2021-02-16T11:51:39.459733Z",
+        "ebs_account_id": "9304914",
+        "external_id": "08493791",
+        "href": "/api/accounts_mgmt/v1/organizations/1oYvNfyVsFGYkbMnDkox1cgEGJH",
+        "id": "1oYvNbfqj3pRO6EK6jhnBBP76oL",
+        "kind": "Organization",
+        "name": "Random Company",
+        "updated_at": "2022-06-06T07:16:10.939821Z"
+      },
+      "rhit_account_id": "949585859",
+      "rhit_web_user_id": "528896906",
+      "updated_at": "2022-05-30T13:12:55.726597Z",
+      "username": "jdoe"
+    });
+  },
   // Mock a summary of quota cost
   quotaCostGet: async (c, req, res) => {
     return res.json({

@@ -116,12 +116,17 @@ api.use((req, res) => {
 
   if (req.url.startsWith("/api/authorizations/v1/self_terms_review")) {
     console.info("Calling ams");
-    return amsHandlers.termsReview(req, req, res);
+    return ams.termsReview(req, req, res);
   }
 
   if (req.url.startsWith("/api/accounts_mgmt/v1/organizations")) {
     console.info("Calling ams quota cost");
-    return amsHandlers.quotaCostGet(req, req, res);
+    return ams.quotaCostGet(req, req, res);
+  }
+
+  if(req.url.startsWith("/api/accounts_mgmt/v1/current_account")) {
+    console.info("Calling ams current account");
+    return ams.currentAccount(req, req, res);
   }
 
   if (req.url.startsWith("/api/connector_mgmt/v1")) {
