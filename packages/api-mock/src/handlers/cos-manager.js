@@ -3,6 +3,7 @@
 var connectorTypes = require("../../_data_/connectorTypes.json");
 var ConnectorClusterList = require("../../_data_/ConnectorClusterList.json");
 var ConnectorList = require("../../_data_/ConnectorList.json");
+var ConnectorNamespaceList = require("../../_data_/ConnectorNamespaceList.json");
 module.exports = {
   getVersionMetadata: async (c, req, res) => {
     res.status(200).json({});
@@ -33,6 +34,9 @@ module.exports = {
   },
   listConnectorClusters: async (c, req, res) => {
     res.status(200).json(ConnectorClusterList);
+  },
+  listConnectorNamespaces: async (c, req, res) => {
+    res.status(200).json(ConnectorNamespaceList);
   },
   getConnectorCluster: async (c, req, res) => {
     res.status(200).json({});
