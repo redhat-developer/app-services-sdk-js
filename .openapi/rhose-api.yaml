@@ -870,6 +870,8 @@ components:
           type: string
     JsonNode:
       type: array
+      items: 
+        type: object
     KafkaConnectionDTO:
       type: object
       properties:
