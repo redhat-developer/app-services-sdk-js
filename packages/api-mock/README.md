@@ -1,7 +1,7 @@
-## Mock for RHOAS APIs
+## API Mock for RHOAS APIs
 
-Provide mocking capabilities 
-APIs support in memory storage to give you abstraction of running service.
+Project provides mocking capabilities for RHOAS APIs.
+Mock supports in memory storage to give developers abstraction of running service.
 
 ### Using API Mock
 
