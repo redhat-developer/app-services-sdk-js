@@ -39,8 +39,14 @@ asapi --pre-seed
 
 ### Instances API mapping pattern
 
-Mock provides instances (data) API mock as well as the control planes.
-Each instance API uses `/data/kafka` or `/data/service-registry` prefixes to not conflict with other apis.
+Mock provides support for managemement and instances APIs
+
+Instance API use following prefixes
+
+- `/data/kafka` for kafka instance
+- `/data/service-registry` for service registry instance
+
+To simulate multiple instances please run many instances of mock.
 
 ## Local development
 
@@ -53,8 +59,11 @@ yarn start # API running at http://localhost:9000
 ## Environment variables
 
 CUSTOM_PORT - custom port number used default is 8000
+
 CUSTOM_HOST - custom url used in returned data. default http://localhost
-RESOURCE_OWNER - provide custom owner value as we do not have ability to detect it in mock. For example: `RESOURCE_OWNER=wtrocki_kafka_devexp yarn start`
+
+RESOURCE_OWNER - provide custom owner value as we do not have ability to detect it in mock. 
+For example: `RESOURCE_OWNER=wtrocki_kafka_devexp yarn start`
 
 ## Build container
 
@@ -66,6 +75,7 @@ docker push quay.io/rhosak/api-mock
 ## API Clients
 
 You can call api by starting individual web clients per api
+or running examples against mock.
 
 ```
 yarn api:kafka-management
