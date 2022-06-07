@@ -18,6 +18,8 @@ const cosHandlers = require("./handlers/cos-manager");
 const topicHandlers = require("./handlers/kafka-admin");
 const ams = require("./handlers/ams");
 
+const amsRouter = require("./routers/ams-router");
+
 const { getFullHostname, getPort } = require("./utls/host");
 
 const path = require("path");
@@ -91,6 +93,8 @@ srsControlApi.init();
 srsDataApi.init();
 cosAPI.init();
 
+api.use("/api/accounts_mgmt/v1", amsRouter);
+
 api.use((req, res) => {
   if (req.url.startsWith("/api/kafkas_mgmt/v1")) {
     console.info("Calling kafkas manager");
@@ -117,16 +121,6 @@ api.use((req, res) => {
   if (req.url.startsWith("/api/authorizations/v1/self_terms_review")) {
     console.info("Calling ams");
     return ams.termsReview(req, req, res);
-  }
-
-  if (req.url.startsWith("/api/accounts_mgmt/v1/organizations")) {
-    console.info("Calling ams quota cost");
-    return ams.quotaCostGet(req, req, res);
-  }
-
-  if(req.url.startsWith("/api/accounts_mgmt/v1/current_account")) {
-    console.info("Calling ams current account");
-    return ams.currentAccount(req, req, res);
   }
 
   if (req.url.startsWith("/api/connector_mgmt/v1")) {

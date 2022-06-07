@@ -1,0 +1,22 @@
+{
+  "created_at": "2022-06-07T12:27:42.946195Z",
+  "email": "jdoe@abc.com",
+  "first_name": "John",
+  "href": "/api/accounts_mgmt/v1/accounts/2AFUX2nEQp3BohRSBMVbYlKHy54y",
+  "id": "2AFUX2nEQp3BohRHIVbYlKHy45x",
+  "kind": "Account",
+  "last_name": "Doe",
+  "organization": {
+    "created_at": "2020-09-02T11:44:05.226156Z",
+    "ebs_account_id": "6894219",
+    "external_id": "13640278",
+    "href": "/api/accounts_mgmt/v1/organizations/1gxCqJ5UorERrM42S8fRz8lT3ML",
+    "id": "1gxCqJ5UorERrA92S8fRz8lT3AI",
+    "kind": "Organization",
+    "name": "Red Hat",
+    "updated_at": "2022-06-06T19:16:11.281002Z"
+  },
+  "rhit_web_user_id": "55251494",
+  "updated_at": "2022-06-07T12:27:42.946195Z",
+  "username": "jdoe"
+}
