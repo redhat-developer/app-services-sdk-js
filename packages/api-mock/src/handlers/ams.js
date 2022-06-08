@@ -1,4 +1,4 @@
-const QuotaCostList = require("../../_data_/QuotaCostList.json");
+const QuotaCostList = require("../../_data_/AmsQuotaCostList.json");
 const CurrentAccount = require("../../_data_/CurrentAccount.json");
 
 module.exports = {
@@ -17,6 +17,13 @@ module.exports = {
   },
   // Mock a summary of quota cost
   quotaCostGet: (req, res) => {
-    res.json(QuotaCostList)
+    switch(process.env.AMS_QUOTA_TYPE) {
+      case "trial":
+        res.json(QuotaCostList.trial);
+      case "standard":
+        res.json(QuotaCostList.standard);
+      case "marketplace": default:
+        res.json(QuotaCostList.marketPlace);
+    }
   },
 };
