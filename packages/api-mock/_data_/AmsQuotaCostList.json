@@ -4091,6 +4091,72 @@
         "version": "1d79522a-657c-4e8d-8c35-b4d5b63cb394"
       },
       {
+        "allowed": 15,
+        "cloud_accounts": [
+          {
+            "cloud_account_id": "568056954830",
+            "cloud_provider_id": "aws"
+          },
+          {
+            "cloud_account_id": "160110605001",
+            "cloud_provider_id": "gcp"
+          },
+          {
+            "cloud_account_id": "429344797240",
+            "cloud_provider_id": "azure"
+          }
+        ],
+        "consumed": 0,
+        "href": "/api/accounts_mgmt/v1/organizations/2hyCqJ5UorERrM90S8fRz8lM3AI/quota_cost",
+        "kind": "QuotaCost",
+        "organization_id": "2hyCqJ5UorERrM90S8fRz8lM3AI",
+        "quota_id": "cluster|rhinfra|rhosr|any",
+        "related_resources": [
+          {
+            "availability_zone_type": "any",
+            "billing_model": "any",
+            "byoc": "rhinfra",
+            "cloud_provider": "any",
+            "cost": 1,
+            "product": "RHOSR",
+            "resource_name": "rhosr",
+            "resource_type": "cluster"
+          }
+        ],
+        "version": "1d79522a-657c-4e8d-8c35-b4d5b63cb394"
+      },
+      {
+        "allowed": 7,
+        "cloud_accounts": [
+          {
+            "cloud_account_id": "568056954830",
+            "cloud_provider_id": "aws"
+          },
+          {
+            "cloud_account_id": "160110605011",
+            "cloud_provider_id": "aws"
+          }
+        ],
+        "consumed": 0,
+        "href": "/api/accounts_mgmt/v1/organizations/2hyCqJ5UorERrM90S8fRz8lM3AI/quota_cost",
+        "kind": "QuotaCost",
+        "organization_id": "2hyCqJ5UorERrM90S8fRz8lM3AI",
+        "quota_id": "cluster|rhinfra|rhosr|any",
+        "related_resources": [
+          {
+            "availability_zone_type": "any",
+            "billing_model": "any",
+            "byoc": "rhinfra",
+            "cloud_provider": "any",
+            "cost": 1,
+            "product": "RHOSR",
+            "resource_name": "rhosr",
+            "resource_type": "cluster"
+          }
+        ],
+        "version": "1d79522a-657c-4e8d-8c35-b4d5b63cb394"
+      },
+      {
         "allowed": 3,
         "consumed": 0,
         "href": "/api/accounts_mgmt/v1/organizations/2hyCqJ5UorERrM90S8fRz8lM3AI/quota_cost",
