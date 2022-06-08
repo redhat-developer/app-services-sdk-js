@@ -18,6 +18,8 @@ const cosHandlers = require("./handlers/cos-manager");
 const topicHandlers = require("./handlers/kafka-admin");
 const ams = require("./handlers/ams");
 
+const amsRouter = require("./routers/ams-router");
+
 const { getFullHostname, getPort } = require("./utls/host");
 
 const path = require("path");
@@ -90,6 +92,8 @@ topicAPI.init();
 srsControlApi.init();
 srsDataApi.init();
 cosAPI.init();
+
+api.use("/api/accounts_mgmt/v1", amsRouter);
 
 api.use((req, res) => {
   if (req.url.startsWith("/api/kafkas_mgmt/v1")) {

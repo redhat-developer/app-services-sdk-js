@@ -62,8 +62,10 @@ CUSTOM_PORT - custom port number used default is 8000
 
 CUSTOM_HOST - custom url used in returned data. default http://localhost
 
-RESOURCE_OWNER - provide custom owner value as we do not have ability to detect it in mock. 
+RESOURCE_OWNER - provide custom owner value as we do not have ability to detect it in mock.
 For example: `RESOURCE_OWNER=wtrocki_kafka_devexp yarn start`
+
+AMS_QUOTA_TYPE - provide the quota type to be mocked. The valid values are - "trial", "standard" and "marketplace".
 
 ## Build container
 
