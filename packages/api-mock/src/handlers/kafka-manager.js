@@ -119,21 +119,324 @@ function createKafkaHandlers(preSeed) {
 
     getCloudProviderRegions: async (_c, _req, res) => {
       return res.status(200).json({
-        kind: "CloudRegionList",
-        page: 1,
-        size: 17,
-        total: 17,
-        items: [
+        "kind": "CloudRegionList",
+        "page": 1,
+        "size": 24,
+        "total": 24,
+        "items": [
           {
-            kind: "CloudRegion",
-            id: "eu-west-2",
-            display_name: "EU, London",
-            enabled: true,
+            "kind": "CloudRegion",
+            "id": "af-south-1",
+            "display_name": "Africa (Cape Town)",
+            "enabled": false,
+            "capacity": []
           },
-        ],
+          {
+            "kind": "CloudRegion",
+            "id": "ap-east-1",
+            "display_name": "Asia Pacific (Hong Kong)",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "ap-northeast-1",
+            "display_name": "Asia Pacific, Tokyo",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "ap-northeast-2",
+            "display_name": "Asia Pacific, Seoul",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "ap-northeast-3",
+            "display_name": "Asia Pacific (Osaka)",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "ap-south-1",
+            "display_name": "Asia Pacific, Mumbai",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "ap-southeast-1",
+            "display_name": "Asia Pacific, Singapore",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "ap-southeast-2",
+            "display_name": "Asia Pacific, Sydney",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "ap-southeast-3",
+            "display_name": "Asia Pacific, Jakarta",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "ca-central-1",
+            "display_name": "Canada, Central",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "eu-central-1",
+            "display_name": "EU, Frankfurt",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "eu-north-1",
+            "display_name": "EU, Stockholm",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "eu-south-1",
+            "display_name": "Europe (Milan)",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "eu-west-1",
+            "display_name": "EU, Ireland",
+            "enabled": true,
+            "supported_instance_types": [
+              "standard"
+            ],
+            "capacity": [
+              {
+                "instance_type": "standard",
+                "available_sizes": [
+                  "x1",
+                  "x2"
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "eu-west-2",
+            "display_name": "EU, London",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "eu-west-3",
+            "display_name": "EU, Paris",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "me-south-1",
+            "display_name": "Middle East, Bahrain",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "sa-east-1",
+            "display_name": "South America, São Paulo",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "eu-west-2",
+            "display_name": "EU, London",
+            "enabled": true,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "us-east-1",
+            "display_name": "US East, N. Virginia",
+            "enabled": true,
+            "supported_instance_types": [
+              "standard",
+              "developer"
+            ],
+            "capacity": [
+              {
+                "instance_type": "standard",
+                "available_sizes": [
+                  "x1",
+                  "x2"
+                ]
+              },
+              {
+                "instance_type": "developer",
+                "available_sizes": [
+                  "x1"
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "us-east-2",
+            "display_name": "US East, Ohio",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "us-gov-east-1",
+            "display_name": "AWS GovCloud, US-East",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "us-gov-west-1",
+            "display_name": "AWS GovCloud, US-West",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "us-west-1",
+            "display_name": "US West, N. California",
+            "enabled": false,
+            "capacity": []
+          },
+          {
+            "kind": "CloudRegion",
+            "id": "us-west-2",
+            "display_name": "US West, Oregon",
+            "enabled": false,
+            "capacity": []
+          }
+        ]
       });
     },
-
+    getInstanceTypesByCloudProviderAndRegion: async (c, req, res) => {
+      res.status(200).json({
+        "instance_types": [
+          {
+            "id": "developer",
+            "display_name": "Trial",
+            "sizes": [
+              {
+                "id": "x1",
+                "display_name": "1",
+                "ingress_throughput_per_sec": {
+                  "bytes": 1048576
+                },
+                "egress_throughput_per_sec": {
+                  "bytes": 1048576
+                },
+                "total_max_connections": 100,
+                "max_data_retention_size": {
+                  "bytes": 10737418240
+                },
+                "max_partitions": 100,
+                "max_data_retention_period": "P14D",
+                "max_connection_attempts_per_sec": 50,
+                "max_message_size": {
+                  "bytes": 1048576
+                },
+                "min_in_sync_replicas": 1,
+                "replication_factor": 1,
+                "supported_az_modes": [
+                  "single"
+                ],
+                "lifespan_seconds": 172800,
+                "quota_consumed": 1,
+                "quota_type": "RHOSAKTrial",
+                "capacity_consumed": 1,
+                "maturity_status": "stable"
+              }
+            ]
+          },
+          {
+            "id": "standard",
+            "display_name": "Standard",
+            "sizes": [
+              {
+                "id": "x1",
+                "display_name": "1",
+                "ingress_throughput_per_sec": {
+                  "bytes": 52428800
+                },
+                "egress_throughput_per_sec": {
+                  "bytes": 104857600
+                },
+                "total_max_connections": 3000,
+                "max_data_retention_size": {
+                  "bytes": 1073741824000
+                },
+                "max_partitions": 1500,
+                "max_data_retention_period": "P14D",
+                "max_connection_attempts_per_sec": 100,
+                "max_message_size": {
+                  "bytes": 1048576
+                },
+                "min_in_sync_replicas": 2,
+                "replication_factor": 3,
+                "supported_az_modes": [
+                  "multi"
+                ],
+                "quota_consumed": 1,
+                "quota_type": "RHOSAK",
+                "capacity_consumed": 1,
+                "maturity_status": "stable"
+              },
+              {
+                "id": "x2",
+                "display_name": "2",
+                "ingress_throughput_per_sec": {
+                  "bytes": 104857600
+                },
+                "egress_throughput_per_sec": {
+                  "bytes": 209715200
+                },
+                "total_max_connections": 6000,
+                "max_data_retention_size": {
+                  "bytes": 2147483648000
+                },
+                "max_partitions": 3000,
+                "max_data_retention_period": "P14D",
+                "max_connection_attempts_per_sec": 200,
+                "max_message_size": {
+                  "bytes": 1048576
+                },
+                "min_in_sync_replicas": 2,
+                "replication_factor": 3,
+                "supported_az_modes": [
+                  "multi"
+                ],
+                "quota_consumed": 2,
+                "quota_type": "RHOSAK",
+                "capacity_consumed": 2,
+                "maturity_status": "preview"
+              }
+            ]
+          }
+        ]
+      })
+    },
     getVersionMetadata: async (c, req, res) =>
       res.status(200).json({
         kind: "APIVersion",
