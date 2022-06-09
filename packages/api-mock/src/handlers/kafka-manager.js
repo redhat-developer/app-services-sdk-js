@@ -237,8 +237,26 @@ function createKafkaHandlers(preSeed) {
             "kind": "CloudRegion",
             "id": "eu-west-2",
             "display_name": "EU, London",
-            "enabled": false,
-            "capacity": []
+            "enabled": true,
+            "supported_instance_types": [
+              "standard",
+              "developer"
+            ],
+            "capacity": [
+              {
+                "instance_type": "standard",
+                "available_sizes": [
+                  "x1",
+                  "x2"
+                ]
+              },
+              {
+                "instance_type": "developer",
+                "available_sizes": [
+                  "x1"
+                ]
+              }
+            ]
           },
           {
             "kind": "CloudRegion",
@@ -259,13 +277,6 @@ function createKafkaHandlers(preSeed) {
             "id": "sa-east-1",
             "display_name": "South America, São Paulo",
             "enabled": false,
-            "capacity": []
-          },
-          {
-            "kind": "CloudRegion",
-            "id": "eu-west-2",
-            "display_name": "EU, London",
-            "enabled": true,
             "capacity": []
           },
           {
