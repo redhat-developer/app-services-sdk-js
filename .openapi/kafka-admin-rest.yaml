@@ -1213,7 +1213,7 @@ components:
       type: string
     ConsumerGroupList:
       allOf:
-      - $ref: '#/components/schemas/ListDeprecated'
+      - $ref: '#/components/schemas/List'
       - title: ConsumerGroup List
         description: A list of consumer groups
         type: object
@@ -1398,26 +1398,7 @@ components:
           format: int32
           description: Current page number (returned for fetch requests)
           type: integer
-    ListDeprecated:
-      allOf:
-      - $ref: '#/components/schemas/List'
-      - type: object
-        properties:
-          offset:
-            format: int32
-            description: "Offset of the first record returned, zero-based"
-            type: integer
-            deprecated: true
-          limit:
-            format: int32
-            description: "Maximum number of records to return, from request"
-            type: integer
-            deprecated: true
-          count:
-            format: int32
-            description: Total number of entries in the full result set
-            type: integer
-            deprecated: true
+    
     NewTopicInput:
       description: Input object to create a new topic.
       required:
@@ -1673,7 +1654,7 @@ components:
           value: "1050000"
     TopicsList:
       allOf:
-      - $ref: '#/components/schemas/ListDeprecated'
+      - $ref: '#/components/schemas/List'
       - title: Topic List
         description: A list of topics.
         type: object

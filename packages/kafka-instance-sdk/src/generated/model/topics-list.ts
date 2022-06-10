@@ -13,7 +13,7 @@
  */
 
 
-import { ListDeprecated } from './list-deprecated';
+import { List } from './list';
 import { Topic } from './topic';
 import { TopicList } from './topic-list';
 
@@ -21,6 +21,6 @@ import { TopicList } from './topic-list';
  * @type TopicsList
  * @export
  */
-export type TopicsList = ListDeprecated & TopicList;
+export type TopicsList = List & TopicList;
 
 

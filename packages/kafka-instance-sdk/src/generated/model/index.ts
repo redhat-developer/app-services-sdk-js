@@ -26,8 +26,6 @@ export * from './consumer-group-state';
 export * from './error-all-of';
 export * from './error-list';
 export * from './list';
-export * from './list-deprecated';
-export * from './list-deprecated-all-of';
 export * from './model-error';
 export * from './new-topic-input';
 export * from './node';
