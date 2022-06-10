@@ -15,12 +15,12 @@
 
 import { List } from './list';
 import { Topic } from './topic';
-import { TopicList } from './topic-list';
+import { TopicsListAllOf } from './topics-list-all-of';
 
 /**
  * @type TopicsList
  * @export
  */
-export type TopicsList = List & TopicList;
+export type TopicsList = List & TopicsListAllOf;
 
 

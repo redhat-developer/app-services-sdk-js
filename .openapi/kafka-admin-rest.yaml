@@ -1012,9 +1012,7 @@ components:
     AclBindingListPage:
       allOf:
       - $ref: '#/components/schemas/List'
-      - title: ACL Binding List
-        description: A page of ACL binding entries
-        type: object
+      - type: object
         properties:
           items:
             type: array
@@ -1183,8 +1181,7 @@ components:
     ConsumerGroup:
       allOf:
       - $ref: '#/components/schemas/ObjectReference'
-      - description: A group of Kafka consumers
-        required:
+      - required:
         - groupId
         - consumers
         type: object
@@ -1214,9 +1211,7 @@ components:
     ConsumerGroupList:
       allOf:
       - $ref: '#/components/schemas/List'
-      - title: ConsumerGroup List
-        description: A list of consumer groups
-        type: object
+      - type: object
         properties:
           items:
             type: array
@@ -1655,9 +1650,7 @@ components:
     TopicsList:
       allOf:
       - $ref: '#/components/schemas/List'
-      - title: Topic List
-        description: A list of topics.
-        type: object
+      - type: object
         properties:
           items:
             type: array

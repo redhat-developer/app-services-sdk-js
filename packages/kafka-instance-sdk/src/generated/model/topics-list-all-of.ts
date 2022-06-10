@@ -13,14 +13,19 @@
  */
 
 
-import { ConsumerGroup } from './consumer-group';
-import { ConsumerGroupListAllOf } from './consumer-group-list-all-of';
-import { List } from './list';
+import { Topic } from './topic';
 
 /**
- * @type ConsumerGroupList
+ * 
  * @export
+ * @interface TopicsListAllOf
  */
-export type ConsumerGroupList = ConsumerGroupListAllOf & List;
-
+export interface TopicsListAllOf {
+    /**
+     * 
+     * @type {Array<Topic>}
+     * @memberof TopicsListAllOf
+     */
+    'items'?: Array<Topic>;
+}
 

@@ -13,19 +13,19 @@
  */
 
 
-import { Topic } from './topic';
+import { AclBinding } from './acl-binding';
 
 /**
- * A list of topics.
+ * 
  * @export
- * @interface TopicList
+ * @interface AclBindingListPageAllOf
  */
-export interface TopicList {
+export interface AclBindingListPageAllOf {
     /**
      * 
-     * @type {Array<Topic>}
-     * @memberof TopicList
+     * @type {Array<AclBinding>}
+     * @memberof AclBindingListPageAllOf
      */
-    'items'?: Array<Topic>;
+    'items'?: Array<AclBinding>;
 }
 

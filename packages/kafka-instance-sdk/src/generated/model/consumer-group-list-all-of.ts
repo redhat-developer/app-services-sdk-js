@@ -13,19 +13,19 @@
  */
 
 
-import { AclBinding } from './acl-binding';
+import { ConsumerGroup } from './consumer-group';
 
 /**
- * A page of ACL binding entries
+ * 
  * @export
- * @interface ACLBindingList
+ * @interface ConsumerGroupListAllOf
  */
-export interface ACLBindingList {
+export interface ConsumerGroupListAllOf {
     /**
      * 
-     * @type {Array<AclBinding>}
-     * @memberof ACLBindingList
+     * @type {Array<ConsumerGroup>}
+     * @memberof ConsumerGroupListAllOf
      */
-    'items'?: Array<AclBinding>;
+    'items'?: Array<ConsumerGroup>;
 }
 

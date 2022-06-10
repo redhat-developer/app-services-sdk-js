@@ -13,14 +13,14 @@
  */
 
 
-import { ACLBindingList } from './aclbinding-list';
 import { AclBinding } from './acl-binding';
+import { AclBindingListPageAllOf } from './acl-binding-list-page-all-of';
 import { List } from './list';
 
 /**
  * @type AclBindingListPage
  * @export
  */
-export type AclBindingListPage = ACLBindingList & List;
+export type AclBindingListPage = AclBindingListPageAllOf & List;
 
 

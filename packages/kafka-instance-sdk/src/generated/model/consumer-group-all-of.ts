@@ -18,7 +18,7 @@ import { ConsumerGroupMetrics } from './consumer-group-metrics';
 import { ConsumerGroupState } from './consumer-group-state';
 
 /**
- * A group of Kafka consumers
+ * 
  * @export
  * @interface ConsumerGroupAllOf
  */
