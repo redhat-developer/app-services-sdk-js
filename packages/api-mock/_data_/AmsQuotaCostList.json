@@ -12432,6 +12432,142 @@
         "href": "/api/accounts_mgmt/v1/organizations/1mmPKM7t9GEJdgZrddRt1tjLy5Zs/quota_cost",
         "kind": "QuotaCost",
         "organization_id": "1mmPKM7t9GEJdgZrddRt1tjLy5Zs",
+        "quota_id": "cluster|rhinfra|rhosaktrial|marketplace",
+        "related_resources": [
+          {
+            "availability_zone_type": "any",
+            "billing_model": "marketplace",
+            "byoc": "rhinfra",
+            "cloud_provider": "any",
+            "cost": 0,
+            "product": "RHOSAKTrial",
+            "resource_name": "rhosak",
+            "resource_type": "cluster"
+          },
+          {
+            "availability_zone_type": "any",
+            "billing_model": "marketplace",
+            "byoc": "rhinfra",
+            "cloud_provider": "any",
+            "cost": 0,
+            "product": "RHOSAKTrial",
+            "resource_name": "rhosak",
+            "resource_type": "cluster"
+          },
+          {
+            "availability_zone_type": "any",
+            "billing_model": "standard",
+            "byoc": "byoc",
+            "cloud_provider": "any",
+            "cost": 1,
+            "product": "OSD",
+            "resource_name": "any",
+            "resource_type": "cluster"
+          }
+        ]
+      },
+      {
+        "allowed": 0,
+        "cloud_accounts": [
+          {
+            "cloud_account_id": "568056954830",
+            "cloud_provider_id": "aws"
+          }
+        ],
+        "consumed": 0,
+        "href": "/api/accounts_mgmt/v1/organizations/1mmPKM7t9GEJdgZrddRt1tjLy5Zs/quota_cost",
+        "kind": "QuotaCost",
+        "organization_id": "1mmPKM7t9GEJdgZrddRt1tjLy5Zs",
+        "quota_id": "cluster|rhinfra|rhosaktrial|marketplace",
+        "related_resources": [
+          {
+            "availability_zone_type": "any",
+            "billing_model": "marketplace",
+            "byoc": "rhinfra",
+            "cloud_provider": "any",
+            "cost": 0,
+            "product": "RHOSAKTrial",
+            "resource_name": "rhosak",
+            "resource_type": "cluster"
+          },
+          {
+            "availability_zone_type": "any",
+            "billing_model": "standard",
+            "byoc": "byoc",
+            "cloud_provider": "any",
+            "cost": 1,
+            "product": "OSD",
+            "resource_name": "any",
+            "resource_type": "cluster"
+          },
+          {
+            "availability_zone_type": "any",
+            "billing_model": "any",
+            "byoc": "byoc",
+            "cloud_provider": "aws",
+            "cost": 0,
+            "product": "ANY",
+            "resource_name": "network-io-emea",
+            "resource_type": "network.io"
+          }
+        ]
+      },
+      {
+        "allowed": 0,
+        "cloud_accounts": [
+          {
+            "cloud_account_id": "568056954830",
+            "cloud_provider_id": "aws"
+          },
+          {
+            "cloud_account_id": "429344797240",
+            "cloud_provider_id": "azure"
+          }
+        ],
+        "consumed": 0,
+        "href": "/api/accounts_mgmt/v1/organizations/1mmPKM7t9GEJdgZrddRt1tjLy5Zs/quota_cost",
+        "kind": "QuotaCost",
+        "organization_id": "1mmPKM7t9GEJdgZrddRt1tjLy5Zs",
+        "quota_id": "cluster|rhinfra|rhosaktrial|marketplace",
+        "related_resources": [
+          {
+            "availability_zone_type": "any",
+            "billing_model": "marketplace",
+            "byoc": "rhinfra",
+            "cloud_provider": "any",
+            "cost": 0,
+            "product": "RHOSAKTrial",
+            "resource_name": "rhosak",
+            "resource_type": "cluster"
+          },
+          {
+            "availability_zone_type": "any",
+            "billing_model": "standard",
+            "byoc": "byoc",
+            "cloud_provider": "any",
+            "cost": 1,
+            "product": "OSD",
+            "resource_name": "any",
+            "resource_type": "cluster"
+          },
+          {
+            "availability_zone_type": "any",
+            "billing_model": "any",
+            "byoc": "byoc",
+            "cloud_provider": "aws",
+            "cost": 0,
+            "product": "ANY",
+            "resource_name": "network-io-emea",
+            "resource_type": "network.io"
+          }
+        ]
+      },
+      {
+        "allowed": 0,
+        "consumed": 0,
+        "href": "/api/accounts_mgmt/v1/organizations/1mmPKM7t9GEJdgZrddRt1tjLy5Zs/quota_cost",
+        "kind": "QuotaCost",
+        "organization_id": "1mmPKM7t9GEJdgZrddRt1tjLy5Zs",
         "quota_id": "network.io|network-io-emea|aws",
         "related_resources": [
           {
