@@ -31,7 +31,19 @@ export interface ProcessorSchemaEntryResponse {
      * @type {string}
      * @memberof ProcessorSchemaEntryResponse
      */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProcessorSchemaEntryResponse
+     */
     'name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProcessorSchemaEntryResponse
+     */
+    'description'?: string;
     /**
      * 
      * @type {string}

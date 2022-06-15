@@ -31,15 +31,15 @@ export const SchemaCatalogApiAxiosParamCreator = function (configuration?: Confi
         /**
          * Get the action processor JSON schema.
          * @summary Get action processor schema
-         * @param {string} name 
+         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaAPIGetActionProcessorSchema: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'name' is not null or undefined
-            assertParamExists('schemaAPIGetActionProcessorSchema', 'name', name)
-            const localVarPath = `/api/v1/schemas/actions/{name}`
-                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+        schemaAPIGetActionProcessorSchema: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('schemaAPIGetActionProcessorSchema', 'id', id)
+            const localVarPath = `/api/v1/schemas/actions/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -103,15 +103,15 @@ export const SchemaCatalogApiAxiosParamCreator = function (configuration?: Confi
         /**
          * Get the source processor JSON schema.
          * @summary Get source processor schema
-         * @param {string} name 
+         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaAPIGetSourceProcessorSchema: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'name' is not null or undefined
-            assertParamExists('schemaAPIGetSourceProcessorSchema', 'name', name)
-            const localVarPath = `/api/v1/schemas/sources/{name}`
-                .replace(`{${"name"}}`, encodeURIComponent(String(name)));
+        schemaAPIGetSourceProcessorSchema: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('schemaAPIGetSourceProcessorSchema', 'id', id)
+            const localVarPath = `/api/v1/schemas/sources/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -151,12 +151,12 @@ export const SchemaCatalogApiFp = function(configuration?: Configuration) {
         /**
          * Get the action processor JSON schema.
          * @summary Get action processor schema
-         * @param {string} name 
+         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schemaAPIGetActionProcessorSchema(name: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<object>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schemaAPIGetActionProcessorSchema(name, options);
+        async schemaAPIGetActionProcessorSchema(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.schemaAPIGetActionProcessorSchema(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -172,12 +172,12 @@ export const SchemaCatalogApiFp = function(configuration?: Configuration) {
         /**
          * Get the source processor JSON schema.
          * @summary Get source processor schema
-         * @param {string} name 
+         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schemaAPIGetSourceProcessorSchema(name: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<object>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schemaAPIGetSourceProcessorSchema(name, options);
+        async schemaAPIGetSourceProcessorSchema(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.schemaAPIGetSourceProcessorSchema(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -193,12 +193,12 @@ export const SchemaCatalogApiFactory = function (configuration?: Configuration, 
         /**
          * Get the action processor JSON schema.
          * @summary Get action processor schema
-         * @param {string} name 
+         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaAPIGetActionProcessorSchema(name: string, options?: any): AxiosPromise<Array<object>> {
-            return localVarFp.schemaAPIGetActionProcessorSchema(name, options).then((request) => request(axios, basePath));
+        schemaAPIGetActionProcessorSchema(id: string, options?: any): AxiosPromise<object> {
+            return localVarFp.schemaAPIGetActionProcessorSchema(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Get the processor catalog with all the available sources and actions.
@@ -212,12 +212,12 @@ export const SchemaCatalogApiFactory = function (configuration?: Configuration, 
         /**
          * Get the source processor JSON schema.
          * @summary Get source processor schema
-         * @param {string} name 
+         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaAPIGetSourceProcessorSchema(name: string, options?: any): AxiosPromise<Array<object>> {
-            return localVarFp.schemaAPIGetSourceProcessorSchema(name, options).then((request) => request(axios, basePath));
+        schemaAPIGetSourceProcessorSchema(id: string, options?: any): AxiosPromise<object> {
+            return localVarFp.schemaAPIGetSourceProcessorSchema(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -231,12 +231,12 @@ export interface SchemaCatalogApiInterface {
     /**
      * Get the action processor JSON schema.
      * @summary Get action processor schema
-     * @param {string} name 
+     * @param {string} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SchemaCatalogApiInterface
      */
-    schemaAPIGetActionProcessorSchema(name: string, options?: AxiosRequestConfig): AxiosPromise<Array<object>>;
+    schemaAPIGetActionProcessorSchema(id: string, options?: AxiosRequestConfig): AxiosPromise<object>;
 
     /**
      * Get the processor catalog with all the available sources and actions.
@@ -250,12 +250,12 @@ export interface SchemaCatalogApiInterface {
     /**
      * Get the source processor JSON schema.
      * @summary Get source processor schema
-     * @param {string} name 
+     * @param {string} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SchemaCatalogApiInterface
      */
-    schemaAPIGetSourceProcessorSchema(name: string, options?: AxiosRequestConfig): AxiosPromise<Array<object>>;
+    schemaAPIGetSourceProcessorSchema(id: string, options?: AxiosRequestConfig): AxiosPromise<object>;
 
 }
 
@@ -269,13 +269,13 @@ export class SchemaCatalogApi extends BaseAPI implements SchemaCatalogApiInterfa
     /**
      * Get the action processor JSON schema.
      * @summary Get action processor schema
-     * @param {string} name 
+     * @param {string} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SchemaCatalogApi
      */
-    public schemaAPIGetActionProcessorSchema(name: string, options?: AxiosRequestConfig) {
-        return SchemaCatalogApiFp(this.configuration).schemaAPIGetActionProcessorSchema(name, options).then((request) => request(this.axios, this.basePath));
+    public schemaAPIGetActionProcessorSchema(id: string, options?: AxiosRequestConfig) {
+        return SchemaCatalogApiFp(this.configuration).schemaAPIGetActionProcessorSchema(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -292,12 +292,12 @@ export class SchemaCatalogApi extends BaseAPI implements SchemaCatalogApiInterfa
     /**
      * Get the source processor JSON schema.
      * @summary Get source processor schema
-     * @param {string} name 
+     * @param {string} id 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SchemaCatalogApi
      */
-    public schemaAPIGetSourceProcessorSchema(name: string, options?: AxiosRequestConfig) {
-        return SchemaCatalogApiFp(this.configuration).schemaAPIGetSourceProcessorSchema(name, options).then((request) => request(this.axios, this.basePath));
+    public schemaAPIGetSourceProcessorSchema(id: string, options?: AxiosRequestConfig) {
+        return SchemaCatalogApiFp(this.configuration).schemaAPIGetSourceProcessorSchema(id, options).then((request) => request(this.axios, this.basePath));
     }
 }

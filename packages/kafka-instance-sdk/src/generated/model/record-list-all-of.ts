@@ -13,41 +13,36 @@
  */
 
 
+import { Record } from './record';
 
 /**
- * 
+ * A page of records consumed from a topic
  * @export
- * @interface List
+ * @interface RecordListAllOf
  */
-export interface List {
+export interface RecordListAllOf {
     /**
      * 
-     * @type {string}
-     * @memberof List
+     * @type {Array<Record>}
+     * @memberof RecordListAllOf
      */
-    'kind'?: string;
+    'items'?: Array<Record>;
     /**
-     * 
-     * @type {Array<object>}
-     * @memberof List
-     */
-    'items': Array<object>;
-    /**
-     * Total number of entries in the full result set
+     * Total number of records returned in this request. This value does not indicate the total number of records in the topic.
      * @type {number}
-     * @memberof List
+     * @memberof RecordListAllOf
      */
-    'total': number;
+    'total'?: number;
     /**
-     * Number of entries per page (returned for fetch requests)
+     * Not used
      * @type {number}
-     * @memberof List
+     * @memberof RecordListAllOf
      */
     'size'?: number;
     /**
-     * Current page number (returned for fetch requests)
+     * Not used
      * @type {number}
-     * @memberof List
+     * @memberof RecordListAllOf
      */
     'page'?: number;
 }
