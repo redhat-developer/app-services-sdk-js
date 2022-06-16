@@ -13,7 +13,7 @@ const commonKafkaFields = {
   bootstrap_server_host: getFullHostname(),
   created_at: "2020-10-05T12:51:24.053142Z",
   updated_at: "2020-10-05T12:56:36.362208Z",
-  admin_api_server_url: getFullHostname() + "/data/kafka",
+  admin_api_server_url: "http://" + getFullHostname() + "/data/kafka",
   browser_url: "http://localhost:8080/calbu9ccff6bdd4jsg30/dashboard",
   egress_throughput_per_sec: "1Mi",
   expires_at: "2022-06-18T05:27:01.816619Z",
@@ -508,6 +508,16 @@ function createKafkaHandlers(preSeed) {
         client_id: "SA-121212",
         owner: "test-user",
         created_at: "2021-04-07T16:24:01+05:30",
+      });
+    },
+    
+    getSsoProviders: async (c, req, res) => {
+      res.status(200).json({
+        "name": "mas_sso",
+        "base_url": "https://identity.api.openshift.com",
+        "token_url": "https://identity.api.openshift.com/auth/realms/rhoas/protocol/openid-connect/token",
+        "jwks": "https://identity.api.openshift.com/auth/realms/rhoas/protocol/openid-connect/certs",
+        "valid_issuer": "https://identity.api.openshift.com/auth/realms/rhoas"
       });
     },
 
