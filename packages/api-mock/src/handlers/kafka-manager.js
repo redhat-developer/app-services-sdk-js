@@ -13,7 +13,7 @@ const commonKafkaFields = {
   bootstrap_server_host: getFullHostname(),
   created_at: "2020-10-05T12:51:24.053142Z",
   updated_at: "2020-10-05T12:56:36.362208Z",
-  admin_api_server_url: getFullHostname() + "/data/kafka",
+  admin_api_server_url: "http://" + getFullHostname() + "/data/kafka",
   browser_url: "http://localhost:8080/calbu9ccff6bdd4jsg30/dashboard",
   egress_throughput_per_sec: "1Mi",
   expires_at: "2022-06-18T05:27:01.816619Z",
