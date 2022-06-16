@@ -510,6 +510,16 @@ function createKafkaHandlers(preSeed) {
         created_at: "2021-04-07T16:24:01+05:30",
       });
     },
+    
+    getSsoProviders: async (c, req, res) => {
+      res.status(200).json({
+        "name": "mas_sso",
+        "base_url": "https://identity.api.openshift.com",
+        "token_url": "https://identity.api.openshift.com/auth/realms/rhoas/protocol/openid-connect/token",
+        "jwks": "https://identity.api.openshift.com/auth/realms/rhoas/protocol/openid-connect/certs",
+        "valid_issuer": "https://identity.api.openshift.com/auth/realms/rhoas"
+      });
+    },
 
     // Handling auth
     notFound: async (c, req, res) => res.status(404).json({ err: "not found" }),
