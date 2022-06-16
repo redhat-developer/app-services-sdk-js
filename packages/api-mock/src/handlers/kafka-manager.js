@@ -4,7 +4,7 @@ const { getFullHostname } = require("../utls/host");
 var saList = require("../../_data_/serviceaccounts.json");
 
 const commonKafkaFields = {
-  kind: "kafka",
+  kind: "Kafka",
   status: "ready",
   cloud_provider: "aws",
   multi_az: false,
@@ -13,6 +13,21 @@ const commonKafkaFields = {
   bootstrap_server_host: getFullHostname(),
   created_at: "2020-10-05T12:51:24.053142Z",
   updated_at: "2020-10-05T12:56:36.362208Z",
+  "admin_api_server_url": "http://admin-server" + getFullHostname(),
+  "browser_url": "http://localhost:8080/calbu9ccff6bdd4jsg30/dashboard",
+  "egress_throughput_per_sec": "1Mi",
+  "expires_at": "2022-06-18T05:27:01.816619Z",
+  "ingress_throughput_per_sec": "1Mi",
+  "instance_type": "developer",
+  "instance_type_name": "Trial",
+  "kafka_storage_size": "10Gi",
+  "max_connection_attempts_per_sec": 50,
+  "max_data_retention_period": "P14D",
+  "max_partitions": 100,
+  "reauthentication_enabled": true,
+  "size_id": "x1",
+  "total_max_connections": 100,
+  "version": "3.0.1"
 };
 
 const commonError = {
