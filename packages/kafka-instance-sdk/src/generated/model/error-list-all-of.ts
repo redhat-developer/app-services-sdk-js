@@ -13,15 +13,24 @@
  */
 
 
-import { ConfigEntry } from './config-entry';
-import { ObjectReference } from './object-reference';
-import { Partition } from './partition';
-import { TopicAllOf } from './topic-all-of';
 
 /**
- * @type Topic
+ * List of errors
  * @export
+ * @interface ErrorListAllOf
  */
-export type Topic = ObjectReference & TopicAllOf;
-
+export interface ErrorListAllOf {
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof ErrorListAllOf
+     */
+    'items'?: Array<Error>;
+    /**
+     * Total number of errors returned in this request
+     * @type {number}
+     * @memberof ErrorListAllOf
+     */
+    'total'?: number;
+}
 

@@ -13,15 +13,19 @@
  */
 
 
-import { ConfigEntry } from './config-entry';
-import { ObjectReference } from './object-reference';
-import { Partition } from './partition';
-import { TopicAllOf } from './topic-all-of';
+import { Topic } from './topic';
 
 /**
- * @type Topic
+ * A list of topics.
  * @export
+ * @interface TopicsListAllOf
  */
-export type Topic = ObjectReference & TopicAllOf;
-
+export interface TopicsListAllOf {
+    /**
+     * 
+     * @type {Array<Topic>}
+     * @memberof TopicsListAllOf
+     */
+    'items'?: Array<Topic>;
+}
 
