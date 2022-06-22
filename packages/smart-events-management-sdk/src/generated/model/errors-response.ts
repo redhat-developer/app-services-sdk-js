@@ -13,10 +13,25 @@
  */
 
 
+import { ErrorResponse } from './error-response';
 
-export * from './api/bridges-api';
-export * from './api/cloud-providers-api';
-export * from './api/error-catalog-api';
-export * from './api/processors-api';
-export * from './api/schema-catalog-api';
+/**
+ * 
+ * @export
+ * @interface ErrorsResponse
+ */
+export interface ErrorsResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ErrorsResponse
+     */
+    'kind'?: string;
+    /**
+     * 
+     * @type {Array<ErrorResponse>}
+     * @memberof ErrorsResponse
+     */
+    'items'?: Array<ErrorResponse>;
+}
 

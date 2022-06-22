@@ -17,44 +17,32 @@
 /**
  * 
  * @export
- * @interface KafkaConnectionDTO
+ * @interface CloudRegionResponse
  */
-export interface KafkaConnectionDTO {
+export interface CloudRegionResponse {
     /**
      * 
      * @type {string}
-     * @memberof KafkaConnectionDTO
+     * @memberof CloudRegionResponse
      */
-    'bootstrapServers'?: string;
+    'kind'?: string;
     /**
      * 
      * @type {string}
-     * @memberof KafkaConnectionDTO
+     * @memberof CloudRegionResponse
      */
-    'clientId'?: string;
+    'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof KafkaConnectionDTO
+     * @memberof CloudRegionResponse
      */
-    'clientSecret'?: string;
+    'display_name'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof KafkaConnectionDTO
+     * @type {boolean}
+     * @memberof CloudRegionResponse
      */
-    'securityProtocol'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof KafkaConnectionDTO
-     */
-    'topic'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof KafkaConnectionDTO
-     */
-    'errorTopic'?: string;
+    'enabled'?: boolean;
 }
 

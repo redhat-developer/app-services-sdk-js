@@ -13,56 +13,48 @@
  */
 
 
-import { KafkaConnectionDTO } from './kafka-connection-dto';
-import { ManagedResourceStatus } from './managed-resource-status';
 
 /**
  * 
  * @export
- * @interface BridgeDTO
+ * @interface CloudProviderResponse
  */
-export interface BridgeDTO {
+export interface CloudProviderResponse {
     /**
      * 
      * @type {string}
-     * @memberof BridgeDTO
+     * @memberof CloudProviderResponse
+     */
+    'kind'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CloudProviderResponse
      */
     'id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof BridgeDTO
+     * @memberof CloudProviderResponse
      */
     'name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof BridgeDTO
+     * @memberof CloudProviderResponse
      */
-    'endpoint'?: string;
+    'href'?: string;
     /**
      * 
      * @type {string}
-     * @memberof BridgeDTO
+     * @memberof CloudProviderResponse
      */
-    'customerId'?: string;
+    'display_name'?: string;
     /**
      * 
-     * @type {string}
-     * @memberof BridgeDTO
+     * @type {boolean}
+     * @memberof CloudProviderResponse
      */
-    'owner'?: string;
-    /**
-     * 
-     * @type {ManagedResourceStatus}
-     * @memberof BridgeDTO
-     */
-    'status'?: ManagedResourceStatus;
-    /**
-     * 
-     * @type {KafkaConnectionDTO}
-     * @memberof BridgeDTO
-     */
-    'kafkaConnection'?: KafkaConnectionDTO;
+    'enabled'?: boolean;
 }
 
