@@ -2,8 +2,6 @@
 
 Typescript and JavaScript packages and API clients for RHOAS services
 
-> NOTE: SDK is under active development
-
 ## Prequisites
 
 - [NodeJS 14.x lts](https://nodejs.org/en/about/releases/) or above
