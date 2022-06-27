@@ -29,7 +29,7 @@ You can view all SDK packages directly in [npm](https://www.npmjs.com/search?q=k
 | service-accounts            | **@rhoas/service-accounts-sdk**     | alpha   | ![sashield]     | [npm][sanpm]     | [doc][sagit]     
 | connector        | **@rhoas/connector-management-sdk** | alpha  | ![connectorshield] | [npm][connectornpm] | [doc][connectorgit] |
 | service registry | **@rhoas/registry-management-sdk**  | alpha  | ![registryshield]  | [npm][registrynpm]  | [doc][registrygit]  |
-| smart events | **@rhoas/smart-events-management-sdk**  | alpha  | | [npm]  | [doc] |
+| smart events | **@rhoas/smart-events-management-sdk**  | alpha  | | [npm][smarteventsnpm]  | [doc][smarteventsgit] |
 
 
 ## Instances SDK's
@@ -98,3 +98,6 @@ asapi
 [connectorgit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/connector-management-sdk 
 [connectornpm]: https://www.npmjs.com/package/@rhoas/connector-management-sdk
 [connectorshield]: https://img.shields.io/npm/v/@rhoas/connector-management-sdk
+[smarteventsgit]: https://github.com/redhat-developer/app-services-sdk-js/tree/main/packages/smart-events-management-sdk 
+[smarteventssnpm]: https://www.npmjs.com/package/@rhoas/smartevents-management-sdk
+[smarteventsshield]: https://img.shields.io/npm/v/@rhoas/smartevents-management-sdk
