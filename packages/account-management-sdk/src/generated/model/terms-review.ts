@@ -28,6 +28,12 @@ export interface TermsReview {
     'account_username': string;
     /**
      * 
+     * @type {boolean}
+     * @memberof TermsReview
+     */
+    'check_optional_terms'?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof TermsReview
      */

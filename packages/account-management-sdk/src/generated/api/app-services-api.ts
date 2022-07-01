@@ -90,6 +90,9 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication AccessToken required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
             // authentication Bearer required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
@@ -115,10 +118,12 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
          * @param {string} orgId The id of organization
          * @param {string} [search] Specifies the search criteria. The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement, using the names of the json attributes / column names of the account. For example, in order to retrieve all the accounts with a username starting with &#x60;my&#x60;:  &#x60;&#x60;&#x60;sql username like \&#39;my%\&#39; &#x60;&#x60;&#x60;  The search criteria can also be applied on related resource. For example, in order to retrieve all the subscriptions labeled by &#x60;foo&#x3D;bar&#x60;,  &#x60;&#x60;&#x60;sql labels.key &#x3D; \&#39;foo\&#39; and labels.value &#x3D; \&#39;bar\&#39; &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the accounts that the user has permission to see will be returned.
          * @param {boolean} [fetchRelatedResources] If true, includes the related resources in the output. Could slow request response time.
+         * @param {boolean} [forceRecalc] If true, includes that ConsumedQuota should be recalculated.
+         * @param {boolean} [fetchCloudAccounts] If true, includes the marketplace cloud accounts in the output. Could slow request response time.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet: async (orgId: string, search?: string, fetchRelatedResources?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet: async (orgId: string, search?: string, fetchRelatedResources?: boolean, forceRecalc?: boolean, fetchCloudAccounts?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'orgId' is not null or undefined
             assertParamExists('apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet', 'orgId', orgId)
             const localVarPath = `/api/accounts_mgmt/v1/organizations/{orgId}/quota_cost`
@@ -144,6 +149,14 @@ export const AppServicesApiAxiosParamCreator = function (configuration?: Configu
 
             if (fetchRelatedResources !== undefined) {
                 localVarQueryParameter['fetchRelatedResources'] = fetchRelatedResources;
+            }
+
+            if (forceRecalc !== undefined) {
+                localVarQueryParameter['forceRecalc'] = forceRecalc;
+            }
+
+            if (fetchCloudAccounts !== undefined) {
+                localVarQueryParameter['fetchCloudAccounts'] = fetchCloudAccounts;
             }
 
 
@@ -234,11 +247,13 @@ export const AppServicesApiFp = function(configuration?: Configuration) {
          * @param {string} orgId The id of organization
          * @param {string} [search] Specifies the search criteria. The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement, using the names of the json attributes / column names of the account. For example, in order to retrieve all the accounts with a username starting with &#x60;my&#x60;:  &#x60;&#x60;&#x60;sql username like \&#39;my%\&#39; &#x60;&#x60;&#x60;  The search criteria can also be applied on related resource. For example, in order to retrieve all the subscriptions labeled by &#x60;foo&#x3D;bar&#x60;,  &#x60;&#x60;&#x60;sql labels.key &#x3D; \&#39;foo\&#39; and labels.value &#x3D; \&#39;bar\&#39; &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the accounts that the user has permission to see will be returned.
          * @param {boolean} [fetchRelatedResources] If true, includes the related resources in the output. Could slow request response time.
+         * @param {boolean} [forceRecalc] If true, includes that ConsumedQuota should be recalculated.
+         * @param {boolean} [fetchCloudAccounts] If true, includes the marketplace cloud accounts in the output. Could slow request response time.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuotaCostList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId, search, fetchRelatedResources, options);
+        async apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, forceRecalc?: boolean, fetchCloudAccounts?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<QuotaCostList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId, search, fetchRelatedResources, forceRecalc, fetchCloudAccounts, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -287,11 +302,13 @@ export const AppServicesApiFactory = function (configuration?: Configuration, ba
          * @param {string} orgId The id of organization
          * @param {string} [search] Specifies the search criteria. The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement, using the names of the json attributes / column names of the account. For example, in order to retrieve all the accounts with a username starting with &#x60;my&#x60;:  &#x60;&#x60;&#x60;sql username like \&#39;my%\&#39; &#x60;&#x60;&#x60;  The search criteria can also be applied on related resource. For example, in order to retrieve all the subscriptions labeled by &#x60;foo&#x3D;bar&#x60;,  &#x60;&#x60;&#x60;sql labels.key &#x3D; \&#39;foo\&#39; and labels.value &#x3D; \&#39;bar\&#39; &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the accounts that the user has permission to see will be returned.
          * @param {boolean} [fetchRelatedResources] If true, includes the related resources in the output. Could slow request response time.
+         * @param {boolean} [forceRecalc] If true, includes that ConsumedQuota should be recalculated.
+         * @param {boolean} [fetchCloudAccounts] If true, includes the marketplace cloud accounts in the output. Could slow request response time.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: any): AxiosPromise<QuotaCostList> {
-            return localVarFp.apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId, search, fetchRelatedResources, options).then((request) => request(axios, basePath));
+        apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, forceRecalc?: boolean, fetchCloudAccounts?: boolean, options?: any): AxiosPromise<QuotaCostList> {
+            return localVarFp.apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId, search, fetchRelatedResources, forceRecalc, fetchCloudAccounts, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -337,11 +354,13 @@ export interface AppServicesApiInterface {
      * @param {string} orgId The id of organization
      * @param {string} [search] Specifies the search criteria. The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement, using the names of the json attributes / column names of the account. For example, in order to retrieve all the accounts with a username starting with &#x60;my&#x60;:  &#x60;&#x60;&#x60;sql username like \&#39;my%\&#39; &#x60;&#x60;&#x60;  The search criteria can also be applied on related resource. For example, in order to retrieve all the subscriptions labeled by &#x60;foo&#x3D;bar&#x60;,  &#x60;&#x60;&#x60;sql labels.key &#x3D; \&#39;foo\&#39; and labels.value &#x3D; \&#39;bar\&#39; &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the accounts that the user has permission to see will be returned.
      * @param {boolean} [fetchRelatedResources] If true, includes the related resources in the output. Could slow request response time.
+     * @param {boolean} [forceRecalc] If true, includes that ConsumedQuota should be recalculated.
+     * @param {boolean} [fetchCloudAccounts] If true, includes the marketplace cloud accounts in the output. Could slow request response time.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AppServicesApiInterface
      */
-    apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: AxiosRequestConfig): AxiosPromise<QuotaCostList>;
+    apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, forceRecalc?: boolean, fetchCloudAccounts?: boolean, options?: AxiosRequestConfig): AxiosPromise<QuotaCostList>;
 
     /**
      * 
@@ -391,12 +410,14 @@ export class AppServicesApi extends BaseAPI implements AppServicesApiInterface {
      * @param {string} orgId The id of organization
      * @param {string} [search] Specifies the search criteria. The syntax of this parameter is similar to the syntax of the _where_ clause of an SQL statement, using the names of the json attributes / column names of the account. For example, in order to retrieve all the accounts with a username starting with &#x60;my&#x60;:  &#x60;&#x60;&#x60;sql username like \&#39;my%\&#39; &#x60;&#x60;&#x60;  The search criteria can also be applied on related resource. For example, in order to retrieve all the subscriptions labeled by &#x60;foo&#x3D;bar&#x60;,  &#x60;&#x60;&#x60;sql labels.key &#x3D; \&#39;foo\&#39; and labels.value &#x3D; \&#39;bar\&#39; &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty, then all the accounts that the user has permission to see will be returned.
      * @param {boolean} [fetchRelatedResources] If true, includes the related resources in the output. Could slow request response time.
+     * @param {boolean} [forceRecalc] If true, includes that ConsumedQuota should be recalculated.
+     * @param {boolean} [fetchCloudAccounts] If true, includes the marketplace cloud accounts in the output. Could slow request response time.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AppServicesApi
      */
-    public apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, options?: AxiosRequestConfig) {
-        return AppServicesApiFp(this.configuration).apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId, search, fetchRelatedResources, options).then((request) => request(this.axios, this.basePath));
+    public apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId: string, search?: string, fetchRelatedResources?: boolean, forceRecalc?: boolean, fetchCloudAccounts?: boolean, options?: AxiosRequestConfig) {
+        return AppServicesApiFp(this.configuration).apiAccountsMgmtV1OrganizationsOrgIdQuotaCostGet(orgId, search, fetchRelatedResources, forceRecalc, fetchCloudAccounts, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
