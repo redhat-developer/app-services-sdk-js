@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Kafka Service Fleet Manager
- * Kafka Service Fleet Manager is a Rest API to manage Kafka instances.
+ * Kafka Management API
+ * Kafka Management API is a REST API to manage Kafka instances
  *
  * The version of the OpenAPI document: 1.11.0
  * 
