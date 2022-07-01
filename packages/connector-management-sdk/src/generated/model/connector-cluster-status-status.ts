@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Connector Service Fleet Manager
- * Connector Service Fleet Manager is a Rest API to manage connectors.
+ * Connector Management API
+ * Connector Management API is a REST API to manage connectors.
  *
  * The version of the OpenAPI document: 0.1.0
  * 
