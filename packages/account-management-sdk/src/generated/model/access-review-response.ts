@@ -114,12 +114,12 @@ export const AccessReviewResponseResourceTypeEnum = {
     ServiceLog: 'ServiceLog',
     InternalServiceLog: 'InternalServiceLog',
     CsLogs: 'CSLogs',
-    QuotaSummary: 'QuotaSummary',
     SubscriptionLabel: 'SubscriptionLabel',
     OrganizationLabel: 'OrganizationLabel',
     SubscriptionLabelInternal: 'SubscriptionLabelInternal',
     SelfAccessReview: 'SelfAccessReview',
-    SubscriptionInternal: 'SubscriptionInternal'
+    SubscriptionInternal: 'SubscriptionInternal',
+    SubscriptionRoleBinding: 'SubscriptionRoleBinding'
 } as const;
 
 export type AccessReviewResponseResourceTypeEnum = typeof AccessReviewResponseResourceTypeEnum[keyof typeof AccessReviewResponseResourceTypeEnum];

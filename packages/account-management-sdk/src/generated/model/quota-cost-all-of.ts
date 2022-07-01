@@ -13,6 +13,7 @@
  */
 
 
+import { CloudAccount } from './cloud-account';
 import { RelatedResource } from './related-resource';
 
 /**
@@ -27,6 +28,12 @@ export interface QuotaCostAllOf {
      * @memberof QuotaCostAllOf
      */
     'allowed': number;
+    /**
+     * 
+     * @type {Array<CloudAccount>}
+     * @memberof QuotaCostAllOf
+     */
+    'cloud_accounts'?: Array<CloudAccount>;
     /**
      * 
      * @type {number}
@@ -51,5 +58,11 @@ export interface QuotaCostAllOf {
      * @memberof QuotaCostAllOf
      */
     'related_resources'?: Array<RelatedResource>;
+    /**
+     * 
+     * @type {string}
+     * @memberof QuotaCostAllOf
+     */
+    'version'?: string;
 }
 

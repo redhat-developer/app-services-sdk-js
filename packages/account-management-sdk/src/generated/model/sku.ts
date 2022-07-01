@@ -13,7 +13,6 @@
  */
 
 
-import { EphemeralResourceQuota } from './ephemeral-resource-quota';
 import { ObjectReference } from './object-reference';
 import { SKUAllOf } from './skuall-of';
 

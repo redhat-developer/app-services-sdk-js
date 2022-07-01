@@ -174,7 +174,10 @@ export interface SubscriptionPatchRequest {
 
 export const SubscriptionPatchRequestClusterBillingModelEnum = {
     Standard: 'standard',
-    Marketplace: 'marketplace'
+    Marketplace: 'marketplace',
+    MarketplaceAws: 'marketplace-aws',
+    MarketplaceAzure: 'marketplace-azure',
+    MarketplaceRhm: 'marketplace-rhm'
 } as const;
 
 export type SubscriptionPatchRequestClusterBillingModelEnum = typeof SubscriptionPatchRequestClusterBillingModelEnum[keyof typeof SubscriptionPatchRequestClusterBillingModelEnum];

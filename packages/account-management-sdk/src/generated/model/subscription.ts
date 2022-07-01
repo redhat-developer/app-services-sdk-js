@@ -17,15 +17,15 @@ import { Account } from './account';
 import { AccountReference } from './account-reference';
 import { Capability } from './capability';
 import { Label } from './label';
-import { ObjectReference } from './object-reference';
 import { OneMetric } from './one-metric';
 import { Plan } from './plan';
 import { SubscriptionAllOf } from './subscription-all-of';
+import { SubscriptionCommonFields } from './subscription-common-fields';
 
 /**
  * @type Subscription
  * @export
  */
-export type Subscription = ObjectReference & SubscriptionAllOf;
+export type Subscription = SubscriptionAllOf & SubscriptionCommonFields;
 
 

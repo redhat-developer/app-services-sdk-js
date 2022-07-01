@@ -47,6 +47,12 @@ export interface NotificationRequest {
     'include_red_hat_associates'?: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof NotificationRequest
+     */
+    'internal_only'?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof NotificationRequest
      */

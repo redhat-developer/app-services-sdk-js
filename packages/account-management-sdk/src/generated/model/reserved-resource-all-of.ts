@@ -32,6 +32,12 @@ export interface ReservedResourceAllOf {
      * @type {string}
      * @memberof ReservedResourceAllOf
      */
+    'billing_marketplace_account'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ReservedResourceAllOf
+     */
     'billing_model'?: string;
     /**
      * 

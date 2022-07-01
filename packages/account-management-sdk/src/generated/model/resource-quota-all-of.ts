@@ -24,20 +24,6 @@ export interface ResourceQuotaAllOf {
      * 
      * @type {string}
      * @memberof ResourceQuotaAllOf
-     * @deprecated
-     */
-    'availability_zone_type'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ResourceQuotaAllOf
-     * @deprecated
-     */
-    'byoc': boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResourceQuotaAllOf
      */
     'created_at'?: string;
     /**
@@ -46,20 +32,6 @@ export interface ResourceQuotaAllOf {
      * @memberof ResourceQuotaAllOf
      */
     'organization_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResourceQuotaAllOf
-     * @deprecated
-     */
-    'resource_name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResourceQuotaAllOf
-     * @deprecated
-     */
-    'resource_type': string;
     /**
      * 
      * @type {string}
