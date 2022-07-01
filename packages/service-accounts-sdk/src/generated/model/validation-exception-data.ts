@@ -17,20 +17,26 @@
 /**
  * 
  * @export
- * @interface ServiceAccountCreateRequestData
+ * @interface ValidationExceptionData
  */
-export interface ServiceAccountCreateRequestData {
+export interface ValidationExceptionData {
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof ValidationExceptionData
+     */
+    'fields'?: { [key: string]: string; };
     /**
      * 
      * @type {string}
-     * @memberof ServiceAccountCreateRequestData
+     * @memberof ValidationExceptionData
      */
-    'name': string;
+    'error'?: string;
     /**
      * 
      * @type {string}
-     * @memberof ServiceAccountCreateRequestData
+     * @memberof ValidationExceptionData
      */
-    'description'?: string;
+    'error_description'?: string;
 }
 
