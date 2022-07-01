@@ -8,6 +8,20 @@
         "required": true,
         "schema": { "type": "string" }
       },
+      "acctGrpAsgnId": {
+        "description": "The id of account group assignment",
+        "in": "path",
+        "name": "acctGrpAsgnId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "acctGrpId": {
+        "description": "The id of account group",
+        "in": "path",
+        "name": "acctGrpId",
+        "required": true,
+        "schema": { "type": "string" }
+      },
       "caseId": {
         "description": "The id of a support case",
         "in": "path",
@@ -43,6 +57,13 @@
         "required": false,
         "schema": { "type": "boolean" }
       },
+      "fetchCloudAccounts": {
+        "description": "If true, includes the marketplace cloud accounts in the output. Could slow request response time.",
+        "in": "query",
+        "name": "fetchCloudAccounts",
+        "required": false,
+        "schema": { "type": "boolean" }
+      },
       "fetchCpuAndSocket": {
         "description": "If true, fetches, from the clusters service, the total numbers of CPU's and sockets under an obligation, and includes in the output. Could slow request response time.",
         "in": "query",
@@ -64,12 +85,26 @@
         "required": false,
         "schema": { "type": "boolean" }
       },
+      "fetchRhit": {
+        "description": "If true, includes the RHIT account_id in the output. Could slow request response time.",
+        "in": "query",
+        "name": "fetchRhit",
+        "required": false,
+        "schema": { "type": "boolean" }
+      },
       "fields": {
         "description": "Supplies a comma-separated list of fields to be returned.\nFields of sub-structures and of arrays use \u003cstructure\u003e.\u003cfield\u003e notation.\n\u003cstucture\u003e.* means all field of a structure\nExample: For each Subscription to get id, href, plan(id and kind) and labels (all fields)\n\n```\nocm get subscriptions --parameter fields=id,href,plan.id,plan.kind,labels.* --parameter fetchLabels=true\n```",
         "in": "query",
         "name": "fields",
         "required": false,
         "schema": { "type": "string" }
+      },
+      "forceRecalc": {
+        "description": "If true, includes that ConsumedQuota should be recalculated.",
+        "in": "query",
+        "name": "forceRecalc",
+        "required": false,
+        "schema": { "type": "boolean" }
       },
       "id": {
         "description": "The id of record",
@@ -89,6 +124,20 @@
         "description": "Specifies the criteria to filter the subscription resource based on their labels.\nA label is represented as a `key=value` pair,\n\n```\nlabels = \"foo=bar\"\n```\n\nand multiple labels are separated by comma,\n\n```\nlabels = \"foo=bar,fooz=barz\"\n```",
         "in": "query",
         "name": "labels",
+        "required": false,
+        "schema": { "type": "string" }
+      },
+      "metricName": {
+        "description": "The name of the metric",
+        "in": "path",
+        "name": "metric_name",
+        "required": true,
+        "schema": { "type": "string" }
+      },
+      "metricSearch": {
+        "description": "The `search` paramter specifies the PromQL selector. The syntax is defined by Prometheus at\nhttps://prometheus.io/docs/prometheus/latest/querying/basics/#time-series-selectors.\nIt only supports simple selections as shown in https://prometheus.io/docs/prometheus/latest/querying/examples/#simple-time-series-selection.\nFor example, in order to retrieve subscription_sync_total with names starting with `managed` and with a channel = `production`:\n\n```\nname=~'managed.*',channel='production'\n```\n\nIf the parameter isn't provided, or if the value is empty, then all the records will be returned.",
+        "in": "query",
+        "name": "search",
         "required": false,
         "schema": { "type": "string" }
       },
@@ -113,12 +162,26 @@
         "required": false,
         "schema": { "default": 1, "minimum": 1, "type": "integer" }
       },
+      "product": {
+        "description": "The product for self_entitlement. The supported products are [rosa].",
+        "in": "path",
+        "name": "product",
+        "required": true,
+        "schema": { "type": "string" }
+      },
       "quotaId": {
         "description": "The id of quota",
         "in": "path",
         "name": "quotaId",
         "required": true,
         "schema": { "type": "string" }
+      },
+      "reduceClusterList": {
+        "description": "If true, When returning a list of cluster_ids/cluster_uuids/subscription_ids, if those are already included in one of the organizations provided in organization_ids, do not include it in the list.",
+        "in": "query",
+        "name": "reduceClusterList",
+        "required": false,
+        "schema": { "type": "boolean" }
       },
       "reservedResourceId": {
         "description": "The id of reserved resource",
@@ -196,12 +259,12 @@
               "ServiceLog",
               "InternalServiceLog",
               "CSLogs",
-              "QuotaSummary",
               "SubscriptionLabel",
               "OrganizationLabel",
               "SubscriptionLabelInternal",
               "SelfAccessReview",
-              "SubscriptionInternal"
+              "SubscriptionInternal",
+              "SubscriptionRoleBinding"
             ],
             "type": "string"
           },
@@ -257,12 +320,12 @@
               "ServiceLog",
               "InternalServiceLog",
               "CSLogs",
-              "QuotaSummary",
               "SubscriptionLabel",
               "OrganizationLabel",
               "SubscriptionLabelInternal",
               "SelfAccessReview",
-              "SubscriptionInternal"
+              "SubscriptionInternal",
+              "SubscriptionRoleBinding"
             ],
             "type": "string"
           },
@@ -300,11 +363,97 @@
               "last_name": { "type": "string" },
               "organization": { "$ref": "#/components/schemas/Organization" },
               "organization_id": { "type": "string" },
+              "rhit_account_id": { "type": "string" },
+              "rhit_web_user_id": { "type": "string" },
               "service_account": { "default": false, "type": "boolean" },
               "updated_at": { "format": "date-time", "type": "string" },
               "username": { "type": "string" }
             },
             "required": ["username"],
+            "type": "object"
+          }
+        ]
+      },
+      "AccountGroup": {
+        "allOf": [
+          { "$ref": "#/components/schemas/ObjectReference" },
+          {
+            "properties": {
+              "created_at": { "format": "date-time", "type": "string" },
+              "description": { "type": "string" },
+              "managed_by": { "enum": ["SSO", "OCM"], "type": "string" },
+              "name": { "type": "string" },
+              "organization_id": { "type": "string" },
+              "updated_at": { "format": "date-time", "type": "string" }
+            },
+            "required": [
+              "name",
+              "description",
+              "organization_id",
+              "managed_by"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "AccountGroupAssignment": {
+        "allOf": [
+          { "$ref": "#/components/schemas/ObjectReference" },
+          {
+            "properties": {
+              "account_group_id": { "type": "string" },
+              "account_id": { "type": "string" },
+              "created_at": { "format": "date-time", "type": "string" },
+              "updated_at": { "format": "date-time", "type": "string" }
+            },
+            "required": ["account_id", "account_group_id"],
+            "type": "object"
+          }
+        ]
+      },
+      "AccountGroupAssignmentList": {
+        "allOf": [
+          { "$ref": "#/components/schemas/List" },
+          {
+            "properties": {
+              "items": {
+                "items": {
+                  "allOf": [
+                    { "$ref": "#/components/schemas/AccountGroupAssignment" }
+                  ]
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "AccountGroupList": {
+        "allOf": [
+          { "$ref": "#/components/schemas/List" },
+          {
+            "properties": {
+              "items": {
+                "items": {
+                  "allOf": [{ "$ref": "#/components/schemas/AccountGroup" }]
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "AccountGroupRequest": {
+        "allOf": [
+          { "$ref": "#/components/schemas/ObjectReference" },
+          {
+            "properties": {
+              "description": { "type": "string" },
+              "name": { "type": "string" }
+            },
+            "required": ["name", "description"],
             "type": "object"
           }
         ]
@@ -382,6 +531,114 @@
         "required": ["account_username", "type", "capability"],
         "type": "object"
       },
+      "Certificate": {
+        "properties": {
+          "cert": { "type": "string" },
+          "id": { "type": "string" },
+          "key": { "type": "string" },
+          "metadata": {
+            "additionalProperties": { "type": "string" },
+            "type": "object"
+          },
+          "organization_id": { "type": "string" },
+          "serial": { "$ref": "#/components/schemas/CertificateSerial" }
+        },
+        "required": [
+          "id",
+          "organization_id",
+          "metadata",
+          "key",
+          "cert",
+          "serial"
+        ],
+        "type": "object"
+      },
+      "CertificateSerial": {
+        "properties": {
+          "created": { "format": "date-time", "type": "string" },
+          "expiration": { "format": "date-time", "type": "string" },
+          "id": { "format": "int64", "type": "integer" },
+          "serial": { "format": "int64", "type": "integer" },
+          "updated": { "format": "date-time", "type": "string" }
+        },
+        "required": ["id", "serial", "created", "updated", "expiration"],
+        "type": "object"
+      },
+      "CertificatesRequest": {
+        "properties": {
+          "arch": {
+            "enum": [
+              "x86",
+              "x86_64",
+              "ppc",
+              "ppc64",
+              "ppc64le",
+              "s390",
+              "s390x",
+              "ia64",
+              "aarch64"
+            ],
+            "type": "string"
+          },
+          "type": { "enum": ["sca"], "type": "string" }
+        },
+        "required": ["type"],
+        "type": "object"
+      },
+      "CloudAccount": {
+        "properties": {
+          "cloud_account_id": { "type": "string" },
+          "cloud_provider_id": { "type": "string" }
+        },
+        "type": "object"
+      },
+      "CloudResource": {
+        "allOf": [
+          { "$ref": "#/components/schemas/ObjectReference" },
+          {
+            "properties": {
+              "active": { "default": true, "type": "boolean" },
+              "category": { "type": "string" },
+              "category_pretty": { "type": "string" },
+              "cloud_provider": { "type": "string" },
+              "cpu_cores": { "type": "integer" },
+              "created_at": { "format": "date-time", "type": "string" },
+              "generic_name": { "type": "string" },
+              "memory": { "format": "int64", "type": "integer" },
+              "memory_pretty": { "type": "string" },
+              "name_pretty": { "type": "string" },
+              "resource_type": {
+                "enum": [
+                  "addon",
+                  "compute.node",
+                  "cluster",
+                  "network.io",
+                  "network.loadbalancer",
+                  "pv.storage"
+                ],
+                "type": "string"
+              },
+              "size_pretty": { "type": "string" },
+              "updated_at": { "format": "date-time", "type": "string" }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "CloudResourceList": {
+        "allOf": [
+          { "$ref": "#/components/schemas/List" },
+          {
+            "properties": {
+              "items": {
+                "items": { "$ref": "#/components/schemas/CloudResource" },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
       "ClusterAuthorizationRequest": {
         "properties": {
           "account_username": { "type": "string" },
@@ -400,6 +657,7 @@
             "enum": ["ocp", "osd", "osdtrial", "moa", "rhmi"],
             "type": "string"
           },
+          "quota_version": { "type": "string" },
           "reserve": { "type": "boolean" },
           "resources": {
             "items": { "$ref": "#/components/schemas/ReservedResource" },
@@ -473,6 +731,61 @@
         "required": ["used", "total", "updated_timestamp"],
         "type": "object"
       },
+      "ClusterTransfer": {
+        "allOf": [
+          { "$ref": "#/components/schemas/ObjectReference" },
+          {
+            "properties": {
+              "cluster_uuid": { "type": "string" },
+              "created_at": { "format": "date-time", "type": "string" },
+              "expiration_date": { "format": "date-time", "type": "string" },
+              "owner": { "type": "string" },
+              "recipient": { "type": "string" },
+              "secret": { "type": "string" },
+              "status": {
+                "enum": [
+                  "Pending",
+                  "Accepted",
+                  "Declined",
+                  "Rescinded",
+                  "Completed"
+                ],
+                "type": "string"
+              },
+              "updated_at": { "format": "date-time", "type": "string" }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "ClusterTransferList": {
+        "allOf": [
+          { "$ref": "#/components/schemas/List" },
+          {
+            "properties": {
+              "items": {
+                "items": {
+                  "allOf": [{ "$ref": "#/components/schemas/ClusterTransfer" }]
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "ClusterTransferPatchRequest": {
+        "properties": { "status": { "type": "string" } },
+        "type": "object"
+      },
+      "ClusterTransferRequest": {
+        "properties": {
+          "cluster_uuid": { "type": "string" },
+          "owner": { "type": "string" },
+          "recipient": { "type": "string" }
+        },
+        "type": "object"
+      },
       "ClusterUpgrade": {
         "properties": {
           "available": { "type": "boolean" },
@@ -481,6 +794,69 @@
           "version": { "type": "string" }
         },
         "type": "object"
+      },
+      "ConsumedQuota": {
+        "allOf": [
+          { "$ref": "#/components/schemas/ObjectReference" },
+          {
+            "properties": {
+              "availability_zone_type": { "type": "string" },
+              "billing_model": { "type": "string" },
+              "byoc": { "type": "boolean" },
+              "cloud_provider_id": { "type": "string" },
+              "count": { "type": "integer" },
+              "organization_id": { "type": "string" },
+              "plan_id": { "type": "string" },
+              "resource_name": { "type": "string" },
+              "resource_type": { "type": "string" },
+              "version": { "type": "string" }
+            },
+            "required": ["byoc", "count"],
+            "type": "object"
+          }
+        ]
+      },
+      "ConsumedQuotaList": {
+        "allOf": [
+          { "$ref": "#/components/schemas/List" },
+          {
+            "properties": {
+              "items": {
+                "items": { "$ref": "#/components/schemas/ConsumedQuota" },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "DeletedSubscription": {
+        "allOf": [
+          { "$ref": "#/components/schemas/SubscriptionCommonFields" },
+          {
+            "properties": {
+              "created_at": { "format": "date-time", "type": "string" },
+              "id": { "type": "string" },
+              "metrics": { "type": "string" },
+              "query_timestamp": { "format": "date-time", "type": "string" }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "DeletedSubscriptionList": {
+        "allOf": [
+          { "$ref": "#/components/schemas/List" },
+          {
+            "properties": {
+              "items": {
+                "items": { "$ref": "#/components/schemas/DeletedSubscription" },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        ]
       },
       "EphemeralResourceQuota": {
         "properties": {
@@ -553,9 +929,10 @@
       "FeatureReview": {
         "properties": {
           "account_username": { "type": "string" },
-          "feature": { "type": "string" }
+          "feature": { "type": "string" },
+          "organization_id": { "type": "string" }
         },
-        "required": ["feature", "account_username"],
+        "required": ["feature"],
         "type": "object"
       },
       "FeatureReviewResponse": {
@@ -621,6 +998,34 @@
           }
         ]
       },
+      "LandingPageCTLItem": {
+        "properties": {
+          "shape": {
+            "properties": {
+              "description": { "type": "string" },
+              "link": { "$ref": "#/components/schemas/LandingPageLinkShape" },
+              "title": { "type": "string" }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
+      "LandingPageEstateItem": {
+        "properties": {
+          "count": { "format": "int64", "type": "integer" },
+          "id": { "type": "string" },
+          "shape": { "$ref": "#/components/schemas/LandingPageLinkShape" }
+        },
+        "type": "object"
+      },
+      "LandingPageLinkShape": {
+        "properties": {
+          "href": { "type": "string" },
+          "title": { "type": "string" }
+        },
+        "type": "object"
+      },
       "List": {
         "properties": {
           "kind": { "type": "string" },
@@ -670,6 +1075,7 @@
           "cluster_id": { "type": "string" },
           "cluster_uuid": { "type": "string" },
           "include_red_hat_associates": { "type": "boolean" },
+          "internal_only": { "type": "boolean" },
           "subject": { "type": "string" },
           "subscription_id": { "type": "string" },
           "template_name": { "type": "string" },
@@ -691,6 +1097,8 @@
       },
       "OneMetric": {
         "properties": {
+          "arch": { "type": "string" },
+          "channel_info": { "type": "string" },
           "cloud_provider": { "type": "string" },
           "cluster_type": { "type": "string" },
           "compute_nodes_cpu": {
@@ -711,6 +1119,7 @@
           },
           "memory": { "$ref": "#/components/schemas/ClusterResource" },
           "nodes": { "$ref": "#/components/schemas/ClusterMetricsNodes" },
+          "non_virt_nodes": { "type": "double" },
           "openshift_version": { "type": "string" },
           "operating_system": { "type": "string" },
           "operators_condition_failing": { "type": "double" },
@@ -748,7 +1157,8 @@
           "subscription_cpu_total",
           "subscription_socket_total",
           "subscription_obligation_exists",
-          "cluster_type"
+          "cluster_type",
+          "non_virt_nodes"
         ],
         "type": "object"
       },
@@ -859,19 +1269,38 @@
         "required": ["external_resource_id"],
         "type": "object"
       },
+      "Quota": {
+        "allOf": [
+          { "$ref": "#/components/schemas/ObjectReference" },
+          {
+            "properties": {
+              "created_at": { "format": "date-time", "type": "string" },
+              "description": { "type": "string" },
+              "resource_type": { "type": "string" },
+              "updated_at": { "format": "date-time", "type": "string" }
+            },
+            "type": "object"
+          }
+        ]
+      },
       "QuotaCost": {
         "allOf": [
           { "$ref": "#/components/schemas/ObjectReference" },
           {
             "properties": {
               "allowed": { "type": "integer" },
+              "cloud_accounts": {
+                "items": { "$ref": "#/components/schemas/CloudAccount" },
+                "type": "array"
+              },
               "consumed": { "type": "integer" },
               "organization_id": { "type": "string" },
               "quota_id": { "type": "string" },
               "related_resources": {
                 "items": { "$ref": "#/components/schemas/RelatedResource" },
                 "type": "array"
-              }
+              },
+              "version": { "type": "string" }
             },
             "required": ["quota_id", "consumed", "allowed"],
             "type": "object"
@@ -892,38 +1321,47 @@
           }
         ]
       },
-      "QuotaSummary": {
-        "allOf": [
-          { "$ref": "#/components/schemas/ObjectReference" },
-          {
-            "properties": {
-              "allowed": { "type": "integer" },
-              "availability_zone_type": { "type": "string" },
-              "byoc": { "type": "boolean" },
-              "organization_id": { "type": "string" },
-              "reserved": { "type": "integer" },
-              "resource_name": { "type": "string" },
-              "resource_type": { "type": "string" }
-            },
-            "required": [
-              "resource_name",
-              "resource_type",
-              "byoc",
-              "availability_zone_type",
-              "reserved",
-              "allowed"
-            ],
-            "type": "object"
-          }
-        ]
-      },
-      "QuotaSummaryList": {
+      "QuotaList": {
         "allOf": [
           { "$ref": "#/components/schemas/List" },
           {
             "properties": {
               "items": {
-                "items": { "$ref": "#/components/schemas/QuotaSummary" },
+                "items": { "$ref": "#/components/schemas/Quota" },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "QuotaRules": {
+        "allOf": [
+          { "$ref": "#/components/schemas/ObjectReference" },
+          {
+            "properties": {
+              "availability_zone": { "type": "string" },
+              "billing_model": { "type": "string" },
+              "byoc": { "type": "string" },
+              "cloud": { "type": "string" },
+              "cost": { "type": "integer" },
+              "name": { "type": "string" },
+              "product": { "type": "string" },
+              "quota_id": { "type": "string" },
+              "type": { "type": "string" }
+            },
+            "required": ["cost"],
+            "type": "object"
+          }
+        ]
+      },
+      "QuotaRulesList": {
+        "allOf": [
+          { "$ref": "#/components/schemas/List" },
+          {
+            "properties": {
+              "items": {
+                "items": { "$ref": "#/components/schemas/QuotaRules" },
                 "type": "array"
               }
             },
@@ -1067,6 +1505,7 @@
           {
             "properties": {
               "availability_zone_type": { "type": "string" },
+              "billing_marketplace_account": { "type": "string" },
               "billing_model": { "type": "string" },
               "byoc": { "type": "boolean" },
               "cluster": { "type": "boolean" },
@@ -1098,20 +1537,17 @@
           }
         ]
       },
+      "ReservedResourcePatchRequest": {
+        "properties": { "billing_model": { "type": "string" } },
+        "type": "object"
+      },
       "ResourceQuota": {
         "allOf": [
           { "$ref": "#/components/schemas/ObjectReference" },
           {
             "properties": {
-              "availability_zone_type": {
-                "deprecated": true,
-                "type": "string"
-              },
-              "byoc": { "deprecated": true, "type": "boolean" },
               "created_at": { "format": "date-time", "type": "string" },
               "organization_id": { "type": "string" },
-              "resource_name": { "deprecated": true, "type": "string" },
-              "resource_type": { "deprecated": true, "type": "string" },
               "sku": { "type": "string" },
               "sku_count": { "type": "integer" },
               "type": {
@@ -1120,7 +1556,7 @@
               },
               "updated_at": { "format": "date-time", "type": "string" }
             },
-            "required": ["resource_name", "resource_type", "sku_count", "byoc"],
+            "required": ["sku_count"],
             "type": "object"
           }
         ]
@@ -1213,8 +1649,12 @@
           {
             "properties": {
               "account": { "$ref": "#/components/schemas/ObjectReference" },
+              "account_group": {
+                "$ref": "#/components/schemas/ObjectReference"
+              },
               "config_managed": { "type": "boolean" },
               "created_at": { "format": "date-time", "type": "string" },
+              "managed_by": { "enum": ["Config", "User"], "type": "string" },
               "organization": {
                 "$ref": "#/components/schemas/ObjectReference"
               },
@@ -1235,7 +1675,7 @@
       "RoleBindingCreateRequest": {
         "allOf": [
           { "$ref": "#/components/schemas/RoleBindingRequest" },
-          { "required": ["account_id", "role_id", "type"] }
+          { "required": ["role_id", "type"] }
         ]
       },
       "RoleBindingList": {
@@ -1254,8 +1694,10 @@
       },
       "RoleBindingRequest": {
         "properties": {
+          "account_group_id": { "type": "string" },
           "account_id": { "type": "string" },
           "config_managed": { "type": "boolean" },
+          "managed_by": { "type": "string" },
           "organization_id": { "type": "string" },
           "role_id": { "type": "string" },
           "subscription_id": { "type": "string" },
@@ -1282,19 +1724,10 @@
           { "$ref": "#/components/schemas/ObjectReference" },
           {
             "properties": {
-              "availability_zone_type": { "type": "string" },
-              "byoc": { "type": "boolean" },
-              "id": { "type": "string" },
-              "resource_name": { "type": "string" },
-              "resource_type": { "type": "string" },
-              "resources": {
-                "items": {
-                  "$ref": "#/components/schemas/EphemeralResourceQuota"
-                },
-                "type": "array"
-              }
+              "created_at": { "format": "date-time", "type": "string" },
+              "description": { "type": "string" },
+              "updated_at": { "format": "date-time", "type": "string" }
             },
-            "required": ["byoc"],
             "type": "object"
           }
         ]
@@ -1344,18 +1777,25 @@
               "ServiceLog",
               "InternalServiceLog",
               "CSLogs",
-              "QuotaSummary",
               "SubscriptionLabel",
               "OrganizationLabel",
               "SubscriptionLabelInternal",
               "SelfAccessReview",
-              "SubscriptionInternal"
+              "SubscriptionInternal",
+              "SubscriptionRoleBinding"
             ],
             "type": "string"
           },
           "subscription_id": { "type": "string" }
         },
         "required": ["action", "resource_type"],
+        "type": "object"
+      },
+      "SelfEntitlementStatus": {
+        "properties": {
+          "product": { "type": "string" },
+          "status": { "type": "string" }
+        },
         "type": "object"
       },
       "SelfFeatureReview": {
@@ -1401,8 +1841,38 @@
         },
         "type": "object"
       },
+      "SelfServiceLandingPageSchema": {
+        "properties": {
+          "configTryLearn": {
+            "properties": {
+              "configure": {
+                "items": { "$ref": "#/components/schemas/LandingPageCTLItem" },
+                "type": "array"
+              },
+              "try": {
+                "items": { "$ref": "#/components/schemas/LandingPageCTLItem" },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "estate": {
+            "properties": {
+              "items": {
+                "items": {
+                  "$ref": "#/components/schemas/LandingPageEstateItem"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "type": "object"
+      },
       "SelfTermsReview": {
         "properties": {
+          "check_optional_terms": { "default": true, "type": "boolean" },
           "event_code": { "type": "string" },
           "site_code": { "type": "string" }
         },
@@ -1451,6 +1921,42 @@
       },
       "Subscription": {
         "allOf": [
+          { "$ref": "#/components/schemas/SubscriptionCommonFields" },
+          {
+            "properties": {
+              "capabilities": {
+                "items": { "$ref": "#/components/schemas/Capability" },
+                "type": "array"
+              },
+              "created_at": { "format": "date-time", "type": "string" },
+              "creator": { "$ref": "#/components/schemas/AccountReference" },
+              "eval_expiration_date": {
+                "description": "Calulated as the subscription created date + 60 days",
+                "format": "date-time",
+                "type": "string"
+              },
+              "labels": {
+                "items": { "$ref": "#/components/schemas/Label" },
+                "type": "array"
+              },
+              "metrics": {
+                "items": { "$ref": "#/components/schemas/OneMetric" },
+                "maxItems": 1,
+                "type": "array"
+              },
+              "notification_contacts": {
+                "items": { "$ref": "#/components/schemas/Account" },
+                "type": "array"
+              },
+              "plan": { "$ref": "#/components/schemas/Plan" },
+              "updated_at": { "format": "date-time", "type": "string" }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "SubscriptionCommonFields": {
+        "allOf": [
           { "$ref": "#/components/schemas/ObjectReference" },
           {
             "properties": {
@@ -1459,10 +1965,7 @@
                 "format": "date-time",
                 "type": "string"
               },
-              "capabilities": {
-                "items": { "$ref": "#/components/schemas/Capability" },
-                "type": "array"
-              },
+              "billing_marketplace_account": { "type": "string" },
               "cloud_account_id": { "type": "string" },
               "cloud_provider_id": { "type": "string" },
               "cluster_billing_model": { "type": "string" },
@@ -1470,14 +1973,9 @@
               "console_url": { "type": "string" },
               "consumer_uuid": { "type": "string" },
               "cpu_total": { "type": "integer" },
-              "created_at": { "format": "date-time", "type": "string" },
-              "creator": { "$ref": "#/components/schemas/AccountReference" },
+              "creator_id": { "type": "string" },
               "display_name": { "type": "string" },
               "external_cluster_id": { "type": "string" },
-              "labels": {
-                "items": { "$ref": "#/components/schemas/Label" },
-                "type": "array"
-              },
               "last_reconcile_date": {
                 "description": "Last time this subscription were reconciled about cluster usage",
                 "format": "date-time",
@@ -1494,17 +1992,8 @@
                 "type": "string"
               },
               "managed": { "type": "boolean" },
-              "metrics": {
-                "items": { "$ref": "#/components/schemas/OneMetric" },
-                "maxItems": 1,
-                "type": "array"
-              },
-              "notification_contacts": {
-                "items": { "$ref": "#/components/schemas/Account" },
-                "type": "array"
-              },
               "organization_id": { "type": "string" },
-              "plan": { "$ref": "#/components/schemas/Plan" },
+              "plan_id": { "type": "string" },
               "product_bundle": {
                 "enum": ["Openshift", "JBoss-Middleware", "IBM-CloudPak"],
                 "type": "string"
@@ -1531,7 +2020,6 @@
                 "format": "date-time",
                 "type": "string"
               },
-              "updated_at": { "format": "date-time", "type": "string" },
               "usage": {
                 "enum": [
                   "Production",
@@ -1572,6 +2060,25 @@
           }
         ]
       },
+      "SubscriptionMetric": {
+        "allOf": [
+          { "properties": { "_id": { "type": "string" } }, "type": "object" }
+        ]
+      },
+      "SubscriptionMetricList": {
+        "allOf": [
+          { "$ref": "#/components/schemas/List" },
+          {
+            "properties": {
+              "items": {
+                "items": { "$ref": "#/components/schemas/SubscriptionMetric" },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        ]
+      },
       "SubscriptionPatchRequest": {
         "properties": {
           "billing_expiration_date": {
@@ -1581,7 +2088,13 @@
           "cloud_account_id": { "type": "string" },
           "cloud_provider_id": { "type": "string" },
           "cluster_billing_model": {
-            "enum": ["standard", "marketplace"],
+            "enum": [
+              "standard",
+              "marketplace",
+              "marketplace-aws",
+              "marketplace-azure",
+              "marketplace-rhm"
+            ],
             "type": "string"
           },
           "cluster_id": { "type": "string" },
@@ -1624,6 +2137,49 @@
           }
         },
         "type": "object"
+      },
+      "SubscriptionRoleBinding": {
+        "allOf": [
+          { "$ref": "#/components/schemas/ObjectReference" },
+          {
+            "properties": {
+              "account": { "$ref": "#/components/schemas/AccountReference" },
+              "account_email": { "type": "string" },
+              "account_username": { "type": "string" },
+              "created_at": { "format": "date-time", "type": "string" },
+              "role": { "$ref": "#/components/schemas/ObjectReference" },
+              "subscription": {
+                "$ref": "#/components/schemas/ObjectReference"
+              },
+              "updated_at": { "format": "date-time", "type": "string" }
+            },
+            "type": "object"
+          }
+        ]
+      },
+      "SubscriptionRoleBindingCreateRequest": {
+        "properties": {
+          "account_username": { "type": "string" },
+          "role_id": { "type": "string" }
+        },
+        "required": ["role_id", "account_username"],
+        "type": "object"
+      },
+      "SubscriptionRoleBindingList": {
+        "allOf": [
+          { "$ref": "#/components/schemas/List" },
+          {
+            "properties": {
+              "items": {
+                "items": {
+                  "$ref": "#/components/schemas/SubscriptionRoleBinding"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          }
+        ]
       },
       "Summary": {
         "allOf": [
@@ -1700,7 +2256,7 @@
           },
           "subscription_id": { "type": "string" },
           "summary": { "type": "string" },
-          "version": { "default": "4.4", "type": "string" }
+          "version": { "default": "4.10", "type": "string" }
         },
         "required": ["summary", "description", "severity"],
         "type": "object"
@@ -1716,6 +2272,7 @@
       "TermsReview": {
         "properties": {
           "account_username": { "type": "string" },
+          "check_optional_terms": { "default": true, "type": "boolean" },
           "event_code": { "type": "string" },
           "site_code": { "type": "string" }
         },
@@ -1748,6 +2305,12 @@
       }
     },
     "securitySchemes": {
+      "AccessToken": {
+        "description": "Authorization: AccessToken {cluster-uuid}:{access-token}",
+        "in": "header",
+        "name": "Authorization",
+        "type": "apiKey"
+      },
       "Bearer": { "bearerFormat": "JWT", "scheme": "bearer", "type": "http" }
     }
   },
@@ -1939,7 +2502,8 @@
       "get": {
         "parameters": [
           { "$ref": "#/components/parameters/fetchLabels" },
-          { "$ref": "#/components/parameters/fetchCapabilities" }
+          { "$ref": "#/components/parameters/fetchCapabilities" },
+          { "$ref": "#/components/parameters/fetchRhit" }
         ],
         "responses": {
           "200": {
@@ -2316,6 +2880,330 @@
         "summary": "Create a new label or update an existing label"
       }
     },
+    "/api/accounts_mgmt/v1/certificates": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CertificatesRequest" }
+            }
+          },
+          "description": "# The payload depends on the type of the requested certificate\nThe examples for supported types:\n* {\"type\": \"sca\", \"arch\": \"x86_64\"}\n",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Certificate" }
+              }
+            },
+            "description": "The certificate associated with the organization"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "The certificate is not avaialbe for the organization"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }, { "AccessToken": [] }],
+        "summary": "Fetch certificates of a particular type"
+      }
+    },
+    "/api/accounts_mgmt/v1/cloud_resources": {
+      "get": {
+        "parameters": [
+          { "$ref": "#/components/parameters/page" },
+          { "$ref": "#/components/parameters/size" },
+          { "$ref": "#/components/parameters/search" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CloudResourceList" }
+              }
+            },
+            "description": "A JSON array of cloud resource objects"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Returns a list of cloud resources"
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CloudResource" }
+            }
+          },
+          "description": "Cloud resource data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CloudResource" }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Resource already exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred creating resource"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Create a new cloud resource"
+      }
+    },
+    "/api/accounts_mgmt/v1/cloud_resources/{id}": {
+      "delete": {
+        "responses": {
+          "204": { "description": "Cloud resource successfully deleted" },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No resource with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred deleting the resource"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Delete a cloud resource"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CloudResource" }
+              }
+            },
+            "description": "Cloud resource found by id"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No cloud resource with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Get a cloud resource"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/id" }],
+      "patch": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CloudResource" }
+            }
+          },
+          "description": "Updated cloud resource data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CloudResource" }
+              }
+            },
+            "description": "Cloud resource updated successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No resource with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error updating resource"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Update a cloud resource"
+      }
+    },
     "/api/accounts_mgmt/v1/cluster_authorizations": {
       "post": {
         "requestBody": {
@@ -2488,6 +3376,426 @@
         "summary": "Finds or creates a cluster registration with a registy credential token and cluster ID"
       }
     },
+    "/api/accounts_mgmt/v1/cluster_transfers": {
+      "get": {
+        "parameters": [
+          { "$ref": "#/components/parameters/page" },
+          { "$ref": "#/components/parameters/size" },
+          { "$ref": "#/components/parameters/search" },
+          { "$ref": "#/components/parameters/orderBy" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ClusterTransferList" }
+              }
+            },
+            "description": "cluster transfer detected"
+          },
+          "204": {
+            "description": "ClusterTransfer does not exist for a specific cluster"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }, { "AccessToken": [] }],
+        "summary": "List cluster transfers - returns either an empty result set or a valid ClusterTransfer instance that is within a valid transfer window."
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClusterTransferRequest"
+              }
+            }
+          },
+          "description": "The contents of the cluster transfer creation request",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ClusterTransfer" }
+              }
+            },
+            "description": "the cluster transfer has been created"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Initiate cluster transfer."
+      }
+    },
+    "/api/accounts_mgmt/v1/cluster_transfers/{id}": {
+      "parameters": [{ "$ref": "#/components/parameters/id" }],
+      "patch": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClusterTransferPatchRequest"
+              }
+            }
+          },
+          "description": "Updated cluster transfer",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ClusterTransfer" }
+              }
+            },
+            "description": "Cluster transfer updated successfully"
+          },
+          "204": {
+            "description": "ClusterTransfer does not exist for a specific cluster"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Conflict during cluster transfer update"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error updating cluster transfer"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Update specific cluster transfer"
+      }
+    },
+    "/api/accounts_mgmt/v1/config/skus": {
+      "get": {
+        "parameters": [
+          { "$ref": "#/components/parameters/page" },
+          { "$ref": "#/components/parameters/size" },
+          { "$ref": "#/components/parameters/search" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SkuList" }
+              }
+            },
+            "description": "A JSON array of sku objects"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Returns a list of skus"
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SKU" }
+            }
+          },
+          "description": "Sku data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SKU" }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Sku already exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred creating sku"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Create a new sku"
+      }
+    },
+    "/api/accounts_mgmt/v1/config/skus/{id}": {
+      "delete": {
+        "responses": {
+          "204": { "description": "Sku successfully deleted" },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No sku with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred deleting the sku"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Delete a sku"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SKU" }
+              }
+            },
+            "description": "Sku found by id"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No SKU with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Get a sku"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/id" }],
+      "patch": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SKU" }
+            }
+          },
+          "description": "Updated sku data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SKU" }
+              }
+            },
+            "description": "Sku updated successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No sku with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error updating sku"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Update a Sku"
+      }
+    },
     "/api/accounts_mgmt/v1/current_account": {
       "get": {
         "parameters": [{ "$ref": "#/components/parameters/fetchLabels" }],
@@ -2525,8 +3833,56 @@
             "description": "Unexpected error occurred"
           }
         },
-        "security": [{ "Bearer": [] }],
+        "security": [{ "Bearer": [] }, { "AccessToken": [] }],
         "summary": "Get the authenticated account"
+      }
+    },
+    "/api/accounts_mgmt/v1/deleted_subscriptions": {
+      "get": {
+        "parameters": [
+          { "$ref": "#/components/parameters/page" },
+          { "$ref": "#/components/parameters/size" },
+          { "$ref": "#/components/parameters/search" },
+          { "$ref": "#/components/parameters/orderBy" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeletedSubscriptionList"
+                }
+              }
+            },
+            "description": "A JSON array of deleted subscription objects"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }, { "AccessToken": [] }],
+        "summary": "Returns a list of deleted subscriptions"
       }
     },
     "/api/accounts_mgmt/v1/errors": {
@@ -2726,6 +4082,40 @@
         },
         "security": [{ "Bearer": [] }],
         "summary": "Returns a list of labels"
+      }
+    },
+    "/api/accounts_mgmt/v1/landing_page/self_service": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelfServiceLandingPageSchema"
+                }
+              }
+            },
+            "description": "self service schema created"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Get a console.redhat.com landing page content JSON schema"
       }
     },
     "/api/accounts_mgmt/v1/metrics": {
@@ -3350,6 +4740,575 @@
       },
       "parameters": [{ "$ref": "#/components/parameters/id" }]
     },
+    "/api/accounts_mgmt/v1/organizations/{orgId}/account_group_assignments": {
+      "get": {
+        "parameters": [
+          { "$ref": "#/components/parameters/orgId" },
+          { "$ref": "#/components/parameters/page" },
+          { "$ref": "#/components/parameters/size" },
+          { "$ref": "#/components/parameters/search" },
+          { "$ref": "#/components/parameters/orderBy" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountGroupAssignmentList"
+                }
+              }
+            },
+            "description": "A JSON array of account groups"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No organization with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Returns a list of account group assignments for the given org"
+      },
+      "post": {
+        "parameters": [{ "$ref": "#/components/parameters/orgId" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountGroupAssignment"
+              }
+            }
+          },
+          "description": "New AccountGroup data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountGroupAssignment"
+                }
+              }
+            },
+            "description": "Created AccountGroupAssignment successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No organization with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred creating the label"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Create a new AccountGroupAssignment"
+      }
+    },
+    "/api/accounts_mgmt/v1/organizations/{orgId}/account_group_assignments/{acctGrpAsgnId}": {
+      "delete": {
+        "responses": {
+          "204": {
+            "description": "Account group assignment successfully deleted"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No organization or account group assignment with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred deleting the account group assignment"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Delete an account group assignment"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountGroupAssignment"
+                }
+              }
+            },
+            "description": "Account group assignment found"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No organization with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Get account group assignment by id"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/orgId" },
+        { "$ref": "#/components/parameters/acctGrpAsgnId" }
+      ]
+    },
+    "/api/accounts_mgmt/v1/organizations/{orgId}/account_groups": {
+      "get": {
+        "parameters": [
+          { "$ref": "#/components/parameters/orgId" },
+          { "$ref": "#/components/parameters/page" },
+          { "$ref": "#/components/parameters/size" },
+          { "$ref": "#/components/parameters/search" },
+          { "$ref": "#/components/parameters/orderBy" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AccountGroupList" }
+              }
+            },
+            "description": "A JSON array of account groups"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No organization with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Returns a list of account groups for the given org"
+      },
+      "post": {
+        "parameters": [{ "$ref": "#/components/parameters/orgId" }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AccountGroupRequest" }
+            }
+          },
+          "description": "New AccountGroup data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AccountGroup" }
+              }
+            },
+            "description": "Created AccountGroup successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No organization with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred creating the label"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Create a new AccountGroup"
+      }
+    },
+    "/api/accounts_mgmt/v1/organizations/{orgId}/account_groups/{acctGrpId}": {
+      "delete": {
+        "responses": {
+          "204": { "description": "Account group successfully deleted" },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No organization or account group with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred deleting the account group"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Delete an account group"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AccountGroup" }
+              }
+            },
+            "description": "Account group found"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No organization or account group with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Get account group by id"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/orgId" },
+        { "$ref": "#/components/parameters/acctGrpId" }
+      ],
+      "patch": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AccountGroupRequest" }
+            }
+          },
+          "description": "Updated account group data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AccountGroup" }
+              }
+            },
+            "description": "Account group updated successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No account group with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error updating account group"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Update an account group"
+      }
+    },
+    "/api/accounts_mgmt/v1/organizations/{orgId}/consumed_quota": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ConsumedQuotaList" }
+              }
+            },
+            "description": "A JSON array of ConsumedQuota objects"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No organization with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred when getting this resource"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Returns a list of consumed quota for an organization"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/orgId" },
+        { "$ref": "#/components/parameters/forceRecalc" }
+      ]
+    },
     "/api/accounts_mgmt/v1/organizations/{orgId}/quota_cost": {
       "get": {
         "responses": {
@@ -3384,44 +5343,9 @@
       "parameters": [
         { "$ref": "#/components/parameters/orgId" },
         { "$ref": "#/components/parameters/search" },
-        { "$ref": "#/components/parameters/fetchRelatedResources" }
-      ]
-    },
-    "/api/accounts_mgmt/v1/organizations/{orgId}/quota_summary": {
-      "get": {
-        "deprecated": true,
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/QuotaSummaryList" }
-              }
-            },
-            "description": "A JSON array of QuotaSummary objects"
-          },
-          "404": {
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            },
-            "description": "No organization with specified id exists"
-          },
-          "500": {
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Error" }
-              }
-            },
-            "description": "An unexpected error occurred when getting this resource"
-          }
-        },
-        "security": [{ "Bearer": [] }],
-        "summary": "Returns a summary of resource quota"
-      },
-      "parameters": [
-        { "$ref": "#/components/parameters/orgId" },
-        { "$ref": "#/components/parameters/search" }
+        { "$ref": "#/components/parameters/fetchRelatedResources" },
+        { "$ref": "#/components/parameters/forceRecalc" },
+        { "$ref": "#/components/parameters/fetchCloudAccounts" }
       ]
     },
     "/api/accounts_mgmt/v1/organizations/{orgId}/resource_quota": {
@@ -3897,6 +5821,347 @@
         "summary": "Delete a pull secret"
       },
       "parameters": [{ "$ref": "#/components/parameters/externalResourceId" }]
+    },
+    "/api/accounts_mgmt/v1/quota_cost": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/QuotaCostList" }
+              }
+            },
+            "description": "A JSON array of QuotaCost objects"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred when getting this resource"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Returns a summary of quota cost for the authenticated user"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/search" },
+        { "$ref": "#/components/parameters/fetchRelatedResources" },
+        { "$ref": "#/components/parameters/fetchCloudAccounts" }
+      ]
+    },
+    "/api/accounts_mgmt/v1/quota_rules": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/QuotaRulesList" }
+              }
+            },
+            "description": "A JSON array of quota rules objects"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Returns a list of UHC product Quota Rules"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/page" },
+        { "$ref": "#/components/parameters/size" },
+        { "$ref": "#/components/parameters/search" }
+      ]
+    },
+    "/api/accounts_mgmt/v1/quotas": {
+      "get": {
+        "parameters": [
+          { "$ref": "#/components/parameters/page" },
+          { "$ref": "#/components/parameters/size" },
+          { "$ref": "#/components/parameters/search" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/QuotaList" }
+              }
+            },
+            "description": "A JSON array of quota objects"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Returns a list of quotas"
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Quota" }
+            }
+          },
+          "description": "Quota data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Quota" }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Quota already exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred creating quota"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Create a new quota"
+      }
+    },
+    "/api/accounts_mgmt/v1/quotas/{id}": {
+      "delete": {
+        "responses": {
+          "204": { "description": "Quota successfully deleted" },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No quota with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred deleting the quota"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Delete a quota"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Quota" }
+              }
+            },
+            "description": "Quota found by id"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No quota with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Get a quota"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/id" }],
+      "patch": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Quota" }
+            }
+          },
+          "description": "Updated quota data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Quota" }
+              }
+            },
+            "description": "Quota updated successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No quota with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error updating quota"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Update a quota"
+      }
     },
     "/api/accounts_mgmt/v1/registries": {
       "get": {
@@ -4706,8 +6971,78 @@
       },
       "parameters": [{ "$ref": "#/components/parameters/id" }]
     },
+    "/api/accounts_mgmt/v1/self_entitlement/{product}": {
+      "parameters": [{ "$ref": "#/components/parameters/product" }],
+      "post": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelfEntitlementStatus"
+                }
+              }
+            },
+            "description": "the requested entitlement already exists"
+          },
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelfEntitlementStatus"
+                }
+              }
+            },
+            "description": "the requested entitlement has been created or renewed"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Cannot find account or organization"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Create or renew the entitlement to support a product for the user's organization."
+      }
+    },
     "/api/accounts_mgmt/v1/sku_rules": {
       "get": {
+        "parameters": [{ "$ref": "#/components/parameters/search" }],
         "responses": {
           "200": {
             "content": {
@@ -4745,9 +7080,110 @@
         "security": [{ "Bearer": [] }],
         "summary": "Returns a list of UHC product SKU Rules"
       },
-      "parameters": [{ "$ref": "#/components/parameters/search" }]
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SkuRules" }
+            }
+          },
+          "description": "Sku rule data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SkuRules" }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Sku rule already exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred creating sku rule"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Create a new sku rule"
+      }
     },
     "/api/accounts_mgmt/v1/sku_rules/{id}": {
+      "delete": {
+        "responses": {
+          "204": { "description": "Sku rule successfully deleted" },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No sku rule with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred deleting the sku rule"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Delete a sku rule"
+      },
       "get": {
         "responses": {
           "200": {
@@ -4794,10 +7230,74 @@
         "security": [{ "Bearer": [] }],
         "summary": "Get a sku rules by id"
       },
-      "parameters": [{ "$ref": "#/components/parameters/id" }]
+      "parameters": [{ "$ref": "#/components/parameters/id" }],
+      "patch": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SkuRules" }
+            }
+          },
+          "description": "Updated sku rule data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SkuRules" }
+              }
+            },
+            "description": "Sku rule updated successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No sku rule with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error updating sku rule"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Update a sku rule"
+      }
     },
     "/api/accounts_mgmt/v1/skus": {
       "get": {
+        "deprecated": true,
         "responses": {
           "200": {
             "content": {
@@ -4839,6 +7339,7 @@
     },
     "/api/accounts_mgmt/v1/skus/{id}": {
       "get": {
+        "deprecated": true,
         "responses": {
           "200": {
             "content": {
@@ -4933,7 +7434,7 @@
             "description": "Unexpected error occurred"
           }
         },
-        "security": [{ "Bearer": [] }],
+        "security": [{ "Bearer": [] }, { "AccessToken": [] }],
         "summary": "Returns a list of subscriptions"
       },
       "post": {
@@ -5420,6 +7921,62 @@
         "summary": "Create a new label or update an existing label"
       }
     },
+    "/api/accounts_mgmt/v1/subscriptions/{id}/metrics/{metric_name}": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionMetricList"
+                }
+              }
+            },
+            "description": "Metrics' data"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Metric name is invalid"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Get subscription's metrics by metric name"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/id" },
+        { "$ref": "#/components/parameters/metricName" },
+        { "$ref": "#/components/parameters/metricSearch" },
+        { "$ref": "#/components/parameters/fields" }
+      ]
+    },
     "/api/accounts_mgmt/v1/subscriptions/{id}/notify": {
       "parameters": [{ "$ref": "#/components/parameters/id" }],
       "post": {
@@ -5722,6 +8279,45 @@
       }
     },
     "/api/accounts_mgmt/v1/subscriptions/{subId}/reserved_resources/{reservedResourceId}": {
+      "delete": {
+        "responses": {
+          "204": { "description": "Reserved resources deleted by id" },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No reserved resources with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Delete reserved resources by id"
+      },
       "get": {
         "responses": {
           "200": {
@@ -5771,6 +8367,283 @@
       "parameters": [
         { "$ref": "#/components/parameters/subId" },
         { "$ref": "#/components/parameters/reservedResourceId" }
+      ],
+      "patch": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservedResourcePatchRequest"
+              }
+            }
+          },
+          "description": "Updated reserved resource data",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ReservedResource" }
+              }
+            },
+            "description": "Reserved resources updated successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No reserved resources with specified id exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Update a reserved resource"
+      }
+    },
+    "/api/accounts_mgmt/v1/subscriptions/{subId}/role_bindings": {
+      "get": {
+        "parameters": [
+          { "$ref": "#/components/parameters/page" },
+          { "$ref": "#/components/parameters/size" },
+          { "$ref": "#/components/parameters/search" },
+          { "$ref": "#/components/parameters/orderBy" },
+          { "$ref": "#/components/parameters/fetchAccounts" }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionRoleBindingList"
+                }
+              }
+            },
+            "description": "Subscription role bindings found, or none exist"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Get subscription role bindings"
+      },
+      "parameters": [{ "$ref": "#/components/parameters/subId" }],
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionRoleBindingCreateRequest"
+              }
+            }
+          },
+          "description": "Subscription role binding data",
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionRoleBinding"
+                }
+              }
+            },
+            "description": "Created"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Validation errors occurred"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Subscription role binding already exists"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred creating the subscription role binding"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Create a new subscription role binding"
+      }
+    },
+    "/api/accounts_mgmt/v1/subscriptions/{subId}/role_bindings/{id}": {
+      "delete": {
+        "responses": {
+          "204": {
+            "description": "Subscription role binding successfully deleted"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No Subscription Role Binding with specified Id is accessible"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "An unexpected error occurred deleting the Subscription Role Binding"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Delete a subscription role binding"
+      },
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionRoleBinding"
+                }
+              }
+            },
+            "description": "Subscription Role Binding found by id"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Auth token is invalid"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unauthorized to perform operation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "No Subscription Role Binding with the specified id is accessible"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            },
+            "description": "Unexpected error occurred"
+          }
+        },
+        "security": [{ "Bearer": [] }],
+        "summary": "Get a Subscription Role Binding by id"
+      },
+      "parameters": [
+        { "$ref": "#/components/parameters/id" },
+        { "$ref": "#/components/parameters/subId" }
       ]
     },
     "/api/accounts_mgmt/v1/support_cases": {
@@ -6189,6 +9062,8 @@
     },
     "/api/authorizations/v1/resource_review": {
       "post": {
+        "deprecated": true,
+        "parameters": [{ "$ref": "#/components/parameters/reduceClusterList" }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6380,6 +9255,7 @@
     },
     "/api/authorizations/v1/self_resource_review": {
       "post": {
+        "parameters": [{ "$ref": "#/components/parameters/reduceClusterList" }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -6577,6 +9453,7 @@
     }
   },
   "servers": [
+    { "description": "current domain", "url": "http://localhost:14321" },
     {
       "description": "Main (production) server",
       "url": "https://api.openshift.com"
@@ -6584,7 +9461,6 @@
     {
       "description": "Staging server",
       "url": "https://api.stage.openshift.com"
-    },
-    { "description": "current domain", "url": "/" }
+    }
   ]
 }
