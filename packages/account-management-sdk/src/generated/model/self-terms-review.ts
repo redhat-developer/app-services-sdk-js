@@ -22,6 +22,12 @@
 export interface SelfTermsReview {
     /**
      * 
+     * @type {boolean}
+     * @memberof SelfTermsReview
+     */
+    'check_optional_terms'?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof SelfTermsReview
      */

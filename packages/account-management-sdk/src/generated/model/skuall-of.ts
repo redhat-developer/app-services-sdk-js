@@ -13,7 +13,6 @@
  */
 
 
-import { EphemeralResourceQuota } from './ephemeral-resource-quota';
 
 /**
  * 
@@ -26,36 +25,18 @@ export interface SKUAllOf {
      * @type {string}
      * @memberof SKUAllOf
      */
-    'availability_zone_type'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SKUAllOf
-     */
-    'byoc': boolean;
+    'created_at'?: string;
     /**
      * 
      * @type {string}
      * @memberof SKUAllOf
      */
-    'id'?: string;
+    'description'?: string;
     /**
      * 
      * @type {string}
      * @memberof SKUAllOf
      */
-    'resource_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SKUAllOf
-     */
-    'resource_type'?: string;
-    /**
-     * 
-     * @type {Array<EphemeralResourceQuota>}
-     * @memberof SKUAllOf
-     */
-    'resources'?: Array<EphemeralResourceQuota>;
+    'updated_at'?: string;
 }
 

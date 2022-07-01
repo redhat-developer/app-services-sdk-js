@@ -29,6 +29,12 @@ export interface RoleBindingAllOf {
     'account'?: ObjectReference;
     /**
      * 
+     * @type {ObjectReference}
+     * @memberof RoleBindingAllOf
+     */
+    'account_group'?: ObjectReference;
+    /**
+     * 
      * @type {boolean}
      * @memberof RoleBindingAllOf
      */
@@ -39,6 +45,12 @@ export interface RoleBindingAllOf {
      * @memberof RoleBindingAllOf
      */
     'created_at'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RoleBindingAllOf
+     */
+    'managed_by'?: RoleBindingAllOfManagedByEnum;
     /**
      * 
      * @type {ObjectReference}
@@ -71,6 +83,12 @@ export interface RoleBindingAllOf {
     'updated_at'?: string;
 }
 
+export const RoleBindingAllOfManagedByEnum = {
+    Config: 'Config',
+    User: 'User'
+} as const;
+
+export type RoleBindingAllOfManagedByEnum = typeof RoleBindingAllOfManagedByEnum[keyof typeof RoleBindingAllOfManagedByEnum];
 export const RoleBindingAllOfTypeEnum = {
     Application: 'Application',
     Subscription: 'Subscription',

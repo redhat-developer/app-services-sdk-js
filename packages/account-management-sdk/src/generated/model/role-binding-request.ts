@@ -25,6 +25,12 @@ export interface RoleBindingRequest {
      * @type {string}
      * @memberof RoleBindingRequest
      */
+    'account_group_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RoleBindingRequest
+     */
     'account_id'?: string;
     /**
      * 
@@ -32,6 +38,12 @@ export interface RoleBindingRequest {
      * @memberof RoleBindingRequest
      */
     'config_managed'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof RoleBindingRequest
+     */
+    'managed_by'?: string;
     /**
      * 
      * @type {string}

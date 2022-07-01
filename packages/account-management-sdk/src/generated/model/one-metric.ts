@@ -28,6 +28,18 @@ export interface OneMetric {
      * @type {string}
      * @memberof OneMetric
      */
+    'arch'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OneMetric
+     */
+    'channel_info'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof OneMetric
+     */
     'cloud_provider': string;
     /**
      * 
@@ -89,6 +101,12 @@ export interface OneMetric {
      * @memberof OneMetric
      */
     'nodes': ClusterMetricsNodes;
+    /**
+     * 
+     * @type {number}
+     * @memberof OneMetric
+     */
+    'non_virt_nodes': number;
     /**
      * 
      * @type {string}

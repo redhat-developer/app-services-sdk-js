@@ -25,12 +25,18 @@ export interface FeatureReview {
      * @type {string}
      * @memberof FeatureReview
      */
-    'account_username': string;
+    'account_username'?: string;
     /**
      * 
      * @type {string}
      * @memberof FeatureReview
      */
     'feature': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FeatureReview
+     */
+    'organization_id'?: string;
 }
 

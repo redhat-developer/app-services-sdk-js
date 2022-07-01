@@ -91,6 +91,18 @@ export interface AccountAllOf {
     'organization_id'?: string;
     /**
      * 
+     * @type {string}
+     * @memberof AccountAllOf
+     */
+    'rhit_account_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AccountAllOf
+     */
+    'rhit_web_user_id'?: string;
+    /**
+     * 
      * @type {boolean}
      * @memberof AccountAllOf
      */

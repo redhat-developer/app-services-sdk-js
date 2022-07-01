@@ -95,6 +95,12 @@ export interface ClusterAuthorizationRequest {
     'product_id'?: ClusterAuthorizationRequestProductIdEnum;
     /**
      * 
+     * @type {string}
+     * @memberof ClusterAuthorizationRequest
+     */
+    'quota_version'?: string;
+    /**
+     * 
      * @type {boolean}
      * @memberof ClusterAuthorizationRequest
      */
