@@ -19,6 +19,10 @@ jobs:
         run: ./scripts/fetch_api.sh ${{ github.event.client_payload.download_url }}
       - name: Generate API clients
         run: yarn generate
+      - name: Fetch Errors JSON files
+        run: yarn fetchErrors
+      - name: Generate Errors SDK
+        run: yarn generateErrors
       - uses: peter-evans/create-pull-request@v4
         with:
           title: "fix(${{ github.event.client_payload.id }): automated SDK update"
