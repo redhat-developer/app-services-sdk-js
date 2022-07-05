@@ -21,7 +21,7 @@ jobs:
     - run: yarn install
     - run: yarn build
     - name: Merge Changes if PR created by bot
-      if:  github.actor == 'wtrocki'
+      if:  github.actor == 'app-services-ci'
       run: gh pr merge --auto --squash "$PR_URL"
       env:
         PR_URL: ${{ github.event.pull_request.html_url }}
