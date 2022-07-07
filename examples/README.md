@@ -30,7 +30,7 @@ CLOUD_API_TOKEN=token yarn kafka
 
 ## How to obtain Access Token
 
-With [RHOAS CLI](https://github.com/redhat-developer/app-services-cli)
+### With [RHOAS CLI](https://github.com/redhat-developer/app-services-cli)
 ```bash
 ## Refresh token
 rhoas kafka list 
@@ -38,7 +38,7 @@ rhoas kafka list
 CLOUD_API_TOKEN=`cat ~/.rhoascli.json | jq .access_token`
 ```
 
-In the cloud.redhat.com UI:
+### While in the the cloud.redhat.com UI, open the website tools/elements page (usually accessible by pressing the f12 key) and type in the following line of code:
 ```js
 window.insights.chrome.auth.getToken().then(console.log)
 ```
