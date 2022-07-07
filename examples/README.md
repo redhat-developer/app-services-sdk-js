@@ -38,7 +38,7 @@ rhoas kafka list
 CLOUD_API_TOKEN=`cat ~/.rhoascli.json | jq .access_token`
 ```
 
-### While in the the cloud.redhat.com UI, open the website tools/elements page (usually accessible by pressing the f12 key) and type in the following line of code:
+2. While in the the cloud.redhat.com UI, open the website tools/elements page (usually accessible by pressing the f12 key) and type in the following line of code:
 ```js
 window.insights.chrome.auth.getToken().then(console.log)
 ```
