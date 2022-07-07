@@ -30,7 +30,7 @@ CLOUD_API_TOKEN=token yarn kafka
 
 ## How to obtain Access Token
 
-### With [RHOAS CLI](https://github.com/redhat-developer/app-services-cli)
+1. With [RHOAS CLI](https://github.com/redhat-developer/app-services-cli)
 ```bash
 ## Refresh token
 rhoas kafka list 
