@@ -4,7 +4,7 @@ Authentication for SDK is divided between two types of sdks:
 
 
 - Management SDKs - authentication using sso.redhat.com (redhat accounts)
-- Inatance SDK - typically require service accounts
+- Instance SDK - typically require service accounts
 that can be created using KafkaSDK service account API
 
 Authentication is done using OAuth Protocol
