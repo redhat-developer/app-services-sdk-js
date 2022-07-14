@@ -18,11 +18,9 @@ npm install @rhoas/kafka-instance-sdk --save
 ```ts
 import { Configuration, DefaultApi } from "@rhoas/kafka-instance-sdk";
 
-const accessToken = process.env.CLOUD_API_TOKEN;
 const basePath = "https://api.openshift.com";
 
 const apiConfig = new Configuration({
-  accessToken,
   basePath,
 });
 

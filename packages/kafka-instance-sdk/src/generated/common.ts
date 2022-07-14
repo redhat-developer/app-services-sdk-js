@@ -61,32 +61,6 @@ export const setBasicAuthToObject = function (object: any, configuration?: Confi
  *
  * @export
  */
-export const setBearerAuthToObject = async function (object: any, configuration?: Configuration) {
-    if (configuration && configuration.accessToken) {
-        const accessToken = typeof configuration.accessToken === 'function'
-            ? await configuration.accessToken()
-            : await configuration.accessToken;
-        object["Authorization"] = "Bearer " + accessToken;
-    }
-}
-
-/**
- *
- * @export
- */
-export const setOAuthToObject = async function (object: any, name: string, scopes: string[], configuration?: Configuration) {
-    if (configuration && configuration.accessToken) {
-        const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
-            ? await configuration.accessToken(name, scopes)
-            : await configuration.accessToken;
-        object["Authorization"] = "Bearer " + localVarAccessTokenValue;
-    }
-}
-
-/**
- *
- * @export
- */
 export const setSearchParams = function (url: URL, ...objects: any[]) {
     const searchParams = new URLSearchParams(url.search);
     for (const object of objects) {

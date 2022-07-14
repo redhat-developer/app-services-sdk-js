@@ -17,7 +17,6 @@ export interface ConfigurationParameters {
     apiKey?: string | Promise<string> | ((name: string) => string) | ((name: string) => Promise<string>);
     username?: string;
     password?: string;
-    accessToken?: string | Promise<string> | ((name?: string, scopes?: string[]) => string) | ((name?: string, scopes?: string[]) => Promise<string>);
     basePath?: string;
     baseOptions?: any;
     formDataCtor?: new () => any;
@@ -44,14 +43,7 @@ export class Configuration {
      * @memberof Configuration
      */
     password?: string;
-    /**
-     * parameter for oauth2 security
-     * @param name security name
-     * @param scopes oauth2 scope
-     * @memberof Configuration
-     */
-    accessToken?: string | Promise<string> | ((name?: string, scopes?: string[]) => string) | ((name?: string, scopes?: string[]) => Promise<string>);
-    /**
+   /**
      * override base path
      *
      * @type {string}
@@ -78,7 +70,6 @@ export class Configuration {
         this.apiKey = param.apiKey;
         this.username = param.username;
         this.password = param.password;
-        this.accessToken = param.accessToken;
         this.basePath = param.basePath;
         this.baseOptions = param.baseOptions;
         this.formDataCtor = param.formDataCtor;
