@@ -6,14 +6,14 @@ on:
   ## Manual request that can be used for testing and retriggering failed updates
   workflow_dispatch:
     inputs:
-      client-payload: 
+      url: 
         description: 'Type of SDK event to handle'     
         required: true
         type: choice
         options:
-        - '{ "id": "kafka-mgmt/v1", "download_url":"https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/kas-fleet-manager/main/openapi/kas-fleet-manager.yaml"}'
-        - '{ "id": "connector-mgmt/v1", "download_url":"https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/kas-fleet-manager/main/openapi/connector_mgmt.yaml"}'
-        - '{ "id": "srs-mgmt/v1", "download_url":"https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/srs-fleet-manager/main/core/src/main/resources/srs-fleet-manager.json"}' 
+        - "https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/kas-fleet-manager/main/openapi/kas-fleet-manager.yaml"
+        - "https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/kas-fleet-manager/main/openapi/connector_mgmt.yaml"
+        - "https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/srs-fleet-manager/main/core/src/main/resources/srs-fleet-manager.json"
 
 jobs:
   generate_client:
@@ -28,6 +28,10 @@ jobs:
       - name: Install jq
         run: sudo apt-get install jq
       - name: Fetch OpenAPI doc
+        if: github.event.inputs.url != ""
+        run: ./scripts/fetch_api.sh ${{ github.event.inputs.url }}
+      - name: Fetch OpenAPI doc
+        if: github.event.client_payload.download_url != ""
         run: ./scripts/fetch_api.sh ${{ github.event.client_payload.download_url }}
       - name: Generate API clients
         run: yarn generate
