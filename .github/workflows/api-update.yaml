@@ -1,7 +1,19 @@
 name: Update SDK
 on:
+  ## External event triggered by Repository
   repository_dispatch:
     types: [openapi-spec-change]
+  ## Manual request that can be used for testing and retriggering failed updates
+  workflow_dispatch:
+    inputs:
+      client-payload: 
+        description: 'Type of SDK event to handle'     
+        required: true
+        type: choice
+        options:
+        - '{ "id": "kafka-mgmt/v1", "download_url":"https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/kas-fleet-manager/main/openapi/kas-fleet-manager.yaml"}'
+        - '{ "id": "connector-mgmt/v1", "download_url":"https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/kas-fleet-manager/main/openapi/connector_mgmt.yaml"}'
+        - '{ "id": "srs-mgmt/v1", "download_url":"https://raw.githubusercontent.com/bf2fc6cc711aee1a0c2a/srs-fleet-manager/main/core/src/main/resources/srs-fleet-manager.json"}' 
 
 jobs:
   generate_client:
