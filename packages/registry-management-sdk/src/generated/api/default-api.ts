@@ -29,8 +29,7 @@ import { ServiceStatus } from '../model';
 export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
-         * @summary Get the service status
+         * Get the service status
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -73,8 +72,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
-         * @summary Get the service status
+         * Get the service status
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -93,8 +91,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
     const localVarFp = DefaultApiFp(configuration)
     return {
         /**
-         * 
-         * @summary Get the service status
+         * Get the service status
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -111,8 +108,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
  */
 export interface DefaultApiInterface {
     /**
-     * 
-     * @summary Get the service status
+     * Get the service status
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
@@ -129,8 +125,7 @@ export interface DefaultApiInterface {
  */
 export class DefaultApi extends BaseAPI implements DefaultApiInterface {
     /**
-     * 
-     * @summary Get the service status
+     * Get the service status
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi

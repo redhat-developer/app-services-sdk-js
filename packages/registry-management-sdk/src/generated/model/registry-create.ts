@@ -21,11 +21,11 @@
  */
 export interface RegistryCreate {
     /**
-     * User-defined Registry instance name. Required. Does not have to be unique.
+     * User-defined Registry instance name. Required. Must be unique within a given organization.
      * @type {string}
      * @memberof RegistryCreate
      */
-    'name'?: string;
+    'name': string;
     /**
      * User-provided description of the new Service Registry instance. Not required.
      * @type {string}

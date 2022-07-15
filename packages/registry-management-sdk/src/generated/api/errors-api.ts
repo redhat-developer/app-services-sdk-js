@@ -29,8 +29,7 @@ import { ErrorList } from '../model';
 export const ErrorsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
-         * @summary Get information about a specific error type
+         * Get information about a specific error type
          * @param {number} id A unique identifier for an error type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -63,8 +62,7 @@ export const ErrorsApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * 
-         * @summary Get the list of all errors
+         * Get the list of all errors
          * @param {number} [page] Page index.
          * @param {number} [size] Number of items in each page.
          * @param {*} [options] Override http request option.
@@ -113,8 +111,7 @@ export const ErrorsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ErrorsApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
-         * @summary Get information about a specific error type
+         * Get information about a specific error type
          * @param {number} id A unique identifier for an error type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -124,8 +121,7 @@ export const ErrorsApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 
-         * @summary Get the list of all errors
+         * Get the list of all errors
          * @param {number} [page] Page index.
          * @param {number} [size] Number of items in each page.
          * @param {*} [options] Override http request option.
@@ -146,8 +142,7 @@ export const ErrorsApiFactory = function (configuration?: Configuration, basePat
     const localVarFp = ErrorsApiFp(configuration)
     return {
         /**
-         * 
-         * @summary Get information about a specific error type
+         * Get information about a specific error type
          * @param {number} id A unique identifier for an error type.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -156,8 +151,7 @@ export const ErrorsApiFactory = function (configuration?: Configuration, basePat
             return localVarFp.getError(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Get the list of all errors
+         * Get the list of all errors
          * @param {number} [page] Page index.
          * @param {number} [size] Number of items in each page.
          * @param {*} [options] Override http request option.
@@ -176,8 +170,7 @@ export const ErrorsApiFactory = function (configuration?: Configuration, basePat
  */
 export interface ErrorsApiInterface {
     /**
-     * 
-     * @summary Get information about a specific error type
+     * Get information about a specific error type
      * @param {number} id A unique identifier for an error type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -186,8 +179,7 @@ export interface ErrorsApiInterface {
     getError(id: number, options?: AxiosRequestConfig): AxiosPromise<Error>;
 
     /**
-     * 
-     * @summary Get the list of all errors
+     * Get the list of all errors
      * @param {number} [page] Page index.
      * @param {number} [size] Number of items in each page.
      * @param {*} [options] Override http request option.
@@ -206,8 +198,7 @@ export interface ErrorsApiInterface {
  */
 export class ErrorsApi extends BaseAPI implements ErrorsApiInterface {
     /**
-     * 
-     * @summary Get information about a specific error type
+     * Get information about a specific error type
      * @param {number} id A unique identifier for an error type.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -218,8 +209,7 @@ export class ErrorsApi extends BaseAPI implements ErrorsApiInterface {
     }
 
     /**
-     * 
-     * @summary Get the list of all errors
+     * Get the list of all errors
      * @param {number} [page] Page index.
      * @param {number} [size] Number of items in each page.
      * @param {*} [options] Override http request option.
