@@ -42,7 +42,7 @@ export const BridgesApiAxiosParamCreator = function (configuration?: Configurati
          * @throws {RequiredError}
          */
         bridgesAPICreateBridge: async (bridgeRequest?: BridgeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/v1/bridges`;
+            const localVarPath = `/api/smartevents_mgmt/v1/bridges`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -82,7 +82,7 @@ export const BridgesApiAxiosParamCreator = function (configuration?: Configurati
         bridgesAPIDeleteBridge: async (bridgeId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bridgeId' is not null or undefined
             assertParamExists('bridgesAPIDeleteBridge', 'bridgeId', bridgeId)
-            const localVarPath = `/api/v1/bridges/{bridgeId}`
+            const localVarPath = `/api/smartevents_mgmt/v1/bridges/{bridgeId}`
                 .replace(`{${"bridgeId"}}`, encodeURIComponent(String(bridgeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -120,7 +120,7 @@ export const BridgesApiAxiosParamCreator = function (configuration?: Configurati
         bridgesAPIGetBridge: async (bridgeId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bridgeId' is not null or undefined
             assertParamExists('bridgesAPIGetBridge', 'bridgeId', bridgeId)
-            const localVarPath = `/api/v1/bridges/{bridgeId}`
+            const localVarPath = `/api/smartevents_mgmt/v1/bridges/{bridgeId}`
                 .replace(`{${"bridgeId"}}`, encodeURIComponent(String(bridgeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -159,7 +159,7 @@ export const BridgesApiAxiosParamCreator = function (configuration?: Configurati
          * @throws {RequiredError}
          */
         bridgesAPIGetBridges: async (name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/v1/bridges`;
+            const localVarPath = `/api/smartevents_mgmt/v1/bridges`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;

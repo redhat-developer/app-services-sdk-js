@@ -13,13 +13,48 @@
  */
 
 
-import { ErrorAllOf } from './error-all-of';
-import { ObjectReference } from './object-reference';
 
 /**
- * @type ModelError
+ * 
  * @export
+ * @interface ModelError
  */
-export type ModelError = ErrorAllOf & ObjectReference;
-
+export interface ModelError {
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelError
+     */
+    'reason': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelError
+     */
+    'operation_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelError
+     */
+    'id': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelError
+     */
+    'kind': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelError
+     */
+    'href': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ModelError
+     */
+    'code': string;
+}
 

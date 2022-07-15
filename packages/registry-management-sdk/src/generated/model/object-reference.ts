@@ -25,18 +25,18 @@ export interface ObjectReference {
      * @type {string}
      * @memberof ObjectReference
      */
-    'id'?: string;
+    'id': string;
     /**
      * 
      * @type {string}
      * @memberof ObjectReference
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
      * @type {string}
      * @memberof ObjectReference
      */
-    'href'?: string;
+    'href': string;
 }
 

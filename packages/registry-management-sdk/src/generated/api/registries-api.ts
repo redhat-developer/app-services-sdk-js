@@ -33,8 +33,7 @@ import { RegistryList } from '../model';
 export const RegistriesApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 
-         * @summary Create a new Registry instance
+         * Create a new Registry instance
          * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; instance to be created.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -111,8 +110,7 @@ export const RegistriesApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         * 
-         * @summary Get the list of all Registry instances
+         * Get the list of all Registry instances
          * @param {number} [page] Page index.
          * @param {number} [size] Number of items in each page.
          * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the request fields. For example, to retrieve all Registry instances ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or to retrieve all Registry instances ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty,  the results are ordered by name.
@@ -213,8 +211,7 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = RegistriesApiAxiosParamCreator(configuration)
     return {
         /**
-         * 
-         * @summary Create a new Registry instance
+         * Create a new Registry instance
          * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; instance to be created.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -235,8 +232,7 @@ export const RegistriesApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * 
-         * @summary Get the list of all Registry instances
+         * Get the list of all Registry instances
          * @param {number} [page] Page index.
          * @param {number} [size] Number of items in each page.
          * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the request fields. For example, to retrieve all Registry instances ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or to retrieve all Registry instances ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty,  the results are ordered by name.
@@ -270,8 +266,7 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
     const localVarFp = RegistriesApiFp(configuration)
     return {
         /**
-         * 
-         * @summary Create a new Registry instance
+         * Create a new Registry instance
          * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; instance to be created.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -290,8 +285,7 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
             return localVarFp.deleteRegistry(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary Get the list of all Registry instances
+         * Get the list of all Registry instances
          * @param {number} [page] Page index.
          * @param {number} [size] Number of items in each page.
          * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the request fields. For example, to retrieve all Registry instances ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or to retrieve all Registry instances ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty,  the results are ordered by name.
@@ -322,8 +316,7 @@ export const RegistriesApiFactory = function (configuration?: Configuration, bas
  */
 export interface RegistriesApiInterface {
     /**
-     * 
-     * @summary Create a new Registry instance
+     * Create a new Registry instance
      * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; instance to be created.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -342,8 +335,7 @@ export interface RegistriesApiInterface {
     deleteRegistry(id: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
-     * 
-     * @summary Get the list of all Registry instances
+     * Get the list of all Registry instances
      * @param {number} [page] Page index.
      * @param {number} [size] Number of items in each page.
      * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the request fields. For example, to retrieve all Registry instances ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or to retrieve all Registry instances ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty,  the results are ordered by name.
@@ -374,8 +366,7 @@ export interface RegistriesApiInterface {
  */
 export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
     /**
-     * 
-     * @summary Create a new Registry instance
+     * Create a new Registry instance
      * @param {RegistryCreate} registryCreate A new &#x60;Registry&#x60; instance to be created.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -398,8 +389,7 @@ export class RegistriesApi extends BaseAPI implements RegistriesApiInterface {
     }
 
     /**
-     * 
-     * @summary Get the list of all Registry instances
+     * Get the list of all Registry instances
      * @param {number} [page] Page index.
      * @param {number} [size] Number of items in each page.
      * @param {string} [orderBy] Specifies the order by criteria. The syntax of this parameter is similar to the syntax of the _order by_ clause of an SQL statement. Each query can be ordered by any of the request fields. For example, to retrieve all Registry instances ordered by their name:  &#x60;&#x60;&#x60;sql name asc &#x60;&#x60;&#x60;  Or to retrieve all Registry instances ordered by their name _and_ created date:  &#x60;&#x60;&#x60;sql name asc, created_at asc &#x60;&#x60;&#x60;  If the parameter isn\&#39;t provided, or if the value is empty,  the results are ordered by name.

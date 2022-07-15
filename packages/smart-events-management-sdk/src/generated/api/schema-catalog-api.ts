@@ -38,7 +38,7 @@ export const SchemaCatalogApiAxiosParamCreator = function (configuration?: Confi
         schemaAPIGetActionProcessorSchema: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('schemaAPIGetActionProcessorSchema', 'id', id)
-            const localVarPath = `/api/v1/schemas/actions/{id}`
+            const localVarPath = `/api/smartevents_mgmt/v1/schemas/actions/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -73,7 +73,7 @@ export const SchemaCatalogApiAxiosParamCreator = function (configuration?: Confi
          * @throws {RequiredError}
          */
         schemaAPIGetCatalog: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/v1/schemas`;
+            const localVarPath = `/api/smartevents_mgmt/v1/schemas`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -110,7 +110,7 @@ export const SchemaCatalogApiAxiosParamCreator = function (configuration?: Confi
         schemaAPIGetSourceProcessorSchema: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('schemaAPIGetSourceProcessorSchema', 'id', id)
-            const localVarPath = `/api/v1/schemas/sources/{id}`
+            const localVarPath = `/api/smartevents_mgmt/v1/schemas/sources/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);

@@ -51,7 +51,7 @@ export interface RootTypeForRegistry {
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    'name'?: string;
+    'name': string;
     /**
      * Identifier of a multi-tenant deployment, where this Service Registry instance resides.
      * @type {number}
@@ -63,7 +63,7 @@ export interface RootTypeForRegistry {
      * @type {string}
      * @memberof RootTypeForRegistry
      */
-    'owner'?: string;
+    'owner': string;
     /**
      * Description of the Registry instance.
      * @type {string}
