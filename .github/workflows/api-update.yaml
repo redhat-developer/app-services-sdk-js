@@ -28,10 +28,10 @@ jobs:
       - name: Install jq
         run: sudo apt-get install jq
       - name: Fetch OpenAPI doc
-        if: github.event.inputs.url != ""
+        if: github.event.inputs.url != ''
         run: ./scripts/fetch_api.sh ${{ github.event.inputs.url }}
       - name: Fetch OpenAPI doc
-        if: github.event.client_payload.download_url != ""
+        if: github.event.client_payload.download_url != ''
         run: ./scripts/fetch_api.sh ${{ github.event.client_payload.download_url }}
       - name: Generate API clients
         run: yarn generate
