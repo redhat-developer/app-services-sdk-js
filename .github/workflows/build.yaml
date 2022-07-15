@@ -1,8 +1,6 @@
 name: SDK PR verification and build
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
