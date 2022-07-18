@@ -66,21 +66,6 @@ npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
 git checkout -- $OPENAPI_FILENAME
 
 
-OPENAPI_FILENAME=".openapi/ams.json"
-PATCH_FILE=".openapi/ams.patch" 
-PACKAGE_NAME="@rhoas/account-management-sdk"
-OUTPUT_PATH="packages/account-management-sdk/src/generated"
-
-patch $OPENAPI_FILENAME < $PATCH_FILE
-
-npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
-    "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
-    --package-name="${PACKAGE_NAME}" \
-    --additional-properties=$additional_properties \
-    --ignore-file-override=./packages/account-management-sdk/.openapi-generator-ignore 
-
-git checkout -- $OPENAPI_FILENAME
-
 echo "generating registry instance SDK "
 
 cd .openapi
