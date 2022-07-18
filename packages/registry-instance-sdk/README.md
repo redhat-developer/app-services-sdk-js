@@ -2,8 +2,6 @@
 
 Service Registry (Apicurio Registry) instance SDK
 
-> NOTE: This SDK requires different authentication than management APIs
-
 > NOTE: SDK is designed to work with Managed version of APIcurio Registry but it can be also consumed upstream
 
 ### Getting Started
