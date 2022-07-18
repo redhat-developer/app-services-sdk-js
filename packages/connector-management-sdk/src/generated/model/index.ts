@@ -41,7 +41,6 @@ export * from './connector-type';
 export * from './connector-type-all-of';
 export * from './connector-type-list';
 export * from './connector-type-list-all-of';
-export * from './error-all-of';
 export * from './kafka-connection-settings';
 export * from './list';
 export * from './model-error';
