@@ -106,9 +106,10 @@ export interface KafkaRequestAllOf {
      */
     'instance_type'?: string;
     /**
-     * 
+     * This field is now deprecated, please use the /api/kafkas_mgmt/v1/instance_types/{cloud_provider}/{cloud_region} endpoint to retrieve the field instead.
      * @type {string}
      * @memberof KafkaRequestAllOf
+     * @deprecated
      */
     'instance_type_name'?: string;
     /**
@@ -143,39 +144,45 @@ export interface KafkaRequestAllOf {
      */
     'size_id'?: string;
     /**
-     * 
+     * This field is now deprecated, please use the /api/kafkas_mgmt/v1/instance_types/{cloud_provider}/{cloud_region} endpoint to retrieve the field instead.
      * @type {string}
      * @memberof KafkaRequestAllOf
+     * @deprecated
      */
     'ingress_throughput_per_sec'?: string;
     /**
-     * 
+     * This field is now deprecated, please use the /api/kafkas_mgmt/v1/instance_types/{cloud_provider}/{cloud_region} endpoint to retrieve the field instead.
      * @type {string}
      * @memberof KafkaRequestAllOf
+     * @deprecated
      */
     'egress_throughput_per_sec'?: string;
     /**
-     * 
+     * This field is now deprecated, please use the /api/kafkas_mgmt/v1/instance_types/{cloud_provider}/{cloud_region} endpoint to retrieve the field instead.
      * @type {number}
      * @memberof KafkaRequestAllOf
+     * @deprecated
      */
     'total_max_connections'?: number;
     /**
-     * 
+     * This field is now deprecated, please use the /api/kafkas_mgmt/v1/instance_types/{cloud_provider}/{cloud_region} endpoint to retrieve the field instead.
      * @type {number}
      * @memberof KafkaRequestAllOf
+     * @deprecated
      */
     'max_partitions'?: number;
     /**
-     * 
+     * This field is now deprecated, please use the /api/kafkas_mgmt/v1/instance_types/{cloud_provider}/{cloud_region} endpoint to retrieve the field instead.
      * @type {string}
      * @memberof KafkaRequestAllOf
+     * @deprecated
      */
     'max_data_retention_period'?: string;
     /**
-     * 
+     * This field is now deprecated, please use the /api/kafkas_mgmt/v1/instance_types/{cloud_provider}/{cloud_region} endpoint to retrieve the field instead.
      * @type {number}
      * @memberof KafkaRequestAllOf
+     * @deprecated
      */
     'max_connection_attempts_per_sec'?: number;
     /**
