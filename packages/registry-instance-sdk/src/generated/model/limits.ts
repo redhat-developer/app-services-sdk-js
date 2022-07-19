@@ -13,87 +13,84 @@
  */
 
 
-import { ArtifactReference } from './artifact-reference';
-import { ArtifactState } from './artifact-state';
-import { ArtifactType } from './artifact-type';
 
 /**
- * Models a single artifact from the result set returned when searching for artifacts.
+ * List of limitations on used resources, that are applied on the current instance of Registry. Keys represent the resource type and are suffixed by the corresponding unit. Values are integers. Only non-negative values are allowed, with the exception of -1, which means that the limit is not applied.
  * @export
- * @interface SearchedVersion
+ * @interface Limits
  */
-export interface SearchedVersion {
-    /**
-     * 
-     * @type {string}
-     * @memberof SearchedVersion
-     */
-    'name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SearchedVersion
-     */
-    'description'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SearchedVersion
-     */
-    'createdOn': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SearchedVersion
-     */
-    'createdBy': string;
-    /**
-     * 
-     * @type {ArtifactType}
-     * @memberof SearchedVersion
-     */
-    'type': ArtifactType;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof SearchedVersion
-     */
-    'labels'?: Array<string>;
-    /**
-     * 
-     * @type {ArtifactState}
-     * @memberof SearchedVersion
-     */
-    'state': ArtifactState;
+export interface Limits {
     /**
      * 
      * @type {number}
-     * @memberof SearchedVersion
+     * @memberof Limits
      */
-    'globalId': number;
-    /**
-     * 
-     * @type {string}
-     * @memberof SearchedVersion
-     */
-    'version': string;
-    /**
-     * User-defined name-value pairs. Name and value must be strings.
-     * @type {{ [key: string]: string; }}
-     * @memberof SearchedVersion
-     */
-    'properties'?: { [key: string]: string; };
+    'maxTotalSchemasCount'?: number;
     /**
      * 
      * @type {number}
-     * @memberof SearchedVersion
+     * @memberof Limits
      */
-    'contentId': number;
+    'maxSchemaSizeBytes'?: number;
     /**
      * 
-     * @type {Array<ArtifactReference>}
-     * @memberof SearchedVersion
+     * @type {number}
+     * @memberof Limits
      */
-    'references': Array<ArtifactReference>;
+    'maxArtifactsCount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Limits
+     */
+    'maxVersionsPerArtifactCount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Limits
+     */
+    'maxArtifactPropertiesCount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Limits
+     */
+    'maxPropertyKeySizeBytes'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Limits
+     */
+    'maxPropertyValueSizeBytes'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Limits
+     */
+    'maxArtifactLabelsCount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Limits
+     */
+    'maxLabelSizeBytes'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Limits
+     */
+    'maxArtifactNameLengthChars'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Limits
+     */
+    'maxArtifactDescriptionLengthChars'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Limits
+     */
+    'maxRequestsPerSecondCount'?: number;
 }
 

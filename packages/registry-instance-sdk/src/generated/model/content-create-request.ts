@@ -13,20 +13,25 @@
  */
 
 
+import { ArtifactReference } from './artifact-reference';
 
 /**
  * 
  * @export
- * @enum {string}
+ * @interface ContentCreateRequest
  */
-
-export const RoleType = {
-    ReadOnly: 'READ_ONLY',
-    Developer: 'DEVELOPER',
-    Admin: 'ADMIN'
-} as const;
-
-export type RoleType = typeof RoleType[keyof typeof RoleType];
-
-
+export interface ContentCreateRequest {
+    /**
+     * Raw content of the artifact.
+     * @type {string}
+     * @memberof ContentCreateRequest
+     */
+    'content': string;
+    /**
+     * Collection of references to other artifacts.
+     * @type {Array<ArtifactReference>}
+     * @memberof ContentCreateRequest
+     */
+    'references': Array<ArtifactReference>;
+}
 

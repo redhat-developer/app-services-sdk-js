@@ -15,18 +15,22 @@
 
 
 /**
- * 
+ * Models a download \"link\".  Useful for browser use-cases.
  * @export
- * @enum {string}
+ * @interface DownloadRef
  */
-
-export const RoleType = {
-    ReadOnly: 'READ_ONLY',
-    Developer: 'DEVELOPER',
-    Admin: 'ADMIN'
-} as const;
-
-export type RoleType = typeof RoleType[keyof typeof RoleType];
-
-
+export interface DownloadRef {
+    /**
+     * 
+     * @type {string}
+     * @memberof DownloadRef
+     */
+    'downloadId': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DownloadRef
+     */
+    'href'?: string;
+}
 

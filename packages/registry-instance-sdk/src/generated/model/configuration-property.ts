@@ -17,16 +17,38 @@
 /**
  * 
  * @export
- * @enum {string}
+ * @interface ConfigurationProperty
  */
-
-export const RoleType = {
-    ReadOnly: 'READ_ONLY',
-    Developer: 'DEVELOPER',
-    Admin: 'ADMIN'
-} as const;
-
-export type RoleType = typeof RoleType[keyof typeof RoleType];
-
-
+export interface ConfigurationProperty {
+    /**
+     * 
+     * @type {string}
+     * @memberof ConfigurationProperty
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConfigurationProperty
+     */
+    'value': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConfigurationProperty
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConfigurationProperty
+     */
+    'label': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ConfigurationProperty
+     */
+    'description': string;
+}
 
