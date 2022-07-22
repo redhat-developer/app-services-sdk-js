@@ -13,17 +13,17 @@ module.exports = {
   },
   // Simulate a user account
   currentAccount: (req, res) => {
-    res.json(CurrentAccount);
+    return res.json(CurrentAccount);
   },
   // Mock a summary of quota cost
   quotaCostGet: (req, res) => {
     switch(process.env.AMS_QUOTA_TYPE) {
       case "trial":
-        res.json(QuotaCostList.trial);
+        return res.json(QuotaCostList.trial);
       case "standard":
-        res.json(QuotaCostList.standard);
+        return res.json(QuotaCostList.standard);
       case "marketplace": default:
-        res.json(QuotaCostList.marketPlace);
+        return res.json(QuotaCostList.marketPlace);
     }
   },
 };
