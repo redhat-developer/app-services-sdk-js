@@ -15,7 +15,7 @@ generate_sdk() {
     # remove old generated models
     rm -Rf $OUTPUT_PATH/model $OUTPUT_PATH/api
     
-    npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
+    npx @openapitools/openapi-generator-cli generate -g typescript-fetch -i \
     "$file_name" -o "$output_path" \
     --package-name="${package_name}" \
     --additional-properties=$additional_properties \
@@ -57,7 +57,7 @@ OUTPUT_PATH="packages/account-management-sdk/src/generated"
 
 patch $OPENAPI_FILENAME < $PATCH_FILE
 
-npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
+npx @openapitools/openapi-generator-cli generate -g typescript-fetch -i \
     "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
     --package-name="${PACKAGE_NAME}" \
     --additional-properties=$additional_properties \

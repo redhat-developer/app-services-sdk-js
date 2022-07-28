@@ -15,10 +15,10 @@
     "examples"
   ],
   "devDependencies": {
-    "semver": "7.3.7",
-    "@rhoas/spectral-ruleset": "0.1.4"
+    "@rhoas/spectral-ruleset": "0.1.4",
+    "semver": "7.3.7"
   },
   "dependencies": {
- 
+    "node-fetch": "^3.2.9"
   }
 }
