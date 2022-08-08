@@ -26,7 +26,7 @@ export interface CloudRegionListResponse {
      * @type {string}
      * @memberof CloudRegionListResponse
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
      * @type {Array<CloudRegionResponse>}
@@ -38,18 +38,18 @@ export interface CloudRegionListResponse {
      * @type {number}
      * @memberof CloudRegionListResponse
      */
-    'page'?: number;
+    'page': number;
     /**
      * 
      * @type {number}
      * @memberof CloudRegionListResponse
      */
-    'size'?: number;
+    'size': number;
     /**
      * 
      * @type {number}
      * @memberof CloudRegionListResponse
      */
-    'total'?: number;
+    'total': number;
 }
 

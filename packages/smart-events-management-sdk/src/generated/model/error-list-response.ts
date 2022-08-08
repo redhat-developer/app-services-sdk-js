@@ -13,7 +13,6 @@
  */
 
 
-import { ErrorResponse } from './error-response';
 
 /**
  * 
@@ -26,30 +25,30 @@ export interface ErrorListResponse {
      * @type {string}
      * @memberof ErrorListResponse
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
-     * @type {Array<ErrorResponse>}
+     * @type {Array<Error>}
      * @memberof ErrorListResponse
      */
-    'items'?: Array<ErrorResponse>;
-    /**
-     * 
-     * @type {number}
-     * @memberof ErrorListResponse
-     */
-    'page'?: number;
+    'items'?: Array<Error>;
     /**
      * 
      * @type {number}
      * @memberof ErrorListResponse
      */
-    'size'?: number;
+    'page': number;
     /**
      * 
      * @type {number}
      * @memberof ErrorListResponse
      */
-    'total'?: number;
+    'size': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ErrorListResponse
+     */
+    'total': number;
 }
 

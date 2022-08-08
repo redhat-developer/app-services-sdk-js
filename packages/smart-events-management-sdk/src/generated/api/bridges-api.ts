@@ -27,6 +27,8 @@ import { BridgeRequest } from '../model';
 // @ts-ignore
 import { BridgeResponse } from '../model';
 // @ts-ignore
+import { ErrorsList } from '../model';
+// @ts-ignore
 import { ManagedResourceStatus } from '../model';
 /**
  * BridgesApi - axios parameter creator
@@ -41,7 +43,7 @@ export const BridgesApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bridgesAPICreateBridge: async (bridgeRequest?: BridgeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        createBridge: async (bridgeRequest?: BridgeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/smartevents_mgmt/v1/bridges`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -79,9 +81,9 @@ export const BridgesApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bridgesAPIDeleteBridge: async (bridgeId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteBridge: async (bridgeId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bridgeId' is not null or undefined
-            assertParamExists('bridgesAPIDeleteBridge', 'bridgeId', bridgeId)
+            assertParamExists('deleteBridge', 'bridgeId', bridgeId)
             const localVarPath = `/api/smartevents_mgmt/v1/bridges/{bridgeId}`
                 .replace(`{${"bridgeId"}}`, encodeURIComponent(String(bridgeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -117,9 +119,9 @@ export const BridgesApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bridgesAPIGetBridge: async (bridgeId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getBridge: async (bridgeId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bridgeId' is not null or undefined
-            assertParamExists('bridgesAPIGetBridge', 'bridgeId', bridgeId)
+            assertParamExists('getBridge', 'bridgeId', bridgeId)
             const localVarPath = `/api/smartevents_mgmt/v1/bridges/{bridgeId}`
                 .replace(`{${"bridgeId"}}`, encodeURIComponent(String(bridgeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -158,7 +160,7 @@ export const BridgesApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bridgesAPIGetBridges: async (name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getBridges: async (name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/smartevents_mgmt/v1/bridges`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -202,6 +204,48 @@ export const BridgesApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Update a Bridge instance for the authenticated user.
+         * @summary Update a Bridge instance
+         * @param {string} bridgeId 
+         * @param {BridgeRequest} [bridgeRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBridge: async (bridgeId: string, bridgeRequest?: BridgeRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'bridgeId' is not null or undefined
+            assertParamExists('updateBridge', 'bridgeId', bridgeId)
+            const localVarPath = `/api/smartevents_mgmt/v1/bridges/{bridgeId}`
+                .replace(`{${"bridgeId"}}`, encodeURIComponent(String(bridgeId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(bridgeRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -219,8 +263,8 @@ export const BridgesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bridgesAPICreateBridge(bridgeRequest?: BridgeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BridgeResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.bridgesAPICreateBridge(bridgeRequest, options);
+        async createBridge(bridgeRequest?: BridgeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BridgeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createBridge(bridgeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -230,8 +274,8 @@ export const BridgesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bridgesAPIDeleteBridge(bridgeId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.bridgesAPIDeleteBridge(bridgeId, options);
+        async deleteBridge(bridgeId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteBridge(bridgeId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -241,8 +285,8 @@ export const BridgesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bridgesAPIGetBridge(bridgeId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BridgeResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.bridgesAPIGetBridge(bridgeId, options);
+        async getBridge(bridgeId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BridgeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBridge(bridgeId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -255,8 +299,20 @@ export const BridgesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bridgesAPIGetBridges(name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BridgeListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.bridgesAPIGetBridges(name, page, size, status, options);
+        async getBridges(name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BridgeListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBridges(name, page, size, status, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Update a Bridge instance for the authenticated user.
+         * @summary Update a Bridge instance
+         * @param {string} bridgeId 
+         * @param {BridgeRequest} [bridgeRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateBridge(bridgeId: string, bridgeRequest?: BridgeRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BridgeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateBridge(bridgeId, bridgeRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -276,8 +332,8 @@ export const BridgesApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bridgesAPICreateBridge(bridgeRequest?: BridgeRequest, options?: any): AxiosPromise<BridgeResponse> {
-            return localVarFp.bridgesAPICreateBridge(bridgeRequest, options).then((request) => request(axios, basePath));
+        createBridge(bridgeRequest?: BridgeRequest, options?: any): AxiosPromise<BridgeResponse> {
+            return localVarFp.createBridge(bridgeRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Delete a Bridge instance of the authenticated user by ID.
@@ -286,8 +342,8 @@ export const BridgesApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bridgesAPIDeleteBridge(bridgeId: string, options?: any): AxiosPromise<void> {
-            return localVarFp.bridgesAPIDeleteBridge(bridgeId, options).then((request) => request(axios, basePath));
+        deleteBridge(bridgeId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteBridge(bridgeId, options).then((request) => request(axios, basePath));
         },
         /**
          * Get a Bridge instance of the authenticated user by ID.
@@ -296,8 +352,8 @@ export const BridgesApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bridgesAPIGetBridge(bridgeId: string, options?: any): AxiosPromise<BridgeResponse> {
-            return localVarFp.bridgesAPIGetBridge(bridgeId, options).then((request) => request(axios, basePath));
+        getBridge(bridgeId: string, options?: any): AxiosPromise<BridgeResponse> {
+            return localVarFp.getBridge(bridgeId, options).then((request) => request(axios, basePath));
         },
         /**
          * Get the list of Bridge instances for the authenticated user.
@@ -309,8 +365,19 @@ export const BridgesApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bridgesAPIGetBridges(name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options?: any): AxiosPromise<BridgeListResponse> {
-            return localVarFp.bridgesAPIGetBridges(name, page, size, status, options).then((request) => request(axios, basePath));
+        getBridges(name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options?: any): AxiosPromise<BridgeListResponse> {
+            return localVarFp.getBridges(name, page, size, status, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Update a Bridge instance for the authenticated user.
+         * @summary Update a Bridge instance
+         * @param {string} bridgeId 
+         * @param {BridgeRequest} [bridgeRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBridge(bridgeId: string, bridgeRequest?: BridgeRequest, options?: any): AxiosPromise<BridgeResponse> {
+            return localVarFp.updateBridge(bridgeId, bridgeRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -329,7 +396,7 @@ export interface BridgesApiInterface {
      * @throws {RequiredError}
      * @memberof BridgesApiInterface
      */
-    bridgesAPICreateBridge(bridgeRequest?: BridgeRequest, options?: AxiosRequestConfig): AxiosPromise<BridgeResponse>;
+    createBridge(bridgeRequest?: BridgeRequest, options?: AxiosRequestConfig): AxiosPromise<BridgeResponse>;
 
     /**
      * Delete a Bridge instance of the authenticated user by ID.
@@ -339,7 +406,7 @@ export interface BridgesApiInterface {
      * @throws {RequiredError}
      * @memberof BridgesApiInterface
      */
-    bridgesAPIDeleteBridge(bridgeId: string, options?: AxiosRequestConfig): AxiosPromise<void>;
+    deleteBridge(bridgeId: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Get a Bridge instance of the authenticated user by ID.
@@ -349,7 +416,7 @@ export interface BridgesApiInterface {
      * @throws {RequiredError}
      * @memberof BridgesApiInterface
      */
-    bridgesAPIGetBridge(bridgeId: string, options?: AxiosRequestConfig): AxiosPromise<BridgeResponse>;
+    getBridge(bridgeId: string, options?: AxiosRequestConfig): AxiosPromise<BridgeResponse>;
 
     /**
      * Get the list of Bridge instances for the authenticated user.
@@ -362,7 +429,18 @@ export interface BridgesApiInterface {
      * @throws {RequiredError}
      * @memberof BridgesApiInterface
      */
-    bridgesAPIGetBridges(name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options?: AxiosRequestConfig): AxiosPromise<BridgeListResponse>;
+    getBridges(name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options?: AxiosRequestConfig): AxiosPromise<BridgeListResponse>;
+
+    /**
+     * Update a Bridge instance for the authenticated user.
+     * @summary Update a Bridge instance
+     * @param {string} bridgeId 
+     * @param {BridgeRequest} [bridgeRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BridgesApiInterface
+     */
+    updateBridge(bridgeId: string, bridgeRequest?: BridgeRequest, options?: AxiosRequestConfig): AxiosPromise<BridgeResponse>;
 
 }
 
@@ -381,8 +459,8 @@ export class BridgesApi extends BaseAPI implements BridgesApiInterface {
      * @throws {RequiredError}
      * @memberof BridgesApi
      */
-    public bridgesAPICreateBridge(bridgeRequest?: BridgeRequest, options?: AxiosRequestConfig) {
-        return BridgesApiFp(this.configuration).bridgesAPICreateBridge(bridgeRequest, options).then((request) => request(this.axios, this.basePath));
+    public createBridge(bridgeRequest?: BridgeRequest, options?: AxiosRequestConfig) {
+        return BridgesApiFp(this.configuration).createBridge(bridgeRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -393,8 +471,8 @@ export class BridgesApi extends BaseAPI implements BridgesApiInterface {
      * @throws {RequiredError}
      * @memberof BridgesApi
      */
-    public bridgesAPIDeleteBridge(bridgeId: string, options?: AxiosRequestConfig) {
-        return BridgesApiFp(this.configuration).bridgesAPIDeleteBridge(bridgeId, options).then((request) => request(this.axios, this.basePath));
+    public deleteBridge(bridgeId: string, options?: AxiosRequestConfig) {
+        return BridgesApiFp(this.configuration).deleteBridge(bridgeId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -405,8 +483,8 @@ export class BridgesApi extends BaseAPI implements BridgesApiInterface {
      * @throws {RequiredError}
      * @memberof BridgesApi
      */
-    public bridgesAPIGetBridge(bridgeId: string, options?: AxiosRequestConfig) {
-        return BridgesApiFp(this.configuration).bridgesAPIGetBridge(bridgeId, options).then((request) => request(this.axios, this.basePath));
+    public getBridge(bridgeId: string, options?: AxiosRequestConfig) {
+        return BridgesApiFp(this.configuration).getBridge(bridgeId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -420,7 +498,20 @@ export class BridgesApi extends BaseAPI implements BridgesApiInterface {
      * @throws {RequiredError}
      * @memberof BridgesApi
      */
-    public bridgesAPIGetBridges(name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options?: AxiosRequestConfig) {
-        return BridgesApiFp(this.configuration).bridgesAPIGetBridges(name, page, size, status, options).then((request) => request(this.axios, this.basePath));
+    public getBridges(name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, options?: AxiosRequestConfig) {
+        return BridgesApiFp(this.configuration).getBridges(name, page, size, status, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Update a Bridge instance for the authenticated user.
+     * @summary Update a Bridge instance
+     * @param {string} bridgeId 
+     * @param {BridgeRequest} [bridgeRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof BridgesApi
+     */
+    public updateBridge(bridgeId: string, bridgeRequest?: BridgeRequest, options?: AxiosRequestConfig) {
+        return BridgesApiFp(this.configuration).updateBridge(bridgeId, bridgeRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

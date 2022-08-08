@@ -24,6 +24,8 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 import { BridgeError } from '../model';
 // @ts-ignore
 import { ErrorListResponse } from '../model';
+// @ts-ignore
+import { ErrorsList } from '../model';
 /**
  * ErrorCatalogApi - axios parameter creator
  * @export
@@ -37,9 +39,9 @@ export const ErrorCatalogApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        errorsAPIGetError: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getError: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('errorsAPIGetError', 'id', id)
+            assertParamExists('getError', 'id', id)
             const localVarPath = `/api/smartevents_mgmt/v1/errors/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -72,7 +74,7 @@ export const ErrorCatalogApiAxiosParamCreator = function (configuration?: Config
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        errorsAPIGetErrors: async (page?: number, size?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getErrors: async (page?: number, size?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/smartevents_mgmt/v1/errors`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -121,8 +123,8 @@ export const ErrorCatalogApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async errorsAPIGetError(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BridgeError>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.errorsAPIGetError(id, options);
+        async getError(id: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BridgeError>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getError(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -133,8 +135,8 @@ export const ErrorCatalogApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async errorsAPIGetErrors(page?: number, size?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ErrorListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.errorsAPIGetErrors(page, size, options);
+        async getErrors(page?: number, size?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ErrorListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getErrors(page, size, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -154,8 +156,8 @@ export const ErrorCatalogApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        errorsAPIGetError(id: number, options?: any): AxiosPromise<BridgeError> {
-            return localVarFp.errorsAPIGetError(id, options).then((request) => request(axios, basePath));
+        getError(id: number, options?: any): AxiosPromise<BridgeError> {
+            return localVarFp.getError(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Get the list of errors from the error catalog.
@@ -165,8 +167,8 @@ export const ErrorCatalogApiFactory = function (configuration?: Configuration, b
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        errorsAPIGetErrors(page?: number, size?: number, options?: any): AxiosPromise<ErrorListResponse> {
-            return localVarFp.errorsAPIGetErrors(page, size, options).then((request) => request(axios, basePath));
+        getErrors(page?: number, size?: number, options?: any): AxiosPromise<ErrorListResponse> {
+            return localVarFp.getErrors(page, size, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -185,7 +187,7 @@ export interface ErrorCatalogApiInterface {
      * @throws {RequiredError}
      * @memberof ErrorCatalogApiInterface
      */
-    errorsAPIGetError(id: number, options?: AxiosRequestConfig): AxiosPromise<BridgeError>;
+    getError(id: number, options?: AxiosRequestConfig): AxiosPromise<BridgeError>;
 
     /**
      * Get the list of errors from the error catalog.
@@ -196,7 +198,7 @@ export interface ErrorCatalogApiInterface {
      * @throws {RequiredError}
      * @memberof ErrorCatalogApiInterface
      */
-    errorsAPIGetErrors(page?: number, size?: number, options?: AxiosRequestConfig): AxiosPromise<ErrorListResponse>;
+    getErrors(page?: number, size?: number, options?: AxiosRequestConfig): AxiosPromise<ErrorListResponse>;
 
 }
 
@@ -215,8 +217,8 @@ export class ErrorCatalogApi extends BaseAPI implements ErrorCatalogApiInterface
      * @throws {RequiredError}
      * @memberof ErrorCatalogApi
      */
-    public errorsAPIGetError(id: number, options?: AxiosRequestConfig) {
-        return ErrorCatalogApiFp(this.configuration).errorsAPIGetError(id, options).then((request) => request(this.axios, this.basePath));
+    public getError(id: number, options?: AxiosRequestConfig) {
+        return ErrorCatalogApiFp(this.configuration).getError(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -228,7 +230,7 @@ export class ErrorCatalogApi extends BaseAPI implements ErrorCatalogApiInterface
      * @throws {RequiredError}
      * @memberof ErrorCatalogApi
      */
-    public errorsAPIGetErrors(page?: number, size?: number, options?: AxiosRequestConfig) {
-        return ErrorCatalogApiFp(this.configuration).errorsAPIGetErrors(page, size, options).then((request) => request(this.axios, this.basePath));
+    public getErrors(page?: number, size?: number, options?: AxiosRequestConfig) {
+        return ErrorCatalogApiFp(this.configuration).getErrors(page, size, options).then((request) => request(this.axios, this.basePath));
     }
 }

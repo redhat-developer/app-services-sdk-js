@@ -97,8 +97,16 @@ OUTPUT_PATH="packages/service-accounts-sdk/src/generated"
 
 generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
 
-OPENAPI_FILENAME=".openapi/smartevents-mgmt.yaml"
+OPENAPI_FILENAME=".openapi/smartevents_mgmt.yaml"
 PACKAGE_NAME="@rhoas/smart-events-management-sdk"
 OUTPUT_PATH="packages/smart-events-management-sdk/src/generated"
 
-generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+rm -Rf $OUTPUT_PATH/model $OUTPUT_PATH/api
+npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
+    "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
+    --package-name="${PACKAGE_NAME}" \
+    --additional-properties=$additional_properties \
+    --remove-operation-id-prefix \
+    --ignore-file-override=.openapi-generator-ignore
+
+

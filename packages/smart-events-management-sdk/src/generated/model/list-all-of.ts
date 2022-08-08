@@ -17,32 +17,26 @@
 /**
  * 
  * @export
- * @interface CloudRegionResponse
+ * @interface ListAllOf
  */
-export interface CloudRegionResponse {
+export interface ListAllOf {
     /**
      * 
-     * @type {string}
-     * @memberof CloudRegionResponse
+     * @type {number}
+     * @memberof ListAllOf
      */
-    'kind': string;
+    'page': number;
     /**
      * 
-     * @type {string}
-     * @memberof CloudRegionResponse
+     * @type {number}
+     * @memberof ListAllOf
      */
-    'name': string;
+    'size': number;
     /**
      * 
-     * @type {string}
-     * @memberof CloudRegionResponse
+     * @type {number}
+     * @memberof ListAllOf
      */
-    'display_name': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CloudRegionResponse
-     */
-    'enabled': boolean;
+    'total': number;
 }
 

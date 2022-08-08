@@ -27,13 +27,13 @@ export interface BridgeResponse {
      * @type {string}
      * @memberof BridgeResponse
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
      * @type {string}
      * @memberof BridgeResponse
      */
-    'id'?: string;
+    'id': string;
     /**
      * 
      * @type {string}
@@ -45,13 +45,13 @@ export interface BridgeResponse {
      * @type {string}
      * @memberof BridgeResponse
      */
-    'href'?: string;
+    'href': string;
     /**
      * 
      * @type {string}
      * @memberof BridgeResponse
      */
-    'submitted_at'?: string;
+    'submitted_at': string;
     /**
      * 
      * @type {string}
@@ -63,13 +63,13 @@ export interface BridgeResponse {
      * @type {ManagedResourceStatus}
      * @memberof BridgeResponse
      */
-    'status'?: ManagedResourceStatus;
+    'status': ManagedResourceStatus;
     /**
      * 
      * @type {string}
      * @memberof BridgeResponse
      */
-    'owner'?: string;
+    'owner': string;
     /**
      * 
      * @type {string}
@@ -82,5 +82,17 @@ export interface BridgeResponse {
      * @memberof BridgeResponse
      */
     'error_handler'?: Action;
+    /**
+     * 
+     * @type {string}
+     * @memberof BridgeResponse
+     */
+    'cloud_provider'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BridgeResponse
+     */
+    'region'?: string;
 }
 

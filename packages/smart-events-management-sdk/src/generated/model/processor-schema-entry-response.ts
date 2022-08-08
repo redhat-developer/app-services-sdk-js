@@ -25,36 +25,36 @@ export interface ProcessorSchemaEntryResponse {
      * @type {string}
      * @memberof ProcessorSchemaEntryResponse
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
      * @type {string}
      * @memberof ProcessorSchemaEntryResponse
      */
-    'id'?: string;
+    'id': string;
     /**
      * 
      * @type {string}
      * @memberof ProcessorSchemaEntryResponse
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {string}
      * @memberof ProcessorSchemaEntryResponse
      */
-    'description'?: string;
+    'description': string;
     /**
      * 
      * @type {string}
      * @memberof ProcessorSchemaEntryResponse
      */
-    'type'?: string;
+    'type': string;
     /**
      * 
      * @type {string}
      * @memberof ProcessorSchemaEntryResponse
      */
-    'href'?: string;
+    'href': string;
 }
 

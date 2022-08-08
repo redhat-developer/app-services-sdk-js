@@ -30,13 +30,13 @@ export interface ProcessorResponse {
      * @type {string}
      * @memberof ProcessorResponse
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
      * @type {string}
      * @memberof ProcessorResponse
      */
-    'id'?: string;
+    'id': string;
     /**
      * 
      * @type {string}
@@ -48,13 +48,13 @@ export interface ProcessorResponse {
      * @type {string}
      * @memberof ProcessorResponse
      */
-    'href'?: string;
+    'href': string;
     /**
      * 
      * @type {string}
      * @memberof ProcessorResponse
      */
-    'submitted_at'?: string;
+    'submitted_at': string;
     /**
      * 
      * @type {string}
@@ -66,19 +66,19 @@ export interface ProcessorResponse {
      * @type {ManagedResourceStatus}
      * @memberof ProcessorResponse
      */
-    'status'?: ManagedResourceStatus;
+    'status': ManagedResourceStatus;
     /**
      * 
      * @type {string}
      * @memberof ProcessorResponse
      */
-    'owner'?: string;
+    'owner': string;
     /**
      * 
      * @type {ProcessorType}
      * @memberof ProcessorResponse
      */
-    'type'?: ProcessorType;
+    'type': ProcessorType;
     /**
      * 
      * @type {Set<BaseFilter>}

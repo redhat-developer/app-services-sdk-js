@@ -21,6 +21,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { ErrorsList } from '../model';
+// @ts-ignore
 import { ManagedResourceStatus } from '../model';
 // @ts-ignore
 import { ProcessorListResponse } from '../model';
@@ -44,9 +46,9 @@ export const ProcessorsApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processorsAPIAddProcessorToBridge: async (bridgeId: string, processorRequest?: ProcessorRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addProcessorToBridge: async (bridgeId: string, processorRequest?: ProcessorRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bridgeId' is not null or undefined
-            assertParamExists('processorsAPIAddProcessorToBridge', 'bridgeId', bridgeId)
+            assertParamExists('addProcessorToBridge', 'bridgeId', bridgeId)
             const localVarPath = `/api/smartevents_mgmt/v1/bridges/{bridgeId}/processors`
                 .replace(`{${"bridgeId"}}`, encodeURIComponent(String(bridgeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -86,11 +88,11 @@ export const ProcessorsApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processorsAPIDeleteProcessor: async (bridgeId: string, processorId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteProcessor: async (bridgeId: string, processorId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bridgeId' is not null or undefined
-            assertParamExists('processorsAPIDeleteProcessor', 'bridgeId', bridgeId)
+            assertParamExists('deleteProcessor', 'bridgeId', bridgeId)
             // verify required parameter 'processorId' is not null or undefined
-            assertParamExists('processorsAPIDeleteProcessor', 'processorId', processorId)
+            assertParamExists('deleteProcessor', 'processorId', processorId)
             const localVarPath = `/api/smartevents_mgmt/v1/bridges/{bridgeId}/processors/{processorId}`
                 .replace(`{${"bridgeId"}}`, encodeURIComponent(String(bridgeId)))
                 .replace(`{${"processorId"}}`, encodeURIComponent(String(processorId)));
@@ -128,11 +130,11 @@ export const ProcessorsApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processorsAPIGetProcessor: async (bridgeId: string, processorId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getProcessor: async (bridgeId: string, processorId: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bridgeId' is not null or undefined
-            assertParamExists('processorsAPIGetProcessor', 'bridgeId', bridgeId)
+            assertParamExists('getProcessor', 'bridgeId', bridgeId)
             // verify required parameter 'processorId' is not null or undefined
-            assertParamExists('processorsAPIGetProcessor', 'processorId', processorId)
+            assertParamExists('getProcessor', 'processorId', processorId)
             const localVarPath = `/api/smartevents_mgmt/v1/bridges/{bridgeId}/processors/{processorId}`
                 .replace(`{${"bridgeId"}}`, encodeURIComponent(String(bridgeId)))
                 .replace(`{${"processorId"}}`, encodeURIComponent(String(processorId)));
@@ -174,9 +176,9 @@ export const ProcessorsApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processorsAPIListProcessors: async (bridgeId: string, name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, type?: ProcessorType, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listProcessors: async (bridgeId: string, name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, type?: ProcessorType, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bridgeId' is not null or undefined
-            assertParamExists('processorsAPIListProcessors', 'bridgeId', bridgeId)
+            assertParamExists('listProcessors', 'bridgeId', bridgeId)
             const localVarPath = `/api/smartevents_mgmt/v1/bridges/{bridgeId}/processors`
                 .replace(`{${"bridgeId"}}`, encodeURIComponent(String(bridgeId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -234,11 +236,11 @@ export const ProcessorsApiAxiosParamCreator = function (configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processorsAPIUpdateProcessor: async (bridgeId: string, processorId: string, processorRequest?: ProcessorRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateProcessor: async (bridgeId: string, processorId: string, processorRequest?: ProcessorRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'bridgeId' is not null or undefined
-            assertParamExists('processorsAPIUpdateProcessor', 'bridgeId', bridgeId)
+            assertParamExists('updateProcessor', 'bridgeId', bridgeId)
             // verify required parameter 'processorId' is not null or undefined
-            assertParamExists('processorsAPIUpdateProcessor', 'processorId', processorId)
+            assertParamExists('updateProcessor', 'processorId', processorId)
             const localVarPath = `/api/smartevents_mgmt/v1/bridges/{bridgeId}/processors/{processorId}`
                 .replace(`{${"bridgeId"}}`, encodeURIComponent(String(bridgeId)))
                 .replace(`{${"processorId"}}`, encodeURIComponent(String(processorId)));
@@ -289,8 +291,8 @@ export const ProcessorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async processorsAPIAddProcessorToBridge(bridgeId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProcessorResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.processorsAPIAddProcessorToBridge(bridgeId, processorRequest, options);
+        async addProcessorToBridge(bridgeId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProcessorResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addProcessorToBridge(bridgeId, processorRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -301,8 +303,8 @@ export const ProcessorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async processorsAPIDeleteProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.processorsAPIDeleteProcessor(bridgeId, processorId, options);
+        async deleteProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteProcessor(bridgeId, processorId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -313,8 +315,8 @@ export const ProcessorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async processorsAPIGetProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProcessorResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.processorsAPIGetProcessor(bridgeId, processorId, options);
+        async getProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProcessorResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getProcessor(bridgeId, processorId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -329,8 +331,8 @@ export const ProcessorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async processorsAPIListProcessors(bridgeId: string, name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, type?: ProcessorType, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProcessorListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.processorsAPIListProcessors(bridgeId, name, page, size, status, type, options);
+        async listProcessors(bridgeId: string, name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, type?: ProcessorType, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProcessorListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listProcessors(bridgeId, name, page, size, status, type, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -342,8 +344,8 @@ export const ProcessorsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async processorsAPIUpdateProcessor(bridgeId: string, processorId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProcessorResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.processorsAPIUpdateProcessor(bridgeId, processorId, processorRequest, options);
+        async updateProcessor(bridgeId: string, processorId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProcessorResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateProcessor(bridgeId, processorId, processorRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -364,8 +366,8 @@ export const ProcessorsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processorsAPIAddProcessorToBridge(bridgeId: string, processorRequest?: ProcessorRequest, options?: any): AxiosPromise<ProcessorResponse> {
-            return localVarFp.processorsAPIAddProcessorToBridge(bridgeId, processorRequest, options).then((request) => request(axios, basePath));
+        addProcessorToBridge(bridgeId: string, processorRequest?: ProcessorRequest, options?: any): AxiosPromise<ProcessorResponse> {
+            return localVarFp.addProcessorToBridge(bridgeId, processorRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * Delete a Processor of a Bridge instance for the authenticated user.
@@ -375,8 +377,8 @@ export const ProcessorsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processorsAPIDeleteProcessor(bridgeId: string, processorId: string, options?: any): AxiosPromise<void> {
-            return localVarFp.processorsAPIDeleteProcessor(bridgeId, processorId, options).then((request) => request(axios, basePath));
+        deleteProcessor(bridgeId: string, processorId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteProcessor(bridgeId, processorId, options).then((request) => request(axios, basePath));
         },
         /**
          * Get a Processor of a Bridge instance for the authenticated user.
@@ -386,8 +388,8 @@ export const ProcessorsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processorsAPIGetProcessor(bridgeId: string, processorId: string, options?: any): AxiosPromise<ProcessorResponse> {
-            return localVarFp.processorsAPIGetProcessor(bridgeId, processorId, options).then((request) => request(axios, basePath));
+        getProcessor(bridgeId: string, processorId: string, options?: any): AxiosPromise<ProcessorResponse> {
+            return localVarFp.getProcessor(bridgeId, processorId, options).then((request) => request(axios, basePath));
         },
         /**
          * Get the list of Processors of a Bridge instance for the authenticated user.
@@ -401,8 +403,8 @@ export const ProcessorsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processorsAPIListProcessors(bridgeId: string, name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, type?: ProcessorType, options?: any): AxiosPromise<ProcessorListResponse> {
-            return localVarFp.processorsAPIListProcessors(bridgeId, name, page, size, status, type, options).then((request) => request(axios, basePath));
+        listProcessors(bridgeId: string, name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, type?: ProcessorType, options?: any): AxiosPromise<ProcessorListResponse> {
+            return localVarFp.listProcessors(bridgeId, name, page, size, status, type, options).then((request) => request(axios, basePath));
         },
         /**
          * Update a Processor instance Filter definition or Transformation template for the authenticated user.
@@ -413,8 +415,8 @@ export const ProcessorsApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        processorsAPIUpdateProcessor(bridgeId: string, processorId: string, processorRequest?: ProcessorRequest, options?: any): AxiosPromise<ProcessorResponse> {
-            return localVarFp.processorsAPIUpdateProcessor(bridgeId, processorId, processorRequest, options).then((request) => request(axios, basePath));
+        updateProcessor(bridgeId: string, processorId: string, processorRequest?: ProcessorRequest, options?: any): AxiosPromise<ProcessorResponse> {
+            return localVarFp.updateProcessor(bridgeId, processorId, processorRequest, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -434,7 +436,7 @@ export interface ProcessorsApiInterface {
      * @throws {RequiredError}
      * @memberof ProcessorsApiInterface
      */
-    processorsAPIAddProcessorToBridge(bridgeId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig): AxiosPromise<ProcessorResponse>;
+    addProcessorToBridge(bridgeId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig): AxiosPromise<ProcessorResponse>;
 
     /**
      * Delete a Processor of a Bridge instance for the authenticated user.
@@ -445,7 +447,7 @@ export interface ProcessorsApiInterface {
      * @throws {RequiredError}
      * @memberof ProcessorsApiInterface
      */
-    processorsAPIDeleteProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig): AxiosPromise<void>;
+    deleteProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig): AxiosPromise<void>;
 
     /**
      * Get a Processor of a Bridge instance for the authenticated user.
@@ -456,7 +458,7 @@ export interface ProcessorsApiInterface {
      * @throws {RequiredError}
      * @memberof ProcessorsApiInterface
      */
-    processorsAPIGetProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig): AxiosPromise<ProcessorResponse>;
+    getProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig): AxiosPromise<ProcessorResponse>;
 
     /**
      * Get the list of Processors of a Bridge instance for the authenticated user.
@@ -471,7 +473,7 @@ export interface ProcessorsApiInterface {
      * @throws {RequiredError}
      * @memberof ProcessorsApiInterface
      */
-    processorsAPIListProcessors(bridgeId: string, name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, type?: ProcessorType, options?: AxiosRequestConfig): AxiosPromise<ProcessorListResponse>;
+    listProcessors(bridgeId: string, name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, type?: ProcessorType, options?: AxiosRequestConfig): AxiosPromise<ProcessorListResponse>;
 
     /**
      * Update a Processor instance Filter definition or Transformation template for the authenticated user.
@@ -483,7 +485,7 @@ export interface ProcessorsApiInterface {
      * @throws {RequiredError}
      * @memberof ProcessorsApiInterface
      */
-    processorsAPIUpdateProcessor(bridgeId: string, processorId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig): AxiosPromise<ProcessorResponse>;
+    updateProcessor(bridgeId: string, processorId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig): AxiosPromise<ProcessorResponse>;
 
 }
 
@@ -503,8 +505,8 @@ export class ProcessorsApi extends BaseAPI implements ProcessorsApiInterface {
      * @throws {RequiredError}
      * @memberof ProcessorsApi
      */
-    public processorsAPIAddProcessorToBridge(bridgeId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig) {
-        return ProcessorsApiFp(this.configuration).processorsAPIAddProcessorToBridge(bridgeId, processorRequest, options).then((request) => request(this.axios, this.basePath));
+    public addProcessorToBridge(bridgeId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig) {
+        return ProcessorsApiFp(this.configuration).addProcessorToBridge(bridgeId, processorRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -516,8 +518,8 @@ export class ProcessorsApi extends BaseAPI implements ProcessorsApiInterface {
      * @throws {RequiredError}
      * @memberof ProcessorsApi
      */
-    public processorsAPIDeleteProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig) {
-        return ProcessorsApiFp(this.configuration).processorsAPIDeleteProcessor(bridgeId, processorId, options).then((request) => request(this.axios, this.basePath));
+    public deleteProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig) {
+        return ProcessorsApiFp(this.configuration).deleteProcessor(bridgeId, processorId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -529,8 +531,8 @@ export class ProcessorsApi extends BaseAPI implements ProcessorsApiInterface {
      * @throws {RequiredError}
      * @memberof ProcessorsApi
      */
-    public processorsAPIGetProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig) {
-        return ProcessorsApiFp(this.configuration).processorsAPIGetProcessor(bridgeId, processorId, options).then((request) => request(this.axios, this.basePath));
+    public getProcessor(bridgeId: string, processorId: string, options?: AxiosRequestConfig) {
+        return ProcessorsApiFp(this.configuration).getProcessor(bridgeId, processorId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -546,8 +548,8 @@ export class ProcessorsApi extends BaseAPI implements ProcessorsApiInterface {
      * @throws {RequiredError}
      * @memberof ProcessorsApi
      */
-    public processorsAPIListProcessors(bridgeId: string, name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, type?: ProcessorType, options?: AxiosRequestConfig) {
-        return ProcessorsApiFp(this.configuration).processorsAPIListProcessors(bridgeId, name, page, size, status, type, options).then((request) => request(this.axios, this.basePath));
+    public listProcessors(bridgeId: string, name?: string, page?: number, size?: number, status?: Set<ManagedResourceStatus>, type?: ProcessorType, options?: AxiosRequestConfig) {
+        return ProcessorsApiFp(this.configuration).listProcessors(bridgeId, name, page, size, status, type, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -560,7 +562,7 @@ export class ProcessorsApi extends BaseAPI implements ProcessorsApiInterface {
      * @throws {RequiredError}
      * @memberof ProcessorsApi
      */
-    public processorsAPIUpdateProcessor(bridgeId: string, processorId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig) {
-        return ProcessorsApiFp(this.configuration).processorsAPIUpdateProcessor(bridgeId, processorId, processorRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateProcessor(bridgeId: string, processorId: string, processorRequest?: ProcessorRequest, options?: AxiosRequestConfig) {
+        return ProcessorsApiFp(this.configuration).updateProcessor(bridgeId, processorId, processorRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }

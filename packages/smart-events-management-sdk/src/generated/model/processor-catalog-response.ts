@@ -26,7 +26,7 @@ export interface ProcessorCatalogResponse {
      * @type {string}
      * @memberof ProcessorCatalogResponse
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
      * @type {Array<ProcessorSchemaEntryResponse>}
