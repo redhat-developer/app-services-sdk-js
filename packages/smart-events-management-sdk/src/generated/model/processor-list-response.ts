@@ -26,7 +26,7 @@ export interface ProcessorListResponse {
      * @type {string}
      * @memberof ProcessorListResponse
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
      * @type {Array<ProcessorResponse>}
@@ -38,18 +38,18 @@ export interface ProcessorListResponse {
      * @type {number}
      * @memberof ProcessorListResponse
      */
-    'page'?: number;
+    'page': number;
     /**
      * 
      * @type {number}
      * @memberof ProcessorListResponse
      */
-    'size'?: number;
+    'size': number;
     /**
      * 
      * @type {number}
      * @memberof ProcessorListResponse
      */
-    'total'?: number;
+    'total': number;
 }
 

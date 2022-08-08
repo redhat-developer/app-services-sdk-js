@@ -17,32 +17,32 @@
 /**
  * 
  * @export
- * @interface CloudRegionResponse
+ * @interface ObjectReference
  */
-export interface CloudRegionResponse {
+export interface ObjectReference {
     /**
      * 
      * @type {string}
-     * @memberof CloudRegionResponse
+     * @memberof ObjectReference
      */
     'kind': string;
     /**
      * 
      * @type {string}
-     * @memberof CloudRegionResponse
+     * @memberof ObjectReference
      */
-    'name': string;
+    'id': string;
     /**
      * 
      * @type {string}
-     * @memberof CloudRegionResponse
+     * @memberof ObjectReference
      */
-    'display_name': string;
+    'name'?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof CloudRegionResponse
+     * @type {string}
+     * @memberof ObjectReference
      */
-    'enabled': boolean;
+    'href': string;
 }
 

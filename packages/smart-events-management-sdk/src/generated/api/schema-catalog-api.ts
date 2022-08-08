@@ -21,6 +21,8 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { ErrorsList } from '../model';
+// @ts-ignore
 import { ProcessorCatalogResponse } from '../model';
 /**
  * SchemaCatalogApi - axios parameter creator
@@ -35,9 +37,9 @@ export const SchemaCatalogApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaAPIGetActionProcessorSchema: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getActionProcessorSchema: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('schemaAPIGetActionProcessorSchema', 'id', id)
+            assertParamExists('getActionProcessorSchema', 'id', id)
             const localVarPath = `/api/smartevents_mgmt/v1/schemas/actions/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -72,7 +74,7 @@ export const SchemaCatalogApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaAPIGetCatalog: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getCatalog: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/smartevents_mgmt/v1/schemas`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -107,9 +109,9 @@ export const SchemaCatalogApiAxiosParamCreator = function (configuration?: Confi
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaAPIGetSourceProcessorSchema: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getSourceProcessorSchema: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('schemaAPIGetSourceProcessorSchema', 'id', id)
+            assertParamExists('getSourceProcessorSchema', 'id', id)
             const localVarPath = `/api/smartevents_mgmt/v1/schemas/sources/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -155,8 +157,8 @@ export const SchemaCatalogApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schemaAPIGetActionProcessorSchema(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schemaAPIGetActionProcessorSchema(id, options);
+        async getActionProcessorSchema(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getActionProcessorSchema(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -165,8 +167,8 @@ export const SchemaCatalogApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schemaAPIGetCatalog(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProcessorCatalogResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schemaAPIGetCatalog(options);
+        async getCatalog(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProcessorCatalogResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCatalog(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -176,8 +178,8 @@ export const SchemaCatalogApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async schemaAPIGetSourceProcessorSchema(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.schemaAPIGetSourceProcessorSchema(id, options);
+        async getSourceProcessorSchema(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSourceProcessorSchema(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -197,8 +199,8 @@ export const SchemaCatalogApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaAPIGetActionProcessorSchema(id: string, options?: any): AxiosPromise<object> {
-            return localVarFp.schemaAPIGetActionProcessorSchema(id, options).then((request) => request(axios, basePath));
+        getActionProcessorSchema(id: string, options?: any): AxiosPromise<object> {
+            return localVarFp.getActionProcessorSchema(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Get the processor catalog with all the available sources and actions.
@@ -206,8 +208,8 @@ export const SchemaCatalogApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaAPIGetCatalog(options?: any): AxiosPromise<ProcessorCatalogResponse> {
-            return localVarFp.schemaAPIGetCatalog(options).then((request) => request(axios, basePath));
+        getCatalog(options?: any): AxiosPromise<ProcessorCatalogResponse> {
+            return localVarFp.getCatalog(options).then((request) => request(axios, basePath));
         },
         /**
          * Get the source processor JSON schema.
@@ -216,8 +218,8 @@ export const SchemaCatalogApiFactory = function (configuration?: Configuration, 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        schemaAPIGetSourceProcessorSchema(id: string, options?: any): AxiosPromise<object> {
-            return localVarFp.schemaAPIGetSourceProcessorSchema(id, options).then((request) => request(axios, basePath));
+        getSourceProcessorSchema(id: string, options?: any): AxiosPromise<object> {
+            return localVarFp.getSourceProcessorSchema(id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -236,7 +238,7 @@ export interface SchemaCatalogApiInterface {
      * @throws {RequiredError}
      * @memberof SchemaCatalogApiInterface
      */
-    schemaAPIGetActionProcessorSchema(id: string, options?: AxiosRequestConfig): AxiosPromise<object>;
+    getActionProcessorSchema(id: string, options?: AxiosRequestConfig): AxiosPromise<object>;
 
     /**
      * Get the processor catalog with all the available sources and actions.
@@ -245,7 +247,7 @@ export interface SchemaCatalogApiInterface {
      * @throws {RequiredError}
      * @memberof SchemaCatalogApiInterface
      */
-    schemaAPIGetCatalog(options?: AxiosRequestConfig): AxiosPromise<ProcessorCatalogResponse>;
+    getCatalog(options?: AxiosRequestConfig): AxiosPromise<ProcessorCatalogResponse>;
 
     /**
      * Get the source processor JSON schema.
@@ -255,7 +257,7 @@ export interface SchemaCatalogApiInterface {
      * @throws {RequiredError}
      * @memberof SchemaCatalogApiInterface
      */
-    schemaAPIGetSourceProcessorSchema(id: string, options?: AxiosRequestConfig): AxiosPromise<object>;
+    getSourceProcessorSchema(id: string, options?: AxiosRequestConfig): AxiosPromise<object>;
 
 }
 
@@ -274,8 +276,8 @@ export class SchemaCatalogApi extends BaseAPI implements SchemaCatalogApiInterfa
      * @throws {RequiredError}
      * @memberof SchemaCatalogApi
      */
-    public schemaAPIGetActionProcessorSchema(id: string, options?: AxiosRequestConfig) {
-        return SchemaCatalogApiFp(this.configuration).schemaAPIGetActionProcessorSchema(id, options).then((request) => request(this.axios, this.basePath));
+    public getActionProcessorSchema(id: string, options?: AxiosRequestConfig) {
+        return SchemaCatalogApiFp(this.configuration).getActionProcessorSchema(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -285,8 +287,8 @@ export class SchemaCatalogApi extends BaseAPI implements SchemaCatalogApiInterfa
      * @throws {RequiredError}
      * @memberof SchemaCatalogApi
      */
-    public schemaAPIGetCatalog(options?: AxiosRequestConfig) {
-        return SchemaCatalogApiFp(this.configuration).schemaAPIGetCatalog(options).then((request) => request(this.axios, this.basePath));
+    public getCatalog(options?: AxiosRequestConfig) {
+        return SchemaCatalogApiFp(this.configuration).getCatalog(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -297,7 +299,7 @@ export class SchemaCatalogApi extends BaseAPI implements SchemaCatalogApiInterfa
      * @throws {RequiredError}
      * @memberof SchemaCatalogApi
      */
-    public schemaAPIGetSourceProcessorSchema(id: string, options?: AxiosRequestConfig) {
-        return SchemaCatalogApiFp(this.configuration).schemaAPIGetSourceProcessorSchema(id, options).then((request) => request(this.axios, this.basePath));
+    public getSourceProcessorSchema(id: string, options?: AxiosRequestConfig) {
+        return SchemaCatalogApiFp(this.configuration).getSourceProcessorSchema(id, options).then((request) => request(this.axios, this.basePath));
     }
 }

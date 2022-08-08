@@ -26,7 +26,7 @@ export interface CloudProviderListResponse {
      * @type {string}
      * @memberof CloudProviderListResponse
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
      * @type {Array<CloudProviderResponse>}
@@ -38,18 +38,18 @@ export interface CloudProviderListResponse {
      * @type {number}
      * @memberof CloudProviderListResponse
      */
-    'page'?: number;
+    'page': number;
     /**
      * 
      * @type {number}
      * @memberof CloudProviderListResponse
      */
-    'size'?: number;
+    'size': number;
     /**
      * 
      * @type {number}
      * @memberof CloudProviderListResponse
      */
-    'total'?: number;
+    'total': number;
 }
 

@@ -17,32 +17,20 @@
 /**
  * 
  * @export
- * @interface CloudRegionResponse
+ * @interface ErrorsList
  */
-export interface CloudRegionResponse {
+export interface ErrorsList {
     /**
      * 
      * @type {string}
-     * @memberof CloudRegionResponse
+     * @memberof ErrorsList
      */
     'kind': string;
     /**
      * 
-     * @type {string}
-     * @memberof CloudRegionResponse
+     * @type {Array<Error>}
+     * @memberof ErrorsList
      */
-    'name': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CloudRegionResponse
-     */
-    'display_name': string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CloudRegionResponse
-     */
-    'enabled': boolean;
+    'items'?: Array<Error>;
 }
 

@@ -26,7 +26,7 @@ export interface BridgeListResponse {
      * @type {string}
      * @memberof BridgeListResponse
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
      * @type {Array<BridgeResponse>}
@@ -38,18 +38,18 @@ export interface BridgeListResponse {
      * @type {number}
      * @memberof BridgeListResponse
      */
-    'page'?: number;
+    'page': number;
     /**
      * 
      * @type {number}
      * @memberof BridgeListResponse
      */
-    'size'?: number;
+    'size': number;
     /**
      * 
      * @type {number}
      * @memberof BridgeListResponse
      */
-    'total'?: number;
+    'total': number;
 }
 

@@ -24,6 +24,8 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 import { CloudProviderListResponse } from '../model';
 // @ts-ignore
 import { CloudRegionListResponse } from '../model';
+// @ts-ignore
+import { ErrorsList } from '../model';
 /**
  * CloudProvidersApi - axios parameter creator
  * @export
@@ -37,9 +39,9 @@ export const CloudProvidersApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cloudProviderAPIGetCloudProvider: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getCloudProvider: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('cloudProviderAPIGetCloudProvider', 'id', id)
+            assertParamExists('getCloudProvider', 'id', id)
             const localVarPath = `/api/smartevents_mgmt/v1/cloud_providers/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -73,9 +75,9 @@ export const CloudProvidersApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cloudProviderAPIListCloudProviderRegions: async (id: string, page?: number, size?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listCloudProviderRegions: async (id: string, page?: number, size?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('cloudProviderAPIListCloudProviderRegions', 'id', id)
+            assertParamExists('listCloudProviderRegions', 'id', id)
             const localVarPath = `/api/smartevents_mgmt/v1/cloud_providers/{id}/regions`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -116,7 +118,7 @@ export const CloudProvidersApiAxiosParamCreator = function (configuration?: Conf
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cloudProviderAPIListCloudProviders: async (page?: number, size?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listCloudProviders: async (page?: number, size?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/api/smartevents_mgmt/v1/cloud_providers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -165,8 +167,8 @@ export const CloudProvidersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cloudProviderAPIGetCloudProvider(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudProviderListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cloudProviderAPIGetCloudProvider(id, options);
+        async getCloudProvider(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudProviderListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCloudProvider(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -178,8 +180,8 @@ export const CloudProvidersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cloudProviderAPIListCloudProviderRegions(id: string, page?: number, size?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudRegionListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cloudProviderAPIListCloudProviderRegions(id, page, size, options);
+        async listCloudProviderRegions(id: string, page?: number, size?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudRegionListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listCloudProviderRegions(id, page, size, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -190,8 +192,8 @@ export const CloudProvidersApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cloudProviderAPIListCloudProviders(page?: number, size?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudProviderListResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cloudProviderAPIListCloudProviders(page, size, options);
+        async listCloudProviders(page?: number, size?: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CloudProviderListResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listCloudProviders(page, size, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -211,8 +213,8 @@ export const CloudProvidersApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cloudProviderAPIGetCloudProvider(id: string, options?: any): AxiosPromise<CloudProviderListResponse> {
-            return localVarFp.cloudProviderAPIGetCloudProvider(id, options).then((request) => request(axios, basePath));
+        getCloudProvider(id: string, options?: any): AxiosPromise<CloudProviderListResponse> {
+            return localVarFp.getCloudProvider(id, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns the list of supported Regions of the specified Cloud Provider.
@@ -223,8 +225,8 @@ export const CloudProvidersApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cloudProviderAPIListCloudProviderRegions(id: string, page?: number, size?: number, options?: any): AxiosPromise<CloudRegionListResponse> {
-            return localVarFp.cloudProviderAPIListCloudProviderRegions(id, page, size, options).then((request) => request(axios, basePath));
+        listCloudProviderRegions(id: string, page?: number, size?: number, options?: any): AxiosPromise<CloudRegionListResponse> {
+            return localVarFp.listCloudProviderRegions(id, page, size, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns the list of supported Cloud Providers.
@@ -234,8 +236,8 @@ export const CloudProvidersApiFactory = function (configuration?: Configuration,
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cloudProviderAPIListCloudProviders(page?: number, size?: number, options?: any): AxiosPromise<CloudProviderListResponse> {
-            return localVarFp.cloudProviderAPIListCloudProviders(page, size, options).then((request) => request(axios, basePath));
+        listCloudProviders(page?: number, size?: number, options?: any): AxiosPromise<CloudProviderListResponse> {
+            return localVarFp.listCloudProviders(page, size, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -254,7 +256,7 @@ export interface CloudProvidersApiInterface {
      * @throws {RequiredError}
      * @memberof CloudProvidersApiInterface
      */
-    cloudProviderAPIGetCloudProvider(id: string, options?: AxiosRequestConfig): AxiosPromise<CloudProviderListResponse>;
+    getCloudProvider(id: string, options?: AxiosRequestConfig): AxiosPromise<CloudProviderListResponse>;
 
     /**
      * Returns the list of supported Regions of the specified Cloud Provider.
@@ -266,7 +268,7 @@ export interface CloudProvidersApiInterface {
      * @throws {RequiredError}
      * @memberof CloudProvidersApiInterface
      */
-    cloudProviderAPIListCloudProviderRegions(id: string, page?: number, size?: number, options?: AxiosRequestConfig): AxiosPromise<CloudRegionListResponse>;
+    listCloudProviderRegions(id: string, page?: number, size?: number, options?: AxiosRequestConfig): AxiosPromise<CloudRegionListResponse>;
 
     /**
      * Returns the list of supported Cloud Providers.
@@ -277,7 +279,7 @@ export interface CloudProvidersApiInterface {
      * @throws {RequiredError}
      * @memberof CloudProvidersApiInterface
      */
-    cloudProviderAPIListCloudProviders(page?: number, size?: number, options?: AxiosRequestConfig): AxiosPromise<CloudProviderListResponse>;
+    listCloudProviders(page?: number, size?: number, options?: AxiosRequestConfig): AxiosPromise<CloudProviderListResponse>;
 
 }
 
@@ -296,8 +298,8 @@ export class CloudProvidersApi extends BaseAPI implements CloudProvidersApiInter
      * @throws {RequiredError}
      * @memberof CloudProvidersApi
      */
-    public cloudProviderAPIGetCloudProvider(id: string, options?: AxiosRequestConfig) {
-        return CloudProvidersApiFp(this.configuration).cloudProviderAPIGetCloudProvider(id, options).then((request) => request(this.axios, this.basePath));
+    public getCloudProvider(id: string, options?: AxiosRequestConfig) {
+        return CloudProvidersApiFp(this.configuration).getCloudProvider(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -310,8 +312,8 @@ export class CloudProvidersApi extends BaseAPI implements CloudProvidersApiInter
      * @throws {RequiredError}
      * @memberof CloudProvidersApi
      */
-    public cloudProviderAPIListCloudProviderRegions(id: string, page?: number, size?: number, options?: AxiosRequestConfig) {
-        return CloudProvidersApiFp(this.configuration).cloudProviderAPIListCloudProviderRegions(id, page, size, options).then((request) => request(this.axios, this.basePath));
+    public listCloudProviderRegions(id: string, page?: number, size?: number, options?: AxiosRequestConfig) {
+        return CloudProvidersApiFp(this.configuration).listCloudProviderRegions(id, page, size, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -323,7 +325,7 @@ export class CloudProvidersApi extends BaseAPI implements CloudProvidersApiInter
      * @throws {RequiredError}
      * @memberof CloudProvidersApi
      */
-    public cloudProviderAPIListCloudProviders(page?: number, size?: number, options?: AxiosRequestConfig) {
-        return CloudProvidersApiFp(this.configuration).cloudProviderAPIListCloudProviders(page, size, options).then((request) => request(this.axios, this.basePath));
+    public listCloudProviders(page?: number, size?: number, options?: AxiosRequestConfig) {
+        return CloudProvidersApiFp(this.configuration).listCloudProviders(page, size, options).then((request) => request(this.axios, this.basePath));
     }
 }

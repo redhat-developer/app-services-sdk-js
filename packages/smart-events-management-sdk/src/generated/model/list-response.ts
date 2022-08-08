@@ -13,25 +13,24 @@
  */
 
 
-import { ErrorResponse } from './error-response';
 
 /**
  * 
  * @export
- * @interface ErrorsResponse
+ * @interface ListResponse
  */
-export interface ErrorsResponse {
+export interface ListResponse {
     /**
      * 
      * @type {string}
-     * @memberof ErrorsResponse
+     * @memberof ListResponse
      */
-    'kind'?: string;
+    'kind': string;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof ErrorsResponse
+     * @type {Array<object>}
+     * @memberof ListResponse
      */
-    'items'?: Array<ErrorResponse>;
+    'items'?: Array<object>;
 }
 
