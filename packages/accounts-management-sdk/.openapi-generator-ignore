@@ -1,0 +1,11 @@
+**/package.json
+**/tsconfig.json
+**/.npmignore
+**/.gitignore
+**/README.md
+**/.travis.yml
+**/.openapi-generator-ignore
+**/.openapi-generator
+**/git_push.sh
+**/api/default-api.ts
+**/api.ts

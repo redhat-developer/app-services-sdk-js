@@ -113,3 +113,9 @@ npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
 --additional-properties=$additional_properties \
 --ignore-file-override=.openapi-generator-ignore \
 --skip-validate-spec
+
+OPENAPI_FILENAME=".openapi/accounts-mgmt.json"
+PACKAGE_NAME="@rhoas/accounts-management-sdk"
+OUTPUT_PATH="packages/accounts-management-sdk/src/generated"
+
+generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
