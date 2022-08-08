@@ -102,3 +102,14 @@ PACKAGE_NAME="@rhoas/smart-events-management-sdk"
 OUTPUT_PATH="packages/smart-events-management-sdk/src/generated"
 
 generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
+
+OPENAPI_FILENAME=".openapi/clusters-mgmt.json"
+PACKAGE_NAME="@rhoas/clusters-management-sdk"
+OUTPUT_PATH="packages/clusters-management-sdk/src/generated"
+
+npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
+"$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
+--package-name="${PACKAGE_NAME}" \
+--additional-properties=$additional_properties \
+--ignore-file-override=.openapi-generator-ignore \
+--skip-validate-spec
