@@ -60,6 +60,12 @@ export interface BridgeResponse {
     'published_at'?: string;
     /**
      * 
+     * @type {string}
+     * @memberof BridgeResponse
+     */
+    'modified_at'?: string;
+    /**
+     * 
      * @type {ManagedResourceStatus}
      * @memberof BridgeResponse
      */

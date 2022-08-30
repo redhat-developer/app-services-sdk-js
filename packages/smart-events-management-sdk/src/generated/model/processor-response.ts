@@ -63,6 +63,12 @@ export interface ProcessorResponse {
     'published_at'?: string;
     /**
      * 
+     * @type {string}
+     * @memberof ProcessorResponse
+     */
+    'modified_at'?: string;
+    /**
+     * 
      * @type {ManagedResourceStatus}
      * @memberof ProcessorResponse
      */
