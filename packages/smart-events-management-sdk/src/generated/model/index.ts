@@ -17,6 +17,8 @@ export * from './list-response';
 export * from './managed-resource-status';
 export * from './model-error';
 export * from './object-reference';
+export * from './processing-error-list-response';
+export * from './processing-error-response';
 export * from './processor-catalog-response';
 export * from './processor-list-response';
 export * from './processor-request';
