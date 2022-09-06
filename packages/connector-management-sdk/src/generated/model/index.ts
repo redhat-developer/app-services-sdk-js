@@ -39,6 +39,8 @@ export * from './connector-status';
 export * from './connector-status-status';
 export * from './connector-type';
 export * from './connector-type-all-of';
+export * from './connector-type-label-count';
+export * from './connector-type-label-count-list';
 export * from './connector-type-list';
 export * from './connector-type-list-all-of';
 export * from './kafka-connection-settings';

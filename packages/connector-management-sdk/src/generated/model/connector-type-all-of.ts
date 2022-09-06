@@ -58,6 +58,12 @@ export interface ConnectorTypeAllOf {
      */
     'labels'?: Array<string>;
     /**
+     * Ranking for featured connectors
+     * @type {number}
+     * @memberof ConnectorTypeAllOf
+     */
+    'featured_rank'?: number;
+    /**
      * The capabilities supported by the conenctor
      * @type {Array<string>}
      * @memberof ConnectorTypeAllOf
