@@ -15,11 +15,14 @@ generate_sdk() {
     # remove old generated models
     rm -Rf $OUTPUT_PATH/model $OUTPUT_PATH/api
     
+    generate_command_params=()
+    generate_command_params+=(--package-name="${package_name}")
+    generate_command_params+=(--additional-properties=$additional_properties)
+    generate_command_params+=(--ignore-file-override=.openapi-generator-ignore)
+    [[ "$file_name" == *"smartevents"* ]] && generate_command_params+=(--remove-operation-id-prefix)
+
     npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
-    "$file_name" -o "$output_path" \
-    --package-name="${package_name}" \
-    --additional-properties=$additional_properties \
-    --ignore-file-override=.openapi-generator-ignore
+    "$file_name" -o "$output_path" "${generate_command_params[@]}"
 }
 
 npx @openapitools/openapi-generator-cli version-manager set 5.4.0
@@ -101,12 +104,6 @@ OPENAPI_FILENAME=".openapi/smartevents_mgmt.yaml"
 PACKAGE_NAME="@rhoas/smart-events-management-sdk"
 OUTPUT_PATH="packages/smart-events-management-sdk/src/generated"
 
-rm -Rf $OUTPUT_PATH/model $OUTPUT_PATH/api
-npx @openapitools/openapi-generator-cli generate -g typescript-axios -i \
-    "$OPENAPI_FILENAME" -o "$OUTPUT_PATH" \
-    --package-name="${PACKAGE_NAME}" \
-    --additional-properties=$additional_properties \
-    --remove-operation-id-prefix \
-    --ignore-file-override=.openapi-generator-ignore
+generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
 
 
