@@ -13,10 +13,13 @@
  */
 
 
+import { List } from './list';
+import { ListDeprecatedAllOf } from './list-deprecated-all-of';
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * @type ListDeprecated
+ * @export
+ */
+export type ListDeprecated = List & ListDeprecatedAllOf;
+
 

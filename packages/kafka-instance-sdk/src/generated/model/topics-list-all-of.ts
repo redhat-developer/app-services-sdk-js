@@ -13,10 +13,19 @@
  */
 
 
+import { Topic } from './topic';
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * A list of topics.
+ * @export
+ * @interface TopicsListAllOf
+ */
+export interface TopicsListAllOf {
+    /**
+     * 
+     * @type {Array<Topic>}
+     * @memberof TopicsListAllOf
+     */
+    'items'?: Array<Topic>;
+}
 

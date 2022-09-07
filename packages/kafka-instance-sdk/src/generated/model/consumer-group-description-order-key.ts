@@ -14,9 +14,20 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ConsumerGroupDescriptionOrderKey = {
+    Offset: 'offset',
+    EndOffset: 'endOffset',
+    Lag: 'lag',
+    Partition: 'partition'
+} as const;
+
+export type ConsumerGroupDescriptionOrderKey = typeof ConsumerGroupDescriptionOrderKey[keyof typeof ConsumerGroupDescriptionOrderKey];
+
+
 

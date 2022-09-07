@@ -14,9 +14,19 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const AclPermissionTypeFilter = {
+    Allow: 'ALLOW',
+    Deny: 'DENY',
+    Any: 'ANY'
+} as const;
+
+export type AclPermissionTypeFilter = typeof AclPermissionTypeFilter[keyof typeof AclPermissionTypeFilter];
+
+
 

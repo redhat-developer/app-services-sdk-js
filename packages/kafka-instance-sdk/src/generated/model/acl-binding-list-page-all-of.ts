@@ -13,10 +13,19 @@
  */
 
 
+import { AclBinding } from './acl-binding';
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * A page of ACL binding entries
+ * @export
+ * @interface AclBindingListPageAllOf
+ */
+export interface AclBindingListPageAllOf {
+    /**
+     * 
+     * @type {Array<AclBinding>}
+     * @memberof AclBindingListPageAllOf
+     */
+    'items'?: Array<AclBinding>;
+}
 

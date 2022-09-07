@@ -14,9 +14,17 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ConsumerGroupOrderKey = {
+    Name: 'name'
+} as const;
+
+export type ConsumerGroupOrderKey = typeof ConsumerGroupOrderKey[keyof typeof ConsumerGroupOrderKey];
+
+
 

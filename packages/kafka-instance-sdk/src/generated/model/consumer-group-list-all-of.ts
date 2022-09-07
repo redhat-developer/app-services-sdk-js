@@ -13,10 +13,19 @@
  */
 
 
+import { ConsumerGroup } from './consumer-group';
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * A list of consumer groups
+ * @export
+ * @interface ConsumerGroupListAllOf
+ */
+export interface ConsumerGroupListAllOf {
+    /**
+     * 
+     * @type {Array<ConsumerGroup>}
+     * @memberof ConsumerGroupListAllOf
+     */
+    'items'?: Array<ConsumerGroup>;
+}
 

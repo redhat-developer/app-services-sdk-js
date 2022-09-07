@@ -14,9 +14,18 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const SortDirection = {
+    Asc: 'asc',
+    Desc: 'desc'
+} as const;
+
+export type SortDirection = typeof SortDirection[keyof typeof SortDirection];
+
+
 
