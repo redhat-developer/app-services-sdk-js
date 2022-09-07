@@ -14,9 +14,18 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const AclPatternType = {
+    Literal: 'LITERAL',
+    Prefixed: 'PREFIXED'
+} as const;
+
+export type AclPatternType = typeof AclPatternType[keyof typeof AclPatternType];
+
+
 

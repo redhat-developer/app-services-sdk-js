@@ -13,10 +13,13 @@
  */
 
 
+import { ErrorAllOf } from './error-all-of';
+import { ObjectReference } from './object-reference';
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * @type ModelError
+ * @export
+ */
+export type ModelError = ErrorAllOf & ObjectReference;
+
 

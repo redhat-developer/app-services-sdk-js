@@ -14,9 +14,22 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const AclBindingOrderKey = {
+    ResourceType: 'resourceType',
+    ResourceName: 'resourceName',
+    PatternType: 'patternType',
+    Principal: 'principal',
+    Operation: 'operation',
+    Permission: 'permission'
+} as const;
+
+export type AclBindingOrderKey = typeof AclBindingOrderKey[keyof typeof AclBindingOrderKey];
+
+
 

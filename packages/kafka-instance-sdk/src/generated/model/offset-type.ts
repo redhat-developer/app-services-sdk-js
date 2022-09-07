@@ -14,9 +14,20 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const OffsetType = {
+    Timestamp: 'timestamp',
+    Absolute: 'absolute',
+    Latest: 'latest',
+    Earliest: 'earliest'
+} as const;
+
+export type OffsetType = typeof OffsetType[keyof typeof OffsetType];
+
+
 

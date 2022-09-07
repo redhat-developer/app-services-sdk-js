@@ -14,9 +14,20 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const TopicOrderKey = {
+    Name: 'name',
+    Partitions: 'partitions',
+    RetentionMs: 'retention.ms',
+    RetentionBytes: 'retention.bytes'
+} as const;
+
+export type TopicOrderKey = typeof TopicOrderKey[keyof typeof TopicOrderKey];
+
+
 
