@@ -109,5 +109,11 @@ export interface ProcessorResponse {
      * @memberof ProcessorResponse
      */
     'source'?: Source;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProcessorResponse
+     */
+    'status_message'?: string;
 }
 

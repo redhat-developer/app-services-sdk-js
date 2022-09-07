@@ -100,5 +100,11 @@ export interface BridgeResponse {
      * @memberof BridgeResponse
      */
     'region'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BridgeResponse
+     */
+    'status_message'?: string;
 }
 
