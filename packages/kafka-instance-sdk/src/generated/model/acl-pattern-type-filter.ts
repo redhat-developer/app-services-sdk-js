@@ -14,9 +14,20 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * Use value \'MATCH\' to perform pattern matching.
+ * @export
+ * @enum {string}
+ */
+
+export const AclPatternTypeFilter = {
+    Literal: 'LITERAL',
+    Prefixed: 'PREFIXED',
+    Any: 'ANY',
+    Match: 'MATCH'
+} as const;
+
+export type AclPatternTypeFilter = typeof AclPatternTypeFilter[keyof typeof AclPatternTypeFilter];
+
+
 

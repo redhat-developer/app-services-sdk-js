@@ -14,9 +14,23 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * List of errors
+ * @export
+ * @interface ErrorListAllOf
+ */
+export interface ErrorListAllOf {
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof ErrorListAllOf
+     */
+    'items'?: Array<Error>;
+    /**
+     * Total number of errors returned in this request
+     * @type {number}
+     * @memberof ErrorListAllOf
+     */
+    'total'?: number;
+}
 

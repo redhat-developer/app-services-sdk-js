@@ -13,10 +13,14 @@
  */
 
 
+import { ConsumerGroup } from './consumer-group';
+import { ConsumerGroupListAllOf } from './consumer-group-list-all-of';
+import { ListDeprecated } from './list-deprecated';
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * @type ConsumerGroupList
+ * @export
+ */
+export type ConsumerGroupList = ConsumerGroupListAllOf & ListDeprecated;
+
 

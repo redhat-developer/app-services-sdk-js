@@ -14,9 +14,17 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * Identifier for a Kafka server / broker.
+ * @export
+ * @interface Node
+ */
+export interface Node {
+    /**
+     * 
+     * @type {number}
+     * @memberof Node
+     */
+    'id'?: number;
+}
 

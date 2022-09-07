@@ -14,9 +14,23 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @interface TopicsToResetOffset
+ */
+export interface TopicsToResetOffset {
+    /**
+     * 
+     * @type {string}
+     * @memberof TopicsToResetOffset
+     */
+    'topic': string;
+    /**
+     * 
+     * @type {Array<number>}
+     * @memberof TopicsToResetOffset
+     */
+    'partitions'?: Array<number>;
+}
 

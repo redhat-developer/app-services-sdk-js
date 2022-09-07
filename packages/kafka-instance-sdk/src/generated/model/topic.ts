@@ -13,10 +13,15 @@
  */
 
 
+import { ConfigEntry } from './config-entry';
+import { ObjectReference } from './object-reference';
+import { Partition } from './partition';
+import { TopicAllOf } from './topic-all-of';
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * @type Topic
+ * @export
+ */
+export type Topic = ObjectReference & TopicAllOf;
+
 

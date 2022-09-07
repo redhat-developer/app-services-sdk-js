@@ -13,10 +13,13 @@
  */
 
 
+import { ObjectReference } from './object-reference';
+import { RecordAllOf } from './record-all-of';
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * @type Record
+ * @export
+ */
+export type Record = ObjectReference & RecordAllOf;
+
 

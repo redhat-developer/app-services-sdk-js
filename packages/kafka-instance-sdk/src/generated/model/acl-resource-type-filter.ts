@@ -14,9 +14,21 @@
 
 
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const AclResourceTypeFilter = {
+    Any: 'ANY',
+    Group: 'GROUP',
+    Topic: 'TOPIC',
+    Cluster: 'CLUSTER',
+    TransactionalId: 'TRANSACTIONAL_ID'
+} as const;
+
+export type AclResourceTypeFilter = typeof AclResourceTypeFilter[keyof typeof AclResourceTypeFilter];
+
+
 

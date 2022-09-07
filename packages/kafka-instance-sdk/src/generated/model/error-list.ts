@@ -13,10 +13,13 @@
  */
 
 
+import { ErrorListAllOf } from './error-list-all-of';
+import { List } from './list';
 
-export * from './api/acls-api';
-export * from './api/errors-api';
-export * from './api/groups-api';
-export * from './api/records-api';
-export * from './api/topics-api';
+/**
+ * @type ErrorList
+ * @export
+ */
+export type ErrorList = ErrorListAllOf & List;
+
 
