@@ -31,26 +31,26 @@ api.use(cors());
 
 // define api
 const kafkaAPI = new OpenAPIBackend({
-  definition: path.join(__dirname, "../openapi/kas-fleet-manager.yaml"),
+  definition: path.join(__dirname, "../../../.openapi/kas-fleet-manager.yaml"),
   validate: false
 });
 
 const srsControlApi = new OpenAPIBackend({
-  definition: path.join(__dirname, "../openapi/srs-fleet-manager.yaml"),
+  definition: path.join(__dirname, "../../../.openapi/srs-fleet-manager.json"),
   validate: false
 });
 const topicAPI = new OpenAPIBackend({
-  definition: path.join(__dirname, "../openapi/kafka-admin-rest.yaml"),
+  definition: path.join(__dirname, "../../../.openapi/kafka-admin-rest.yaml"),
   validate: false
 });
 
 const srsDataApi = new OpenAPIBackend({
-  definition: path.join(__dirname, "../openapi/registry-instance-rest.yaml"),
+  definition: path.join(__dirname, "../../../.openapi/registry-instance.json"),
   validate: false
 });
 
 const cosAPI = new OpenAPIBackend({
-  definition: path.join(__dirname, "../openapi/connector_mgmt.yaml"),
+  definition: path.join(__dirname, "../../../.openapi/connector_mgmt.yaml"),
   validate: false
 });
  
