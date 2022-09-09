@@ -36,7 +36,7 @@
     "axios": "0.27.2",
     "json2yaml": "1.1.0",
     "openapi-editor": "0.3.0",
-    "replace": "^1.2.1",
+    "replace": "1.2.1",
     "wait-on": "6.0.1"
   }
 }
