@@ -16,13 +16,13 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "build": "cp -Rf ../../.openapi ./openapi && json2yaml ./openapi/srs-fleet-manager.json > ./openapi/srs-fleet-manager.yaml",
+    "build": "cp -Rf ../../.openapi ./openapi && ./scripts/transform.sh ",
     "start": "node ./src/index.js",
     "start-preseed": "node ./src/index.js --pre-seed",
     "api:kafka-management": "openapi-editor --file openapi/kas-fleet-manager.yaml --port 10000",
     "api:kafka-instance": "openapi-editor --file openapi/kafka-admin-rest.yaml --port 10001",
     "api:registry-management": "openapi-editor --file openapi/srs-fleet-manager.yaml --port 10003",
-    "api:registry-instance": "openapi-editor --file openapi/registry-instance-rest.yml --port 10004",
+    "api:registry-instance": "openapi-editor --file openapi/registry-instance.yaml --port 10004",
     "packageRelease": "npm publish"
   },
   "dependencies": {
@@ -36,6 +36,7 @@
     "axios": "0.27.2",
     "json2yaml": "1.1.0",
     "openapi-editor": "0.3.0",
+    "replace": "^1.2.1",
     "wait-on": "6.0.1"
   }
 }

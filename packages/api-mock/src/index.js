@@ -45,7 +45,7 @@ const topicAPI = new OpenAPIBackend({
 });
 
 const srsDataApi = new OpenAPIBackend({
-  definition: path.join(__dirname, "../openapi/registry-instance-rest.yaml"),
+  definition: path.join(__dirname, "../openapi/registry-instance.yaml"),
   validate: false
 });
 
