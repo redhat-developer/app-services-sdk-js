@@ -22,7 +22,7 @@ npm install @rhoas/service-accounts-sdk --save
 import { Configuration, DefaultApi} from "@rhoas/service-accounts-sdk";
 
 const accessToken = process.env.CLOUD_API_TOKEN;
-const basePath = "https://api.openshift.com";
+const basePath = "https://sso.redhat.com/auth/realms/redhat-external/";
 
 const apiConfig = new Configuration({
   accessToken,
