@@ -2022,7 +2022,10 @@
           "description": "The content of the artifact being created. This is often, but not always, JSON data\nrepresenting one of the supported artifact types:\n\n* Avro (`AVRO`)\n* Protobuf (`PROTOBUF`)\n* JSON Schema (`JSON`)\n* Kafka Connect (`KCONNECT`)\n* OpenAPI (`OPENAPI`)\n* AsyncAPI (`ASYNCAPI`)\n* GraphQL (`GRAPHQL`)\n* Web Services Description Language (`WSDL`)\n* XML Schema (`XSD`)\n",
           "content": {
             "*/*": {
-              "schema": {},
+              "schema": {
+                "format": "binary",
+                "type": "string"
+              },
               "examples": {
                 "OpenAPI Example": {
                   "value": {
