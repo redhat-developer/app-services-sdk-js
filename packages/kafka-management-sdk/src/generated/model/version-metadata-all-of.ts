@@ -23,6 +23,12 @@ import { ObjectReference } from './object-reference';
 export interface VersionMetadataAllOf {
     /**
      * 
+     * @type {string}
+     * @memberof VersionMetadataAllOf
+     */
+    'server_version'?: string;
+    /**
+     * 
      * @type {Array<ObjectReference>}
      * @memberof VersionMetadataAllOf
      */
