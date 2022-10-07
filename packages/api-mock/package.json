@@ -33,7 +33,7 @@
     "yargs": "17.6.0"
   },
   "devDependencies": {
-    "axios": "1.1.0",
+    "axios": "1.1.2",
     "json2yaml": "1.1.0",
     "openapi-editor": "0.3.0",
     "replace": "1.2.1",
