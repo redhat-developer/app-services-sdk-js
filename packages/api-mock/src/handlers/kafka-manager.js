@@ -27,7 +27,11 @@ const commonKafkaFields = {
   reauthentication_enabled: true,
   size_id: "x1",
   total_max_connections: 100,
-  version: "3.0.1"
+  version: "3.0.1",
+  billing_model: "standard",
+  max_data_retention_size: {
+    bytes: 10737418240
+  },
 };
 
 const commonError = {
