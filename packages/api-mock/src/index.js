@@ -16,6 +16,7 @@ const createRegistryHandlers = require("./handlers/registry-manager");
 const srsDataHandlers = require("./handlers/registry-data");
 const cosHandlers = require("./handlers/cos-manager");
 const topicHandlers = require("./handlers/kafka-admin");
+const servAccHandlers = require("./handlers/serv-acc-manager");
 const ams = require("./handlers/ams");
 
 const amsRouter = require("./routers/ams-router");
@@ -51,6 +52,11 @@ const srsDataApi = new OpenAPIBackend({
 
 const cosAPI = new OpenAPIBackend({
   definition: path.join(__dirname, "../openapi/connector_mgmt.yaml"),
+  validate: false
+});
+
+const servAccAPI = new OpenAPIBackend({
+  definition: path.join(__dirname, "../openapi/service-accounts.yaml"),
   validate: false
 });
  
