@@ -82,11 +82,11 @@ function createKafkaHandlers(preSeed) {
         });
       }
 
-      let cloudProvider = c.request.params.cloud_provider || commonKafkaFields.cloud_provider
+      let cloudProvider = req.body.cloud_provider || commonKafkaFields.cloud_provider
 
       if (!providers.includes(cloudProvider)) {
         return res.status(400).json({
-          reason: `provider ${c.request.params.cloud_provider} is not supported, supported providers are: ${listProviders.join(", ")}`,
+          reason: `provider '${req.body.cloud_provider}' is not supported, supported providers are: ${providers.join(", ")}`,
           ...commonError,
         });
       }
