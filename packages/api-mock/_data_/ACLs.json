@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "kind": "AclBinding",
+      "operation": "DESCRIBE",
+      "patternType": "LITERAL",
+      "permission": "ALLOW",
+      "principal": "User:*",
+      "resourceName": "*",
+      "resourceType": "CLUSTER"
+    },
+    {
+      "kind": "AclBinding",
+      "operation": "DESCRIBE",
+      "patternType": "LITERAL",
+      "permission": "ALLOW",
+      "principal": "User:*",
+      "resourceName": "*",
+      "resourceType": "GROUP"
+    },
+    {
+      "kind": "AclBinding",
+      "operation": "DESCRIBE",
+      "patternType": "LITERAL",
+      "permission": "ALLOW",
+      "principal": "User:*",
+      "resourceName": "*",
+      "resourceType": "TOPIC"
+    },
+    {
+      "kind": "AclBinding",
+      "operation": "DESCRIBE_CONFIGS",
+      "patternType": "LITERAL",
+      "permission": "ALLOW",
+      "principal": "User:*",
+      "resourceName": "*",
+      "resourceType": "TOPIC"
+    }
+  ],
+  "kind": "AclBindingList",
+  "page": 1,
+  "size": 10,
+  "total": 4
+}
