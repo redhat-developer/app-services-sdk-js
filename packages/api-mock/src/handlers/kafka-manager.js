@@ -98,6 +98,7 @@ function createKafkaHandlers(preSeed) {
         ...req.body,
         ...commonKafkaFields,
       };
+      kafka["cloud_provider"] = cloudProvider;
       kafkas[newId] = kafka;
       res.status(202).json(kafka);
     },
