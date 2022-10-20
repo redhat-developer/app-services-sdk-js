@@ -150,7 +150,7 @@ module.exports = {
       name: topicBody.name,
       config: topicBody.settings.config,
       partitions: createPartitions(
-        topicBody.settings.numPartitions,
+        topicBody.settings.partition,
         topicBody.settings.replicationFactor
       ),
     };
@@ -238,8 +238,8 @@ module.exports = {
     }
 
     const topic = getTopic(topicName);
-    if (topicBody.numPartitions) {
-      topic.partitions = createPartitions(topicBody.numPartitions, 2);
+    if (topicBody.partition) {
+      topic.partitions = createPartitions(topicBody.partition, 2);
     }
 
     if (topicBody.config) {
