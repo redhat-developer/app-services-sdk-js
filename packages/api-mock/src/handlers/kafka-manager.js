@@ -3,6 +3,9 @@ const path = require("path");
 const { getFullHostname } = require("../utls/host");
 var saList = require("../../_data_/serviceaccounts.json");
 
+const cloudProviders = require("../../_data_/cloudProviders.json");
+var providers = cloudProviders.map(cloudProvider => cloudProvider.id)
+
 const commonKafkaFields = {
   kind: "Kafka",
   status: "ready",
@@ -41,25 +44,6 @@ const commonError = {
 };
 
 const kafkas = {};
-
-const cloudProviders = [
-  {
-    kind: "CloudProvider",
-    id: "aws",
-    display_name: "Amazon Web Services",
-    name: "aws",
-    enabled: true,
-  },
-  {
-    kind: "CloudProvider",
-    id: "azure",
-    display_name: "Microsoft Azure",
-    name: "azure",
-    enabled: false,
-  },
-]
-
-var providers = cloudProviders.map(cloudProvider => cloudProvider.id)
 
 function createKafkaHandlers(preSeed) {
   if (preSeed) {
