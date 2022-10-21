@@ -16,6 +16,7 @@ const createRegistryHandlers = require("./handlers/registry-manager");
 const srsDataHandlers = require("./handlers/registry-data");
 const cosHandlers = require("./handlers/cos-manager");
 const topicHandlers = require("./handlers/kafka-admin");
+const serviceAccountHandlers = require("./handlers/service-account-manager");
 const ams = require("./handlers/ams");
 
 const amsRouter = require("./routers/ams-router");
@@ -53,13 +54,19 @@ const cosAPI = new OpenAPIBackend({
   definition: path.join(__dirname, "../openapi/connector_mgmt.yaml"),
   validate: false
 });
- 
+
+const serviceAccountAPI = new OpenAPIBackend({
+  definition: path.join(__dirname, "../openapi/service-accounts.yaml"),
+  validate: false
+});
+
 // register handlers
 kafkaAPI.register(createKafkaHandlers(preSeed));
 topicAPI.register(topicHandlers);
 srsControlApi.register(createRegistryHandlers(preSeed));
 srsDataApi.register(srsDataHandlers);
 cosAPI.register(cosHandlers);
+serviceAccountAPI.register(serviceAccountHandlers(preSeed));
 
 // register security handler
 kafkaAPI.registerSecurityHandler("Bearer", (c, req, res) => {
@@ -78,6 +85,10 @@ cosAPI.registerSecurityHandler("Bearer", (c, req, res) => {
   return true;
 });
 
+serviceAccountAPI.registerSecurityHandler("Bearer", (c, req, res) => {
+  return true;
+});
+
 // Skipping validation of the schema
 // validation fails on this schema definition
 // even though it is valid through other validation forms like Swagger.io
@@ -86,12 +97,14 @@ srsControlApi.validateDefinition = () => {};
 cosAPI.validateDefinition = () => {};
 kafkaAPI.validateDefinition = () => {};
 topicAPI.validateDefinition = () => {};
+serviceAccountAPI.validateDefinition = () => {};
 
 kafkaAPI.init();
 topicAPI.init();
 srsControlApi.init();
 srsDataApi.init();
 cosAPI.init();
+serviceAccountAPI.init();
 
 api.use("/api/accounts_mgmt/v1", amsRouter);
 
@@ -99,6 +112,11 @@ api.use((req, res) => {
   if (req.url.startsWith("/api/kafkas_mgmt/v1")) {
     console.info("Calling kafkas manager");
     return kafkaAPI.handleRequest(req, req, res);
+  }
+
+  if (req.url.startsWith("/apis/service_accounts/v1")) {
+    console.info("Calling Service account manager");
+    return serviceAccountAPI.handleRequest(req, req, res);
   }
 
   if (req.url.startsWith("/api/serviceregistry_mgmt/v1/registries")) {
