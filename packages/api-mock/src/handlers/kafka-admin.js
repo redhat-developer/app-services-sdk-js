@@ -1,5 +1,6 @@
 var topics = require('../../_data_/topics.json');
 var consumerGroups = require('../../_data_/consumer-groups.json');
+var ACLs = require('../../_data_/ACLs.json');
 
 module.exports = {
   getConsumerGroups: async (c, req, res) => {
@@ -259,6 +260,19 @@ module.exports = {
     }
 
     return res.status(200).json(topic);
+  },
+
+  createAcl: async (c, _, res) => {
+
+    let ACLBody = c.request.body;
+    ACLBody.kind = "AclBinding"
+    ACLs.items.push(ACLBody);
+
+    return res.status(201).end();
+  },
+
+  getAcls: async (c, _, res) => {
+    return res.status(200).json(ACLs);
   },
 
   // Handling auth
