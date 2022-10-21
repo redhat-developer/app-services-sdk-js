@@ -85,7 +85,7 @@ cosAPI.registerSecurityHandler("Bearer", (c, req, res) => {
   return true;
 });
 
-serviceAccountAPI.registerSecurityHandler("Bearer", (c, req, res) => {
+serviceAccountAPI.registerSecurityHandler("bearerAuth", (c, req, res) => {
   return true;
 });
 
