@@ -1,0 +1,16 @@
+[
+    {
+        "kind": "CloudProvider",
+        "id": "aws",
+        "display_name": "Amazon Web Services",
+        "name": "aws",
+        "enabled": true
+    },
+    {
+        "kind": "CloudProvider",
+        "id": "azure",
+        "display_name": "Microsoft Azure",
+        "name": "azure",
+        "enabled": false
+    }
+]

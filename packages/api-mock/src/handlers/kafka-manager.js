@@ -3,6 +3,9 @@ const path = require("path");
 const { getFullHostname } = require("../utls/host");
 var saList = require("../../_data_/serviceaccounts.json");
 
+const cloudProviders = require("../../_data_/cloudProviders.json");
+var providers = cloudProviders.map(cloudProvider => cloudProvider.id)
+
 const commonKafkaFields = {
   kind: "Kafka",
   status: "ready",
@@ -53,7 +56,7 @@ function createKafkaHandlers(preSeed) {
       ...commonKafkaFields,
     }
   }
-  
+
   return {
     createKafka: async (c, req, res) => {
       if (!req.body.name) {
@@ -62,6 +65,16 @@ function createKafkaHandlers(preSeed) {
           ...commonError,
         });
       }
+
+      let cloudProvider = req.body.cloud_provider || commonKafkaFields.cloud_provider
+
+      if (!providers.includes(cloudProvider)) {
+        return res.status(400).json({
+          reason: `provider '${req.body.cloud_provider}' is not supported, supported providers are: ${providers.join(", ")}`,
+          ...commonError,
+        });
+      }
+
       const newId = nanoid();
       const kafka = {
         id: newId,
@@ -69,6 +82,7 @@ function createKafkaHandlers(preSeed) {
         ...req.body,
         ...commonKafkaFields,
       };
+      kafka["cloud_provider"] = cloudProvider;
       kafkas[newId] = kafka;
       res.status(202).json(kafka);
     },
@@ -89,9 +103,16 @@ function createKafkaHandlers(preSeed) {
 
     getKafkaById: async (c, req, res) => {
       const id = c.request.params.id;
-      if (!id || !kafkas[id]) {
+      if (!id) {
         return res.status(400).json({
           reason: "Missing or invalid id field",
+          ...commonError,
+        });
+      }
+
+      if (!kafkas[id]) {
+        return res.status(404).json({
+          reason: "not found",
           ...commonError,
         });
       }
@@ -115,22 +136,7 @@ function createKafkaHandlers(preSeed) {
         page: 1,
         size: 7,
         total: 7,
-        items: [
-          {
-            kind: "CloudProvider",
-            id: "aws",
-            display_name: "Amazon Web Services",
-            name: "aws",
-            enabled: true,
-          },
-          {
-            kind: "CloudProvider",
-            id: "azure",
-            display_name: "Microsoft Azure",
-            name: "azure",
-            enabled: false,
-          },
-        ],
+        items: cloudProviders,
       });
     },
 
@@ -512,7 +518,7 @@ function createKafkaHandlers(preSeed) {
         created_at: "2021-04-07T16:24:01+05:30",
       });
     },
-    
+
     getSsoProviders: async (c, req, res) => {
       res.status(200).json({
         "name": "mas_sso",
