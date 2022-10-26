@@ -14,6 +14,14 @@ const commonServiceAccountFields = {
     createdAt: new Date().getTime(),
 }
 
+const commonError = {
+  id: "103",
+  kind: "Error",
+  href: "/api/service_account_mgmt/v1/errors/103",
+  code: "SERVICE-ACCOUNT-MGMT-103",
+  operation_id: "1iWIimqGcrDuL61aUxIZqBTqNRa",
+};
+
 function createServiceAccountHandlers(preSeed) {
     
     return {
