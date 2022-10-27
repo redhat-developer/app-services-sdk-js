@@ -75,6 +75,13 @@ function createKafkaHandlers(preSeed) {
         });
       }
 
+      if (Object.keys(kafkas).map(key => kafkas[key].name).includes(req.body.name)) {
+        return res.status(409).json({
+          reason: "The resource already exists",
+          ...commonError,
+        });
+      }
+
       const newId = nanoid();
       const kafka = {
         id: newId,
