@@ -26,7 +26,7 @@ function createServiceAccountHandlers(preSeed) {
       createServiceAccount: async (c, req, res) => {
         if (!req.body.name) {
           return res.status(400).json({
-            reason: "Missing or invalid name field",
+            reason: "Service account name is invalid",
             ...commonError,
           });
         }
@@ -45,14 +45,14 @@ function createServiceAccountHandlers(preSeed) {
         const id = c.request.params.id;
         if (!id) {
           return res.status(400).json({
-            reason: "Missing or invalid id field",
+            reason: "Service account id is invalid",
             ...commonError,
           });
         }
   
         if (!serviceAccountMap.has(id)) {
           return res.status(404).json({
-            reason: "Service account not found",
+            reason: "Failed to find service account",
             ...commonError,
           });
         }
@@ -65,14 +65,14 @@ function createServiceAccountHandlers(preSeed) {
         const id = c.request.params.id;
         if (!id) {
           return res.status(400).json({
-            reason: "Missing or invalid id field",
+            reason: "Service account id is invalid",
             ...commonError,
           });
         }
   
         if (!serviceAccountMap.has(id)) {
           return res.status(404).json({
-            reason: "Service account not found",
+            reason: "Failed to find service account",
             ...commonError,
           });
         }
