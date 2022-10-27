@@ -8,8 +8,6 @@ const commonServiceAccountFields = {
     id: nanoid(),
     clientId: nanoid(),
     secret: nanoid(),
-    name: "service-account-name",
-    description: "service-account-description",
     createdBy: "service-account-created-by",
     createdAt: new Date().getTime(),
 }
@@ -23,9 +21,15 @@ const commonError = {
 };
 
 function createServiceAccountHandlers(preSeed) {
-    
+
     return {
       createServiceAccount: async (c, req, res) => {
+        if (!req.body.name) {
+          return res.status(400).json({
+            reason: "Service account name is invalid",
+            ...commonError,
+          });
+        }
 
         let serviceAccount = {
           name: req.body.name,
@@ -39,26 +43,40 @@ function createServiceAccountHandlers(preSeed) {
 
       getServiceAccount: async (c, req, res) => {
         const id = c.request.params.id;
-        if (!id || !serviceAccountMap.has(id)) {
+        if (!id) {
           return res.status(400).json({
-            reason: "Missing or invalid id field",
+            reason: "Service account id is invalid",
             ...commonError,
           });
         }
   
+        if (!serviceAccountMap.has(id)) {
+          return res.status(404).json({
+            reason: "Failed to find service account",
+            ...commonError,
+          });
+        }
+
         const serviceAccount = serviceAccountMap.get(id)
         res.status(204).json(serviceAccount);
       },
 
       deleteServiceAccount: async (c, req, res) => {
         const id = c.request.params.id;
-        if (!id || !serviceAccountMap.has(id)) {
+        if (!id) {
           return res.status(400).json({
-            reason: "Missing or invalid id field",
+            reason: "Service account id is invalid",
             ...commonError,
           });
         }
   
+        if (!serviceAccountMap.has(id)) {
+          return res.status(404).json({
+            reason: "Failed to find service account",
+            ...commonError,
+          });
+        }
+
         const serviceAccount = serviceAccountMap.get(id)
         res.status(204).json(serviceAccount);
         serviceAccountMap.delete(id)
