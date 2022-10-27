@@ -51,7 +51,6 @@ function createServiceAccountHandlers(preSeed) {
         }
   
         if (!serviceAccountMap.has(id)) {
-          console.log(404)
           return res.status(404).json({
             reason: "Service account not found",
             ...commonError,
