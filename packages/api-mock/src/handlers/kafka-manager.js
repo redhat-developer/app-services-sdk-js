@@ -70,7 +70,7 @@ function createKafkaHandlers(preSeed) {
 
       if (!providers.includes(cloudProvider)) {
         return res.status(400).json({
-          reason: `provider '${req.body.cloud_provider}' is not supported, supported providers are: ${providers.join(", ")}`,
+          reason: `provider ${req.body.cloud_provider} is not supported, supported providers are: ${providers.join(", ")}`,
           ...commonError,
         });
       }
