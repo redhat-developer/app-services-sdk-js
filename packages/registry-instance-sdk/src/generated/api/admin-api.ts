@@ -111,11 +111,12 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * Exports registry data as a ZIP archive.
          * @summary Export registry data
+         * @param {string} [accept] 
          * @param {boolean} [forBrowser] Indicates if the operation is done for a browser.  If true, the response will be a JSON payload with a property called &#x60;href&#x60;.  This &#x60;href&#x60; will be a single-use, naked download link suitable for use by a web browser to download the content.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exportData: async (forBrowser?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        exportData: async (accept?: string, forBrowser?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/admin/export`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -130,6 +131,10 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 
             if (forBrowser !== undefined) {
                 localVarQueryParameter['forBrowser'] = forBrowser;
+            }
+
+            if (accept !== undefined && accept !== null) {
+                localVarHeaderParameter['Accept'] = String(accept);
             }
 
 
@@ -604,12 +609,13 @@ export const AdminApiFp = function(configuration?: Configuration) {
         /**
          * Exports registry data as a ZIP archive.
          * @summary Export registry data
+         * @param {string} [accept] 
          * @param {boolean} [forBrowser] Indicates if the operation is done for a browser.  If true, the response will be a JSON payload with a property called &#x60;href&#x60;.  This &#x60;href&#x60; will be a single-use, naked download link suitable for use by a web browser to download the content.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async exportData(forBrowser?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.exportData(forBrowser, options);
+        async exportData(accept?: string, forBrowser?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.exportData(accept, forBrowser, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -779,12 +785,13 @@ export const AdminApiFactory = function (configuration?: Configuration, basePath
         /**
          * Exports registry data as a ZIP archive.
          * @summary Export registry data
+         * @param {string} [accept] 
          * @param {boolean} [forBrowser] Indicates if the operation is done for a browser.  If true, the response will be a JSON payload with a property called &#x60;href&#x60;.  This &#x60;href&#x60; will be a single-use, naked download link suitable for use by a web browser to download the content.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exportData(forBrowser?: boolean, options?: any): AxiosPromise<any> {
-            return localVarFp.exportData(forBrowser, options).then((request) => request(axios, basePath));
+        exportData(accept?: string, forBrowser?: boolean, options?: any): AxiosPromise<any> {
+            return localVarFp.exportData(accept, forBrowser, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns the value of a single configuration property.  This operation may fail for one of the following reasons:  * Property not found or not configured (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -940,12 +947,13 @@ export interface AdminApiInterface {
     /**
      * Exports registry data as a ZIP archive.
      * @summary Export registry data
+     * @param {string} [accept] 
      * @param {boolean} [forBrowser] Indicates if the operation is done for a browser.  If true, the response will be a JSON payload with a property called &#x60;href&#x60;.  This &#x60;href&#x60; will be a single-use, naked download link suitable for use by a web browser to download the content.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AdminApiInterface
      */
-    exportData(forBrowser?: boolean, options?: AxiosRequestConfig): AxiosPromise<any>;
+    exportData(accept?: string, forBrowser?: boolean, options?: AxiosRequestConfig): AxiosPromise<any>;
 
     /**
      * Returns the value of a single configuration property.  This operation may fail for one of the following reasons:  * Property not found or not configured (HTTP error `404`) * A server error occurred (HTTP error `500`) 
@@ -1105,13 +1113,14 @@ export class AdminApi extends BaseAPI implements AdminApiInterface {
     /**
      * Exports registry data as a ZIP archive.
      * @summary Export registry data
+     * @param {string} [accept] 
      * @param {boolean} [forBrowser] Indicates if the operation is done for a browser.  If true, the response will be a JSON payload with a property called &#x60;href&#x60;.  This &#x60;href&#x60; will be a single-use, naked download link suitable for use by a web browser to download the content.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public exportData(forBrowser?: boolean, options?: AxiosRequestConfig) {
-        return AdminApiFp(this.configuration).exportData(forBrowser, options).then((request) => request(this.axios, this.basePath));
+    public exportData(accept?: string, forBrowser?: boolean, options?: AxiosRequestConfig) {
+        return AdminApiFp(this.configuration).exportData(accept, forBrowser, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
