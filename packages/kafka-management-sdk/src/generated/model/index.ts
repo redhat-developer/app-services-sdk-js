@@ -31,6 +31,7 @@ export * from './service-account-list-item-all-of';
 export * from './service-account-request';
 export * from './sso-provider';
 export * from './sso-provider-all-of';
+export * from './supported-kafka-billing-model';
 export * from './supported-kafka-instance-type';
 export * from './supported-kafka-instance-types-list';
 export * from './supported-kafka-instance-types-list-all-of';
