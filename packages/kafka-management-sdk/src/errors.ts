@@ -136,7 +136,7 @@ export const APIErrorCodes = {
   /** Failed to check quota*/
   ERROR_121 : "KAFKAS-MGMT-121", 
 
-  /** Too Many requests*/
+  /** Too many requests*/
   ERROR_429 : "KAFKAS-MGMT-429", 
 
   /** An unexpected error happened, please check the log of the service for details*/
