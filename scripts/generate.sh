@@ -100,7 +100,7 @@ OUTPUT_PATH="packages/service-accounts-sdk/src/generated"
 
 generate_sdk $OPENAPI_FILENAME $OUTPUT_PATH $PACKAGE_NAME
 
-OPENAPI_FILENAME=".openapi/smartevents_mgmt.yaml"
+OPENAPI_FILENAME=".openapi/smartevents_mgmt_v2.yaml"
 PACKAGE_NAME="@rhoas/smart-events-management-sdk"
 OUTPUT_PATH="packages/smart-events-management-sdk/src/generated"
 
