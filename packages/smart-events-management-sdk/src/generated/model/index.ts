@@ -1,5 +1,3 @@
-export * from './action';
-export * from './base-filter';
 export * from './bridge-error';
 export * from './bridge-error-instance';
 export * from './bridge-error-type';
@@ -20,10 +18,6 @@ export * from './model-error';
 export * from './object-reference';
 export * from './processing-error-list-response';
 export * from './processing-error-response';
-export * from './processor-catalog-response';
 export * from './processor-list-response';
 export * from './processor-request';
 export * from './processor-response';
-export * from './processor-schema-entry-response';
-export * from './processor-type';
-export * from './source';

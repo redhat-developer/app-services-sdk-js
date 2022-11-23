@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Red Hat Openshift SmartEvents Fleet Manager
+ * Red Hat Openshift SmartEvents Fleet Manager V2
  * The API exposed by the fleet manager of the SmartEvents service.
  *
  * The version of the OpenAPI document: 0.0.1
@@ -13,11 +13,7 @@
  */
 
 
-import { Action } from './action';
-import { BaseFilter } from './base-filter';
 import { ManagedResourceStatus } from './managed-resource-status';
-import { ProcessorType } from './processor-type';
-import { Source } from './source';
 
 /**
  * 
@@ -37,12 +33,6 @@ export interface ProcessorResponse {
      * @memberof ProcessorResponse
      */
     'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProcessorResponse
-     */
-    'name'?: string;
     /**
      * 
      * @type {string}
@@ -81,39 +71,15 @@ export interface ProcessorResponse {
     'owner': string;
     /**
      * 
-     * @type {ProcessorType}
-     * @memberof ProcessorResponse
-     */
-    'type': ProcessorType;
-    /**
-     * 
-     * @type {Set<BaseFilter>}
-     * @memberof ProcessorResponse
-     */
-    'filters'?: Set<BaseFilter>;
-    /**
-     * 
      * @type {string}
      * @memberof ProcessorResponse
      */
-    'transformationTemplate'?: string;
+    'name': string;
     /**
      * 
-     * @type {Action}
+     * @type {object}
      * @memberof ProcessorResponse
      */
-    'action'?: Action;
-    /**
-     * 
-     * @type {Source}
-     * @memberof ProcessorResponse
-     */
-    'source'?: Source;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProcessorResponse
-     */
-    'status_message'?: string;
+    'flows': object;
 }
 

@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Red Hat Openshift SmartEvents Fleet Manager
+ * Red Hat Openshift SmartEvents Fleet Manager V2
  * The API exposed by the fleet manager of the SmartEvents service.
  *
  * The version of the OpenAPI document: 0.0.1
@@ -42,7 +42,7 @@ export const ErrorCatalogApiAxiosParamCreator = function (configuration?: Config
         getError: async (id: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getError', 'id', id)
-            const localVarPath = `/api/smartevents_mgmt/v1/errors/{id}`
+            const localVarPath = `/api/smartevents_mgmt/v2/errors/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -75,7 +75,7 @@ export const ErrorCatalogApiAxiosParamCreator = function (configuration?: Config
          * @throws {RequiredError}
          */
         getErrors: async (page?: number, size?: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/api/smartevents_mgmt/v1/errors`;
+            const localVarPath = `/api/smartevents_mgmt/v2/errors`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
