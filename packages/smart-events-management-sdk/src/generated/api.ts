@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Red Hat Openshift SmartEvents Fleet Manager
+ * Red Hat Openshift SmartEvents Fleet Manager V2
  * The API exposed by the fleet manager of the SmartEvents service.
  *
  * The version of the OpenAPI document: 0.0.1
@@ -18,5 +18,4 @@ export * from './api/bridges-api';
 export * from './api/cloud-providers-api';
 export * from './api/error-catalog-api';
 export * from './api/processors-api';
-export * from './api/schema-catalog-api';
 
