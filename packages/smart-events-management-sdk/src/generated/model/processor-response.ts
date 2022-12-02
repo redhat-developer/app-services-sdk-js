@@ -81,5 +81,11 @@ export interface ProcessorResponse {
      * @memberof ProcessorResponse
      */
     'flows': object;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProcessorResponse
+     */
+    'status_message'?: string;
 }
 
