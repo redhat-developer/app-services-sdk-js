@@ -58,13 +58,19 @@ export interface ConnectorTypeAllOf {
      */
     'labels'?: Array<string>;
     /**
+     * Name-value string annotations for resource
+     * @type {{ [key: string]: string; }}
+     * @memberof ConnectorTypeAllOf
+     */
+    'annotations'?: { [key: string]: string; };
+    /**
      * Ranking for featured connectors
      * @type {number}
      * @memberof ConnectorTypeAllOf
      */
     'featured_rank'?: number;
     /**
-     * The capabilities supported by the conenctor
+     * The capabilities supported by the connector
      * @type {Array<string>}
      * @memberof ConnectorTypeAllOf
      */

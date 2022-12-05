@@ -27,7 +27,7 @@ export interface ConnectorNamespaceRequestMeta {
      */
     'name'?: string;
     /**
-     * 
+     * Name-value string annotations for resource
      * @type {{ [key: string]: string; }}
      * @memberof ConnectorNamespaceRequestMeta
      */

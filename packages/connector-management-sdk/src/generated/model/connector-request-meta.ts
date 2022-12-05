@@ -52,5 +52,11 @@ export interface ConnectorRequestMeta {
      * @memberof ConnectorRequestMeta
      */
     'desired_state': ConnectorDesiredState;
+    /**
+     * Name-value string annotations for resource
+     * @type {{ [key: string]: string; }}
+     * @memberof ConnectorRequestMeta
+     */
+    'annotations'?: { [key: string]: string; };
 }
 
