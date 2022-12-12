@@ -25,6 +25,8 @@ import { CloudProviderList } from '../model';
 // @ts-ignore
 import { CloudRegionList } from '../model';
 // @ts-ignore
+import { EnterpriseCluster } from '../model';
+// @ts-ignore
 import { EnterpriseOsdClusterPayload } from '../model';
 // @ts-ignore
 import { KafkaRequest } from '../model';
@@ -743,7 +745,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<KafkaRequest>> {
+        async registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EnterpriseCluster>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.registerEnterpriseOsdCluster(enterpriseOsdClusterPayload, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -885,7 +887,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: any): AxiosPromise<KafkaRequest> {
+        registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: any): AxiosPromise<EnterpriseCluster> {
             return localVarFp.registerEnterpriseOsdCluster(enterpriseOsdClusterPayload, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1025,7 +1027,7 @@ export interface DefaultApiInterface {
      * @throws {RequiredError}
      * @memberof DefaultApiInterface
      */
-    registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): AxiosPromise<KafkaRequest>;
+    registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): AxiosPromise<EnterpriseCluster>;
 
     /**
      * Update a Kafka instance by id
