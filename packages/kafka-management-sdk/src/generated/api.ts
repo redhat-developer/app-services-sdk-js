@@ -15,6 +15,7 @@
 
 
 export * from './api/default-api';
+export * from './api/enterprise-dataplane-clusters-api';
 export * from './api/errors-api';
 export * from './api/security-api';
 
