@@ -22,7 +22,7 @@ import { SupportedKafkaSizeBytesValueItem } from './supported-kafka-size-bytes-v
  */
 export interface KafkaRequestAllOf {
     /**
-     * Values: [accepted, preparing, provisioning, ready, failed, deprovision, deleting] 
+     * Values: [accepted, preparing, provisioning, ready, failed, deprovision, deleting, suspending, suspended, resuming] 
      * @type {string}
      * @memberof KafkaRequestAllOf
      */
