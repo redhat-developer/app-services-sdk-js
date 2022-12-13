@@ -21,13 +21,13 @@
  */
 export interface EnterpriseOsdClusterPayload {
     /**
-     * OSD cluster ID
+     * The data plane cluster ID. This is the ID of the cluster obtained from OpenShift Cluster Manager (OCM) API
      * @type {string}
      * @memberof EnterpriseOsdClusterPayload
      */
     'cluster_id': string;
     /**
-     * external cluster ID. Can be obtained from the response JSON of ocm get /api/clusters_mgmt/v1/clusters/<cluster_id>
+     * external cluster ID. Can be obtained from the response JSON of OCM get /api/clusters_mgmt/v1/clusters/<cluster_id>
      * @type {string}
      * @memberof EnterpriseOsdClusterPayload
      */

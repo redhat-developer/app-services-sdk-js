@@ -22,7 +22,7 @@ import { FleetshardParameter } from './fleetshard-parameter';
  */
 export interface EnterpriseClusterAllOf {
     /**
-     * ocm cluster id of the registered Enterprise cluster
+     * OCM cluster id of the registered Enterprise cluster
      * @type {string}
      * @memberof EnterpriseClusterAllOf
      */

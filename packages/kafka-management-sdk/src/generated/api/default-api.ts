@@ -25,10 +25,6 @@ import { CloudProviderList } from '../model';
 // @ts-ignore
 import { CloudRegionList } from '../model';
 // @ts-ignore
-import { EnterpriseCluster } from '../model';
-// @ts-ignore
-import { EnterpriseOsdClusterPayload } from '../model';
-// @ts-ignore
 import { KafkaRequest } from '../model';
 // @ts-ignore
 import { KafkaRequestList } from '../model';
@@ -526,45 +522,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Register enterprise OSD cluster
-         * @param {EnterpriseOsdClusterPayload} enterpriseOsdClusterPayload Enterprise OSD cluster details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        registerEnterpriseOsdCluster: async (enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'enterpriseOsdClusterPayload' is not null or undefined
-            assertParamExists('registerEnterpriseOsdCluster', 'enterpriseOsdClusterPayload', enterpriseOsdClusterPayload)
-            const localVarPath = `/api/kafkas_mgmt/v1/clusters`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(enterpriseOsdClusterPayload, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Update a Kafka instance by id
          * @param {string} id The ID of record
          * @param {KafkaUpdateRequest} kafkaUpdateRequest Update owner of kafka
@@ -740,16 +697,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Register enterprise OSD cluster
-         * @param {EnterpriseOsdClusterPayload} enterpriseOsdClusterPayload Enterprise OSD cluster details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EnterpriseCluster>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.registerEnterpriseOsdCluster(enterpriseOsdClusterPayload, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * Update a Kafka instance by id
          * @param {string} id The ID of record
          * @param {KafkaUpdateRequest} kafkaUpdateRequest Update owner of kafka
@@ -882,15 +829,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.getVersionMetadata(options).then((request) => request(axios, basePath));
         },
         /**
-         * Register enterprise OSD cluster
-         * @param {EnterpriseOsdClusterPayload} enterpriseOsdClusterPayload Enterprise OSD cluster details
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: any): AxiosPromise<EnterpriseCluster> {
-            return localVarFp.registerEnterpriseOsdCluster(enterpriseOsdClusterPayload, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Update a Kafka instance by id
          * @param {string} id The ID of record
          * @param {KafkaUpdateRequest} kafkaUpdateRequest Update owner of kafka
@@ -1019,15 +957,6 @@ export interface DefaultApiInterface {
      * @memberof DefaultApiInterface
      */
     getVersionMetadata(options?: AxiosRequestConfig): AxiosPromise<VersionMetadata>;
-
-    /**
-     * Register enterprise OSD cluster
-     * @param {EnterpriseOsdClusterPayload} enterpriseOsdClusterPayload Enterprise OSD cluster details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApiInterface
-     */
-    registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): AxiosPromise<EnterpriseCluster>;
 
     /**
      * Update a Kafka instance by id
@@ -1179,17 +1108,6 @@ export class DefaultApi extends BaseAPI implements DefaultApiInterface {
      */
     public getVersionMetadata(options?: AxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getVersionMetadata(options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Register enterprise OSD cluster
-     * @param {EnterpriseOsdClusterPayload} enterpriseOsdClusterPayload Enterprise OSD cluster details
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).registerEnterpriseOsdCluster(enterpriseOsdClusterPayload, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
