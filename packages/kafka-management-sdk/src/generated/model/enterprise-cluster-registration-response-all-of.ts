@@ -13,24 +13,31 @@
  */
 
 
+import { FleetshardParameter } from './fleetshard-parameter';
 
 /**
  * 
  * @export
- * @interface EnterpriseClusterAllOf
+ * @interface EnterpriseClusterRegistrationResponseAllOf
  */
-export interface EnterpriseClusterAllOf {
+export interface EnterpriseClusterRegistrationResponseAllOf {
     /**
-     * ocm cluster id of the registered Enterprise cluster
+     * OCM cluster id of the registered Enterprise cluster
      * @type {string}
-     * @memberof EnterpriseClusterAllOf
+     * @memberof EnterpriseClusterRegistrationResponseAllOf
      */
     'cluster_id'?: string;
     /**
      * status of registered Enterprise cluster
      * @type {string}
-     * @memberof EnterpriseClusterAllOf
+     * @memberof EnterpriseClusterRegistrationResponseAllOf
      */
     'status'?: string;
+    /**
+     * 
+     * @type {Array<FleetshardParameter>}
+     * @memberof EnterpriseClusterRegistrationResponseAllOf
+     */
+    'fleetshard_parameters'?: Array<FleetshardParameter>;
 }
 

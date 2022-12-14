@@ -21,7 +21,9 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
-import { EnterpriseCluster } from '../model';
+import { EnterpriseClusterList } from '../model';
+// @ts-ignore
+import { EnterpriseClusterRegistrationResponse } from '../model';
 // @ts-ignore
 import { EnterpriseOsdClusterPayload } from '../model';
 /**
@@ -30,6 +32,39 @@ import { EnterpriseOsdClusterPayload } from '../model';
  */
 export const EnterpriseDataplaneClustersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * List all Enterprise OSD clusters
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnterpriseOsdClusters: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/kafkas_mgmt/v1/clusters`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * Register enterprise data plane cluster
          * @param {EnterpriseOsdClusterPayload} enterpriseOsdClusterPayload Enterprise data plane cluster details
@@ -80,12 +115,21 @@ export const EnterpriseDataplaneClustersApiFp = function(configuration?: Configu
     const localVarAxiosParamCreator = EnterpriseDataplaneClustersApiAxiosParamCreator(configuration)
     return {
         /**
+         * List all Enterprise OSD clusters
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getEnterpriseOsdClusters(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EnterpriseClusterList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getEnterpriseOsdClusters(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * Register enterprise data plane cluster
          * @param {EnterpriseOsdClusterPayload} enterpriseOsdClusterPayload Enterprise data plane cluster details
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EnterpriseCluster>> {
+        async registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EnterpriseClusterRegistrationResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.registerEnterpriseOsdCluster(enterpriseOsdClusterPayload, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -100,12 +144,20 @@ export const EnterpriseDataplaneClustersApiFactory = function (configuration?: C
     const localVarFp = EnterpriseDataplaneClustersApiFp(configuration)
     return {
         /**
+         * List all Enterprise OSD clusters
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnterpriseOsdClusters(options?: any): AxiosPromise<EnterpriseClusterList> {
+            return localVarFp.getEnterpriseOsdClusters(options).then((request) => request(axios, basePath));
+        },
+        /**
          * Register enterprise data plane cluster
          * @param {EnterpriseOsdClusterPayload} enterpriseOsdClusterPayload Enterprise data plane cluster details
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: any): AxiosPromise<EnterpriseCluster> {
+        registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: any): AxiosPromise<EnterpriseClusterRegistrationResponse> {
             return localVarFp.registerEnterpriseOsdCluster(enterpriseOsdClusterPayload, options).then((request) => request(axios, basePath));
         },
     };
@@ -118,13 +170,21 @@ export const EnterpriseDataplaneClustersApiFactory = function (configuration?: C
  */
 export interface EnterpriseDataplaneClustersApiInterface {
     /**
+     * List all Enterprise OSD clusters
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnterpriseDataplaneClustersApiInterface
+     */
+    getEnterpriseOsdClusters(options?: AxiosRequestConfig): AxiosPromise<EnterpriseClusterList>;
+
+    /**
      * Register enterprise data plane cluster
      * @param {EnterpriseOsdClusterPayload} enterpriseOsdClusterPayload Enterprise data plane cluster details
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EnterpriseDataplaneClustersApiInterface
      */
-    registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): AxiosPromise<EnterpriseCluster>;
+    registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): AxiosPromise<EnterpriseClusterRegistrationResponse>;
 
 }
 
@@ -135,6 +195,16 @@ export interface EnterpriseDataplaneClustersApiInterface {
  * @extends {BaseAPI}
  */
 export class EnterpriseDataplaneClustersApi extends BaseAPI implements EnterpriseDataplaneClustersApiInterface {
+    /**
+     * List all Enterprise OSD clusters
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnterpriseDataplaneClustersApi
+     */
+    public getEnterpriseOsdClusters(options?: AxiosRequestConfig) {
+        return EnterpriseDataplaneClustersApiFp(this.configuration).getEnterpriseOsdClusters(options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * Register enterprise data plane cluster
      * @param {EnterpriseOsdClusterPayload} enterpriseOsdClusterPayload Enterprise data plane cluster details

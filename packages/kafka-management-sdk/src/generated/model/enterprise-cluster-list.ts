@@ -13,13 +13,14 @@
  */
 
 
-import { EnterpriseClusterAllOf } from './enterprise-cluster-all-of';
-import { ObjectReference } from './object-reference';
+import { EnterpriseCluster } from './enterprise-cluster';
+import { EnterpriseClusterListAllOf } from './enterprise-cluster-list-all-of';
+import { List } from './list';
 
 /**
- * @type EnterpriseCluster
+ * @type EnterpriseClusterList
  * @export
  */
-export type EnterpriseCluster = EnterpriseClusterAllOf & ObjectReference;
+export type EnterpriseClusterList = EnterpriseClusterListAllOf & List;
 
 
