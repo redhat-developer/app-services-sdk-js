@@ -13,13 +13,19 @@
  */
 
 
-import { EnterpriseClusterAllOf } from './enterprise-cluster-all-of';
-import { ObjectReference } from './object-reference';
+import { EnterpriseCluster } from './enterprise-cluster';
 
 /**
- * @type EnterpriseCluster
+ * 
  * @export
+ * @interface EnterpriseClusterListAllOf
  */
-export type EnterpriseCluster = EnterpriseClusterAllOf & ObjectReference;
-
+export interface EnterpriseClusterListAllOf {
+    /**
+     * 
+     * @type {Array<EnterpriseCluster>}
+     * @memberof EnterpriseClusterListAllOf
+     */
+    'items'?: Array<EnterpriseCluster>;
+}
 
