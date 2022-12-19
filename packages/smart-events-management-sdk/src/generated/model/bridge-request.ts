@@ -21,19 +21,19 @@
  */
 export interface BridgeRequest {
     /**
-     * 
+     * The name of the bridge
      * @type {string}
      * @memberof BridgeRequest
      */
     'name': string;
     /**
-     * 
+     * The cloud provider where the bridge resides
      * @type {string}
      * @memberof BridgeRequest
      */
     'cloud_provider': string;
     /**
-     * 
+     * The cloud provider region where the bridge resides
      * @type {string}
      * @memberof BridgeRequest
      */

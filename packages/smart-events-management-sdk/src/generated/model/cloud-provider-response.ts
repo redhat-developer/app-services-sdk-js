@@ -21,25 +21,25 @@
  */
 export interface CloudProviderResponse {
     /**
-     * 
+     * The kind (type) of this resource
      * @type {string}
      * @memberof CloudProviderResponse
      */
     'kind': string;
     /**
-     * 
+     * The unique identifier of this resource
      * @type {string}
      * @memberof CloudProviderResponse
      */
     'id': string;
     /**
-     * 
+     * The name of this resource
      * @type {string}
      * @memberof CloudProviderResponse
      */
     'name'?: string;
     /**
-     * 
+     * The URL of this resource, without the protocol
      * @type {string}
      * @memberof CloudProviderResponse
      */
