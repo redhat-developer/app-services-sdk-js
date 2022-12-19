@@ -21,13 +21,13 @@
  */
 export interface ModelError {
     /**
-     * 
+     * The kind (type) of this resource
      * @type {string}
      * @memberof ModelError
      */
     'kind': string;
     /**
-     * 
+     * The name of this resource
      * @type {string}
      * @memberof ModelError
      */

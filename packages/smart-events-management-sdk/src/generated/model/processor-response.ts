@@ -22,19 +22,19 @@ import { ManagedResourceStatus } from './managed-resource-status';
  */
 export interface ProcessorResponse {
     /**
-     * 
+     * The kind (type) of this resource
      * @type {string}
      * @memberof ProcessorResponse
      */
     'kind': string;
     /**
-     * 
+     * The unique identifier of this resource
      * @type {string}
      * @memberof ProcessorResponse
      */
     'id': string;
     /**
-     * 
+     * The URL of this resource, without the protocol
      * @type {string}
      * @memberof ProcessorResponse
      */
@@ -64,19 +64,19 @@ export interface ProcessorResponse {
      */
     'status': ManagedResourceStatus;
     /**
-     * 
+     * The user that owns this resource
      * @type {string}
      * @memberof ProcessorResponse
      */
     'owner': string;
     /**
-     * 
+     * The name of the processor
      * @type {string}
      * @memberof ProcessorResponse
      */
     'name': string;
     /**
-     * 
+     * The Camel YAML DSL code, formatted as JSON, that defines the flows in the processor
      * @type {object}
      * @memberof ProcessorResponse
      */

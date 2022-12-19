@@ -21,13 +21,13 @@
  */
 export interface ProcessorRequest {
     /**
-     * 
+     * The name of the processor
      * @type {string}
      * @memberof ProcessorRequest
      */
     'name': string;
     /**
-     * 
+     * The Camel YAML DSL code, formatted as JSON, that defines the flows in the processor
      * @type {object}
      * @memberof ProcessorRequest
      */

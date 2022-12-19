@@ -21,25 +21,25 @@
  */
 export interface ObjectReference {
     /**
-     * 
+     * The kind (type) of this resource
      * @type {string}
      * @memberof ObjectReference
      */
     'kind': string;
     /**
-     * 
+     * The unique identifier of this resource
      * @type {string}
      * @memberof ObjectReference
      */
     'id': string;
     /**
-     * 
+     * The name of this resource
      * @type {string}
      * @memberof ObjectReference
      */
     'name'?: string;
     /**
-     * 
+     * The URL of this resource, without the protocol
      * @type {string}
      * @memberof ObjectReference
      */
