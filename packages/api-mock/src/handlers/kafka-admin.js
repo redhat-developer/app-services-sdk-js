@@ -141,6 +141,10 @@ module.exports = {
       return res.status(400).json({ error_message: 'Bad request' });
     }
 
+    if (!topicBody.name) {
+      return res.status(400).json({ error_message: 'Topic name is invalid' });
+    }
+
     let topic = getTopic(topicBody.name);
 
     if (topic) {
