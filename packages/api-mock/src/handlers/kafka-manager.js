@@ -45,6 +45,14 @@ const commonError = {
 
 const kafkas = {};
 
+function addCommonFieldsNotInRequest(kafka) {
+  for(field in commonKafkaFields) {
+    if(kafka[field] == undefined) {
+      kafka[field] = commonKafkaFields[field]
+    }
+  }
+}
+
 function createKafkaHandlers(preSeed) {
   if (preSeed) {
     kafkas['uFYJpM76DaIqVqqgZjtrz'] = {
@@ -87,8 +95,10 @@ function createKafkaHandlers(preSeed) {
         id: newId,
         href: "/api/kafkas_mgmt/v1/kafkas/" + newId,
         ...req.body,
-        ...commonKafkaFields,
       };
+
+      addCommonFieldsNotInRequest(kafka)
+
       kafka["cloud_provider"] = cloudProvider;
       kafkas[newId] = kafka;
       res.status(202).json(kafka);
