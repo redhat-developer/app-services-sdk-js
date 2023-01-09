@@ -33,6 +33,55 @@ import { EnterpriseOsdClusterPayload } from '../model';
 export const EnterpriseDataplaneClustersApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * 
+         * @param {boolean} async Perform the action in an asynchronous manner
+         * @param {string} id ID of the enterprise data plane cluster
+         * @param {boolean} [force] When provided with value: true - enterprise cluster will be deleted alongside all kafkas present on the cluster. When skipped and enterprise cluster has any kafkas associated with it, the request will fail.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteEnterpriseClusterById: async (async: boolean, id: string, force?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'async' is not null or undefined
+            assertParamExists('deleteEnterpriseClusterById', 'async', async)
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('deleteEnterpriseClusterById', 'id', id)
+            const localVarPath = `/api/kafkas_mgmt/v1/clusters/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (async !== undefined) {
+                localVarQueryParameter['async'] = async;
+            }
+
+            if (force !== undefined) {
+                localVarQueryParameter['force'] = force;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * List all Enterprise OSD clusters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -115,6 +164,18 @@ export const EnterpriseDataplaneClustersApiFp = function(configuration?: Configu
     const localVarAxiosParamCreator = EnterpriseDataplaneClustersApiAxiosParamCreator(configuration)
     return {
         /**
+         * 
+         * @param {boolean} async Perform the action in an asynchronous manner
+         * @param {string} id ID of the enterprise data plane cluster
+         * @param {boolean} [force] When provided with value: true - enterprise cluster will be deleted alongside all kafkas present on the cluster. When skipped and enterprise cluster has any kafkas associated with it, the request will fail.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteEnterpriseClusterById(async, id, force, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * List all Enterprise OSD clusters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -144,6 +205,17 @@ export const EnterpriseDataplaneClustersApiFactory = function (configuration?: C
     const localVarFp = EnterpriseDataplaneClustersApiFp(configuration)
     return {
         /**
+         * 
+         * @param {boolean} async Perform the action in an asynchronous manner
+         * @param {string} id ID of the enterprise data plane cluster
+         * @param {boolean} [force] When provided with value: true - enterprise cluster will be deleted alongside all kafkas present on the cluster. When skipped and enterprise cluster has any kafkas associated with it, the request will fail.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: any): AxiosPromise<Error> {
+            return localVarFp.deleteEnterpriseClusterById(async, id, force, options).then((request) => request(axios, basePath));
+        },
+        /**
          * List all Enterprise OSD clusters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -170,6 +242,17 @@ export const EnterpriseDataplaneClustersApiFactory = function (configuration?: C
  */
 export interface EnterpriseDataplaneClustersApiInterface {
     /**
+     * 
+     * @param {boolean} async Perform the action in an asynchronous manner
+     * @param {string} id ID of the enterprise data plane cluster
+     * @param {boolean} [force] When provided with value: true - enterprise cluster will be deleted alongside all kafkas present on the cluster. When skipped and enterprise cluster has any kafkas associated with it, the request will fail.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnterpriseDataplaneClustersApiInterface
+     */
+    deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: AxiosRequestConfig): AxiosPromise<Error>;
+
+    /**
      * List all Enterprise OSD clusters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -195,6 +278,19 @@ export interface EnterpriseDataplaneClustersApiInterface {
  * @extends {BaseAPI}
  */
 export class EnterpriseDataplaneClustersApi extends BaseAPI implements EnterpriseDataplaneClustersApiInterface {
+    /**
+     * 
+     * @param {boolean} async Perform the action in an asynchronous manner
+     * @param {string} id ID of the enterprise data plane cluster
+     * @param {boolean} [force] When provided with value: true - enterprise cluster will be deleted alongside all kafkas present on the cluster. When skipped and enterprise cluster has any kafkas associated with it, the request will fail.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnterpriseDataplaneClustersApi
+     */
+    public deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: AxiosRequestConfig) {
+        return EnterpriseDataplaneClustersApiFp(this.configuration).deleteEnterpriseClusterById(async, id, force, options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * List all Enterprise OSD clusters
      * @param {*} [options] Override http request option.
