@@ -38,7 +38,7 @@ export interface SinkConnectorResponse {
      * @type {string}
      * @memberof SinkConnectorResponse
      */
-    'name'?: string;
+    'name': string;
     /**
      * The URL of this resource, without the protocol
      * @type {string}

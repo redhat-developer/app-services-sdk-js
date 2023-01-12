@@ -38,7 +38,7 @@ export interface SourceConnectorResponse {
      * @type {string}
      * @memberof SourceConnectorResponse
      */
-    'name'?: string;
+    'name': string;
     /**
      * The URL of this resource, without the protocol
      * @type {string}
