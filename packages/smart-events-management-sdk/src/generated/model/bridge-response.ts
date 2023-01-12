@@ -34,6 +34,12 @@ export interface BridgeResponse {
      */
     'id': string;
     /**
+     * The name of this resource
+     * @type {string}
+     * @memberof BridgeResponse
+     */
+    'name': string;
+    /**
      * The URL of this resource, without the protocol
      * @type {string}
      * @memberof BridgeResponse
@@ -69,12 +75,6 @@ export interface BridgeResponse {
      * @memberof BridgeResponse
      */
     'owner': string;
-    /**
-     * The name of the bridge
-     * @type {string}
-     * @memberof BridgeResponse
-     */
-    'name': string;
     /**
      * The HTTPS endpoint on which the bridge accepts events
      * @type {string}

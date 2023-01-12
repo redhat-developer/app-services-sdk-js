@@ -27,11 +27,23 @@ export interface ModelError {
      */
     'kind': string;
     /**
+     * The unique identifier of this resource
+     * @type {string}
+     * @memberof ModelError
+     */
+    'id': string;
+    /**
      * The name of this resource
      * @type {string}
      * @memberof ModelError
      */
-    'name'?: string;
+    'name': string;
+    /**
+     * The URL of this resource, without the protocol
+     * @type {string}
+     * @memberof ModelError
+     */
+    'href': string;
     /**
      * 
      * @type {string}
@@ -44,17 +56,5 @@ export interface ModelError {
      * @memberof ModelError
      */
     'reason': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModelError
-     */
-    'id': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ModelError
-     */
-    'href': string;
 }
 

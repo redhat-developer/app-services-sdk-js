@@ -37,7 +37,7 @@ export interface CloudProviderResponse {
      * @type {string}
      * @memberof CloudProviderResponse
      */
-    'name'?: string;
+    'name': string;
     /**
      * The URL of this resource, without the protocol
      * @type {string}
