@@ -18,73 +18,79 @@ import { ManagedResourceStatus } from './managed-resource-status';
 /**
  * 
  * @export
- * @interface ProcessorResponse
+ * @interface SourceConnectorResponse
  */
-export interface ProcessorResponse {
+export interface SourceConnectorResponse {
     /**
      * The kind (type) of this resource
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SourceConnectorResponse
      */
     'kind': string;
     /**
      * The unique identifier of this resource
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SourceConnectorResponse
      */
     'id': string;
     /**
      * The name of this resource
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SourceConnectorResponse
      */
-    'name': string;
+    'name'?: string;
     /**
      * The URL of this resource, without the protocol
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SourceConnectorResponse
      */
     'href': string;
     /**
      * 
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SourceConnectorResponse
      */
     'submitted_at': string;
     /**
      * 
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SourceConnectorResponse
      */
     'published_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SourceConnectorResponse
      */
     'modified_at'?: string;
     /**
      * 
      * @type {ManagedResourceStatus}
-     * @memberof ProcessorResponse
+     * @memberof SourceConnectorResponse
      */
     'status': ManagedResourceStatus;
     /**
      * The user that owns this resource
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SourceConnectorResponse
      */
     'owner': string;
     /**
-     * The Camel YAML DSL code, formatted as JSON, that defines the flows in the processor
-     * @type {object}
-     * @memberof ProcessorResponse
-     */
-    'flows': object;
-    /**
-     * 
+     * The connector type
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SourceConnectorResponse
+     */
+    'connector_type_id': string;
+    /**
+     * The Connector configuration payload
+     * @type {object}
+     * @memberof SourceConnectorResponse
+     */
+    'connector': object;
+    /**
+     * A detailed status message in case there is a problem with the connector
+     * @type {string}
+     * @memberof SourceConnectorResponse
      */
     'status_message'?: string;
 }

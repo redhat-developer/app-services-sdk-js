@@ -17,32 +17,26 @@
 /**
  * 
  * @export
- * @interface ObjectReference
+ * @interface ConnectorRequest
  */
-export interface ObjectReference {
+export interface ConnectorRequest {
     /**
-     * The kind (type) of this resource
+     * The name of the connector
      * @type {string}
-     * @memberof ObjectReference
-     */
-    'kind': string;
-    /**
-     * The unique identifier of this resource
-     * @type {string}
-     * @memberof ObjectReference
-     */
-    'id': string;
-    /**
-     * The name of this resource
-     * @type {string}
-     * @memberof ObjectReference
+     * @memberof ConnectorRequest
      */
     'name': string;
     /**
-     * The URL of this resource, without the protocol
+     * The name of the connector
      * @type {string}
-     * @memberof ObjectReference
+     * @memberof ConnectorRequest
      */
-    'href': string;
+    'connector_type_id': string;
+    /**
+     * The Connector configuration payload
+     * @type {object}
+     * @memberof ConnectorRequest
+     */
+    'connector': object;
 }
 

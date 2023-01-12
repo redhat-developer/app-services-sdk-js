@@ -18,74 +18,86 @@ import { ManagedResourceStatus } from './managed-resource-status';
 /**
  * 
  * @export
- * @interface ProcessorResponse
+ * @interface SinkConnectorResponse
  */
-export interface ProcessorResponse {
+export interface SinkConnectorResponse {
     /**
      * The kind (type) of this resource
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SinkConnectorResponse
      */
     'kind': string;
     /**
      * The unique identifier of this resource
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SinkConnectorResponse
      */
     'id': string;
     /**
      * The name of this resource
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SinkConnectorResponse
      */
-    'name': string;
+    'name'?: string;
     /**
      * The URL of this resource, without the protocol
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SinkConnectorResponse
      */
     'href': string;
     /**
      * 
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SinkConnectorResponse
      */
     'submitted_at': string;
     /**
      * 
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SinkConnectorResponse
      */
     'published_at'?: string;
     /**
      * 
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SinkConnectorResponse
      */
     'modified_at'?: string;
     /**
      * 
      * @type {ManagedResourceStatus}
-     * @memberof ProcessorResponse
+     * @memberof SinkConnectorResponse
      */
     'status': ManagedResourceStatus;
     /**
      * The user that owns this resource
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SinkConnectorResponse
      */
     'owner': string;
     /**
-     * The Camel YAML DSL code, formatted as JSON, that defines the flows in the processor
-     * @type {object}
-     * @memberof ProcessorResponse
-     */
-    'flows': object;
-    /**
-     * 
+     * The connector type
      * @type {string}
-     * @memberof ProcessorResponse
+     * @memberof SinkConnectorResponse
+     */
+    'connector_type_id': string;
+    /**
+     * The Connector configuration payload
+     * @type {object}
+     * @memberof SinkConnectorResponse
+     */
+    'connector': object;
+    /**
+     * A detailed status message in case there is a problem with the connector
+     * @type {string}
+     * @memberof SinkConnectorResponse
      */
     'status_message'?: string;
+    /**
+     * The URI to be used in Camel DSL to send data to this sink
+     * @type {string}
+     * @memberof SinkConnectorResponse
+     */
+    'uri_dsl': string;
 }
 

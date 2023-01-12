@@ -18,4 +18,6 @@ export * from './api/bridges-api';
 export * from './api/cloud-providers-api';
 export * from './api/error-catalog-api';
 export * from './api/processors-api';
+export * from './api/sink-connectors-api';
+export * from './api/source-connectors-api';
 
