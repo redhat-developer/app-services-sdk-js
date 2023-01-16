@@ -82,7 +82,7 @@ export const EnterpriseDataplaneClustersApiAxiosParamCreator = function (configu
             };
         },
         /**
-         * List all Enterprise OSD clusters
+         * List all Enterprise data plane clusters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -176,7 +176,7 @@ export const EnterpriseDataplaneClustersApiFp = function(configuration?: Configu
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * List all Enterprise OSD clusters
+         * List all Enterprise data plane clusters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -216,7 +216,7 @@ export const EnterpriseDataplaneClustersApiFactory = function (configuration?: C
             return localVarFp.deleteEnterpriseClusterById(async, id, force, options).then((request) => request(axios, basePath));
         },
         /**
-         * List all Enterprise OSD clusters
+         * List all Enterprise data plane clusters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -253,7 +253,7 @@ export interface EnterpriseDataplaneClustersApiInterface {
     deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: AxiosRequestConfig): AxiosPromise<Error>;
 
     /**
-     * List all Enterprise OSD clusters
+     * List all Enterprise data plane clusters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EnterpriseDataplaneClustersApiInterface
@@ -292,7 +292,7 @@ export class EnterpriseDataplaneClustersApi extends BaseAPI implements Enterpris
     }
 
     /**
-     * List all Enterprise OSD clusters
+     * List all Enterprise data plane clusters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EnterpriseDataplaneClustersApi
