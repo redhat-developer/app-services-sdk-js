@@ -21,6 +21,12 @@
  */
 export interface EnterpriseClusterAllOf {
     /**
+     * Indicates whether Kafkas created on this data plane cluster have to be accessed via private network
+     * @type {boolean}
+     * @memberof EnterpriseClusterAllOf
+     */
+    'access_kafkas_via_private_network': boolean;
+    /**
      * ocm cluster id of the registered Enterprise cluster
      * @type {string}
      * @memberof EnterpriseClusterAllOf

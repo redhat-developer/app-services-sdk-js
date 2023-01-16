@@ -21,6 +21,12 @@
  */
 export interface EnterpriseOsdClusterPayload {
     /**
+     * Sets whether Kafkas created on this data plane cluster have to be accessed via private network
+     * @type {boolean}
+     * @memberof EnterpriseOsdClusterPayload
+     */
+    'access_kafkas_via_private_network': boolean;
+    /**
      * The data plane cluster ID. This is the ID of the cluster obtained from OpenShift Cluster Manager (OCM) API
      * @type {string}
      * @memberof EnterpriseOsdClusterPayload
