@@ -18,31 +18,31 @@ import { FleetshardParameter } from './fleetshard-parameter';
 /**
  * 
  * @export
- * @interface EnterpriseClusterRegistrationResponseAllOf
+ * @interface EnterpriseClusterWithAddonParametersAllOf
  */
-export interface EnterpriseClusterRegistrationResponseAllOf {
+export interface EnterpriseClusterWithAddonParametersAllOf {
     /**
      * Indicates whether Kafkas created on this data plane cluster have to be accessed via private network
      * @type {boolean}
-     * @memberof EnterpriseClusterRegistrationResponseAllOf
+     * @memberof EnterpriseClusterWithAddonParametersAllOf
      */
     'access_kafkas_via_private_network': boolean;
     /**
      * OCM cluster id of the registered Enterprise cluster
      * @type {string}
-     * @memberof EnterpriseClusterRegistrationResponseAllOf
+     * @memberof EnterpriseClusterWithAddonParametersAllOf
      */
     'cluster_id'?: string;
     /**
      * status of registered Enterprise cluster
      * @type {string}
-     * @memberof EnterpriseClusterRegistrationResponseAllOf
+     * @memberof EnterpriseClusterWithAddonParametersAllOf
      */
     'status'?: string;
     /**
      * 
      * @type {Array<FleetshardParameter>}
-     * @memberof EnterpriseClusterRegistrationResponseAllOf
+     * @memberof EnterpriseClusterWithAddonParametersAllOf
      */
     'fleetshard_parameters'?: Array<FleetshardParameter>;
 }

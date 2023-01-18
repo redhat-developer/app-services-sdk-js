@@ -21,9 +21,11 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 // @ts-ignore
+import { EnterpriseCluster } from '../model';
+// @ts-ignore
 import { EnterpriseClusterList } from '../model';
 // @ts-ignore
-import { EnterpriseClusterRegistrationResponse } from '../model';
+import { EnterpriseClusterWithAddonParameters } from '../model';
 // @ts-ignore
 import { EnterpriseOsdClusterPayload } from '../model';
 /**
@@ -69,6 +71,80 @@ export const EnterpriseDataplaneClustersApiAxiosParamCreator = function (configu
             if (force !== undefined) {
                 localVarQueryParameter['force'] = force;
             }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns enterprise data plane cluster by ID
+         * @param {string} id ID of the enterprise data plane cluster
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnterpriseClusterById: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getEnterpriseClusterById', 'id', id)
+            const localVarPath = `/api/kafkas_mgmt/v1/clusters/{id}`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns enterprise data plane cluster by ID along with its addon parameters
+         * @param {string} id ID of the enterprise data plane cluster
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnterpriseClusterWithAddonParameters: async (id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('getEnterpriseClusterWithAddonParameters', 'id', id)
+            const localVarPath = `/api/kafkas_mgmt/v1/clusters/{id}/addon_parameters`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
 
 
     
@@ -176,6 +252,26 @@ export const EnterpriseDataplaneClustersApiFp = function(configuration?: Configu
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
+         * Returns enterprise data plane cluster by ID
+         * @param {string} id ID of the enterprise data plane cluster
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getEnterpriseClusterById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EnterpriseCluster>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getEnterpriseClusterById(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Returns enterprise data plane cluster by ID along with its addon parameters
+         * @param {string} id ID of the enterprise data plane cluster
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getEnterpriseClusterWithAddonParameters(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EnterpriseClusterWithAddonParameters>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getEnterpriseClusterWithAddonParameters(id, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
          * List all Enterprise data plane clusters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -190,7 +286,7 @@ export const EnterpriseDataplaneClustersApiFp = function(configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EnterpriseClusterRegistrationResponse>> {
+        async registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EnterpriseClusterWithAddonParameters>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.registerEnterpriseOsdCluster(enterpriseOsdClusterPayload, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -216,6 +312,24 @@ export const EnterpriseDataplaneClustersApiFactory = function (configuration?: C
             return localVarFp.deleteEnterpriseClusterById(async, id, force, options).then((request) => request(axios, basePath));
         },
         /**
+         * Returns enterprise data plane cluster by ID
+         * @param {string} id ID of the enterprise data plane cluster
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnterpriseClusterById(id: string, options?: any): AxiosPromise<EnterpriseCluster> {
+            return localVarFp.getEnterpriseClusterById(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns enterprise data plane cluster by ID along with its addon parameters
+         * @param {string} id ID of the enterprise data plane cluster
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEnterpriseClusterWithAddonParameters(id: string, options?: any): AxiosPromise<EnterpriseClusterWithAddonParameters> {
+            return localVarFp.getEnterpriseClusterWithAddonParameters(id, options).then((request) => request(axios, basePath));
+        },
+        /**
          * List all Enterprise data plane clusters
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -229,7 +343,7 @@ export const EnterpriseDataplaneClustersApiFactory = function (configuration?: C
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: any): AxiosPromise<EnterpriseClusterRegistrationResponse> {
+        registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: any): AxiosPromise<EnterpriseClusterWithAddonParameters> {
             return localVarFp.registerEnterpriseOsdCluster(enterpriseOsdClusterPayload, options).then((request) => request(axios, basePath));
         },
     };
@@ -253,6 +367,24 @@ export interface EnterpriseDataplaneClustersApiInterface {
     deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: AxiosRequestConfig): AxiosPromise<Error>;
 
     /**
+     * Returns enterprise data plane cluster by ID
+     * @param {string} id ID of the enterprise data plane cluster
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnterpriseDataplaneClustersApiInterface
+     */
+    getEnterpriseClusterById(id: string, options?: AxiosRequestConfig): AxiosPromise<EnterpriseCluster>;
+
+    /**
+     * Returns enterprise data plane cluster by ID along with its addon parameters
+     * @param {string} id ID of the enterprise data plane cluster
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnterpriseDataplaneClustersApiInterface
+     */
+    getEnterpriseClusterWithAddonParameters(id: string, options?: AxiosRequestConfig): AxiosPromise<EnterpriseClusterWithAddonParameters>;
+
+    /**
      * List all Enterprise data plane clusters
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -267,7 +399,7 @@ export interface EnterpriseDataplaneClustersApiInterface {
      * @throws {RequiredError}
      * @memberof EnterpriseDataplaneClustersApiInterface
      */
-    registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): AxiosPromise<EnterpriseClusterRegistrationResponse>;
+    registerEnterpriseOsdCluster(enterpriseOsdClusterPayload: EnterpriseOsdClusterPayload, options?: AxiosRequestConfig): AxiosPromise<EnterpriseClusterWithAddonParameters>;
 
 }
 
@@ -289,6 +421,28 @@ export class EnterpriseDataplaneClustersApi extends BaseAPI implements Enterpris
      */
     public deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: AxiosRequestConfig) {
         return EnterpriseDataplaneClustersApiFp(this.configuration).deleteEnterpriseClusterById(async, id, force, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Returns enterprise data plane cluster by ID
+     * @param {string} id ID of the enterprise data plane cluster
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnterpriseDataplaneClustersApi
+     */
+    public getEnterpriseClusterById(id: string, options?: AxiosRequestConfig) {
+        return EnterpriseDataplaneClustersApiFp(this.configuration).getEnterpriseClusterById(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Returns enterprise data plane cluster by ID along with its addon parameters
+     * @param {string} id ID of the enterprise data plane cluster
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EnterpriseDataplaneClustersApi
+     */
+    public getEnterpriseClusterWithAddonParameters(id: string, options?: AxiosRequestConfig) {
+        return EnterpriseDataplaneClustersApiFp(this.configuration).getEnterpriseClusterWithAddonParameters(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
