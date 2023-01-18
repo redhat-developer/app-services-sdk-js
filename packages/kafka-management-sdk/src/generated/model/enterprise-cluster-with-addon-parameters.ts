@@ -13,15 +13,15 @@
  */
 
 
-import { EnterpriseClusterRegistrationResponseAllOf } from './enterprise-cluster-registration-response-all-of';
+import { EnterpriseClusterWithAddonParametersAllOf } from './enterprise-cluster-with-addon-parameters-all-of';
 import { FleetshardParameter } from './fleetshard-parameter';
 import { ObjectReference } from './object-reference';
 
 /**
- * @type EnterpriseClusterRegistrationResponse
- * Enterprise cluster registration endpoint response
+ * @type EnterpriseClusterWithAddonParameters
+ * Enterprise cluster with addon parameters
  * @export
  */
-export type EnterpriseClusterRegistrationResponse = EnterpriseClusterRegistrationResponseAllOf & ObjectReference;
+export type EnterpriseClusterWithAddonParameters = EnterpriseClusterWithAddonParametersAllOf & ObjectReference;
 
 
