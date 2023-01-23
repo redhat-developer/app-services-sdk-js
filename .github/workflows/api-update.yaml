@@ -41,7 +41,8 @@ jobs:
         run: yarn fetchErrors
       - name: Generate Errors SDK
         run: yarn generateErrors
-      - uses: peter-evans/create-pull-request@v4
+        # v4
+      - uses: peter-evans/create-pull-request@2b011faafdcbc9ceb11414d64d0573f37c774b04
         with:
             title: "fix(${{ github.event.client_payload.id }}): automated SDK update"
             token: "${{ secrets.CI_USER_TOKEN }}"
