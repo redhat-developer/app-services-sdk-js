@@ -38,11 +38,10 @@ export const EnterpriseDataplaneClustersApiAxiosParamCreator = function (configu
          * 
          * @param {boolean} async Perform the action in an asynchronous manner
          * @param {string} id ID of the enterprise data plane cluster
-         * @param {boolean} [force] When provided with value: true - enterprise cluster will be deleted alongside all kafkas present on the cluster. When skipped and enterprise cluster has any kafkas associated with it, the request will fail.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteEnterpriseClusterById: async (async: boolean, id: string, force?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteEnterpriseClusterById: async (async: boolean, id: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'async' is not null or undefined
             assertParamExists('deleteEnterpriseClusterById', 'async', async)
             // verify required parameter 'id' is not null or undefined
@@ -66,10 +65,6 @@ export const EnterpriseDataplaneClustersApiAxiosParamCreator = function (configu
 
             if (async !== undefined) {
                 localVarQueryParameter['async'] = async;
-            }
-
-            if (force !== undefined) {
-                localVarQueryParameter['force'] = force;
             }
 
 
@@ -243,12 +238,11 @@ export const EnterpriseDataplaneClustersApiFp = function(configuration?: Configu
          * 
          * @param {boolean} async Perform the action in an asynchronous manner
          * @param {string} id ID of the enterprise data plane cluster
-         * @param {boolean} [force] When provided with value: true - enterprise cluster will be deleted alongside all kafkas present on the cluster. When skipped and enterprise cluster has any kafkas associated with it, the request will fail.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteEnterpriseClusterById(async, id, force, options);
+        async deleteEnterpriseClusterById(async: boolean, id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteEnterpriseClusterById(async, id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -304,12 +298,11 @@ export const EnterpriseDataplaneClustersApiFactory = function (configuration?: C
          * 
          * @param {boolean} async Perform the action in an asynchronous manner
          * @param {string} id ID of the enterprise data plane cluster
-         * @param {boolean} [force] When provided with value: true - enterprise cluster will be deleted alongside all kafkas present on the cluster. When skipped and enterprise cluster has any kafkas associated with it, the request will fail.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: any): AxiosPromise<Error> {
-            return localVarFp.deleteEnterpriseClusterById(async, id, force, options).then((request) => request(axios, basePath));
+        deleteEnterpriseClusterById(async: boolean, id: string, options?: any): AxiosPromise<Error> {
+            return localVarFp.deleteEnterpriseClusterById(async, id, options).then((request) => request(axios, basePath));
         },
         /**
          * Returns enterprise data plane cluster by ID
@@ -359,12 +352,11 @@ export interface EnterpriseDataplaneClustersApiInterface {
      * 
      * @param {boolean} async Perform the action in an asynchronous manner
      * @param {string} id ID of the enterprise data plane cluster
-     * @param {boolean} [force] When provided with value: true - enterprise cluster will be deleted alongside all kafkas present on the cluster. When skipped and enterprise cluster has any kafkas associated with it, the request will fail.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EnterpriseDataplaneClustersApiInterface
      */
-    deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: AxiosRequestConfig): AxiosPromise<Error>;
+    deleteEnterpriseClusterById(async: boolean, id: string, options?: AxiosRequestConfig): AxiosPromise<Error>;
 
     /**
      * Returns enterprise data plane cluster by ID
@@ -414,13 +406,12 @@ export class EnterpriseDataplaneClustersApi extends BaseAPI implements Enterpris
      * 
      * @param {boolean} async Perform the action in an asynchronous manner
      * @param {string} id ID of the enterprise data plane cluster
-     * @param {boolean} [force] When provided with value: true - enterprise cluster will be deleted alongside all kafkas present on the cluster. When skipped and enterprise cluster has any kafkas associated with it, the request will fail.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof EnterpriseDataplaneClustersApi
      */
-    public deleteEnterpriseClusterById(async: boolean, id: string, force?: boolean, options?: AxiosRequestConfig) {
-        return EnterpriseDataplaneClustersApiFp(this.configuration).deleteEnterpriseClusterById(async, id, force, options).then((request) => request(this.axios, this.basePath));
+    public deleteEnterpriseClusterById(async: boolean, id: string, options?: AxiosRequestConfig) {
+        return EnterpriseDataplaneClustersApiFp(this.configuration).deleteEnterpriseClusterById(async, id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
