@@ -26,6 +26,6 @@ export interface EnterpriseClusterListAllOf {
      * @type {Array<EnterpriseCluster>}
      * @memberof EnterpriseClusterListAllOf
      */
-    'items'?: Array<EnterpriseCluster>;
+    'items': Array<EnterpriseCluster>;
 }
 
