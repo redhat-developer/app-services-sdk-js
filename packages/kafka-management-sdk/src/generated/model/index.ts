@@ -15,6 +15,7 @@ export * from './error-list';
 export * from './error-list-all-of';
 export * from './fleetshard-parameter';
 export * from './instant-query';
+export * from './kafka-promote-request';
 export * from './kafka-request';
 export * from './kafka-request-all-of';
 export * from './kafka-request-list';
