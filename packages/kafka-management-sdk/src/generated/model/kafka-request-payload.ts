@@ -68,5 +68,11 @@ export interface KafkaRequestPayload {
      * @memberof KafkaRequestPayload
      */
     'billing_model'?: string | null;
+    /**
+     * enterprise OSD cluster ID to be used for kafka creation
+     * @type {string}
+     * @memberof KafkaRequestPayload
+     */
+    'cluster_id'?: string | null;
 }
 
