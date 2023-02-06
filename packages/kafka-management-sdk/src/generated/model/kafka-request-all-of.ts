@@ -210,6 +210,12 @@ export interface KafkaRequestAllOf {
      */
     'promotion_status'?: string;
     /**
+     * The ID of the data plane where Kafka is deployed on. This information is only returned for kafka whose billing model is enterprise
+     * @type {string}
+     * @memberof KafkaRequestAllOf
+     */
+    'cluster_id'?: string | null;
+    /**
      * Details of the Kafka request promotion. It can be set when a Kafka request promotion is in progress or has failed
      * @type {string}
      * @memberof KafkaRequestAllOf

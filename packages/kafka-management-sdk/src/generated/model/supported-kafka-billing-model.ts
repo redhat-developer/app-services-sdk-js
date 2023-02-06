@@ -33,7 +33,7 @@ export interface SupportedKafkaBillingModel {
      */
     'ams_resource': string;
     /**
-     * AMS product to be used. Accepted values: [\'RHOSAK\', \'RHOSAKTrial\', \'RHOSAKEval\']
+     * AMS product to be used. Accepted values: [\'RHOSAK\', \'RHOSAKTrial\', \'RHOSAKEval\', \'RHOSAKCC\']
      * @type {string}
      * @memberof SupportedKafkaBillingModel
      */
