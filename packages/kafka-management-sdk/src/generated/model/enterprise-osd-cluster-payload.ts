@@ -33,12 +33,6 @@ export interface EnterpriseOsdClusterPayload {
      */
     'cluster_id': string;
     /**
-     * external cluster ID. Can be obtained from the response JSON of OCM get /api/clusters_mgmt/v1/clusters/<cluster_id>
-     * @type {string}
-     * @memberof EnterpriseOsdClusterPayload
-     */
-    'cluster_external_id': string;
-    /**
      * dns name of the cluster. Can be obtained from the response JSON of the /api/clusters_mgmt/v1/clusters/<cluster_id>/ingresses (dns_name)
      * @type {string}
      * @memberof EnterpriseOsdClusterPayload
