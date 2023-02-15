@@ -119,13 +119,6 @@ export interface KafkaRequestAllOf {
      */
     'reauthentication_enabled': boolean;
     /**
-     * Maximum data storage available to this Kafka. This is now deprecated, please use max_data_retention_size instead.
-     * @type {string}
-     * @memberof KafkaRequestAllOf
-     * @deprecated
-     */
-    'kafka_storage_size'?: string;
-    /**
      * 
      * @type {SupportedKafkaSizeBytesValueItem}
      * @memberof KafkaRequestAllOf
