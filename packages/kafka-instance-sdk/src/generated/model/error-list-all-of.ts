@@ -25,7 +25,7 @@ export interface ErrorListAllOf {
      * @type {Array<Error>}
      * @memberof ErrorListAllOf
      */
-    'items'?: Array<Error>;
+    'items': Array<Error>;
     /**
      * Total number of errors returned in this request
      * @type {number}

@@ -26,7 +26,7 @@ export interface RecordListAllOf {
      * @type {Array<Record>}
      * @memberof RecordListAllOf
      */
-    'items'?: Array<Record>;
+    'items': Array<Record>;
     /**
      * Total number of records returned in this request. This value does not indicate the total number of records in the topic.
      * @type {number}

@@ -26,6 +26,6 @@ export interface ConsumerGroupListAllOf {
      * @type {Array<ConsumerGroup>}
      * @memberof ConsumerGroupListAllOf
      */
-    'items'?: Array<ConsumerGroup>;
+    'items': Array<ConsumerGroup>;
 }
 

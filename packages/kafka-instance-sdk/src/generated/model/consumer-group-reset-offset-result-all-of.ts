@@ -26,6 +26,6 @@ export interface ConsumerGroupResetOffsetResultAllOf {
      * @type {Array<ConsumerGroupResetOffsetResultItem>}
      * @memberof ConsumerGroupResetOffsetResultAllOf
      */
-    'items'?: Array<ConsumerGroupResetOffsetResultItem>;
+    'items': Array<ConsumerGroupResetOffsetResultItem>;
 }
 

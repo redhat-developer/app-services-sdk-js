@@ -1013,6 +1013,8 @@ components:
       allOf:
       - $ref: '#/components/schemas/List'
       - description: A page of ACL binding entries
+        required:
+        - items
         type: object
         properties:
           items:
@@ -1194,6 +1196,8 @@ components:
       allOf:
       - $ref: '#/components/schemas/ListDeprecated'
       - description: A list of consumer groups
+        required:
+        - items
         type: object
         properties:
           items:
@@ -1269,7 +1273,9 @@ components:
     ConsumerGroupResetOffsetResult:
       allOf:
       - $ref: '#/components/schemas/List'
-      - type: object
+      - required:
+        - items
+        type: object
         properties:
           items:
             type: array
@@ -1337,6 +1343,8 @@ components:
       allOf:
       - $ref: '#/components/schemas/List'
       - description: List of errors
+        required:
+        - items
         type: object
         properties:
           items:
@@ -1349,16 +1357,11 @@ components:
             type: integer
     List:
       required:
-      - items
       - total
       type: object
       properties:
         kind:
           type: string
-        items:
-          type: array
-          items:
-            type: object
         total:
           format: int32
           description: Total number of entries in the full result set
@@ -1532,6 +1535,8 @@ components:
       allOf:
       - $ref: '#/components/schemas/List'
       - description: A page of records consumed from a topic
+        required:
+        - items
         type: object
         properties:
           items:
@@ -1642,6 +1647,8 @@ components:
       allOf:
       - $ref: '#/components/schemas/ListDeprecated'
       - description: A list of topics.
+        required:
+        - items
         type: object
         properties:
           items:

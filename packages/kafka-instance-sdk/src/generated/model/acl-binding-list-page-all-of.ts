@@ -26,6 +26,6 @@ export interface AclBindingListPageAllOf {
      * @type {Array<AclBinding>}
      * @memberof AclBindingListPageAllOf
      */
-    'items'?: Array<AclBinding>;
+    'items': Array<AclBinding>;
 }
 
