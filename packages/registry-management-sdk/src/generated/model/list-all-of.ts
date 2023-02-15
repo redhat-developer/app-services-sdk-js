@@ -13,14 +13,19 @@
  */
 
 
-import { AbstractList } from './abstract-list';
-import { ListAllOf } from './list-all-of';
 import { ObjectReference } from './object-reference';
 
 /**
- * @type List
+ * 
  * @export
+ * @interface ListAllOf
  */
-export type List = AbstractList & ListAllOf;
-
+export interface ListAllOf {
+    /**
+     * 
+     * @type {Array<ObjectReference>}
+     * @memberof ListAllOf
+     */
+    'items': Array<ObjectReference>;
+}
 

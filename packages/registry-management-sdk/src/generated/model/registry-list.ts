@@ -13,7 +13,7 @@
  */
 
 
-import { List } from './list';
+import { AbstractList } from './abstract-list';
 import { Registry } from './registry';
 import { RegistryListAllOf } from './registry-list-all-of';
 
@@ -21,6 +21,6 @@ import { RegistryListAllOf } from './registry-list-all-of';
  * @type RegistryList
  * @export
  */
-export type RegistryList = List & RegistryListAllOf;
+export type RegistryList = AbstractList & RegistryListAllOf;
 
 
