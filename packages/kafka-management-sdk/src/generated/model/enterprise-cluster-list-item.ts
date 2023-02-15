@@ -13,19 +13,13 @@
  */
 
 
-import { FleetshardParameter } from './fleetshard-parameter';
+import { EnterpriseClusterListItemAllOf } from './enterprise-cluster-list-item-all-of';
+import { ObjectReference } from './object-reference';
 
 /**
- * 
+ * @type EnterpriseClusterListItem
  * @export
- * @interface EnterpriseClusterWithAddonParametersAllOf
  */
-export interface EnterpriseClusterWithAddonParametersAllOf {
-    /**
-     * 
-     * @type {Array<FleetshardParameter>}
-     * @memberof EnterpriseClusterWithAddonParametersAllOf
-     */
-    'fleetshard_parameters'?: Array<FleetshardParameter>;
-}
+export type EnterpriseClusterListItem = EnterpriseClusterListItemAllOf & ObjectReference;
+
 

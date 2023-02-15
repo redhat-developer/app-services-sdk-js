@@ -13,8 +13,8 @@
  */
 
 
-import { EnterpriseCluster } from './enterprise-cluster';
 import { EnterpriseClusterListAllOf } from './enterprise-cluster-list-all-of';
+import { EnterpriseClusterListItem } from './enterprise-cluster-list-item';
 import { List } from './list';
 
 /**

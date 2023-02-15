@@ -45,6 +45,6 @@ export interface SupportedKafkaInstanceType {
      * @type {Array<SupportedKafkaSize>}
      * @memberof SupportedKafkaInstanceType
      */
-    'sizes'?: Array<SupportedKafkaSize>;
+    'sizes': Array<SupportedKafkaSize>;
 }
 

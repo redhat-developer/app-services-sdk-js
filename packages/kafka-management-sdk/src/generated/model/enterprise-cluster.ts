@@ -14,12 +14,14 @@
 
 
 import { EnterpriseClusterAllOf } from './enterprise-cluster-all-of';
-import { ObjectReference } from './object-reference';
+import { EnterpriseClusterAllOfCapacityInformation } from './enterprise-cluster-all-of-capacity-information';
+import { EnterpriseClusterListItem } from './enterprise-cluster-list-item';
+import { SupportedKafkaInstanceTypesList } from './supported-kafka-instance-types-list';
 
 /**
  * @type EnterpriseCluster
  * @export
  */
-export type EnterpriseCluster = EnterpriseClusterAllOf & ObjectReference;
+export type EnterpriseCluster = EnterpriseClusterAllOf & EnterpriseClusterListItem;
 
 
