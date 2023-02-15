@@ -13,13 +13,13 @@
  */
 
 
+import { AbstractList } from './abstract-list';
 import { ErrorListAllOf } from './error-list-all-of';
-import { List } from './list';
 
 /**
  * @type ErrorList
  * @export
  */
-export type ErrorList = ErrorListAllOf & List;
+export type ErrorList = AbstractList & ErrorListAllOf;
 
 

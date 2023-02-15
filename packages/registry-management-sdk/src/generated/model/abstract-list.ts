@@ -13,14 +13,36 @@
  */
 
 
-import { AbstractList } from './abstract-list';
-import { ListAllOf } from './list-all-of';
-import { ObjectReference } from './object-reference';
 
 /**
- * @type List
+ * 
  * @export
+ * @interface AbstractList
  */
-export type List = AbstractList & ListAllOf;
-
+export interface AbstractList {
+    /**
+     * 
+     * @type {string}
+     * @memberof AbstractList
+     */
+    'kind': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof AbstractList
+     */
+    'page': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof AbstractList
+     */
+    'size': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof AbstractList
+     */
+    'total': number;
+}
 
