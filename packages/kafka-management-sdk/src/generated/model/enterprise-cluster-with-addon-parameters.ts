@@ -13,15 +13,15 @@
  */
 
 
+import { EnterpriseClusterListItem } from './enterprise-cluster-list-item';
 import { EnterpriseClusterWithAddonParametersAllOf } from './enterprise-cluster-with-addon-parameters-all-of';
 import { FleetshardParameter } from './fleetshard-parameter';
-import { ObjectReference } from './object-reference';
 
 /**
  * @type EnterpriseClusterWithAddonParameters
  * Enterprise cluster with addon parameters
  * @export
  */
-export type EnterpriseClusterWithAddonParameters = EnterpriseClusterWithAddonParametersAllOf & ObjectReference;
+export type EnterpriseClusterWithAddonParameters = EnterpriseClusterListItem & EnterpriseClusterWithAddonParametersAllOf;
 
 
