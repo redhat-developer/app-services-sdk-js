@@ -26,6 +26,6 @@ export interface TopicsListAllOf {
      * @type {Array<Topic>}
      * @memberof TopicsListAllOf
      */
-    'items'?: Array<Topic>;
+    'items': Array<Topic>;
 }
 

@@ -27,12 +27,6 @@ export interface List {
      */
     'kind'?: string;
     /**
-     * 
-     * @type {Array<object>}
-     * @memberof List
-     */
-    'items': Array<object>;
-    /**
      * Total number of entries in the full result set
      * @type {number}
      * @memberof List
