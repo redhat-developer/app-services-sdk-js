@@ -15,16 +15,16 @@
 
 
 /**
- * Schema for the service status response body
+ * Represents an empty response
  * @export
- * @interface ServiceStatus
+ * @enum {string}
  */
-export interface ServiceStatus {
-    /**
-     * Boolean property indicating if the maximum number of total Registry instances have been reached, therefore creation of more instances should not be allowed.
-     * @type {boolean}
-     * @memberof ServiceStatus
-     */
-    'max_instances_reached'?: boolean;
-}
+
+export const Empty = {
+    Empty: ''
+} as const;
+
+export type Empty = typeof Empty[keyof typeof Empty];
+
+
 
