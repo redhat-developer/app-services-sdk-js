@@ -15,16 +15,28 @@
 
 
 /**
- * Schema for the service status response body
+ * 
  * @export
- * @interface ServiceStatus
+ * @interface ErrorAllOf
  */
-export interface ServiceStatus {
+export interface ErrorAllOf {
     /**
-     * Boolean property indicating if the maximum number of total Registry instances have been reached, therefore creation of more instances should not be allowed.
-     * @type {boolean}
-     * @memberof ServiceStatus
+     * 
+     * @type {string}
+     * @memberof ErrorAllOf
      */
-    'max_instances_reached'?: boolean;
+    'reason': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ErrorAllOf
+     */
+    'operation_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ErrorAllOf
+     */
+    'code': string;
 }
 
