@@ -30,7 +30,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} #
       - name: Install git-chglog
         # v1
-        uses: craicoverflow/install-git-chglog@6d338c1d96dcbf12a2115fbe8e5b9817293aae33
       - name: Generate changelog
         run: |
           echo "CHANGELOG<<EOF" >> $GITHUB_ENV

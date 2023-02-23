@@ -46,6 +46,12 @@ export interface ConnectorTypeAllOf {
      */
     'description'?: string;
     /**
+     * Connector type is deprecated and removed from the catalog.
+     * @type {boolean}
+     * @memberof ConnectorTypeAllOf
+     */
+    'deprecated'?: boolean;
+    /**
      * URL to an icon of the connector.
      * @type {string}
      * @memberof ConnectorTypeAllOf
