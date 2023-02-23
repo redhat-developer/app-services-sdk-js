@@ -19,7 +19,7 @@ jobs:
       - run: yarn build
       - name: Inject slug/short variables
         # v4
-        uses: rlespinasse/github-slug-action@a362e5fb42057a3a23a62218b050838f1bacca5d
+        uses: rlespinasse/github-slug-action@102b1a064a9b145e56556e22b18b19c624538d94
       - name: Validate Tag
         run: yarn semver $GITHUB_REF_SLUG
       - name: Update versions of packages
