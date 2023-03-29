@@ -13,15 +13,17 @@
  */
 
 
-import { EnterpriseClusterAllOf } from './enterprise-cluster-all-of';
+import { EnterpriseCluster } from './enterprise-cluster';
 import { EnterpriseClusterAllOfCapacityInformation } from './enterprise-cluster-all-of-capacity-information';
-import { ObjectReference } from './object-reference';
+import { EnterpriseClusterFleetshardParameters } from './enterprise-cluster-fleetshard-parameters';
+import { FleetshardParameter } from './fleetshard-parameter';
 import { SupportedKafkaInstanceTypesList } from './supported-kafka-instance-types-list';
 
 /**
- * @type EnterpriseCluster
+ * @type EnterpriseClusterRegistrationResponse
+ * Enterprise Cluster registration response. It returns additional privileged information compared to The information returned by EnterpriseCluster
  * @export
  */
-export type EnterpriseCluster = EnterpriseClusterAllOf & ObjectReference;
+export type EnterpriseClusterRegistrationResponse = EnterpriseCluster & EnterpriseClusterFleetshardParameters;
 
 
