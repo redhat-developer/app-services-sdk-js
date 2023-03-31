@@ -13,7 +13,6 @@
  */
 
 
-import { ObjectReference } from './object-reference';
 
 /**
  * 
@@ -45,11 +44,5 @@ export interface List {
      * @memberof List
      */
     'total': number;
-    /**
-     * 
-     * @type {Array<ObjectReference>}
-     * @memberof List
-     */
-    'items': Array<ObjectReference>;
 }
 
