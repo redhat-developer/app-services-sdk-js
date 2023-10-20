@@ -1,5 +1,5 @@
 # Stage 1 - the build process
-FROM node:20-alpine as compile-server
+FROM node:21-alpine as compile-server
 WORKDIR /usr/src/app
 COPY . .
 RUN npm install
