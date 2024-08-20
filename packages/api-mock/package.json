@@ -37,6 +37,6 @@
     "json2yaml": "1.1.0",
     "openapi-editor": "0.3.0",
     "replace": "1.2.2",
-    "wait-on": "7.0.1"
+    "wait-on": "8.0.0"
   }
 }
