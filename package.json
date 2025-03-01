@@ -15,7 +15,7 @@
     "examples"
   ],
   "devDependencies": {
-    "semver": "7.3.8",
+    "semver": "7.7.1",
     "@rhoas/spectral-ruleset": "0.3.1"
   },
   "dependencies": {
