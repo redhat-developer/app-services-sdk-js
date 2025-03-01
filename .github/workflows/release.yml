@@ -19,7 +19,7 @@ jobs:
       - run: yarn build
       - name: Inject slug/short variables
         # v4
-        uses: rlespinasse/github-slug-action@4bf56f04ea9faff3369ab49afe31f76e3178ff7a
+        uses: rlespinasse/github-slug-action@797666298f75c6edeb55799185ca05ed7f001e55
       - name: Validate Tag
         run: yarn semver $GITHUB_REF_SLUG
       - name: Update versions of packages
@@ -30,7 +30,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} #
       - name: Install git-chglog
         # v1
-        uses: craicoverflow/install-git-chglog@6d338c1d96dcbf12a2115fbe8e5b9817293aae33
+        uses: craicoverflow/install-git-chglog@fd5ace93851e0e2a8deb0b3c31a07c79cb76fcf2
       - name: Generate changelog
         run: |
           echo "CHANGELOG<<EOF" >> $GITHUB_ENV

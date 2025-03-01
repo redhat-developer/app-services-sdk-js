@@ -27,7 +27,7 @@
     "axios": "0.27.2"
   },
   "devDependencies": {
-    "@types/node": "22.8.2",
-    "typescript": "5.0.2"
+    "@types/node": "22.13.8",
+    "typescript": "5.8.2"
   }
 }
