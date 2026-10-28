@@ -25,8 +25,8 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v4
-      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4.4.0
+      - uses: actions/checkout@v4.4.0
       - name: Install jq
         run: sudo apt-get install jq
       - name: Fetch OpenAPI doc
@@ -41,7 +41,7 @@ jobs:
         run: yarn fetchErrors
       - name: Generate Errors SDK
         run: yarn generateErrors
-      - uses: peter-evans/create-pull-request@4320041ed380b20e97d388d56a7fb4f9b8c20e79 # v7
+      - uses: peter-evans/create-pull-request@22a9089034f40e5a961c8808d113e2c98fb63676 # v7.0.11
         with:
             title: "fix(${{ github.event.client_payload.id }}): automated SDK update"
             token: "${{ secrets.CI_USER_TOKEN }}"
